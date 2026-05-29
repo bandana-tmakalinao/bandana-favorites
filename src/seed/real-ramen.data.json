@@ -11,10 +11,9 @@
       "The Infatuation",
       "MICHELIN Guide",
       "The New York Times",
-      "Time Out New York",
-      "Serious Eats / Reddit consensus"
+      "Time Out New York"
     ],
-    "appearanceCount": 5,
+    "appearanceCount": 4,
     "seedQuality": 0.92
   },
   {
@@ -28,11 +27,10 @@
     "appearsOn": [
       "The Infatuation",
       "The New York Times",
-      "Time Out New York",
-      "Serious Eats / Reddit consensus"
+      "Time Out New York"
     ],
-    "appearanceCount": 4,
-    "seedQuality": 0.896
+    "appearanceCount": 3,
+    "seedQuality": 0.892
   },
   {
     "name": "Tonchin",
@@ -44,12 +42,10 @@
     "signatureBowl": "Tokyo-style tonkotsu (house-made noodles)",
     "appearsOn": [
       "The Infatuation",
-      "Eater NY",
-      "MICHELIN Guide",
-      "Serious Eats / Reddit consensus"
+      "MICHELIN Guide"
     ],
-    "appearanceCount": 4,
-    "seedQuality": 0.872
+    "appearanceCount": 2,
+    "seedQuality": 0.864
   },
   {
     "name": "Momofuku Noodle Bar",
@@ -61,11 +57,10 @@
     "signatureBowl": "Garlic chicken ramen",
     "appearsOn": [
       "The Infatuation",
-      "Eater NY",
       "MICHELIN Guide"
     ],
-    "appearanceCount": 3,
-    "seedQuality": 0.849
+    "appearanceCount": 2,
+    "seedQuality": 0.837
   },
   {
     "name": "Ichiran",
@@ -77,43 +72,10 @@
     "signatureBowl": "Customizable Fukuoka-style tonkotsu",
     "appearsOn": [
       "The Infatuation",
-      "Eater NY",
       "Time Out New York"
     ],
-    "appearanceCount": 3,
-    "seedQuality": 0.825
-  },
-  {
-    "name": "Mr. Taka",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "170 Allen St, New York, NY 10002",
-    "lat": 40.71638,
-    "lng": -73.98838,
-    "signatureBowl": "Spicy miso / Spicy Stamina ramen",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Serious Eats / Reddit consensus"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.801
-  },
-  {
-    "name": "Nakamura",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "172 Delancey St, New York, NY 10002",
-    "lat": 40.71532,
-    "lng": -73.98831,
-    "signatureBowl": "Torigara chicken-and-seafood shoyu ramen",
-    "appearsOn": [
-      "Eater NY",
-      "Time Out New York",
-      "Serious Eats / Reddit consensus"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.777
+    "appearanceCount": 2,
+    "seedQuality": 0.809
   },
   {
     "name": "Okonomi / Yuji Ramen",
@@ -125,11 +87,10 @@
     "signatureBowl": "Tunakotsu (emulsified tuna-bone broth, charred tuna belly)",
     "appearsOn": [
       "The Infatuation",
-      "Time Out New York",
-      "Serious Eats / Reddit consensus"
+      "Time Out New York"
     ],
-    "appearanceCount": 3,
-    "seedQuality": 0.753
+    "appearanceCount": 2,
+    "seedQuality": 0.781
   },
   {
     "name": "Ippudo NY",
@@ -141,26 +102,10 @@
     "signatureBowl": "Akamaru / Shiromaru tonkotsu",
     "appearsOn": [
       "The Infatuation",
-      "Time Out New York",
-      "Serious Eats / Reddit consensus"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.73
-  },
-  {
-    "name": "Rockmeisha",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "351 E 14th St, New York, NY 10003",
-    "lat": 40.72688,
-    "lng": -73.98274,
-    "signatureBowl": "Hakata-style pork-knuckle tonkotsu",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
+      "Time Out New York"
     ],
     "appearanceCount": 2,
-    "seedQuality": 0.706
+    "seedQuality": 0.753
   },
   {
     "name": "Karazishi Botan",
@@ -175,139 +120,7 @@
       "Time Out New York"
     ],
     "appearanceCount": 2,
-    "seedQuality": 0.682
-  },
-  {
-    "name": "Ramen Ishida",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "122 Ludlow St, New York, NY 10002",
-    "lat": 40.71591,
-    "lng": -73.9882,
-    "signatureBowl": "New Tokyo-style shoyu ramen",
-    "appearsOn": [
-      "The Infatuation",
-      "Serious Eats / Reddit consensus"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.658
-  },
-  {
-    "name": "Ramen Danbo",
-    "neighborhood": "Park Slope (also West Village)",
-    "borough": "Brooklyn",
-    "address": "52 7th Ave, Brooklyn, NY 11217",
-    "lat": 40.73568,
-    "lng": -74.00484,
-    "signatureBowl": "Fukuoka/Hakata-style tonkotsu",
-    "appearsOn": [
-      "Eater NY",
-      "Serious Eats / Reddit consensus"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.634
-  },
-  {
-    "name": "Afuri Ramen + Dumpling",
-    "neighborhood": "Williamsburg",
-    "borough": "Brooklyn",
-    "address": "61 N 11th St, Brooklyn, NY 11249",
-    "lat": 40.70759,
-    "lng": -73.95798,
-    "signatureBowl": "Yuzu shio ramen",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.61
-  },
-  {
-    "name": "Nishida Sho-ten",
-    "neighborhood": "Midtown East / Turtle Bay",
-    "borough": "Manhattan",
-    "address": "302 E 49th St, New York, NY 10017",
-    "lat": 40.75488,
-    "lng": -73.9711,
-    "signatureBowl": "Black garlic broth ramen",
-    "appearsOn": [
-      "Time Out New York",
-      "Serious Eats / Reddit consensus"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.587
-  },
-  {
-    "name": "Tabetomo",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "131 Avenue A, New York, NY 10009",
-    "lat": 40.72658,
-    "lng": -73.98281,
-    "signatureBowl": "Tsukemen (60-hour broth, hot-stone option)",
-    "appearsOn": [
-      "Time Out New York",
-      "Serious Eats / Reddit consensus"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.563
-  },
-  {
-    "name": "E.A.K. Ramen",
-    "neighborhood": "Greenwich Village / Midtown West",
-    "borough": "Manhattan",
-    "address": "469 6th Ave, New York, NY 10011",
-    "lat": 40.73216,
-    "lng": -74.00398,
-    "signatureBowl": "The E.A.K. (Iekei-style pork-and-chicken broth)",
-    "appearsOn": [
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.539
-  },
-  {
-    "name": "Totto Ramen",
-    "neighborhood": "Midtown East",
-    "borough": "Manhattan",
-    "address": "248 E 52nd St, New York, NY 10022",
-    "lat": 40.75337,
-    "lng": -73.9712,
-    "signatureBowl": "Chicken paitan ramen",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.515
-  },
-  {
-    "name": "Hinomaru",
-    "neighborhood": "Astoria",
-    "borough": "Queens",
-    "address": "33-18 Ditmars Blvd, Astoria, NY 11105",
-    "lat": 40.76475,
-    "lng": -73.92481,
-    "signatureBowl": "Hinomaru ramen (17-hour Hakata tonkotsu)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.491
-  },
-  {
-    "name": "Chuko",
-    "neighborhood": "Prospect Heights",
-    "borough": "Brooklyn",
-    "address": "565 Vanderbilt Ave, Brooklyn, NY 11238",
-    "lat": 40.67609,
-    "lng": -73.97042,
-    "signatureBowl": "Build-your-own miso ramen with rayu oil",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.468
+    "seedQuality": 0.726
   },
   {
     "name": "Shalom Japan",
@@ -321,7 +134,7 @@
       "MICHELIN Guide"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.444
+    "seedQuality": 0.698
   },
   {
     "name": "Chick Chick",
@@ -333,6 +146,132 @@
     "signatureBowl": "White tori paitan ramen",
     "appearsOn": [
       "MICHELIN Guide"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.67
+  },
+  {
+    "name": "Mr. Taka",
+    "neighborhood": "Lower East Side",
+    "borough": "Manhattan",
+    "address": "170 Allen St, New York, NY 10002",
+    "lat": 40.71638,
+    "lng": -73.98838,
+    "signatureBowl": "Spicy miso / Spicy Stamina ramen",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.642
+  },
+  {
+    "name": "Rockmeisha",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "351 E 14th St, New York, NY 10003",
+    "lat": 40.72688,
+    "lng": -73.98274,
+    "signatureBowl": "Hakata-style pork-knuckle tonkotsu",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.614
+  },
+  {
+    "name": "Ramen Ishida",
+    "neighborhood": "Lower East Side",
+    "borough": "Manhattan",
+    "address": "122 Ludlow St, New York, NY 10002",
+    "lat": 40.71591,
+    "lng": -73.9882,
+    "signatureBowl": "New Tokyo-style shoyu ramen",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.587
+  },
+  {
+    "name": "Afuri Ramen + Dumpling",
+    "neighborhood": "Williamsburg",
+    "borough": "Brooklyn",
+    "address": "61 N 11th St, Brooklyn, NY 11249",
+    "lat": 40.70759,
+    "lng": -73.95798,
+    "signatureBowl": "Yuzu shio ramen",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.559
+  },
+  {
+    "name": "Chuko",
+    "neighborhood": "Prospect Heights",
+    "borough": "Brooklyn",
+    "address": "565 Vanderbilt Ave, Brooklyn, NY 11238",
+    "lat": 40.67609,
+    "lng": -73.97042,
+    "signatureBowl": "Build-your-own miso ramen with rayu oil",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.531
+  },
+  {
+    "name": "Nakamura",
+    "neighborhood": "Lower East Side",
+    "borough": "Manhattan",
+    "address": "172 Delancey St, New York, NY 10002",
+    "lat": 40.71532,
+    "lng": -73.98831,
+    "signatureBowl": "Torigara chicken-and-seafood shoyu ramen",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.503
+  },
+  {
+    "name": "Nishida Sho-ten",
+    "neighborhood": "Midtown East / Turtle Bay",
+    "borough": "Manhattan",
+    "address": "302 E 49th St, New York, NY 10017",
+    "lat": 40.75488,
+    "lng": -73.9711,
+    "signatureBowl": "Black garlic broth ramen",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.476
+  },
+  {
+    "name": "Tabetomo",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "131 Avenue A, New York, NY 10009",
+    "lat": 40.72658,
+    "lng": -73.98281,
+    "signatureBowl": "Tsukemen (60-hour broth, hot-stone option)",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.448
+  },
+  {
+    "name": "E.A.K. Ramen",
+    "neighborhood": "Greenwich Village / Midtown West",
+    "borough": "Manhattan",
+    "address": "469 6th Ave, New York, NY 10011",
+    "lat": 40.73216,
+    "lng": -74.00398,
+    "signatureBowl": "The E.A.K. (Iekei-style pork-and-chicken broth)",
+    "appearsOn": [
+      "Time Out New York"
     ],
     "appearanceCount": 1,
     "seedQuality": 0.42
