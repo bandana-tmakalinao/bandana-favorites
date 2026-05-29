@@ -9,7 +9,10 @@
  */
 import { rankSubcategory, trustToWeight } from "../lib/ranking";
 import { NYC } from "../lib/config";
-import { REAL_RAMEN } from "./real-ramen";
+import { REAL_RAMEN, type RealRamen } from "./real-ramen";
+
+// Real, consensus-seeded datasets keyed by subcategory slug (the rest are fictional placeholders).
+const REAL_DATA: Record<string, RealRamen[]> = { ramen: REAL_RAMEN };
 import type {
   Category,
   Comparison,
@@ -81,8 +84,7 @@ const SUBS: SubDef[] = [
   { slug: "ramen", cat: "japanese", name: "Ramen", emoji: "🍜", blurb: "Tonkotsu to shoyu — the city's best bowls.", suffix: "Ramen-ya", img: "ramen", dishes: ["Tonkotsu", "Spicy Miso", "Shoyu", "Black Garlic Tonkotsu", "Tsukemen", "Vegan Shio", "Tantanmen"] },
   { slug: "sushi", cat: "japanese", name: "Sushi", emoji: "🍣", blurb: "Omakase counters to neighborhood gems.", suffix: "Sushi", img: "sushi", dishes: ["Omakase", "Chirashi Bowl", "Toro Flight", "Box Set", "Spicy Tuna Roll"] },
   { slug: "udon", cat: "japanese", name: "Udon", emoji: "🍲", blurb: "Chewy, hand-pulled, slurpable.", suffix: "Udon", img: "udon", dishes: ["Curry Udon", "Niku Udon", "Kake Udon", "Tempura Udon"] },
-  { slug: "slice", cat: "pizza", name: "Slice Joint", emoji: "🍕", blurb: "The corner-slice canon.", suffix: "Pizzeria", img: "pizza+slice", dishes: ["Plain Cheese Slice", "Pepperoni Slice", "Fresh Mozz Slice", "Vodka Slice"] },
-  { slug: "square-pizza", cat: "pizza", name: "Square & Sicilian", emoji: "🟧", blurb: "Thick, crispy-bottomed grandma & Sicilian.", suffix: "Pizza Co.", img: "sicilian+pizza", dishes: ["Grandma Square", "Sicilian", "Upside-Down Sicilian", "Detroit-Style"] },
+  { slug: "pizza", cat: "pizza", name: "Pizza", emoji: "🍕", blurb: "Slices to whole pies — the city's best.", suffix: "Pizza", img: "pizza", dishes: ["Plain Slice", "Margherita Pie", "Pepperoni Slice", "Grandma Square", "Vodka Slice"] },
   { slug: "soup-dumplings", cat: "chinese", name: "Soup Dumplings", emoji: "🥟", blurb: "XLB with the perfect skin-to-soup ratio.", suffix: "Dumpling House", img: "soup+dumpling", dishes: ["Pork XLB", "Crab & Pork XLB", "Truffle XLB", "Chicken XLB"] },
   { slug: "dim-sum", cat: "chinese", name: "Dim Sum", emoji: "🍤", blurb: "Carts, baskets, and har gow.", suffix: "Palace", img: "dim+sum", dishes: ["Har Gow", "Shu Mai", "BBQ Pork Bun", "Turnip Cake", "Rice Noodle Roll"] },
   { slug: "tacos", cat: "mexican", name: "Tacos", emoji: "🌮", blurb: "Al pastor to carnitas, the whole spread.", suffix: "Taqueria", img: "tacos", dishes: ["Al Pastor", "Carnitas", "Suadero", "Lengua", "Pollo Asado"] },
@@ -267,9 +269,10 @@ export function generateSeed(): StoreData {
       });
     };
 
-    if (sub.slug === "ramen" && REAL_RAMEN.length > 0) {
-      // Real NYC ramen, consensus-ordered from public best-of lists (see src/seed/real-ramen.ts).
-      for (const shop of REAL_RAMEN) {
+    const realList = REAL_DATA[sub.slug];
+    if (realList && realList.length > 0) {
+      // Real, consensus-ordered data from 2025+ best-of lists (see src/seed/real-*.ts).
+      for (const shop of realList) {
         addContender({
           name: shop.name,
           neighborhood: shop.neighborhood,
