@@ -6,6 +6,7 @@ import type {
   Place,
   RankedList,
   Region,
+  StoreData,
   Subcategory,
   User,
 } from "@/lib/types";
@@ -31,6 +32,14 @@ export interface DuelPair {
   b: ContenderView;
 }
 
+export interface ShowcaseEntry {
+  slug: string;
+  name: string;
+  emoji: string;
+  categoryName: string;
+  items: ContenderView[]; // top N ranked contenders
+}
+
 /**
  * The data-access seam. `MemoryRepository` (in-memory + .data/store.json) is the local-dev default;
  * a Postgres/Drizzle implementation slots in here when DATABASE_URL is configured.
@@ -40,6 +49,7 @@ export interface Repository {
   listCategories(): CategoryWithSubs[];
   getRankedList(subSlug: string): RankedList | null;
   getContenderDetail(id: string): ContenderDetail | null;
+  getHomeShowcase(perCategory?: number): ShowcaseEntry[];
   getDuelPair(subSlug?: string): DuelPair | null;
   recordDuel(userId: string, winnerId: string, loserId: string): { ok: boolean; error?: string };
   recordVote(userId: string, contenderId: string, value: 1 | -1): { ok: boolean; error?: string };
@@ -50,8 +60,9 @@ export interface Repository {
   stats(): { contenders: number; comparisons: number; votes: number; subcategories: number };
 }
 
-// Singleton kept on globalThis so it survives Next.js dev HMR module reloads.
-const g = globalThis as unknown as { __bfRepo?: Repository };
+// The store DATA is cached on globalThis (survives Next.js dev HMR reloads); the repository wrapper
+// is rebuilt each call so code edits to MemoryRepository hot-reload cleanly.
+const g = globalThis as unknown as { __bfStore?: StoreData };
 
 export function getRepo(): Repository {
   if (process.env.DATABASE_URL) {
@@ -61,13 +72,12 @@ export function getRepo(): Repository {
       "PgRepository not yet wired — unset DATABASE_URL to use the local in-memory store. See DECISIONS.md.",
     );
   }
-  if (!g.__bfRepo) {
-    let store = loadStore();
-    if (!store) {
-      store = generateSeed();
-      saveStore(store);
-    }
-    g.__bfRepo = new MemoryRepository(store);
+  if (!g.__bfStore) {
+    g.__bfStore = loadStore() ?? ((): StoreData => {
+      const s = generateSeed();
+      saveStore(s);
+      return s;
+    })();
   }
-  return g.__bfRepo;
+  return new MemoryRepository(g.__bfStore);
 }

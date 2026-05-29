@@ -43,3 +43,25 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+@keyframes bf-fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bf-progress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+.bf-fade {
+  animation: bf-fade 0.35s ease;
+}

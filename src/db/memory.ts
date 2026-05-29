@@ -18,6 +18,7 @@ import type {
   DuelPair,
   RankedList,
   Repository,
+  ShowcaseEntry,
 } from "./repo";
 import { saveStore } from "./store";
 
@@ -141,6 +142,24 @@ export class MemoryRepository implements Repository {
       photos: this.photosFor(id).sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1)),
       neighbors,
     };
+  }
+
+  getHomeShowcase(perCategory = 10): ShowcaseEntry[] {
+    const out: ShowcaseEntry[] = [];
+    for (const sub of this.store.subcategories) {
+      const list = this.getRankedList(sub.slug);
+      if (!list || list.ranked.length === 0) continue;
+      const category = this.catById(sub.categoryId);
+      out.push({
+        slug: sub.slug,
+        name: sub.name,
+        emoji: sub.emoji,
+        categoryName: category?.name ?? "",
+        items: list.ranked.slice(0, perCategory),
+      });
+    }
+    // Most-populated (most-dueled) food types first, so the rotation leads with the liveliest lists.
+    return out.sort((a, b) => b.items.length - a.items.length);
   }
 
   getDuelPair(subSlug?: string): DuelPair | null {

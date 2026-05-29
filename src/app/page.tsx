@@ -1,37 +1,48 @@
 import Link from "next/link";
+import { getRepo } from "@/db/repo";
+import RotatingTopList from "@/components/RotatingTopList";
+
+export const dynamic = "force-dynamic";
 
 export default function Home() {
+  const showcase = getRepo().getHomeShowcase(10);
+
   return (
-    <div className="mx-auto max-w-5xl px-4">
-      <section className="py-16 sm:py-24">
-        <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs text-[var(--color-ink-dim)]">
-          <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-good)]" />
-          Now ranking — New York City
-        </p>
-        <h1 className="max-w-3xl text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">
-          The best food in NYC,
-          <br />
-          ranked by the{" "}
-          <span className="text-[var(--color-brand)]">food</span>.
-        </h1>
-        <p className="mt-5 max-w-xl text-lg text-[var(--color-ink-dim)]">
-          Not &ldquo;best restaurants.&rdquo; Best <em>ramen</em>. Best slice. Best
-          soup dumpling. The dish is the headline; the place is the subtitle. Ranked
-          by head-to-head comparisons and earned trust — never mass voting.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link
-            href="/nyc"
-            className="rounded-lg bg-[var(--color-brand)] px-5 py-3 font-semibold text-black transition hover:bg-[var(--color-brand-soft)]"
-          >
-            Explore NYC rankings
-          </Link>
-          <Link
-            href="/duel"
-            className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 font-semibold transition hover:border-[var(--color-ink-dim)]"
-          >
-            Settle a duel →
-          </Link>
+    <div className="mx-auto max-w-6xl px-4">
+      <section className="grid items-start gap-10 py-12 sm:py-16 lg:grid-cols-2">
+        <div>
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs text-[var(--color-ink-dim)]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-good)]" />
+            Now ranking — New York City
+          </p>
+          <h1 className="text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">
+            The best food in NYC,
+            <br />
+            ranked by the <span className="text-[var(--color-brand)]">food</span>.
+          </h1>
+          <p className="mt-5 max-w-xl text-lg text-[var(--color-ink-dim)]">
+            Not &ldquo;best restaurants.&rdquo; Best <em>ramen</em>. Best slice. Best soup dumpling. The
+            dish is the headline; the place is the subtitle. Ranked by head-to-head comparisons and
+            earned trust — never mass voting.
+          </p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              href="/nyc"
+              className="rounded-lg bg-[var(--color-brand)] px-5 py-3 font-semibold text-black transition hover:bg-[var(--color-brand-soft)]"
+            >
+              Explore NYC rankings
+            </Link>
+            <Link
+              href="/duel"
+              className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 font-semibold transition hover:border-[var(--color-ink-dim)]"
+            >
+              Settle a duel →
+            </Link>
+          </div>
+        </div>
+
+        <div className="lg:pt-2">
+          <RotatingTopList entries={showcase} />
         </div>
       </section>
 
