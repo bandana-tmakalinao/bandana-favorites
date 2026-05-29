@@ -48,7 +48,8 @@ export interface Contender {
   placeId: ID;
   subcategoryId: ID;
   regionId: ID;
-  title: string; // the FOOD — display headline (place is the subtitle)
+  title: string; // the FOOD — clean dish name (the headline; place is the subtitle)
+  description: string; // short detail shown under the title (the verbose specifics)
   dishVariantId: ID | null; // reserved for future per-named-dish granularity
   seedSources: string[]; // publications this seed entry was informed by (curator seed only)
   createdBy: ID | null;
@@ -137,6 +138,7 @@ export interface ContenderView {
   id: ID;
   rank: number | null;
   title: string;
+  description: string;
   placeName: string;
   neighborhood: string;
   borough: string;

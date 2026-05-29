@@ -14,7 +14,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Spicy Redneck Dog",
+    "description": "Bacon-wrapped, chili, coleslaw, pickled jalapenos; deep-fried Jersey-style"
   },
   {
     "name": "Dog Day Afternoon",
@@ -31,7 +33,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.926,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chicago-Style Dog",
+    "description": "Tomatoes, sport peppers, kosher pickle"
   },
   {
     "name": "Gray's Papaya",
@@ -47,7 +51,9 @@
       "Secret NYC"
     ],
     "appearanceCount": 3,
-    "seedQuality": 0.902
+    "seedQuality": 0.902,
+    "title": "Recession Special",
+    "description": "Two crispy all-beef Sabrett dogs plus tropical drink"
   },
   {
     "name": "Katz's Delicatessen",
@@ -64,7 +70,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.879,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Kosher Frankfurter",
+    "description": "All-beef natural-casing frank, mustard, sauerkraut"
   },
   {
     "name": "Santa Salsa",
@@ -81,7 +89,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.855,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Perro Con Todo",
+    "description": "Venezuelan dog with bacon, guasacaca, potato chips"
   },
   {
     "name": "Schaller's Stube Sausage Bar",
@@ -98,7 +108,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.831,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pretzel-Bun Frank",
+    "description": "Specialty franks and brats; Saigon Special, Berlin Wall"
   },
   {
     "name": "Nathan's Famous",
@@ -114,7 +126,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.807,
-    "geocoded": true
+    "geocoded": true,
+    "title": "All-Beef Hot Dog",
+    "description": "Classic tight-casing frank, institution since 1916"
   },
   {
     "name": "Rudy's Bar & Grill",
@@ -130,7 +144,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.783,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Free Hot Dog",
+    "description": "Mustard dog with drink purchase; dive bar since 1933"
   },
   {
     "name": "Bobbi's Italian Beef",
@@ -145,7 +161,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.76,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chili Cheese Dog",
+    "description": ""
   },
   {
     "name": "Dyckman Dogs",
@@ -160,7 +178,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.736,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Venezuelan Dog",
+    "description": "Cabbage, tomato, onion, cheese, cilantro mayo, potato sticks"
   },
   {
     "name": "NoMad Diner",
@@ -175,7 +195,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.712,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Arlo Dog",
+    "description": "Dijonnaise, chimichurri, crispy potatoes"
   },
   {
     "name": "Peek Inn",
@@ -190,7 +212,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.688,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Oversized Hot Dog",
+    "description": "Juicy, snappy; from The Meat Hook team"
   },
   {
     "name": "Skippy's Hot Dogs",
@@ -205,7 +229,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.664,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Wally Dog",
+    "description": "Sauerkraut, cheese sauce, house red chili"
   },
   {
     "name": "Brooklyn Diner",
@@ -220,7 +246,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.64,
-    "geocoded": true
+    "geocoded": true,
+    "title": "15-Bite Frank",
+    "description": "Oversized all-beef frank, hand-cut fries, juniper slaw"
   },
   {
     "name": "La Perrada de Chalo",
@@ -235,7 +263,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.617,
-    "geocoded": true
+    "geocoded": true,
+    "title": "The Mexicano",
+    "description": "Colombian dog with salsa verde, cheese, potato chips"
   },
   {
     "name": "Moritz",
@@ -250,7 +280,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.593,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pretzel-Bun Brat",
+    "description": "Thick brats, Bavarian mustard, sauerkraut"
   },
   {
     "name": "Old Town Bar & Restaurant",
@@ -265,7 +297,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.569,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chili Dog",
+    "description": "Sabrett with chili, onions, cheddar"
   },
   {
     "name": "PDT (Please Don't Tell)",
@@ -280,7 +314,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.545,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Kimchi Dog",
+    "description": "Lemongrass chili; speakeasy hidden inside Crif Dogs"
   },
   {
     "name": "Prontito",
@@ -295,7 +331,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.521,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Colombian-Style Dog",
+    "description": "Potato chips, bacon, cheese, pineapple sauce, quail egg"
   },
   {
     "name": "Emmett's",
@@ -310,7 +348,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.498,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chicago-Style Dog",
+    "description": ""
   },
   {
     "name": "Kings of Kobe",
@@ -325,7 +365,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.474,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Frydom Fighter",
+    "description": "Kobe beef dog; also the Banh Mine"
   },
   {
     "name": "Papaya King",
@@ -340,6 +382,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Specialty Frankfurter",
+    "description": "Frankfurters with tropical-drink combos"
   }
 ]

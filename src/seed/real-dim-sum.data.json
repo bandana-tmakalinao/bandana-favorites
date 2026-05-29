@@ -13,7 +13,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork Shrimp Shumai",
+    "description": "Cart dim sum; spareribs in black beans, yuba-wrapped chicken, jellyfish"
   },
   {
     "name": "Dim Sum Go Go",
@@ -29,7 +31,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.921,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sweet Shrimp Rolls",
+    "description": "Rice-paper rolls, snow pea leaf dumplings, duck dumplings, roast pork pie"
   },
   {
     "name": "East Harbor Seafood Palace",
@@ -45,7 +49,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.891,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Siu Mai",
+    "description": "Shrimp rice noodles, black bean spare ribs, braised bean curd rolls"
   },
   {
     "name": "Little Alley",
@@ -60,7 +66,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.862,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork-Crab Soup Dumplings",
+    "description": "Caramelized puffy pork buns, pig's ear with chili oil"
   },
   {
     "name": "Awesum Dimsum",
@@ -74,7 +82,9 @@
       "Time Out New York"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.832
+    "seedQuality": 0.832,
+    "title": "Har Gow",
+    "description": "Soup dumplings, pork buns, egg tarts; late-night dim sum"
   },
   {
     "name": "Bamboo Garden",
@@ -89,7 +99,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.803,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pig Custard Buns",
+    "description": "Pig-shaped custard buns; tableside duck slicing"
   },
   {
     "name": "Buddha Bodai",
@@ -104,7 +116,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.774,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Vegetarian Dim Sum",
+    "description": "Kosher 'meat' bun, sesame rice balls, 'shrimp' dumplings"
   },
   {
     "name": "Dim Sum Palace",
@@ -118,7 +132,9 @@
       "Time Out New York"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.744
+    "seedQuality": 0.744,
+    "title": "Pork Congee",
+    "description": "Taro dumplings; dim sum happy hour"
   },
   {
     "name": "Dim Sum Sam",
@@ -133,7 +149,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.715,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Shrimp Dumplings",
+    "description": "BBQ pork buns, roast duck over rice"
   },
   {
     "name": "Golden Unicorn Restaurant",
@@ -148,7 +166,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.685,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Cart-Style Dim Sum",
+    "description": "Classic carts in a multi-floor banquet hall"
   },
   {
     "name": "House of Joy",
@@ -163,7 +183,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.656,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Egg Custard Buns",
+    "description": "Red rice noodle rolls, black sesame rolls"
   },
   {
     "name": "Jing Fong",
@@ -178,7 +200,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.626,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Shrimp Shumai",
+    "description": "Pork buns, Cantonese cart classics"
   },
   {
     "name": "Nom Wah Tea Parlor",
@@ -193,7 +217,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.597,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Original Egg Roll",
+    "description": "Made-to-order dim sum, mooncakes; historic 1920 parlor"
   },
   {
     "name": "Pacificana",
@@ -208,7 +234,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.568,
-    "geocoded": true
+    "geocoded": true,
+    "title": "BBQ Pork Buns",
+    "description": "Sesame-paste fried green balls"
   },
   {
     "name": "Ping's Seafood",
@@ -223,7 +251,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.538,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork Shumai",
+    "description": "Pan-fried water-chestnut cake, chili peppers"
   },
   {
     "name": "RedFarm",
@@ -238,7 +268,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.509,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami Egg Roll",
+    "description": "Farm-to-table dim sum"
   },
   {
     "name": "Tim Ho Wan",
@@ -253,7 +285,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.479,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Baked BBQ Pork Buns",
+    "description": "Pan-fried turnip cakes, steamed rice rolls"
   },
   {
     "name": "Yin Ji Chang Fen",
@@ -268,6 +302,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Rice Noodle Rolls",
+    "description": "Chang fen in roughly 17 flavors"
   }
 ]

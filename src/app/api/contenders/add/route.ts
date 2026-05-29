@@ -12,9 +12,11 @@ export async function POST(req: Request) {
   const body = await req.json().catch(() => null);
   const placeId = body?.placeId as string | undefined;
   const sub = body?.sub as string | undefined;
+  const title = typeof body?.title === "string" ? body.title : undefined;
+  const description = typeof body?.description === "string" ? body.description : undefined;
   if (!placeId || !sub) return NextResponse.json({ error: "placeId and sub are required." }, { status: 400 });
 
-  const result = getRepo().addContenderAtPlace(user.id, placeId, sub);
+  const result = getRepo().addContenderAtPlace(user.id, placeId, sub, title, description);
   if (!result.ok) return NextResponse.json({ error: result.error }, { status: 400 });
   return NextResponse.json({ ok: true, contenderId: result.contenderId });
 }

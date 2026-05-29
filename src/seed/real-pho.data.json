@@ -13,7 +13,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Short Rib Pho",
+    "description": "Smoked five-spice short rib, 20-hour broth"
   },
   {
     "name": "Bánh Anh Em",
@@ -28,7 +30,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.908,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Brisket Tripe Pho",
+    "description": ""
   },
   {
     "name": "La Dong",
@@ -43,7 +47,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.867,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Wagyu Pho",
+    "description": "Miyazaki A5 wagyu, poured tableside"
   },
   {
     "name": "Bánh",
@@ -59,7 +65,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.825,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pho Dac Biet",
+    "description": "Brisket, tendon, tripe"
   },
   {
     "name": "Madame Vo",
@@ -75,7 +83,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.783,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Madame Pho",
+    "description": "Southern-style: eye of round, brisket, meatball; short rib add-on"
   },
   {
     "name": "Mắm",
@@ -91,7 +101,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.742,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pho Bo",
+    "description": "Brisket, flank, sirloin; wide noodles"
   },
   {
     "name": "Phở Bằng",
@@ -107,7 +119,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.7,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pho Dac Biet",
+    "description": "Eye of round, brisket, tendon, omasum; southern-style"
   },
   {
     "name": "Phở Gà Vàng",
@@ -123,7 +137,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.658,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pho Ga",
+    "description": "Chopped chicken, concentrated chicken-essence broth"
   },
   {
     "name": "Đi Ăn Đi",
@@ -139,7 +155,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.617,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pho Thin Ha Noi",
+    "description": "Northern-style, wok-seared brisket, scallions, pickled garlic, chili"
   },
   {
     "name": "Hello Saigon",
@@ -154,7 +172,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.575,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Hello Saigon Pho",
+    "description": "Eye of round beef, brisket, beef ball"
   },
   {
     "name": "Nha Trang One",
@@ -169,7 +189,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.533,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pho Dac Biet",
+    "description": "Beef brisket, eye round, tendon"
   },
   {
     "name": "Pasteur Grill & Noodles",
@@ -184,7 +206,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.492,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pho Xe Lua",
+    "description": "Medium-rare beef, brisket, beef balls, tendon, tripe"
   },
   {
     "name": "Saigon Social",
@@ -199,6 +223,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Ribeye Brisket Pho",
+    "description": "Beef pho with ribeye and brisket"
   }
 ]

@@ -13,7 +13,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Birria Tacos",
+    "description": "Broth-dipped, served with consome"
   },
   {
     "name": "Carnitas Ramirez",
@@ -29,7 +31,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.926,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Carnitas Surtida",
+    "description": "Mixed nose-to-tail pork; lengua and trompa"
   },
   {
     "name": "Esse Taco",
@@ -45,7 +49,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.902,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Adobada Taco",
+    "description": "Rib eye and fatty pork adobada"
   },
   {
     "name": "Los Tacos No. 1",
@@ -61,7 +67,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.879,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Adobada Taco",
+    "description": "Red-chili-marinated pork; also carne asada, nopal"
   },
   {
     "name": "Tacos El Bronco",
@@ -77,7 +85,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.855,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Birria Taco",
+    "description": "Al pastor, campechanos, tripe; famous lengua"
   },
   {
     "name": "Taqueria Al Pastor",
@@ -93,7 +103,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.831,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Al Pastor Taco",
+    "description": "Also carne asada"
   },
   {
     "name": "Taqueria Ramirez",
@@ -109,7 +121,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.807,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Suadero Taco",
+    "description": "Plus blowtorched tripa"
   },
   {
     "name": "Cosme",
@@ -124,7 +138,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.783,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Cobia Al Pastor",
+    "description": "Also duck carnitas"
   },
   {
     "name": "Oso",
@@ -139,7 +155,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.76,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Street Tacos",
+    "description": "Mexico City street-food style tacos and antojitos"
   },
   {
     "name": "Taco Mix",
@@ -154,7 +172,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.736,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Al Pastor Taco",
+    "description": "Pork carved from a twirling trompo"
   },
   {
     "name": "Taqueria El Gallo Azteca",
@@ -169,7 +189,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.712,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Lengua Taco",
+    "description": "Braised tongue; also al pastor"
   },
   {
     "name": "Taqueria Sinaloense",
@@ -184,7 +206,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.688,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Tacos Gobernador",
+    "description": ""
   },
   {
     "name": "Beto's Carnitas & Guisados",
@@ -199,7 +223,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.664,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Guisados Taco",
+    "description": "Chicken in mole verde; chamberete morita"
   },
   {
     "name": "Border Town",
@@ -214,7 +240,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.64,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Carne Con Chile",
+    "description": "On flour tortillas"
   },
   {
     "name": "Cuerno",
@@ -228,7 +256,9 @@
       "The Infatuation"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.617
+    "seedQuality": 0.617,
+    "title": "Taco Richi",
+    "description": "Ribeye, chicharron en salsa verde, avocado"
   },
   {
     "name": "Los Mariscos",
@@ -243,7 +273,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.593,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Fried Fish Taco",
+    "description": "Battered and fried"
   },
   {
     "name": "Plaza Ortega",
@@ -258,7 +290,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.569,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Birria Tacos",
+    "description": "Also gringas al pastor"
   },
   {
     "name": "Santo Taco",
@@ -273,7 +307,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.545,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Steak Trompo Taco",
+    "description": "Ribeye and strip steak"
   },
   {
     "name": "Tacoway Beach",
@@ -288,7 +324,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.521,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Fried Fish Taco",
+    "description": "Beer-battered, crispy"
   },
   {
     "name": "Taqueria El Chato",
@@ -303,7 +341,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.498,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Vampiro Taco",
+    "description": "Cheesy and crunchy; lengua, steak, chorizo"
   },
   {
     "name": "Wayne & Sons",
@@ -318,7 +358,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.474,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Beef Picadillo Taco",
+    "description": "Hard-shell"
   },
   {
     "name": "Yellow Rose",
@@ -333,6 +375,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Carne Guisada Taco",
+    "description": "Sonoran-style flour tortillas"
   }
 ]

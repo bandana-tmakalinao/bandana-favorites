@@ -22,6 +22,7 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
   const user = await getCurrentUser();
   const personal = user ? getRepo().getPersonalRankedList(user.id, sub) : [];
   const { subcategory, category, region, ranked, contenders } = list;
+  const dishNames = Array.from(new Set([...ranked, ...contenders].map((v) => v.title).filter(Boolean))).slice(0, 40);
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -63,7 +64,7 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
         />
       </div>
 
-      <AddPlace subSlug={subcategory.slug} subName={subcategory.name} signedIn={!!user} />
+      <AddPlace subSlug={subcategory.slug} subName={subcategory.name} signedIn={!!user} dishNames={dishNames} />
     </div>
   );
 }

@@ -23,6 +23,8 @@ export interface RealRamen {
   lat: number;
   lng: number;
   signatureBowl: string;
+  title?: string; // clean menu-style dish name (preferred over signatureBowl for display)
+  description?: string; // short detail shown under the title
   appearsOn: string[];
   appearanceCount: number;
   seedQuality: number;

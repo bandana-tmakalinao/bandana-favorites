@@ -14,7 +14,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami On Rye",
+    "description": "Hand-carved pastrami"
   },
   {
     "name": "Pastrami Queen",
@@ -31,7 +33,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.912,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami Sandwich",
+    "description": "Machine-sliced, on Orwasher's rye"
   },
   {
     "name": "Frankel's Delicatessen & Appetizing",
@@ -47,7 +51,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.873,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami Reuben",
+    "description": "Also classic sandwich; pastrami, egg & cheese on challah"
   },
   {
     "name": "Liebman's Delicatessen",
@@ -63,7 +69,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.835,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Lean Pastrami On Rye",
+    "description": "Also No. 7: pastrami, corned beef, coleslaw, Russian dressing"
   },
   {
     "name": "S&P Lunch",
@@ -79,7 +87,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.796,
-    "geocoded": true
+    "geocoded": true,
+    "title": "S&P Regular",
+    "description": "Hand-sliced pastrami, cherry peppers, Russian dressing on club roll"
   },
   {
     "name": "2nd Avenue Deli",
@@ -94,7 +104,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.758,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami Sandwich",
+    "description": "Thin-cut, tender"
   },
   {
     "name": "Butcher Block",
@@ -109,7 +121,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.719,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Classic Pastrami Sandwich",
+    "description": ""
   },
   {
     "name": "David's Brisket House",
@@ -124,7 +138,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.681,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami Brisket Sandwich",
+    "description": ""
   },
   {
     "name": "Hometown Bar-B-Que",
@@ -139,7 +155,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.642,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Barbecue Pastrami Sandwich",
+    "description": ""
   },
   {
     "name": "Junior's Restaurant & Bakery",
@@ -154,7 +172,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.604,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami Onion Roll",
+    "description": "House-made onion roll"
   },
   {
     "name": "Mendy's",
@@ -169,7 +189,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.565,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Thick-Cut Pastrami On Rye",
+    "description": ""
   },
   {
     "name": "Moe's Pastrami & Burger",
@@ -183,7 +205,9 @@
       "6sqft"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.527
+    "seedQuality": 0.527,
+    "title": "Pastrami Sandwich",
+    "description": "Available in M/L/XL sizes"
   },
   {
     "name": "Morgan's Brooklyn Barbecue",
@@ -198,7 +222,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.488,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami Beef Ribs",
+    "description": ""
   },
   {
     "name": "USA Brooklyn Delicatessen",
@@ -213,6 +239,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami On Marble Rye",
+    "description": "Thick spice rub, hand-sliced"
   }
 ]

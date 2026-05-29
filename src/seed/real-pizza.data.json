@@ -17,7 +17,9 @@
     ],
     "appearanceCount": 6,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Three-Cheese Pie",
+    "description": "Thin crust, garlic, sweet-tangy sauce, fresh basil; whole pies, BYOB"
   },
   {
     "name": "Una Pizza Napoletana",
@@ -36,7 +38,9 @@
     ],
     "appearanceCount": 5,
     "seedQuality": 0.933,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Margherita Pie",
+    "description": "Wood-fired Neapolitan, buffalo mozzarella, San Marzano; bianca with anchovies"
   },
   {
     "name": "L'Industrie Pizzeria",
@@ -55,7 +59,9 @@
     ],
     "appearanceCount": 5,
     "seedQuality": 0.916,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Burrata Slice",
+    "description": "Thin-crust NY slice, to-order burrata or mozzarella and basil"
   },
   {
     "name": "Mama's Too",
@@ -74,7 +80,9 @@
     ],
     "appearanceCount": 5,
     "seedQuality": 0.898,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Angry Nonna Square",
+    "description": "Sicilian square, hot soppressata, hot honey; cacio e pepe, cupping pepperoni"
   },
   {
     "name": "Scarr's Pizza",
@@ -93,7 +101,9 @@
     ],
     "appearanceCount": 5,
     "seedQuality": 0.881,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Hot Boi Slice",
+    "description": "House-milled-flour slice; plain or spicy pepperoni"
   },
   {
     "name": "Joe's Pizza",
@@ -112,7 +122,9 @@
     ],
     "appearanceCount": 5,
     "seedQuality": 0.864,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Cheese Slice",
+    "description": "Classic plain cheese NY slice since 1975"
   },
   {
     "name": "Roberta's",
@@ -130,7 +142,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.847,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bee Sting Pie",
+    "description": "Wood-fired soppressata, hot honey, chili"
   },
   {
     "name": "Joe & Pat's Pizzeria",
@@ -148,7 +162,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.829,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Vodka Pie",
+    "description": "Cracker-thin crust, vodka sauce; the Tri Pie"
   },
   {
     "name": "L&B Spumoni Gardens",
@@ -166,7 +182,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.812,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sicilian Square",
+    "description": "Square slice with sauce on top of the cheese, since 1939"
   },
   {
     "name": "John's of Bleecker Street",
@@ -184,7 +202,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.795,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Coal-Oven Pie",
+    "description": "Coal-oven thin crust, whole pies only, since 1929"
   },
   {
     "name": "Rubirosa",
@@ -202,7 +222,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.778,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Tie-Dye Pie",
+    "description": "Crackery thin-crust margherita swirled with vodka sauce and pesto"
   },
   {
     "name": "Chrissy's Pizza",
@@ -219,7 +241,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.76,
-    "geocoded": true
+    "geocoded": true,
+    "title": "NY-Style Pie",
+    "description": "Classic whole pie, upgraded ingredients, no slices"
   },
   {
     "name": "F&F Pizzeria",
@@ -236,7 +260,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.743,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sausage Sage Slice",
+    "description": "Hot sausage and brown-butter sage; also clam pie"
   },
   {
     "name": "Louie & Ernie's Pizza",
@@ -253,7 +279,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.726,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sausage Slice",
+    "description": "NY-style with crumbly fennel-laced sausage"
   },
   {
     "name": "Lucia Pizza of Avenue X",
@@ -270,7 +298,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.709,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Vodka Grandma Slice",
+    "description": "Square/Sicilian and vodka grandma slices; Friday clam pie"
   },
   {
     "name": "Denino's Pizzeria & Tavern",
@@ -287,7 +317,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.691,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Clam Pie",
+    "description": "Thin-crust clam pie; the M.O.R., since 1937"
   },
   {
     "name": "Di Fara Pizza",
@@ -304,7 +336,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.674,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Plain Slice",
+    "description": "Round pie finished with fresh basil and grated cheese, since 1965"
   },
   {
     "name": "Ops",
@@ -321,7 +355,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.657,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Rojo Pie",
+    "description": "Naturally leavened sourdough, wood-fired, with mortadella"
   },
   {
     "name": "Don Antonio",
@@ -337,7 +373,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.64,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Montanara Pie",
+    "description": "Lightly fried Neapolitan pie finished in the wood-fired oven"
   },
   {
     "name": "See No Evil Pizza",
@@ -353,7 +391,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.622,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Hell Pie",
+    "description": "Smoked mozzarella, hot soppressata, pepperoni, Calabrian chiles"
   },
   {
     "name": "Speedy Romeo",
@@ -369,7 +409,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.605,
-    "geocoded": true
+    "geocoded": true,
+    "title": "St. Louis Pie",
+    "description": "Meats, pickled peppers, Provel cheese; also the Truffle Shuffle"
   },
   {
     "name": "Andrew Bellucci's Pizzeria",
@@ -385,7 +427,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.588,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Coal-Oven Pie",
+    "description": "Coal-oven NY-style; clam pie by advance order"
   },
   {
     "name": "Rocco's of Roc Beach",
@@ -401,7 +445,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.571,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Margherita Pie",
+    "description": "Coal/brick-oven Margherita with sweet, garlicky sauce"
   },
   {
     "name": "Paulie Gee's Slice Shop",
@@ -417,7 +463,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.553,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Hellboy Slice",
+    "description": "NY square/round slices with hot honey; the Freddy Prince"
   },
   {
     "name": "Angelo's Coal Oven Pizzeria",
@@ -432,7 +480,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.536,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Coal-Oven Pie",
+    "description": "Coal-oven crust with cheese, basil, and sauce"
   },
   {
     "name": "Lazzara's Pizza",
@@ -447,7 +497,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.519,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Grandma Slice",
+    "description": "Ultra-thin square grandma-style slice"
   },
   {
     "name": "Luigi's Pizza",
@@ -462,7 +514,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.502,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Cheese Slice",
+    "description": "Thin, crispy New York-style cheese slice"
   },
   {
     "name": "Ceres",
@@ -477,7 +531,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.484,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Charred Cheese Pie",
+    "description": "Thin, well-charred crust with bubbling cheese"
   },
   {
     "name": "Best Pizza",
@@ -492,7 +548,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.467,
-    "geocoded": true
+    "geocoded": true,
+    "title": "White Slice",
+    "description": "Wood-fired white slice and the square"
   },
   {
     "name": "Sauce Pizzeria",
@@ -507,6 +565,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Cheese Slice",
+    "description": "New York-style cheese slice"
   }
 ]

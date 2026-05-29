@@ -15,7 +15,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.92,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Triple Garlic Mazemen",
+    "description": "triple pork, triple garlic, brothless mazemen"
   },
   {
     "name": "Okiboru House of Tsukemen",
@@ -32,7 +34,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.892,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Tsukemen",
+    "description": "cold noodles, thick mole-esque dipping broth"
   },
   {
     "name": "Tonchin",
@@ -48,7 +52,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.864,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Tokyo Tonkotsu Ramen",
+    "description": "house-made noodles"
   },
   {
     "name": "Momofuku Noodle Bar",
@@ -64,7 +70,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.837,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Garlic Chicken Ramen",
+    "description": ""
   },
   {
     "name": "Ichiran",
@@ -80,7 +88,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.809,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Tonkotsu Ramen",
+    "description": "customizable Fukuoka-style"
   },
   {
     "name": "Okonomi / Yuji Ramen",
@@ -96,7 +106,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.781,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Tunakotsu Ramen",
+    "description": "emulsified tuna-bone broth, charred tuna belly"
   },
   {
     "name": "Ippudo NY",
@@ -112,7 +124,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.753,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Akamaru Tonkotsu",
+    "description": "Akamaru and Shiromaru tonkotsu"
   },
   {
     "name": "Karazishi Botan",
@@ -128,7 +142,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.726,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Miso Ramen",
+    "description": "house-made"
   },
   {
     "name": "Shalom Japan",
@@ -143,7 +159,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.698,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Matzoh Ball Ramen",
+    "description": ""
   },
   {
     "name": "Chick Chick",
@@ -158,7 +176,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.67,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Tori Paitan Ramen",
+    "description": "white chicken paitan"
   },
   {
     "name": "Mr. Taka",
@@ -173,7 +193,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.642,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Spicy Miso Ramen",
+    "description": "Spicy Stamina"
   },
   {
     "name": "Rockmeisha",
@@ -188,7 +210,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.614,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Hakata Tonkotsu",
+    "description": "pork-knuckle broth"
   },
   {
     "name": "Ramen Ishida",
@@ -203,7 +227,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.587,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Shoyu Ramen",
+    "description": "New Tokyo-style"
   },
   {
     "name": "Afuri Ramen + Dumpling",
@@ -218,7 +244,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.559,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Yuzu Shio Ramen",
+    "description": ""
   },
   {
     "name": "Chuko",
@@ -233,7 +261,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.531,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Miso Ramen",
+    "description": "build-your-own with rayu oil"
   },
   {
     "name": "Nakamura",
@@ -248,7 +278,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.503,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Torigara Shoyu Ramen",
+    "description": "chicken-and-seafood broth"
   },
   {
     "name": "Nishida Sho-ten",
@@ -263,7 +295,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.476,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Black Garlic Ramen",
+    "description": "black garlic broth"
   },
   {
     "name": "Tabetomo",
@@ -278,7 +312,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.448,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Tsukemen",
+    "description": "60-hour broth, hot-stone option"
   },
   {
     "name": "E.A.K. Ramen",
@@ -293,6 +329,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.42,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Iekei Ramen",
+    "description": "Iekei-style pork-and-chicken broth"
   }
 ]

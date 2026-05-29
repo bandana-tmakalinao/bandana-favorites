@@ -13,7 +13,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chopped Cheese",
+    "description": "Classic, loaded with sazon; birthplace of the NYC chopped cheese"
   },
   {
     "name": "Bodega Truck",
@@ -27,7 +29,9 @@
       "The Infatuation"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.85
+    "seedQuality": 0.85,
+    "title": "Chopped Cheese",
+    "description": "Gooey beef, American cheese, lettuce, tomato, pink sauce on hero"
   },
   {
     "name": "Compton's",
@@ -42,7 +46,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.75,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chopped Cheese",
+    "description": "Crusty sesame semolina loaf, crunchy iceberg, gooey cheese"
   },
   {
     "name": "Cubby's",
@@ -57,7 +63,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.65,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chopped Cheese",
+    "description": "Pillowy burger roll, caramelized beef, pickled jalapenos"
   },
   {
     "name": "Nishaan",
@@ -72,7 +80,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.55,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pakistani Chopped Cheese",
+    "description": "Chapli-kabob cumin and coriander, lime-cilantro sauce, tamarind chutney"
   },
   {
     "name": "Titi's Empanadas",
@@ -87,6 +97,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chopped Cheese",
+    "description": "Hard-seared beef for crunch, herby mayo-heavy green sauce"
   }
 ]

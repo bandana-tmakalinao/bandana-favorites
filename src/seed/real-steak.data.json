@@ -15,7 +15,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Butcher's Feast",
+    "description": "Four cuts of USDA Prime and Wagyu, grilled tableside, banchan"
   },
   {
     "name": "Gallaghers Steakhouse",
@@ -33,7 +35,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.926,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bone-In Rib Steak",
+    "description": "Rib eye grilled over hickory; porterhouse with creamed spinach"
   },
   {
     "name": "4 Charles Prime Rib",
@@ -50,7 +54,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.902,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Prime Rib",
+    "description": "Served three ways: English, Chicago, and king cuts"
   },
   {
     "name": "Gage & Tollner",
@@ -67,7 +73,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.879,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Porterhouse",
+    "description": "Big steaks; T-bone, ribeye, NY strip; baked alaska"
   },
   {
     "name": "Peter Luger Steak House",
@@ -84,7 +92,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.855,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Dry-Aged Porterhouse",
+    "description": "Broiled, with German fried potatoes and house sauce"
   },
   {
     "name": "Gui Steakhouse",
@@ -101,7 +111,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.831,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Aged Wagyu Steak",
+    "description": "Japanese Wagyu and USDA Prime with Maldon; shio-kombu prime rib"
   },
   {
     "name": "La Tete d'Or",
@@ -118,7 +130,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.807,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Dry-Aged Steak",
+    "description": "Prime rib sliced tableside from a roving trolley"
   },
   {
     "name": "Cuerno",
@@ -135,7 +149,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.783,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Salt-Crusted Ribeye",
+    "description": "Norteno-style with bone marrow; 54-oz tomahawk; steak tacos"
   },
   {
     "name": "Delmonico's",
@@ -152,7 +168,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.76,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Delmonico Ribeye",
+    "description": "Signature 18 oz cut"
   },
   {
     "name": "Golden Steer",
@@ -169,7 +187,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.736,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Dry-Aged NY Strip",
+    "description": "35-day aged USDA Prime; tableside Caesar; flaming desserts"
   },
   {
     "name": "Hawksmoor",
@@ -186,7 +206,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.712,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Charcoal Dry-Aged Steak",
+    "description": "Rib-eyes, filets, strips over charcoal; sticky toffee pudding"
   },
   {
     "name": "Keens Steakhouse",
@@ -203,7 +225,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.688,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Mutton Chop",
+    "description": "Legendary mutton chop; porterhouse"
   },
   {
     "name": "Old Homestead Steakhouse",
@@ -219,7 +243,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.664,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Porterhouse For Two",
+    "description": "Herb- and spice-crusted ribeye"
   },
   {
     "name": "St. Anselm",
@@ -235,7 +261,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.64,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Hanger Steak",
+    "description": "Rib-eye by the pound; butcher's steaks"
   },
   {
     "name": "The Grill",
@@ -251,7 +279,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.617,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Prime Rib",
+    "description": "Steakhouse staples at premium prices"
   },
   {
     "name": "The Dynamo Room",
@@ -266,7 +296,9 @@
       "Time Out New York"
     ],
     "appearanceCount": 2,
-    "seedQuality": 0.593
+    "seedQuality": 0.593,
+    "title": "50-Day Bone-In Ribeye",
+    "description": "Dry-aged bone-in ribeye; NY strip"
   },
   {
     "name": "Carne Mare",
@@ -281,7 +313,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.569,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Gorgonzola-Cured Wagyu",
+    "description": "Wagyu strip loin, Italian chophouse style"
   },
   {
     "name": "Minetta Tavern",
@@ -296,7 +330,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.545,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Filet Au Poivre",
+    "description": "Grilled beef filet with sauce au poivre; famed burger"
   },
   {
     "name": "Christos Steakhouse",
@@ -311,7 +347,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.521,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Greek-Seasoned Steak",
+    "description": "With lobster mashed potatoes"
   },
   {
     "name": "Smith & Wollensky",
@@ -326,7 +364,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.498,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bone-In Dry-Aged Filet",
+    "description": "Prime rib"
   },
   {
     "name": "Wolfgang's Steakhouse",
@@ -340,7 +380,9 @@
       "The Infatuation"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.474
+    "seedQuality": 0.474,
+    "title": "Porterhouse",
+    "description": "With creamed spinach"
   },
   {
     "name": "Bowery Meat Company",
@@ -355,6 +397,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Porterhouse For Two",
+    "description": "With three-ounce Japanese Wagyu add-on"
   }
 ]

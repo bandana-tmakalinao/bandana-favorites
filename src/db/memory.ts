@@ -73,6 +73,7 @@ export class MemoryRepository implements Repository {
       id: con.id,
       rank,
       title: con.title,
+      description: con.description ?? "",
       placeName: pl?.name ?? "Unknown",
       neighborhood: pl?.neighborhood ?? "",
       borough: pl?.borough ?? "",
@@ -439,7 +440,7 @@ export class MemoryRepository implements Repository {
     return hits.slice(0, limit).map(({ catMatch, ...h }) => h);
   }
 
-  addContenderAtPlace(userId: string, placeId: string, subSlug: string) {
+  addContenderAtPlace(userId: string, placeId: string, subSlug: string, title?: string, description?: string) {
     const sub = this.subBySlug(subSlug);
     if (!sub) return { ok: false, error: "Unknown food type." };
     if (!this.getUser(userId)) return { ok: false, error: "Sign in first." };
@@ -469,9 +470,9 @@ export class MemoryRepository implements Repository {
     }
     const con: Contender = {
       id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
-      title: sub.name, dishVariantId: null, seedSources: [], createdBy: userId,
-      createdAt: new Date().toISOString(), theta: 0, rd: 350, weightedVotes: 0,
-      comparisonCount: 0, distinctOpponents: 0, score: 50, sortKey: 0, status: "provisional",
+      title: title?.trim() || sub.name, description: description?.trim() ?? "", dishVariantId: null,
+      seedSources: [], createdBy: userId, createdAt: new Date().toISOString(), theta: 0, rd: 350,
+      weightedVotes: 0, comparisonCount: 0, distinctOpponents: 0, score: 50, sortKey: 0, status: "provisional",
     };
     this.store.contenders.push(con);
     recomputeSubcategory(this.store, sub.id);
@@ -493,7 +494,7 @@ export class MemoryRepository implements Repository {
     this.store.places.push(place);
     this.store.contenders.push({
       id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
-      title: sub.name, dishVariantId: null, seedSources: [], createdBy: userId,
+      title: sub.name, description: "", dishVariantId: null, seedSources: [], createdBy: userId,
       createdAt: new Date().toISOString(), theta: 0, rd: 350, weightedVotes: 0,
       comparisonCount: 0, distinctOpponents: 0, score: 50, sortKey: 0, status: "proposed",
     });

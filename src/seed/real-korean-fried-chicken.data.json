@@ -14,7 +14,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Fried Chicken Bucket",
+    "description": "Bone-in, two styles, gochujang or soy-garlic, consomme, banchan, soft-serve"
   },
   {
     "name": "Chick Chick",
@@ -30,7 +32,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.825,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Soy Glaze Fried Chicken",
+    "description": "Crisp amber skin, sticky black pepper soy glaze, spicy chile finish"
   },
   {
     "name": "Ariari",
@@ -45,7 +49,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.7,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Curry Fried Chicken",
+    "description": "Crunchy curry-powder crust, gochujang chile-paste aioli dip"
   },
   {
     "name": "Atoboy",
@@ -60,7 +66,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.575,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Garlic Fried Chicken",
+    "description": "Thighs and drums, crispy crust, fried garlic chips"
   },
   {
     "name": "Yetnal Tongdak",
@@ -75,6 +83,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Soy-Garlic Wings",
+    "description": "Starch-free whole bird, sweet-tangy soy-garlic glaze"
   }
 ]

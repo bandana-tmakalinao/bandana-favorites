@@ -14,7 +14,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bacon Egg Cheese",
+    "description": "Berkshire bacon, American cheese, poppy seed Portuguese roll"
   },
   {
     "name": "Court Street Grocers",
@@ -30,7 +32,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.922,
-    "geocoded": true
+    "geocoded": true,
+    "title": "The B+B",
+    "description": "Soft-scrambled eggs, bacon, cheddar, arugula on ciabatta"
   },
   {
     "name": "Golden Diner",
@@ -46,7 +50,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.894,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Egg Sando",
+    "description": "Scrambled egg, American, bacon, hash brown, scallion milk bun"
   },
   {
     "name": "Win Son Bakery",
@@ -62,7 +68,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.867,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Scallion Pancake BEC",
+    "description": "Bacon, egg & cheese on a scallion pancake"
   },
   {
     "name": "Between the Bagel",
@@ -77,7 +85,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.839,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bulgogi Egg Cheese",
+    "description": "Bulgogi, egg, cheese, kimchi slaw on a bagel"
   },
   {
     "name": "C&B Cafe",
@@ -92,7 +102,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.811,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork Belly Egg",
+    "description": "Scrambled eggs and pork belly on a housemade roll"
   },
   {
     "name": "Cafe Mado",
@@ -107,7 +119,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.783,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Egg & Cheese",
+    "description": "Fried egg, caciocavallo, tomatillo sauce on milk bun"
   },
   {
     "name": "Frankel's Delicatessen & Appetizing",
@@ -122,7 +136,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.756,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pastrami Egg Cheese",
+    "description": "Pastrami, egg & cheese on a challah roll"
   },
   {
     "name": "Sullivan Street Bakery",
@@ -137,7 +153,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.728,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Prosciutto Egg Brioche",
+    "description": "Scrambled egg, fried prosciutto on a mini brioche"
   },
   {
     "name": "Thai Diner",
@@ -152,7 +170,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.7,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Roti Breakfast Sandwich",
+    "description": "Egg, cheese, sausage, Thai basil on roti"
   },
   {
     "name": "Baz Bagel and Restaurant",
@@ -167,7 +187,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.672,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Latke Egg Bagel",
+    "description": "Egg sandwich on a bagel stuffed with latke hash"
   },
   {
     "name": "Edith's",
@@ -182,7 +204,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.644,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Latke BEC&L Bagel",
+    "description": "BEC&L on a bagel with a crispy latke inside"
   },
   {
     "name": "Greenberg's Bagels",
@@ -197,7 +221,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.617,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bacon Egg Cheese",
+    "description": "On a thin, chewy bagel"
   },
   {
     "name": "John's Deli",
@@ -212,7 +238,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.589,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bacon Egg Cheese",
+    "description": "On a hard roll"
   },
   {
     "name": "Merriweather",
@@ -227,7 +255,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.561,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bacon Egg Cheese",
+    "description": "On brioche"
   },
   {
     "name": "Modern Bread & Bagel",
@@ -242,7 +272,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.533,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bacon Egg Cheese",
+    "description": "On a bagel, gluten-free available"
   },
   {
     "name": "Rex",
@@ -257,7 +289,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.506,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bacon Egg Cheese",
+    "description": "On a brioche bun with melted white cheddar"
   },
   {
     "name": "Southside Coffee",
@@ -272,7 +306,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.478,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bacon Egg Cheese",
+    "description": "On a crusty seeded hero"
   },
   {
     "name": "Montague Diner",
@@ -287,6 +323,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bacon Egg Cheese",
+    "description": "Two scrambled eggs, thick-cut bacon, American, potato roll"
   }
 ]

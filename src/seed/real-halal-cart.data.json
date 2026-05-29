@@ -13,7 +13,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chicken Over Rice",
+    "description": "Chopped chicken or chicken-lamb combo, yellow rice, white and hot sauce"
   },
   {
     "name": "Bay Ridge Halal",
@@ -28,7 +30,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.9,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Lamb Over Rice",
+    "description": ""
   },
   {
     "name": "Biryani Cart",
@@ -42,7 +46,9 @@
       "New York Street Food"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.85
+    "seedQuality": 0.85,
+    "title": "Chicken Over Rice",
+    "description": "Zach's Combo"
   },
   {
     "name": "Chef G Halal & Healthy",
@@ -57,7 +63,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.8,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Grilled Chicken Combo",
+    "description": "Over brown rice"
   },
   {
     "name": "Gold Street Halal",
@@ -71,7 +79,9 @@
       "New York Street Food"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.75
+    "seedQuality": 0.75,
+    "title": "Chicken Over Rice",
+    "description": ""
   },
   {
     "name": "Indian Tasty Halal Food",
@@ -86,7 +96,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.7,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sweet Chili Chicken",
+    "description": "Over basmati rice"
   },
   {
     "name": "Royal Grill",
@@ -101,7 +113,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.65,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chicken Tikka Biryani",
+    "description": ""
   },
   {
     "name": "Sammy's Halal",
@@ -116,7 +130,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.6,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chicken Over Rice",
+    "description": "Topped with green sauce"
   },
   {
     "name": "Sammy's Halal (East Village)",
@@ -131,7 +147,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.55,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chicken Over Rice",
+    "description": "Topped with green sauce"
   },
   {
     "name": "Tariq's #1 Halal",
@@ -146,7 +164,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.5,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chicken Biryani",
+    "description": "With grilled eggplant"
   },
   {
     "name": "The Halal Guys",
@@ -161,6 +181,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chicken Gyro Combo",
+    "description": "Over rice with white and hot sauce"
   }
 ]

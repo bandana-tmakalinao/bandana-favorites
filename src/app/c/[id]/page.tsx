@@ -35,6 +35,7 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
             {place.name} · {place.neighborhood}, {place.borough}
           </p>
           <p className="text-sm text-[var(--color-ink-dim)]">{place.address}</p>
+          {c.description && <p className="mt-2 text-sm text-[var(--color-ink)]">{c.description}</p>}
           <div className="mt-2 flex flex-wrap items-center gap-2 text-sm">
             {c.rank && (
               <span className="rounded-full bg-[var(--color-surface-2)] px-2.5 py-1 font-semibold">

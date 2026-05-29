@@ -13,7 +13,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pondicherry Masala Dosa",
+    "description": "Vegan, Pondicherry-style"
   },
   {
     "name": "Pongal",
@@ -29,7 +31,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.9,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Butter Mysore Masala Dosa",
+    "description": "Pondicherry-style"
   },
   {
     "name": "Semma",
@@ -45,7 +49,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.85,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Gunpowder Dosa",
+    "description": ""
   },
   {
     "name": "Temple Canteen (Ganesh Temple Canteen)",
@@ -61,7 +67,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.8,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Butter Masala Dosa",
+    "description": ""
   },
   {
     "name": "Lore",
@@ -76,7 +84,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.75,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Masala Dosa",
+    "description": "Potato-stuffed, coconut chutney"
   },
   {
     "name": "Lungi",
@@ -91,7 +101,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.7,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Masala Dosa",
+    "description": "Crisp-brown"
   },
   {
     "name": "Adyar Ananda Bhavan",
@@ -106,7 +118,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.65,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Mysore Masala Dosa",
+    "description": ""
   },
   {
     "name": "Ammi",
@@ -121,7 +135,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.6,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Masala Dosa",
+    "description": "Mixed vegetable"
   },
   {
     "name": "Dosa Royale",
@@ -136,7 +152,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.55,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Mysore Masala Dosa",
+    "description": ""
   },
   {
     "name": "Hillside Dosa Hutt",
@@ -151,7 +169,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.5,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pondicherry Dosa",
+    "description": ""
   },
   {
     "name": "Saravanaa Bhavan",
@@ -166,6 +186,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Gunpowder Dosa",
+    "description": ""
   }
 ]

@@ -119,6 +119,8 @@ export interface Repository {
     userId: string,
     placeId: string,
     subSlug: string,
+    title?: string,
+    description?: string,
   ): { ok: boolean; contenderId?: string; error?: string };
   /** Suggest a place not in the corpus — created as `proposed`, pending curator approval. */
   suggestPlace(

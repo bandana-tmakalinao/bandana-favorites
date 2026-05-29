@@ -14,7 +14,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Soda-Fountain Sundae",
+    "description": "Vintage sundaes, egg creams, ice cream floats"
   },
   {
     "name": "Caffè Panna",
@@ -31,7 +33,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.926,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Affogato Sundae",
+    "description": "Italian scoops topped with panna whipped cream"
   },
   {
     "name": "Eddie's Sweet Shop",
@@ -48,7 +52,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.902,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Banana Royal Sundae",
+    "description": "Homemade ice cream, malted milkshakes"
   },
   {
     "name": "Malai Ice Cream",
@@ -65,7 +71,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.879,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Masala Chai",
+    "description": "Eggless South Asian flavors: rose, turmeric, carrot halwa"
   },
   {
     "name": "Morgenstern's Finest Ice Cream",
@@ -82,7 +90,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.855,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bitter Chocolate Ash",
+    "description": "Olive oil, salted egg yolk"
   },
   {
     "name": "Salt & Straw",
@@ -99,7 +109,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.831,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sea Salt Caramel",
+    "description": "Sea salt with caramel ribbons"
   },
   {
     "name": "Sugar Hill Creamery",
@@ -116,7 +128,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.807,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Soursop Scoop",
+    "description": "Seasonal small-batch flavors: soursop, PB&J"
   },
   {
     "name": "The Original Chinatown Ice Cream Factory",
@@ -133,7 +147,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.783,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Black Sesame",
+    "description": "Red bean, egg custard, durian, pandan"
   },
   {
     "name": "Il Laboratorio del Gelato",
@@ -149,7 +165,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.76,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Thai Chili Chocolate",
+    "description": "Unusual gelato flavors: beet, cheddar"
   },
   {
     "name": "Julia Jean's Ice Cream",
@@ -165,7 +183,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.736,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Butter Pecan",
+    "description": "Cherry-vanilla, banana splits, fruity sorbets"
   },
   {
     "name": "OddFellows Ice Cream Co.",
@@ -181,7 +201,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.712,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Thai Iced Tea",
+    "description": "Lemon thyme shortbread, matcha rocky road, black pepper fig"
   },
   {
     "name": "Van Leeuwen Artisan Ice Cream",
@@ -197,7 +219,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.688,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sicilian Pistachio",
+    "description": "Honeycomb, vegan options"
   },
   {
     "name": "Island Pops",
@@ -212,7 +236,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.664,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Guinness Caramel",
+    "description": "Caribbean-inspired flavors"
   },
   {
     "name": "Lai Rai",
@@ -227,7 +253,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.64,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Ambarella Sorbet",
+    "description": "Vietnamese-inspired flavors"
   },
   {
     "name": "Mr. P's Homemade Ice Cream",
@@ -242,7 +270,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.617,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Soursop",
+    "description": ""
   },
   {
     "name": "Taiyaki NYC",
@@ -257,7 +287,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.593,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Taiyaki Soft-Serve",
+    "description": "Soft-serve in a fish-shaped taiyaki cone"
   },
   {
     "name": "Big Gay Ice Cream Shop",
@@ -272,7 +304,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.569,
-    "geocoded": true
+    "geocoded": true,
+    "title": "The Dorothy",
+    "description": "Vanilla soft-serve, dulce de leche, crushed Nilla wafers"
   },
   {
     "name": "Ferrara Bakery & Cafe",
@@ -287,7 +321,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.545,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pistachio Gelato",
+    "description": "Salt-and-caramel, granita"
   },
   {
     "name": "Gelateria Gentile",
@@ -302,7 +338,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.521,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Gelato Affogato",
+    "description": "Bari, Italy heritage recipe"
   },
   {
     "name": "Glace",
@@ -317,7 +355,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.498,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Nutella Fluffernutter Sundae",
+    "description": "Macaron ice cream sandwiches"
   },
   {
     "name": "Sedutto",
@@ -332,7 +372,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.474,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Wine Ice Cream",
+    "description": "Boozy ice creams, classic flavors and sorbets"
   },
   {
     "name": "Superiority Burger",
@@ -347,6 +389,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Daily Gelato",
+    "description": "Rotating fennel, coconut, labneh from Brooks Headley"
   }
 ]

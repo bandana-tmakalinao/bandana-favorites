@@ -12,7 +12,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Black And White Cookie",
+    "description": ""
   },
   {
     "name": "Lee Lee's Baked Goods",
@@ -27,7 +29,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.825,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Black And White Cookie",
+    "description": ""
   },
   {
     "name": "William Greenberg Desserts",
@@ -42,7 +46,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.7,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Black And White Cookie",
+    "description": "made since 1946"
   },
   {
     "name": "Madonia Bakery",
@@ -57,7 +63,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.575,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Black And White Cookie",
+    "description": "super soft light cake, balanced not-too-sweet fondant"
   },
   {
     "name": "Partybus Bakeshop",
@@ -72,6 +80,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Black And White Cookie",
+    "description": "browned crumbly buttery; smooth chocolate, vanilla-flecked white frosting"
   }
 ]

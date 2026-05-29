@@ -14,7 +14,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Black Label Burger",
+    "description": "Prime dry-aged blend, sharp cheddar, caramelized onions, brioche"
   },
   {
     "name": "Raoul's",
@@ -31,7 +33,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.926,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Burger Au Poivre",
+    "description": "Peppercorn-crusted patty, Saint-Andre cheese, cornichons"
   },
   {
     "name": "Red Hook Tavern",
@@ -48,7 +52,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.902,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Dry-Aged Tavern Burger",
+    "description": "American cheese, white onion, sesame bun, fries"
   },
   {
     "name": "4 Charles Prime Rib",
@@ -64,7 +70,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.879,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Double Wagyu Burger",
+    "description": "American cheese, pickles, onions, Marie Rose sauce"
   },
   {
     "name": "Hamburger America",
@@ -80,7 +88,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.855,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Oklahoma Onion Smash",
+    "description": "Fried-onion smash patty, American cheese"
   },
   {
     "name": "J.G. Melon",
@@ -96,7 +106,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.831,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Classic Cheeseburger",
+    "description": "American cheese, flat-top seared, cottage fries"
   },
   {
     "name": "Smacking Burger",
@@ -112,7 +124,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.807,
-    "geocoded": true
+    "geocoded": true,
+    "title": "The Big Smack",
+    "description": "Two griddled smash patties, onions, American cheese"
   },
   {
     "name": "Nowon",
@@ -128,7 +142,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.783,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Legendary Cheeseburger",
+    "description": "Double smash patties with kimchi mayo"
   },
   {
     "name": "Smashed",
@@ -144,7 +160,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.76,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Smashburger",
+    "description": "Thin lacy patties, gooey cheese, special sauce, onions"
   },
   {
     "name": "Eel Bar",
@@ -159,7 +177,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.736,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bar Burger",
+    "description": "Thick grass-fed patty, anchovies, Roquefort"
   },
   {
     "name": "Gallaghers Steakhouse",
@@ -174,7 +194,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.712,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Steakhouse Burger",
+    "description": "Fatty steak trimmings, thick and rich"
   },
   {
     "name": "Gus's",
@@ -189,7 +211,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.688,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pub Burger",
+    "description": "Pork/chuck/dry-aged blend, caramelized onions, aged cheddar, dijonaise"
   },
   {
     "name": "Joe Jr.",
@@ -204,7 +228,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.664,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Diner Burger",
+    "description": "Seared on both sides, under $10"
   },
   {
     "name": "Le B.",
@@ -219,7 +245,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.64,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Dry-Aged Pub Burger",
+    "description": "45-day Angus, d'affinois cheese, caramelized onions, red wine sauce"
   },
   {
     "name": "Lori Jayne",
@@ -234,7 +262,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.617,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Cartooney Burger",
+    "description": "Thick patty, American cheese, bone broth onions, Martin's roll"
   },
   {
     "name": "Rolo's",
@@ -249,7 +279,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.593,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Double Cheeseburger",
+    "description": "Jammy caramelized onions, pickled hot pepper on side"
   },
   {
     "name": "Keens Steakhouse",
@@ -264,7 +296,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.569,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Steakhouse Burger",
+    "description": "Charred steak-trimmings patty"
   },
   {
     "name": "Lord's",
@@ -279,7 +313,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.545,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Welsh Rarebit Burger",
+    "description": "Dry-aged patty, Welsh rarebit, pretzel bun; ~12 daily"
   },
   {
     "name": "7th Street Burger",
@@ -294,7 +330,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.521,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Jalapeno Smash Burger",
+    "description": "Spicy smash-style; classic double smash also available"
   },
   {
     "name": "Deux Luxe",
@@ -309,7 +347,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.498,
-    "geocoded": true
+    "geocoded": true,
+    "title": "The Classic",
+    "description": "Two Wagyu patties, cheddar, garlic aioli, cottage fries"
   },
   {
     "name": "Peter Luger",
@@ -324,7 +364,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.474,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Luger Burger",
+    "description": "Half-pound dry-aged patty, optional bacon"
   },
   {
     "name": "Sip & Guzzle",
@@ -339,6 +381,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "A5 Wagyu Burger",
+    "description": "Bar-only, 12 daily; 2025 World's Best Burgers list"
   }
 ]

@@ -14,7 +14,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "NY Cheesecake",
+    "description": "Airy custard-like filling, graham crust, 20+ flavors"
   },
   {
     "name": "Junior's Restaurant",
@@ -31,7 +33,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.921,
-    "geocoded": true
+    "geocoded": true,
+    "title": "NY Cheesecake",
+    "description": "Thick filling on thin sponge-cake base instead of crust"
   },
   {
     "name": "Peter Luger",
@@ -47,7 +51,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.891,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Cheesecake With Schlag",
+    "description": "Rich, dense, sour-tangy classic; homemade whipped cream"
   },
   {
     "name": "La Cheesecake",
@@ -63,7 +69,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.862,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Crustless NY Cheesecake",
+    "description": "Light, fluffy, chewy sponge-cake crust, silky cream cheese core"
   },
   {
     "name": "Mah-Ze-Dahr Bakery",
@@ -79,7 +87,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.832,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Lemon Vanilla Cheesecake",
+    "description": "Dense, sweet, lemon zest, vanilla bean, harder crust"
   },
   {
     "name": "Sarge's Delicatessen",
@@ -95,7 +105,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.803,
-    "geocoded": true
+    "geocoded": true,
+    "title": "NY Cheesecake",
+    "description": "Massive, 3+ inches, tangy cream cheese, notably salty"
   },
   {
     "name": "Veniero's Pasticceria & Caffe",
@@ -111,7 +123,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.774,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Ricotta Cheesecake",
+    "description": "Deep-dish, crustless, fresh ricotta, whole eggs, creamy and tangy"
   },
   {
     "name": "Francie",
@@ -126,7 +140,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.744,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Guava Cheesecake",
+    "description": "Dehydrated guava, prickly pear sorbet, dragon fruit, coconut-lime pudding"
   },
   {
     "name": "Junoon",
@@ -141,7 +157,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.715,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Indian-Spiced Cheesecake",
+    "description": "Hung dahi, butternut squash, jaggery-cardamom crumble, dragon fruit sorbet"
   },
   {
     "name": "Caputo's Bake Shop",
@@ -156,7 +174,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.685,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Crustless Cheesecake",
+    "description": "Classic look, sweeter profile, among the most affordable"
   },
   {
     "name": "Carnegie Deli",
@@ -171,7 +191,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.656,
-    "geocoded": true
+    "geocoded": true,
+    "title": "NY Cheesecake",
+    "description": "Dense, creamy, thick cookie crust; inside Madison Square Garden"
   },
   {
     "name": "Mia's Brooklyn Bakery",
@@ -186,7 +208,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.626,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Lava Cheesecake",
+    "description": "Fudgy top, molten center, hidden graham cracker crust"
   },
   {
     "name": "S & S Cheesecake",
@@ -201,7 +225,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.597,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Crustless Cheesecake",
+    "description": "Smooth, dense, lightly sweet, subtle sourness, sandy crust"
   },
   {
     "name": "Stu's Cheesecake",
@@ -215,7 +241,9 @@
       "The Infatuation"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.568
+    "seedQuality": 0.568,
+    "title": "Cracked-Top Cheesecake",
+    "description": "Creamy center, breadier cake-like edges, no chemical aftertaste"
   },
   {
     "name": "The Cheesecake Factory",
@@ -230,7 +258,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.538,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Original Cheesecake",
+    "description": "Soft, wobbly, slightly tangy, Nilla Wafer nostalgia"
   },
   {
     "name": "Breads Bakery",
@@ -245,7 +275,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.509,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Basque Cheesecake",
+    "description": "Vanilla, lemon zest, caramelized top, seasonal varieties"
   },
   {
     "name": "Harbs",
@@ -260,7 +292,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.479,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Blueberry Mille Crepes",
+    "description": "Cream cheese and blueberries; classic NY cheesecake also available"
   },
   {
     "name": "Keki Modern Cakes",
@@ -275,6 +309,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Japanese Cheesecake",
+    "description": "'Original Fancy' style, premium cheese, creme fraiche"
   }
 ]

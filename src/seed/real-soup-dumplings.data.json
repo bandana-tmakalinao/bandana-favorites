@@ -13,7 +13,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Crab & Pork Dumplings",
+    "description": "saffron-leek skin, mushroom, yellow leeks"
   },
   {
     "name": "Shanghai You Garden (You Garden Xiao Long Bao)",
@@ -29,7 +31,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.926,
-    "geocoded": true
+    "geocoded": true,
+    "title": "XL Crab & Pork XLB",
+    "description": "oversized soup dumpling served with a straw"
   },
   {
     "name": "The Bao",
@@ -45,7 +49,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.902,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork Xiao Long Bao",
+    "description": "varieties: spicy, salted egg yolk, black truffle"
   },
   {
     "name": "Dim Sum Go Go",
@@ -60,7 +66,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.879,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Xiaolongbao",
+    "description": "also pan-fried pork dumplings"
   },
   {
     "name": "Little Alley",
@@ -75,7 +83,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.855,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork & Crab XLB",
+    "description": ""
   },
   {
     "name": "456 Shanghai Cuisine",
@@ -90,7 +100,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.831,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork XLB",
+    "description": "budget price"
   },
   {
     "name": "Antidote",
@@ -105,7 +117,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.807,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork XLB",
+    "description": "thick-skinned, abundant broth"
   },
   {
     "name": "Baodega",
@@ -120,7 +134,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.783,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork & Crab XLB",
+    "description": "steamed or pan-fried; chicken; vegetarian"
   },
   {
     "name": "CheLi",
@@ -135,7 +151,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.76,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork & Crab XLB",
+    "description": "traditional pork and pork-with-crab"
   },
   {
     "name": "DD Soup Dumpling",
@@ -150,7 +168,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.736,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Loofah XLB",
+    "description": "also pork and pork-and-crab"
   },
   {
     "name": "Din Tai Fung",
@@ -165,7 +185,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.712,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork XLB",
+    "description": "also pork-and-crab, chicken, chocolate dessert"
   },
   {
     "name": "Dumpling Story",
@@ -180,7 +202,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.688,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Truffle XLB",
+    "description": "six kinds: pork, pork-crab, spicy, chicken, garlic"
   },
   {
     "name": "Grandma's Home",
@@ -195,7 +219,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.664,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Hangzhou-Style XLB",
+    "description": "elegant, smaller"
   },
   {
     "name": "Jiang Nan",
@@ -210,7 +236,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.64,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork & Crab XLB",
+    "description": "generous crustacean"
   },
   {
     "name": "Joe's Shanghai",
@@ -225,7 +253,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.617,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork XLB",
+    "description": "classic; original NYC Joe's location"
   },
   {
     "name": "La Salle Dumpling Room",
@@ -240,7 +270,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.593,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Crab XLB",
+    "description": "crab mixed throughout the filling"
   },
   {
     "name": "Mr Bun",
@@ -255,7 +287,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.569,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork & Crab XLB",
+    "description": "oversized"
   },
   {
     "name": "Nan Xiang Express",
@@ -270,7 +304,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.545,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork XLB",
+    "description": "also pork-crab, chicken, beef"
   },
   {
     "name": "Nan Xiang Xiao Long Bao",
@@ -285,7 +321,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.521,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Crab & Pork XLB",
+    "description": "also squash, shrimp-pork, scallop"
   },
   {
     "name": "Pinch Chinese",
@@ -300,7 +338,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.498,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chicken Soup Dumplings",
+    "description": "also pork XLB with spicy sauce"
   },
   {
     "name": "Shanghai Heping",
@@ -315,7 +355,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.474,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pork & Crab XLB",
+    "description": "rich vinegar-ginger sauce"
   },
   {
     "name": "Shanghai Zhen Gong Fu",
@@ -330,6 +372,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Black Truffle XLB",
+    "description": "also regular pork XLB"
   }
 ]

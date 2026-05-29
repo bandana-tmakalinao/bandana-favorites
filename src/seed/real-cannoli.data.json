@@ -13,7 +13,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Ricotta Cannoli",
+    "description": "Filled to order, not-too-sweet cream, crunchy in-house-fried shell"
   },
   {
     "name": "Ferrara Bakery & Cafe",
@@ -29,7 +31,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.925,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chocolate-Chip Cannoli",
+    "description": "Sweet ricotta with chips in a crisp, sugar-dusted shell"
   },
   {
     "name": "Veniero's Pasticceria & Caffe",
@@ -45,7 +49,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.9,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Ricotta Cannoli",
+    "description": "Crisp, crumbling shell with luscious ricotta filling"
   },
   {
     "name": "Circo's Pastry Shop",
@@ -60,7 +66,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.875,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Mother Cannoli",
+    "description": "Giant cannoli stuffed with smaller cannoli inside"
   },
   {
     "name": "Artuso Pastry Shop",
@@ -75,7 +83,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.85,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Giant Cannolo",
+    "description": "Big cannolo filled with mini cannoli; chips and dip"
   },
   {
     "name": "DeLillo Pastry Shop",
@@ -90,7 +100,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.825,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Spiced Cannoli",
+    "description": "Darker-than-most shells with a warmly spiced filling"
   },
   {
     "name": "Egidio Pastry Shop",
@@ -105,7 +117,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.8,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Coconut Cannoli",
+    "description": "Version sprinkled with green-dyed coconut flakes"
   },
   {
     "name": "Madonia Bakery",
@@ -120,7 +134,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.775,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Vanilla Ricotta Cannoli",
+    "description": "Filled fresh to order, vanilla-forward ricotta cream"
   },
   {
     "name": "Morrone Pastry Shop & Cafe",
@@ -135,7 +151,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.75,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Cinnamon Cannoli",
+    "description": "Creamy filling, chocolate chips, a whisper of cinnamon"
   },
   {
     "name": "Caffe Palermo",
@@ -150,7 +168,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.725,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Classic Cannoli",
+    "description": "Self-styled Cannoli King spot"
   },
   {
     "name": "Cannoli Plus",
@@ -165,7 +185,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.7,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Chocolate-Chip Cannoli",
+    "description": "Classic ricotta and chocolate-chip with crisp shells"
   },
   {
     "name": "Cannoli World",
@@ -180,7 +202,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.675,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Classic Cannoli",
+    "description": ""
   },
   {
     "name": "Carlo's Bakery",
@@ -195,7 +219,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.65,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Pistachio Cannoli",
+    "description": "Classic, chocolate-hazelnut, and pistachio flavors"
   },
   {
     "name": "Fortunato Brothers",
@@ -210,7 +236,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.625,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Nutella Cannoli",
+    "description": "Signature chocolate-hazelnut cream filling"
   },
   {
     "name": "Joe's Sicilian Bakery",
@@ -225,7 +253,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.6,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sicilian Cannoli",
+    "description": ""
   },
   {
     "name": "La Bella Ferrara",
@@ -240,7 +270,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.575,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Classic Cannoli",
+    "description": "Available in a range of flavors"
   },
   {
     "name": "La Delice Pastry Shop",
@@ -255,7 +287,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.55,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Classic Cannoli",
+    "description": ""
   },
   {
     "name": "Napoli Pastry Co.",
@@ -270,7 +304,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.525,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Italian Cannoli",
+    "description": ""
   },
   {
     "name": "Pasticceria Monteleone",
@@ -285,7 +321,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.5,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Italian Cannoli",
+    "description": ""
   },
   {
     "name": "Pasticceria Rocco",
@@ -300,7 +338,9 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.475,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Traditional Cannoli",
+    "description": ""
   },
   {
     "name": "Zeppola Bakery",
@@ -315,6 +355,8 @@
     ],
     "appearanceCount": 1,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Ricotta Cannoli",
+    "description": "Smooth, not-too-sweet ricotta in a crisp shell"
   }
 ]

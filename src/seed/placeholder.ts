@@ -220,6 +220,7 @@ export function generateSeed(): StoreData {
       lat: number;
       lng: number;
       title: string;
+      description?: string;
       q: number;
       seedSources: string[];
     }) => {
@@ -239,6 +240,7 @@ export function generateSeed(): StoreData {
         subcategoryId: `sub_${sub.slug}`,
         regionId: region.id,
         title: opts.title,
+        description: opts.description ?? "",
         dishVariantId: null,
         seedSources: opts.seedSources,
         createdBy: null,
@@ -269,7 +271,8 @@ export function generateSeed(): StoreData {
           address: shop.address,
           lat: shop.lat,
           lng: shop.lng,
-          title: shop.signatureBowl || "Ramen",
+          title: shop.title || shop.signatureBowl || sub.name,
+          description: shop.description ?? "",
           q: shop.seedQuality,
           seedSources: shop.appearsOn,
         });

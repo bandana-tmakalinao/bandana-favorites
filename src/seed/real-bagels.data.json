@@ -15,7 +15,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.95,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Everything With Schmear",
+    "description": "Everything bagel with cream cheese"
   },
   {
     "name": "Bo's Bagels",
@@ -33,7 +35,9 @@
     ],
     "appearanceCount": 4,
     "seedQuality": 0.925,
-    "geocoded": true
+    "geocoded": true,
+    "title": "The Andrew",
+    "description": "Sesame bagel, egg, sausage, bacon, maple, scallion cream cheese"
   },
   {
     "name": "Russ & Daughters",
@@ -50,7 +54,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.9,
-    "geocoded": true
+    "geocoded": true,
+    "title": "The Boychik",
+    "description": "Smoked salmon, sable, cream cheese on everything bagel"
   },
   {
     "name": "Shelsky's Brooklyn Bagels",
@@ -67,7 +73,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.875,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sichuan Chile-Crisp Bagel",
+    "description": "Sichuan-peppercorn bagel with chile crisp cream cheese"
   },
   {
     "name": "Tompkins Square Bagels",
@@ -84,7 +92,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.85,
-    "geocoded": true
+    "geocoded": true,
+    "title": "The Weezer",
+    "description": "Bacon, chorizo, eggs, Cheddar, cream cheese on sesame"
   },
   {
     "name": "Utopia Bagels",
@@ -101,7 +111,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.825,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Everything Bagel Lox",
+    "description": "Malty everything bagel with cream cheese and lox"
   },
   {
     "name": "PopUp Bagels",
@@ -118,7 +130,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.8,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Rip And Dip",
+    "description": "Hot never-sliced bagel with a side of cream cheese"
   },
   {
     "name": "Bagel Pub",
@@ -135,7 +149,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.775,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Egg And Cheese",
+    "description": "Egg-and-cheese on a chewy everything bagel"
   },
   {
     "name": "Ess-a-Bagel",
@@ -152,7 +168,9 @@
     ],
     "appearanceCount": 3,
     "seedQuality": 0.75,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Scallion Everything",
+    "description": "Large crusty everything bagel with scallion cream cheese"
   },
   {
     "name": "2788 Bagels (formerly Absolute Bagels)",
@@ -168,7 +186,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.725,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sesame Nova Bagel",
+    "description": "Sesame bagel, nova, onion, tomato, capers, cream cheese"
   },
   {
     "name": "Bergen Bagels",
@@ -184,7 +204,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.7,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Cucumber-Dill Schmear",
+    "description": "Warm bagel with cucumber-dill schmear"
   },
   {
     "name": "Best Bagel & Coffee",
@@ -200,7 +222,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.675,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Breakfast Sandwich",
+    "description": "Big hot bagel breakfast sandwich"
   },
   {
     "name": "Knickerbocker Bagel",
@@ -216,7 +240,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.65,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bacon Egg Cheese",
+    "description": "Bacon, egg and cheese on everything; chunky home fries"
   },
   {
     "name": "Liberty Bagels",
@@ -232,7 +258,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.625,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Everything Bagel",
+    "description": "Soft doughy interior, firm seasoned crust"
   },
   {
     "name": "Terrace Bagels",
@@ -248,7 +276,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.6,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Classic Bagel",
+    "description": "Airy crumb, chewy crust"
   },
   {
     "name": "Bagel Oasis",
@@ -264,7 +294,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.575,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Bagel With Schmear",
+    "description": "Shattering-crust bagel with cream cheese"
   },
   {
     "name": "Tal Bagels",
@@ -280,7 +312,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.55,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Lox Bagel",
+    "description": "Fresh hot bagel with lox, nova, smoked salmon"
   },
   {
     "name": "Bagel Joint",
@@ -296,7 +330,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.525,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Miso Wasabi Bagel",
+    "description": "Miso everything bagel with wasabi cream cheese"
   },
   {
     "name": "Bagels & Co.",
@@ -312,7 +348,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.5,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Everything Bagel",
+    "description": "Tight crumb, no sweetness"
   },
   {
     "name": "Greenberg's Bagels",
@@ -328,7 +366,9 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.475,
-    "geocoded": true
+    "geocoded": true,
+    "title": "Sausage Egg Cheese",
+    "description": "Sausage, egg and cheese with hash brown"
   },
   {
     "name": "Murray's Bagels",
@@ -344,6 +384,8 @@
     ],
     "appearanceCount": 2,
     "seedQuality": 0.45,
-    "geocoded": true
+    "geocoded": true,
+    "title": "The Oy Vey!",
+    "description": "Sausage, eggs, bacon, potato latke on kettle-boiled bagel"
   }
 ]
