@@ -18,7 +18,10 @@ import type {
   ContenderDetail,
   DuelPair,
   PinnacleItem,
+  PlaceDetail,
+  PlaceDishView,
   PlaceHit,
+  PlaceSearchHit,
   ProfileView,
   ProposedItem,
   RankedList,
@@ -418,6 +421,109 @@ export class MemoryRepository implements Repository {
     const sub = this.subBySlug(subSlug);
     if (!sub) return { name: query.trim(), decision: "new", suggestion: null, score: 0 };
     return resolveDishName(query, this.dishTitlesIn(sub.id), sub.name);
+  }
+
+  listDishNames(subSlug: string): string[] {
+    const sub = this.subBySlug(subSlug);
+    return sub ? this.dishTitlesIn(sub.id).sort((a, b) => a.localeCompare(b)) : [];
+  }
+
+  /** Rank of an active contender within its subcategory (null if provisional/hidden). */
+  private rankOf(con: Contender): number | null {
+    if (con.status !== "active") return null;
+    const peers = this.store.contenders
+      .filter((c) => c.subcategoryId === con.subcategoryId && c.status === "active")
+      .sort((a, b) => b.sortKey - a.sortKey);
+    const idx = peers.findIndex((c) => c.id === con.id);
+    return idx >= 0 ? idx + 1 : null;
+  }
+
+  searchAllPlaces(query: string, limit = 10): PlaceSearchHit[] {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    const dishCount = (placeId: string) =>
+      this.store.contenders.filter((c) => c.placeId === placeId && c.status !== "hidden").length;
+
+    type Scored = PlaceSearchHit & { s: number };
+    const hits: Scored[] = [];
+    const score = (name: string, address: string, dishes: number) => {
+      const nm = name.toLowerCase();
+      let s = similarity(query, name); // fuzzy base (typo-tolerant)
+      if (nm.includes(q)) s += 1;
+      if (nm.startsWith(q)) s += 0.5;
+      if (address.toLowerCase().includes(q)) s += 0.3;
+      if (dishes > 0) s += 0.15; // mild boost for places already on Bandana
+      return s;
+    };
+
+    for (const p of this.store.places) {
+      if (p.status === "proposed") continue;
+      const dc = dishCount(p.id);
+      const s = score(p.name, p.address, dc);
+      if (s < 0.5) continue;
+      hits.push({
+        id: p.id, name: p.name, address: p.address, neighborhood: p.neighborhood,
+        borough: p.borough, source: "place", dishCount: dc, s,
+      });
+    }
+    const usedCorpus = new Set(this.store.places.map((p) => p.corpusId).filter(Boolean) as string[]);
+    for (const cp of this.corpus) {
+      if (usedCorpus.has(cp.id)) continue;
+      const s = score(cp.name, cp.address, 0);
+      if (s < 0.62) continue; // higher bar for the big corpus so fuzzy noise doesn't flood
+      hits.push({
+        id: cp.id, name: cp.name, address: cp.address, neighborhood: cp.borough,
+        borough: cp.borough, source: "corpus", dishCount: 0, s,
+      });
+      if (hits.length > limit * 25) break;
+    }
+    hits.sort((a, b) => b.s - a.s || a.name.localeCompare(b.name));
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    return hits.slice(0, limit).map(({ s, ...h }) => h);
+  }
+
+  getPlaceDetail(placeId: string): PlaceDetail | null {
+    let place = this.place(placeId);
+    let inCorpus = false;
+    if (!place && placeId.startsWith("corpus_")) {
+      place = this.store.places.find((p) => p.corpusId === placeId);
+      if (!place) {
+        const cp = this.corpus.find((c) => c.id === placeId);
+        if (!cp) return null;
+        // Synthetic (un-persisted) place view: a corpus restaurant with no dishes logged yet.
+        place = {
+          id: cp.id, name: cp.name, neighborhood: cp.borough, borough: cp.borough,
+          address: cp.address, lat: cp.lat, lng: cp.lng, corpusId: cp.id, status: "active",
+        };
+        inCorpus = true;
+      }
+    }
+    if (!place) return null;
+
+    const dishes: PlaceDishView[] = this.store.contenders
+      .filter((c) => c.placeId === place!.id && c.status !== "hidden")
+      .map((c) => {
+        const sub = this.subById(c.subcategoryId);
+        const cat = sub ? this.catById(sub.categoryId) : undefined;
+        return {
+          ...this.toView(c, this.rankOf(c)),
+          subSlug: sub?.slug ?? "",
+          subName: sub?.name ?? "",
+          emoji: sub?.emoji ?? cat?.emoji ?? "",
+          categoryName: cat?.name ?? "",
+        };
+      })
+      .sort((a, b) => b.score - a.score);
+
+    return {
+      place: {
+        id: place.id, name: place.name, address: place.address, neighborhood: place.neighborhood,
+        borough: place.borough, lat: place.lat, lng: place.lng,
+        isProposed: place.status === "proposed", inCorpus,
+      },
+      dishes,
+      categories: this.listCategories(),
+    };
   }
 
   searchPlaces(query: string, subSlug: string, limit = 8): PlaceHit[] {

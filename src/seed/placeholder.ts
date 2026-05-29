@@ -9,6 +9,7 @@
  */
 import { rankSubcategory, trustToWeight } from "../lib/ranking";
 import { NYC } from "../lib/config";
+import { normalizeName } from "../lib/match";
 // Real, consensus-seeded datasets keyed by subcategory slug (the rest are fictional placeholders).
 import { REAL_DATA } from "./real-data";
 import type {
@@ -224,16 +225,27 @@ export function generateSeed(): StoreData {
       q: number;
       seedSources: string[];
     }) => {
-      const place: Place = {
-        id: `place_${placeN++}`,
-        name: opts.name,
-        neighborhood: opts.neighborhood,
-        borough: opts.borough,
-        address: opts.address,
-        lat: +opts.lat.toFixed(5),
-        lng: +opts.lng.toFixed(5),
-      };
-      places.push(place);
+      const lat = +opts.lat.toFixed(5);
+      const lng = +opts.lng.toFixed(5);
+      // Reuse a place when the same restaurant was already seeded under another food type — one
+      // physical spot, many dishes. Normalized-name match + tight proximity (~250m) so different
+      // locations of a chain (e.g. two Joe's Pizza) stay separate.
+      const nn = normalizeName(opts.name);
+      let place = places.find(
+        (p) => normalizeName(p.name) === nn && Math.abs(p.lat - lat) <= 0.003 && Math.abs(p.lng - lng) <= 0.003,
+      );
+      if (!place) {
+        place = {
+          id: `place_${placeN++}`,
+          name: opts.name,
+          neighborhood: opts.neighborhood,
+          borough: opts.borough,
+          address: opts.address,
+          lat,
+          lng,
+        };
+        places.push(place);
+      }
       const con: Contender = {
         id: `con_${conN++}`,
         placeId: place.id,

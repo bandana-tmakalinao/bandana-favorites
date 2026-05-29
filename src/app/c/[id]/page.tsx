@@ -32,7 +32,10 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
         <div className="min-w-0 flex-1">
           <h1 className="text-2xl font-black tracking-tight">{c.title}</h1>
           <p className="text-[var(--color-ink-dim)]">
-            {place.name} · {place.neighborhood}, {place.borough}
+            <Link href={`/p/${place.id}`} className="font-medium text-[var(--color-ink)] hover:text-[var(--color-brand)] hover:underline">
+              {place.name}
+            </Link>{" "}
+            · {place.neighborhood}, {place.borough}
           </p>
           <p className="text-sm text-[var(--color-ink-dim)]">{place.address}</p>
           {c.description && <p className="mt-2 text-sm text-[var(--color-ink)]">{c.description}</p>}

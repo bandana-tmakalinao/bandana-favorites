@@ -33,6 +33,12 @@ export default function RootLayout({
                 <SearchBar variant="header" />
               </div>
               <div className="ml-auto flex items-center gap-4 text-sm text-[var(--color-ink-dim)] sm:ml-0">
+                <Link
+                  href="/add"
+                  className="rounded-lg bg-[var(--color-brand)] px-3 py-1.5 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
+                >
+                  ＋ Add
+                </Link>
                 <Link href="/map" className="hover:text-[var(--color-ink)]">
                   Map
                 </Link>

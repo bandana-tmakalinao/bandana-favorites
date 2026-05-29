@@ -61,6 +61,41 @@ export interface PlaceHit {
   existingContenderId: string | null; // a live contender for (this place × subcategory), if any
 }
 
+/** Category-agnostic place search hit for the restaurant-first add flow. */
+export interface PlaceSearchHit {
+  id: string; // place id or corpus_* id
+  name: string;
+  address: string;
+  neighborhood: string;
+  borough: string;
+  source: "corpus" | "place";
+  dishCount: number; // dishes already logged at this place
+}
+
+/** A dish logged at a place, tagged with its food type, for the restaurant page. */
+export interface PlaceDishView extends ContenderView {
+  subSlug: string;
+  subName: string;
+  emoji: string;
+  categoryName: string;
+}
+
+export interface PlaceDetail {
+  place: {
+    id: string;
+    name: string;
+    address: string;
+    neighborhood: string;
+    borough: string;
+    lat: number;
+    lng: number;
+    isProposed: boolean; // user-suggested, awaiting curator approval
+    inCorpus: boolean; // exists only in the corpus (no dishes logged yet)
+  };
+  dishes: PlaceDishView[]; // every dish logged here, across food types, best first
+  categories: CategoryWithSubs[]; // for the "add a dish here" picker
+}
+
 export interface ProposedItem {
   contenderId: string;
   title: string;
@@ -117,8 +152,14 @@ export interface Repository {
   // --- add-a-place flow ---
   /** Autocomplete real NYC places (corpus + existing) for adding under a food type. */
   searchPlaces(query: string, subSlug: string, limit?: number): PlaceHit[];
+  /** Category-agnostic fuzzy place search (name + address) for the restaurant-first add flow. */
+  searchAllPlaces(query: string, limit?: number): PlaceSearchHit[];
+  /** A restaurant page: the place + every dish logged there + the category picker for adding more. */
+  getPlaceDetail(placeId: string): PlaceDetail | null;
   /** Resolve a typed dish name against the category's vocabulary (snap to canonical / suggest / new). */
   matchDish(subSlug: string, query: string): DishResolution;
+  /** The distinct existing dish names in a food type (the controlled vocabulary, for autocomplete). */
+  listDishNames(subSlug: string): string[];
   /** Add (or find) the contender for a real place × food type; returns its id to go rate/duel. */
   addContenderAtPlace(
     userId: string,
