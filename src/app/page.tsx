@@ -37,7 +37,7 @@ export default function Home() {
         <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href="/nyc"
-            className="rounded-lg bg-[var(--color-brand)] px-5 py-3 font-semibold text-black transition hover:bg-[var(--color-brand-soft)]"
+            className="rounded-lg bg-[var(--color-brand)] px-5 py-3 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
           >
             Explore NYC rankings
           </Link>

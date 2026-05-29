@@ -6,11 +6,11 @@ export const metadata = { title: "Map · Bandana Favorites" };
 
 // The real, geocoded food types — each a colored layer on the citywide map.
 const LAYERS = [
-  { slug: "ramen", color: "#ff5a3c" },
-  { slug: "pizza", color: "#ffc24b" },
-  { slug: "bagel", color: "#a78bfa" },
-  { slug: "ice-cream", color: "#38bdf8" },
-  { slug: "steak", color: "#fb7185" },
+  { slug: "ramen", color: "#ed7f54" }, // coral
+  { slug: "pizza", color: "#efb745" }, // gold
+  { slug: "bagel", color: "#a65be0" }, // purple
+  { slug: "ice-cream", color: "#5991d3" }, // blue
+  { slug: "steak", color: "#e158a8" }, // pink
 ];
 
 export default function MapPage() {

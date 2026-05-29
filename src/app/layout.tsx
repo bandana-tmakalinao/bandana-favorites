@@ -19,7 +19,7 @@ export default function RootLayout({
           <header className="sticky top-0 z-30 border-b border-[var(--color-border)] bg-[var(--color-bg)]/85 backdrop-blur">
             <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
               <Link href="/" className="flex items-center gap-2 font-semibold">
-                <span className="grid h-7 w-7 place-items-center rounded-md bg-[var(--color-brand)] text-sm font-black text-black">
+                <span className="grid h-7 w-7 place-items-center rounded-md bg-[var(--color-brand)] text-sm font-black text-white">
                   B
                 </span>
                 <span className="tracking-tight">
@@ -45,8 +45,8 @@ export default function RootLayout({
               </div>
             </div>
           </header>
-          <div className="border-b border-[var(--color-border)] bg-[#1a140f] px-4 py-1.5 text-center text-xs text-[var(--color-gold)]">
-            Preview build — places &amp; photos are fictional placeholders, not real rankings yet.
+          <div className="border-b border-[var(--color-border)] bg-[var(--color-banner)] px-4 py-1.5 text-center text-xs font-medium text-[var(--color-ink)]">
+            ⭐ Ramen, pizza, bagels, ice cream &amp; steak are seeded from NYC&apos;s 2025+ best-of lists — rankings move as people duel. Other foods are sample data; photos are placeholders.
           </div>
           <main className="flex-1">{children}</main>
           <footer className="border-t border-[var(--color-border)] px-4 py-6 text-center text-xs text-[var(--color-ink-dim)]">

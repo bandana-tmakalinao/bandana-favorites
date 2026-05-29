@@ -32,9 +32,9 @@ const KEYLESS_OSM_STYLE = {
 };
 
 function pinColor(score: number): string {
-  if (score >= 75) return "#3ddc84";
-  if (score >= 60) return "#ffc24b";
-  return "#9aa0b3";
+  if (score >= 75) return "#009275"; // bandana green
+  if (score >= 60) return "#efb745"; // gold
+  return "#bcb69e"; // tan
 }
 
 export default function MapView({ points, center }: { points: MapPoint[]; center: { lat: number; lng: number } }) {
@@ -64,8 +64,8 @@ export default function MapView({ points, center }: { points: MapPoint[]; center
         el.href = `/c/${p.id}`;
         el.textContent = p.rank ? String(p.rank) : "•";
         el.style.cssText = `display:grid;place-items:center;width:26px;height:26px;border-radius:9999px;
-          background:${pinColor(p.score)};color:#0b0b0f;font-weight:800;font-size:12px;
-          border:2px solid #0b0b0f;box-shadow:0 1px 4px rgba(0,0,0,.5);cursor:pointer;text-decoration:none;`;
+          background:${pinColor(p.score)};color:#fff;font-weight:800;font-size:12px;
+          border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer;text-decoration:none;`;
         const popup = new maplibregl.Popup({ offset: 18, closeButton: false }).setHTML(
           `<div style="font-family:system-ui;min-width:160px">
              <div style="font-weight:700">${escapeHtml(p.title)}</div>

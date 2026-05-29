@@ -42,7 +42,7 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
         </div>
         <Link
           href={`/duel?sub=${subcategory.slug}`}
-          className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-black transition hover:bg-[var(--color-brand-soft)]"
+          className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
         >
           ⚔️ Rank these
         </Link>

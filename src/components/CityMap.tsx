@@ -65,7 +65,7 @@ export default function CityMap({ groups }: { groups: CityGroup[] }) {
         const el = document.createElement("a");
         el.href = `/c/${p.id}`;
         el.title = `${p.title} — ${p.placeName}`;
-        el.style.cssText = `display:block;width:14px;height:14px;border-radius:9999px;background:${g.color};border:2px solid #0b0b0f;box-shadow:0 1px 3px rgba(0,0,0,.55);cursor:pointer;`;
+        el.style.cssText = `display:block;width:14px;height:14px;border-radius:9999px;background:${g.color};border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.4);cursor:pointer;`;
         const popup = new maplibregl.Popup({ offset: 14, closeButton: false }).setHTML(
           `<div style="font-family:system-ui;min-width:150px">
              <div style="font-weight:700">${esc(p.title)}</div>

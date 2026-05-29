@@ -68,7 +68,7 @@ export default function BrowseView({
             key={v}
             onClick={() => setView(v)}
             className={`rounded-md px-4 py-1.5 font-medium capitalize transition ${
-              view === v ? "bg-[var(--color-brand)] text-black" : "text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]"
+              view === v ? "bg-[var(--color-brand)] text-white" : "text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]"
             }`}
           >
             {v}

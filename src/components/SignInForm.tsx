@@ -76,7 +76,7 @@ export default function SignInForm({
         <button
           type="submit"
           disabled={busy}
-          className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-black transition hover:bg-[var(--color-brand-soft)] disabled:opacity-50"
+          className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)] disabled:opacity-50"
         >
           Sign in
         </button>

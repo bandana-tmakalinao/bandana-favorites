@@ -2,7 +2,7 @@ import type { ConfidenceTier } from "@/lib/config";
 
 const TIER: Record<ConfidenceTier, { label: string; dot: string; text: string }> = {
   established: { label: "Established", dot: "bg-[var(--color-good)]", text: "text-[var(--color-good)]" },
-  rising: { label: "Rising", dot: "bg-[var(--color-gold)]", text: "text-[var(--color-gold)]" },
+  rising: { label: "Rising", dot: "bg-[var(--color-gold)]", text: "text-[#b57e12]" },
   provisional: { label: "Provisional", dot: "bg-[var(--color-ink-dim)]", text: "text-[var(--color-ink-dim)]" },
 };
 
@@ -21,8 +21,8 @@ export function tierLabel(tier: ConfidenceTier): string {
 }
 
 function scoreColor(score: number): string {
-  if (score >= 75) return "text-[var(--color-good)] border-[var(--color-good)]/40";
-  if (score >= 60) return "text-[var(--color-gold)] border-[var(--color-gold)]/40";
+  if (score >= 75) return "text-[var(--color-good)] border-[var(--color-good)]/45";
+  if (score >= 60) return "text-[var(--color-ink)] border-[var(--color-gold)]/60";
   return "text-[var(--color-ink-dim)] border-[var(--color-border)]";
 }
 
@@ -30,7 +30,7 @@ export function ScoreBadge({ score, size = "md" }: { score: number; size?: "sm" 
   const pad = size === "lg" ? "h-14 w-14 text-2xl" : size === "sm" ? "h-9 w-9 text-sm" : "h-11 w-11 text-lg";
   return (
     <span
-      className={`grid ${pad} shrink-0 place-items-center rounded-xl border bg-[var(--color-surface-2)] font-black tabular-nums ${scoreColor(score)}`}
+      className={`grid ${pad} shrink-0 place-items-center rounded-xl border bg-[var(--color-surface)] font-black tabular-nums ${scoreColor(score)}`}
       title="Trust-weighted, shrinkage-adjusted score (0–100)"
     >
       {Math.round(score)}
@@ -50,7 +50,7 @@ export function PhotoThumb({
 }) {
   return (
     <span
-      className={`relative block overflow-hidden rounded-lg bg-gradient-to-br from-[var(--color-surface-2)] to-[#2a1f1c] ${className}`}
+      className={`relative block overflow-hidden rounded-lg bg-gradient-to-br from-[#f3ede0] to-[#e9ddc8] ${className}`}
     >
       {url && (
         // eslint-disable-next-line @next/next/no-img-element
