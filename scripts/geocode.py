@@ -9,15 +9,9 @@ already marked "geocoded": true are skipped on re-run.
 
 Re-seed afterward (npm run seed) to push the new coordinates into the store.
 """
-import json, os, sys, time, urllib.parse, urllib.request
+import glob, json, os, sys, time, urllib.parse, urllib.request
 
-FILES = [
-    "src/seed/real-ramen.data.json",
-    "src/seed/real-pizza.data.json",
-    "src/seed/real-bagels.data.json",
-    "src/seed/real-ice-cream.data.json",
-    "src/seed/real-steak.data.json",
-]
+FILES = sorted(glob.glob("src/seed/real-*.data.json"))
 BENCH = "Public_AR_Current"
 NYC = dict(s=40.45, n=40.95, w=-74.30, e=-73.65)
 UA = {"User-Agent": "BandanaFavorites/0.1 (NYC food ranking seed; geocode script)"}
