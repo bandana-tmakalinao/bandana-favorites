@@ -10,6 +10,7 @@ interface ProposedItem {
   borough: string;
   subSlug: string;
   subName: string;
+  possibleDuplicate?: string;
 }
 
 export default function ReviewQueue() {
@@ -64,6 +65,11 @@ export default function ReviewQueue() {
             <span className="block truncate text-xs text-[var(--color-ink-dim)]">
               {i.address} · {i.borough}
             </span>
+            {i.possibleDuplicate && (
+              <span className="mt-1 inline-block rounded bg-[var(--color-banner)] px-1.5 py-0.5 text-[11px] font-medium text-[var(--color-ink)]">
+                ⚠ Possible duplicate of “{i.possibleDuplicate}”
+              </span>
+            )}
           </span>
           <button
             onClick={() => act(i.contenderId, true)}

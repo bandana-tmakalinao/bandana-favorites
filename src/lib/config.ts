@@ -56,6 +56,18 @@ export const TRUST = {
   NEW_USER_TRUST: 0.1,
 } as const;
 
+/**
+ * Fuzzy name-matching thresholds (src/lib/match.ts). similarity ∈ [0,1].
+ * - SNAP: auto-merge a typed name into an existing canonical one (keeps the dish vocabulary clean).
+ * - SUGGEST: close enough to surface a "did you mean …?" without forcing it.
+ * - PLACE_DUP: flag a suggested place as a likely duplicate of an existing one for the curator.
+ */
+export const MATCH = {
+  SNAP: 0.88,
+  SUGGEST: 0.6,
+  PLACE_DUP: 0.8,
+} as const;
+
 export type ConfidenceTier = "provisional" | "rising" | "established";
 
 /** Keyless OSM raster style for local dev. Production: set NEXT_PUBLIC_MAP_STYLE to a PMTiles/MapTiler URL. */

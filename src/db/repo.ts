@@ -10,6 +10,7 @@ import type {
   Subcategory,
   User,
 } from "@/lib/types";
+import type { DishResolution } from "@/lib/match";
 import { generateSeed } from "@/seed/placeholder";
 import { MemoryRepository } from "./memory";
 import { type CorpusPlace, loadCorpus, loadStore, saveStore } from "./store";
@@ -69,6 +70,8 @@ export interface ProposedItem {
   subSlug: string;
   subName: string;
   proposedBy: string | null;
+  /** Name of an existing active place this suggestion likely duplicates (curator dedupe aid). */
+  possibleDuplicate?: string;
 }
 
 export interface PinnacleItem extends ContenderView {
@@ -114,6 +117,8 @@ export interface Repository {
   // --- add-a-place flow ---
   /** Autocomplete real NYC places (corpus + existing) for adding under a food type. */
   searchPlaces(query: string, subSlug: string, limit?: number): PlaceHit[];
+  /** Resolve a typed dish name against the category's vocabulary (snap to canonical / suggest / new). */
+  matchDish(subSlug: string, query: string): DishResolution;
   /** Add (or find) the contender for a real place × food type; returns its id to go rate/duel. */
   addContenderAtPlace(
     userId: string,

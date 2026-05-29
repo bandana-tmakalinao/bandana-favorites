@@ -1,5 +1,6 @@
-import { RANKING, type ConfidenceTier } from "@/lib/config";
+import { RANKING, MATCH, type ConfidenceTier } from "@/lib/config";
 import { trustToWeight } from "@/lib/ranking";
+import { resolveDishName, similarity, type DishResolution } from "@/lib/match";
 import { recomputeSubcategory } from "@/seed/placeholder";
 import type {
   Category,
@@ -401,6 +402,24 @@ export class MemoryRepository implements Repository {
     return this.store.subcategories.find((s) => s.slug === slug);
   }
 
+  /** Distinct non-hidden dish titles already used in a subcategory — the controlled vocabulary. */
+  private dishTitlesIn(subId: string): string[] {
+    return Array.from(
+      new Set(
+        this.store.contenders
+          .filter((c) => c.subcategoryId === subId && c.status !== "hidden" && c.title)
+          .map((c) => c.title),
+      ),
+    );
+  }
+
+  /** Resolve a typed dish name against the category's vocabulary (snap / suggest / new). */
+  matchDish(subSlug: string, query: string): DishResolution {
+    const sub = this.subBySlug(subSlug);
+    if (!sub) return { name: query.trim(), decision: "new", suggestion: null, score: 0 };
+    return resolveDishName(query, this.dishTitlesIn(sub.id), sub.name);
+  }
+
   searchPlaces(query: string, subSlug: string, limit = 8): PlaceHit[] {
     const q = query.trim().toLowerCase();
     if (!q) return [];
@@ -468,9 +487,13 @@ export class MemoryRepository implements Repository {
       this.persist();
       return { ok: true, contenderId: existing.id };
     }
+    // Canonicalize the dish name against the category vocabulary so near-duplicates snap together.
+    const resolvedTitle = title?.trim()
+      ? resolveDishName(title, this.dishTitlesIn(sub.id), sub.name).name
+      : sub.name;
     const con: Contender = {
       id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
-      title: title?.trim() || sub.name, description: description?.trim() ?? "", dishVariantId: null,
+      title: resolvedTitle, description: description?.trim() ?? "", dishVariantId: null,
       seedSources: [], createdBy: userId, createdAt: new Date().toISOString(), theta: 0, rd: 350,
       weightedVotes: 0, comparisonCount: 0, distinctOpponents: 0, score: 50, sortKey: 0, status: "provisional",
     };
@@ -503,14 +526,26 @@ export class MemoryRepository implements Repository {
   }
 
   listProposed(): ProposedItem[] {
+    const activePlaces = this.store.places.filter((p) => p.status !== "proposed");
     return this.store.contenders
       .filter((c) => c.status === "proposed")
       .map((c) => {
         const sub = this.subById(c.subcategoryId);
         const pl = this.place(c.placeId);
+        // Flag if this suggested place looks like one we already have (dedupe aid for the curator).
+        let possibleDuplicate: string | undefined;
+        if (pl) {
+          let best: { name: string; score: number } | null = null;
+          for (const ap of activePlaces) {
+            const score = similarity(pl.name, ap.name);
+            if (!best || score > best.score) best = { name: ap.name, score };
+          }
+          if (best && best.score >= MATCH.PLACE_DUP) possibleDuplicate = best.name;
+        }
         return {
           contenderId: c.id, title: c.title, placeName: pl?.name ?? "?", address: pl?.address ?? "",
-          borough: pl?.borough ?? "", subSlug: sub?.slug ?? "", subName: sub?.name ?? "", proposedBy: c.createdBy,
+          borough: pl?.borough ?? "", subSlug: sub?.slug ?? "", subName: sub?.name ?? "",
+          proposedBy: c.createdBy, possibleDuplicate,
         };
       });
   }

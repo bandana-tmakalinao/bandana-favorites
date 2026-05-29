@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { btn } from "./bits";
@@ -36,6 +36,7 @@ export default function AddPlace({
   const [hits, setHits] = useState<PlaceHit[]>([]);
   const [picked, setPicked] = useState<PlaceHit | null>(null);
   const [dish, setDish] = useState("");
+  const [dishHint, setDishHint] = useState<{ decision: string; suggestion: string | null } | null>(null);
   const [note, setNote] = useState("");
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
@@ -59,6 +60,26 @@ export default function AddPlace({
     }, 160);
     return () => clearTimeout(t);
   }, [q, subSlug, mode, picked]);
+
+  // Live dish-name resolution against the category vocabulary (snap/suggest/new).
+  useEffect(() => {
+    if (!picked) return;
+    const term = dish.trim();
+    if (term.length < 2) {
+      setDishHint(null);
+      return;
+    }
+    const t = setTimeout(async () => {
+      try {
+        const r = await fetch(`/api/dishes/match?sub=${subSlug}&q=${encodeURIComponent(term)}`);
+        const d = await r.json();
+        setDishHint(d.suggestion && d.suggestion.toLowerCase() !== term.toLowerCase() ? d : null);
+      } catch {
+        /* ignore */
+      }
+    }, 200);
+    return () => clearTimeout(t);
+  }, [dish, picked, subSlug]);
 
   function chooseHit(hit: PlaceHit) {
     if (hit.existingContenderId) {
@@ -171,6 +192,19 @@ export default function AddPlace({
             <p className="mt-1 text-xs text-[var(--color-ink-dim)]">
               Pick a suggested name when you can — it keeps dishes clean and avoids duplicates.
             </p>
+            {dishHint?.suggestion && (
+              <button
+                type="button"
+                onClick={() => {
+                  setDish(dishHint.suggestion as string);
+                  setDishHint(null);
+                }}
+                className="mt-1.5 text-sm text-[var(--color-brand)] hover:underline"
+              >
+                {dishHint.decision === "snap" ? "We already list this as" : "Did you mean"}{" "}
+                <span className="font-semibold">“{dishHint.suggestion}”</span>? Use it →
+              </button>
+            )}
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium">Note (optional)</label>
