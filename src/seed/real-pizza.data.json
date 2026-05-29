@@ -1,0 +1,482 @@
+[
+  {
+    "name": "Lucali",
+    "neighborhood": "Carroll Gardens",
+    "borough": "Brooklyn",
+    "address": "575 Henry St, Brooklyn, NY 11231",
+    "lat": 40.68154,
+    "lng": -74.00011,
+    "signatureBowl": "Thin-crust three-cheese pie with garlic, sweet-tangy sauce, fresh basil (whole pies only, BYOB) — sit-down pizzeria",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York",
+      "r/FoodNYC crowd consensus",
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 6,
+    "seedQuality": 0.95
+  },
+  {
+    "name": "Una Pizza Napoletana",
+    "neighborhood": "Lower East Side",
+    "borough": "Manhattan",
+    "address": "175 Orchard St, New York, NY 10002",
+    "lat": 40.72141,
+    "lng": -73.98835,
+    "signatureBowl": "Wood-fired Neapolitan Margherita (buffalo mozzarella, San Marzano); bianca with anchovies — sit-down pizzeria",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The MICHELIN Guide",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 5,
+    "seedQuality": 0.933
+  },
+  {
+    "name": "L'Industrie Pizzeria",
+    "neighborhood": "Williamsburg",
+    "borough": "Brooklyn",
+    "address": "254 S 2nd St, Brooklyn, NY 11211",
+    "lat": 40.7115,
+    "lng": -73.95757,
+    "signatureBowl": "Thin-crust NY slice with to-order toppings (burrata / mozzarella & basil) — slice joint",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York",
+      "r/FoodNYC crowd consensus"
+    ],
+    "appearanceCount": 5,
+    "seedQuality": 0.916
+  },
+  {
+    "name": "Mama's Too",
+    "neighborhood": "Upper West Side",
+    "borough": "Manhattan",
+    "address": "2750 Broadway, New York, NY 10025",
+    "lat": 40.80234,
+    "lng": -73.96769,
+    "signatureBowl": "Gas-oven Sicilian square slice ('Angry Nonna' hot soppressata + hot honey; cacio e pepe; cupping-pepperoni) — square slice shop",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York",
+      "r/FoodNYC crowd consensus"
+    ],
+    "appearanceCount": 5,
+    "seedQuality": 0.898
+  },
+  {
+    "name": "Scarr's Pizza",
+    "neighborhood": "Lower East Side",
+    "borough": "Manhattan",
+    "address": "35 Orchard St, New York, NY 10002",
+    "lat": 40.71514,
+    "lng": -73.99152,
+    "signatureBowl": "House-milled-flour plain slice; pepperoni / 'Hot Boi' slice — slice joint",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York",
+      "r/FoodNYC crowd consensus"
+    ],
+    "appearanceCount": 5,
+    "seedQuality": 0.881
+  },
+  {
+    "name": "Joe's Pizza",
+    "neighborhood": "Greenwich Village",
+    "borough": "Manhattan",
+    "address": "7 Carmine St, New York, NY 10014",
+    "lat": 40.73059,
+    "lng": -74.00297,
+    "signatureBowl": "Classic plain cheese NY slice — slice joint (est. 1975; original on Carmine St)",
+    "appearsOn": [
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York",
+      "r/FoodNYC crowd consensus",
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 5,
+    "seedQuality": 0.864
+  },
+  {
+    "name": "Roberta's",
+    "neighborhood": "Bushwick",
+    "borough": "Brooklyn",
+    "address": "261 Moore St, Brooklyn, NY 11206",
+    "lat": 40.70502,
+    "lng": -73.93364,
+    "signatureBowl": "Wood-fired 'Bee Sting' pie (soppressata, hot honey, chili) — sit-down pizzeria",
+    "appearsOn": [
+      "The MICHELIN Guide",
+      "The New York Times",
+      "Time Out New York",
+      "r/FoodNYC crowd consensus"
+    ],
+    "appearanceCount": 4,
+    "seedQuality": 0.847
+  },
+  {
+    "name": "Joe & Pat's Pizzeria",
+    "neighborhood": "Castleton Corners",
+    "borough": "Staten Island",
+    "address": "1758 Victory Blvd, Staten Island, NY 10314",
+    "lat": 40.61169,
+    "lng": -74.1249,
+    "signatureBowl": "Cracker-thin crust pie; vodka sauce / 'Tri Pie' — sit-down pizzeria (East Village location at 168 1st Ave)",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times",
+      "Time Out New York",
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 4,
+    "seedQuality": 0.829
+  },
+  {
+    "name": "L&B Spumoni Gardens",
+    "neighborhood": "Gravesend / Bensonhurst",
+    "borough": "Brooklyn",
+    "address": "2725 86th St, Brooklyn, NY 11223",
+    "lat": 40.59499,
+    "lng": -73.98142,
+    "signatureBowl": "Sicilian square slice with sauce on top of the cheese — slice joint / institution (since 1939)",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 4,
+    "seedQuality": 0.812
+  },
+  {
+    "name": "John's of Bleecker Street",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "address": "278 Bleecker St, New York, NY 10014",
+    "lat": 40.7317,
+    "lng": -74.00348,
+    "signatureBowl": "Coal-oven thin-crust whole pie (no slices) — sit-down pizzeria (est. 1929)",
+    "appearsOn": [
+      "Eater NY",
+      "The New York Times",
+      "r/FoodNYC crowd consensus",
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 4,
+    "seedQuality": 0.795
+  },
+  {
+    "name": "Rubirosa",
+    "neighborhood": "Nolita",
+    "borough": "Manhattan",
+    "address": "235 Mulberry St, New York, NY 10012",
+    "lat": 40.72292,
+    "lng": -73.99617,
+    "signatureBowl": "'Tie-Dye' pie — crackery thin-crust margherita swirled with vodka sauce and pesto — sit-down pizzeria",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York",
+      "r/FoodNYC crowd consensus",
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 4,
+    "seedQuality": 0.778
+  },
+  {
+    "name": "Chrissy's Pizza",
+    "neighborhood": "Greenpoint",
+    "borough": "Brooklyn",
+    "address": "142 Nassau Ave, Brooklyn, NY 11222",
+    "lat": 40.72454,
+    "lng": -73.94801,
+    "signatureBowl": "Classic NY-style whole pie made with upgraded ingredients (no slices) — sit-down / whole-pie shop",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.76
+  },
+  {
+    "name": "F&F Pizzeria",
+    "neighborhood": "Carroll Gardens",
+    "borough": "Brooklyn",
+    "address": "459 Court St, Brooklyn, NY 11231",
+    "lat": 40.67843,
+    "lng": -74.00026,
+    "signatureBowl": "Hot sausage & brown-butter sage slice; clam pie — slice joint (sit-down sibling 'F&F Restaurant and Bar' at 465 Court St)",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.743
+  },
+  {
+    "name": "Louie & Ernie's Pizza",
+    "neighborhood": "Pelham Bay",
+    "borough": "Bronx",
+    "address": "1300 Crosby Ave, Bronx, NY 10461",
+    "lat": 40.84046,
+    "lng": -73.82152,
+    "signatureBowl": "NY-style pie/slice with crumbly fennel-laced sausage — slice shop + sit-down",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.726
+  },
+  {
+    "name": "Lucia Pizza of Avenue X",
+    "neighborhood": "Sheepshead Bay / Gravesend",
+    "borough": "Brooklyn",
+    "address": "2201 Avenue X, Brooklyn, NY 11235",
+    "lat": 40.59848,
+    "lng": -73.95365,
+    "signatureBowl": "Square/Sicilian and vodka/grandma slices; Friday clam pie — slice joint (distinct from Lucia Pizza of SoHo and Lucia Pizza in Flushing)",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times",
+      "r/FoodNYC crowd consensus"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.709
+  },
+  {
+    "name": "Denino's Pizzeria & Tavern",
+    "neighborhood": "Port Richmond",
+    "borough": "Staten Island",
+    "address": "524 Port Richmond Ave, Staten Island, NY 10302",
+    "lat": 40.63486,
+    "lng": -74.13147,
+    "signatureBowl": "Thin-crust clam pie; 'M.O.R.' (mushroom/meatball, onion, ricotta/pepperoni) — sit-down pizzeria/tavern (est. 1937; Greenwich Village location)",
+    "appearsOn": [
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.691
+  },
+  {
+    "name": "Di Fara Pizza",
+    "neighborhood": "Midwood",
+    "borough": "Brooklyn",
+    "address": "1424 Avenue J, Brooklyn, NY 11230",
+    "lat": 40.62499,
+    "lng": -73.96169,
+    "signatureBowl": "Classic round pie / plain slice finished with fresh basil and grated cheese (DeMarco legacy, est. 1965) — slice joint & pies",
+    "appearsOn": [
+      "The Infatuation",
+      "r/FoodNYC crowd consensus",
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.674
+  },
+  {
+    "name": "Ops",
+    "neighborhood": "Bushwick",
+    "borough": "Brooklyn",
+    "address": "346 Himrod St, Brooklyn, NY 11237",
+    "lat": 40.70078,
+    "lng": -73.91876,
+    "signatureBowl": "Naturally leavened sourdough wood-fired pie ('Rojo' with mortadella) — sit-down pizzeria (East Village offshoot at 176 2nd Ave)",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.657
+  },
+  {
+    "name": "Don Antonio",
+    "neighborhood": "Hell's Kitchen",
+    "borough": "Manhattan",
+    "address": "309 W 50th St, New York, NY 10019",
+    "lat": 40.76215,
+    "lng": -73.98706,
+    "signatureBowl": "La Montanara — lightly fried Neapolitan pie finished in the wood-fired oven — sit-down pizzeria",
+    "appearsOn": [
+      "Eater NY",
+      "The MICHELIN Guide"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.64
+  },
+  {
+    "name": "See No Evil Pizza",
+    "neighborhood": "Midtown West",
+    "borough": "Manhattan",
+    "address": "210 W 50th St, New York, NY 10019",
+    "lat": 40.76173,
+    "lng": -73.98404,
+    "signatureBowl": "'Hell Pie' — thin-crust with smoked mozzarella, hot soppressata, pepperoni, Calabrian chiles — casual slice/pizza spot (subway-station concourse)",
+    "appearsOn": [
+      "The MICHELIN Guide",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.622
+  },
+  {
+    "name": "Speedy Romeo",
+    "neighborhood": "Clinton Hill",
+    "borough": "Brooklyn",
+    "address": "376 Classon Ave, Brooklyn, NY 11238",
+    "lat": 40.68785,
+    "lng": -73.95962,
+    "signatureBowl": "'St. Louis' pie — meats, pickled peppers, Provel cheese (also 'Truffle Shuffle') — sit-down tavern/pizzeria",
+    "appearsOn": [
+      "The MICHELIN Guide",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.605
+  },
+  {
+    "name": "Andrew Bellucci's Pizzeria",
+    "neighborhood": "Astoria",
+    "borough": "Queens",
+    "address": "37-08 30th Ave, Astoria, NY 11103",
+    "lat": 40.76642,
+    "lng": -73.92178,
+    "signatureBowl": "Coal-oven NY-style pie; clam pie (advance order) — sit-down / counter-service pizzeria",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.588
+  },
+  {
+    "name": "Rocco's of Roc Beach",
+    "neighborhood": "Rockaway Park",
+    "borough": "Queens",
+    "address": "115-10 Rockaway Beach Blvd, Rockaway Park, NY 11694",
+    "lat": 40.58056,
+    "lng": -73.83826,
+    "signatureBowl": "Coal/brick-oven Margherita with sweet, garlicky sauce — sit-down pizzeria",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.571
+  },
+  {
+    "name": "Paulie Gee's Slice Shop",
+    "neighborhood": "Greenpoint",
+    "borough": "Brooklyn",
+    "address": "110 Franklin St, Brooklyn, NY 11222",
+    "lat": 40.72876,
+    "lng": -73.95743,
+    "signatureBowl": "NY square/round slices ('Hellboy' / 'Freddy Prince' with hot honey) — slice joint",
+    "appearsOn": [
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.553
+  },
+  {
+    "name": "Angelo's Coal Oven Pizzeria",
+    "neighborhood": "Midtown (West 57th St)",
+    "borough": "Manhattan",
+    "address": "117 W 57th St, New York, NY 10019",
+    "lat": 40.76436,
+    "lng": -73.97966,
+    "signatureBowl": "Coal-oven crust with cheese, basil, and sauce",
+    "appearsOn": [
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.536
+  },
+  {
+    "name": "Lazzara's Pizza",
+    "neighborhood": "Garment District",
+    "borough": "Manhattan",
+    "address": "221 W 38th St, 2nd Floor, New York, NY 10018",
+    "lat": 40.75494,
+    "lng": -73.99203,
+    "signatureBowl": "Ultra-thin square (grandma-style) slice",
+    "appearsOn": [
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.519
+  },
+  {
+    "name": "Luigi's Pizza",
+    "neighborhood": "South Slope / Greenwood Heights",
+    "borough": "Brooklyn",
+    "address": "686 5th Ave, Brooklyn, NY 11215",
+    "lat": 40.66317,
+    "lng": -73.9901,
+    "signatureBowl": "Thin, crispy New York-style cheese slice",
+    "appearsOn": [
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.502
+  },
+  {
+    "name": "Ceres",
+    "neighborhood": "Nolita",
+    "borough": "Manhattan",
+    "address": "164 Mott St, New York, NY 10013",
+    "lat": 40.7219,
+    "lng": -73.99633,
+    "signatureBowl": "Thin, well-charred crust with bubbling cheese",
+    "appearsOn": [
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.484
+  },
+  {
+    "name": "Best Pizza",
+    "neighborhood": "Williamsburg",
+    "borough": "Brooklyn",
+    "address": "33 Havemeyer St, Brooklyn, NY 11211",
+    "lat": 40.71507,
+    "lng": -73.9582,
+    "signatureBowl": "Wood-fired white slice and the square",
+    "appearsOn": [
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.467
+  },
+  {
+    "name": "Sauce Pizzeria",
+    "neighborhood": "Lower East Side",
+    "borough": "Manhattan",
+    "address": "345 E Houston St, New York, NY 10002",
+    "lat": 40.71463,
+    "lng": -73.98803,
+    "signatureBowl": "New York-style cheese slice",
+    "appearsOn": [
+      "Dave Portnoy (One Bite)"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.45
+  }
+]

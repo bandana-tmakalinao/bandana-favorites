@@ -10,9 +10,10 @@
 import { rankSubcategory, trustToWeight } from "../lib/ranking";
 import { NYC } from "../lib/config";
 import { REAL_RAMEN, type RealRamen } from "./real-ramen";
+import { REAL_PIZZA } from "./real-pizza";
 
 // Real, consensus-seeded datasets keyed by subcategory slug (the rest are fictional placeholders).
-const REAL_DATA: Record<string, RealRamen[]> = { ramen: REAL_RAMEN };
+const REAL_DATA: Record<string, RealRamen[]> = { ramen: REAL_RAMEN, pizza: REAL_PIZZA };
 import type {
   Category,
   Comparison,
