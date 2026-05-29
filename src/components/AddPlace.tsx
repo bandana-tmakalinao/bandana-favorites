@@ -141,7 +141,10 @@ export default function AddPlace({
   if (!signedIn) {
     return (
       <p className="mt-6 text-sm text-[var(--color-ink-dim)]">
-        <Link href="/me" className="font-semibold text-[var(--color-brand)] hover:underline">
+        <Link
+          href={`/me?returnTo=${encodeURIComponent(`/nyc/${subSlug}`)}`}
+          className="font-semibold text-[var(--color-brand)] hover:underline"
+        >
           Sign in
         </Link>{" "}
         to add a {subName.toLowerCase()} you&apos;ve tried.
@@ -216,7 +219,7 @@ export default function AddPlace({
             />
           </div>
           <div className="flex items-center gap-2">
-            <button onClick={confirmAdd} disabled={busy} className={btn("primary")}>
+            <button onClick={confirmAdd} disabled={busy || !dish.trim()} className={btn("primary")}>
               {busy ? "Adding…" : "Add & rate it"}
             </button>
             <button onClick={() => setPicked(null)} className={btn("ghost")}>

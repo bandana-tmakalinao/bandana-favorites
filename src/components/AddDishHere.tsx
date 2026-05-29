@@ -23,10 +23,12 @@ export default function AddDishHere({
   placeId,
   groups,
   signedIn,
+  existing = {},
 }: {
   placeId: string;
   groups: CatGroup[];
   signedIn: boolean;
+  existing?: Record<string, { id: string; title: string }>; // food types already logged here
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -102,13 +104,15 @@ export default function AddDishHere({
   if (!signedIn) {
     return (
       <Link
-        href="/me"
+        href={`/me?returnTo=${encodeURIComponent(`/p/${placeId}`)}`}
         className="inline-block rounded-xl border border-dashed border-[var(--color-border)] px-4 py-2.5 text-sm font-medium text-[var(--color-ink-dim)] transition hover:border-[var(--color-brand)] hover:text-[var(--color-ink)]"
       >
         Sign in to add a dish here →
       </Link>
     );
   }
+
+  const already = sub ? existing[sub] : undefined;
 
   if (!open) {
     return (
@@ -147,6 +151,17 @@ export default function AddDishHere({
           </select>
         </div>
 
+        {already ? (
+          <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-3 text-sm">
+            <p className="text-[var(--color-ink-dim)]">
+              This place already has a dish logged for that food type.
+            </p>
+            <Link href={`/c/${already.id}`} className="font-semibold text-[var(--color-brand)] hover:underline">
+              Open “{already.title}” to rate or duel it →
+            </Link>
+          </div>
+        ) : (
+          <>
         <div>
           <label className="mb-1 block text-sm font-medium">Dish name</label>
           <input
@@ -183,11 +198,13 @@ export default function AddDishHere({
         </div>
 
         <div className="flex items-center gap-2">
-          <button onClick={submit} disabled={busy || !sub} className={btn("primary")}>
+          <button onClick={submit} disabled={busy || !sub || !dish.trim()} className={btn("primary")}>
             {busy ? "Adding…" : "Add & rate it"}
           </button>
           {msg && <span className="text-xs text-[var(--color-ink-dim)]">{msg}</span>}
         </div>
+          </>
+        )}
       </div>
     </div>
   );

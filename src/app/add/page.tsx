@@ -18,7 +18,7 @@ export default async function AddPage() {
       {!user && (
         <p className="mt-4 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 text-sm text-[var(--color-ink-dim)]">
           You can browse freely.{" "}
-          <Link href="/me" className="font-semibold text-[var(--color-brand)] hover:underline">
+          <Link href="/me?returnTo=%2Fadd" className="font-semibold text-[var(--color-brand)] hover:underline">
             Sign in
           </Link>{" "}
           to log a dish — it takes a name and nothing else.

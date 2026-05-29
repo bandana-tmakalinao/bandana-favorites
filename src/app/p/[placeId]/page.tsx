@@ -27,6 +27,9 @@ export default async function PlacePage({ params }: { params: Promise<{ placeId:
       subs: c.subcategories.map((s) => ({ slug: s.slug, name: s.name, emoji: s.emoji })),
     }))
     .filter((g) => g.subs.length > 0);
+  // Food types already logged here → pre-block re-adding the same (place × food type).
+  const existing: Record<string, { id: string; title: string }> = {};
+  for (const d of dishes) if (d.subSlug && !existing[d.subSlug]) existing[d.subSlug] = { id: d.id, title: d.title };
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -66,7 +69,13 @@ export default async function PlacePage({ params }: { params: Promise<{ placeId:
                 href={`/c/${d.id}`}
                 className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-brand)]"
               >
-                <ScoreBadge score={d.score} size="sm" />
+                {d.tier === "provisional" ? (
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[var(--color-surface-2)] text-[10px] font-semibold text-[var(--color-ink-dim)]">
+                    New
+                  </span>
+                ) : (
+                  <ScoreBadge score={d.score} size="sm" />
+                )}
                 <span className="min-w-0 flex-1">
                   <span className="block truncate font-semibold">{d.title}</span>
                   <span className="block truncate text-xs text-[var(--color-ink-dim)]">
@@ -81,7 +90,7 @@ export default async function PlacePage({ params }: { params: Promise<{ placeId:
           </div>
         )}
 
-        <AddDishHere placeId={place.id} groups={groups} signedIn={!!user} />
+        <AddDishHere placeId={place.id} groups={groups} signedIn={!!user} existing={existing} />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { RANKING, MATCH, type ConfidenceTier } from "@/lib/config";
 import { trustToWeight } from "@/lib/ranking";
-import { resolveDishName, similarity, type DishResolution } from "@/lib/match";
+import { normalizeName, resolveDishName, similarity, type DishResolution } from "@/lib/match";
 import { recomputeSubcategory } from "@/seed/placeholder";
 import type {
   Category,
@@ -405,15 +405,53 @@ export class MemoryRepository implements Repository {
     return this.store.subcategories.find((s) => s.slug === slug);
   }
 
-  /** Distinct non-hidden dish titles already used in a subcategory — the controlled vocabulary. */
+  /** Distinct dish titles already used in a subcategory — the controlled vocabulary (excludes unreviewed/hidden). */
   private dishTitlesIn(subId: string): string[] {
     return Array.from(
       new Set(
         this.store.contenders
-          .filter((c) => c.subcategoryId === subId && c.status !== "hidden" && c.title)
+          .filter(
+            (c) =>
+              c.subcategoryId === subId && c.status !== "hidden" && c.status !== "proposed" && c.title,
+          )
           .map((c) => c.title),
       ),
     );
+  }
+
+  /**
+   * The already-stored place that corresponds to a corpus entry: by corpusId first, else by
+   * normalized-name + tight proximity (~250m). This reconciles seeded real-data places (whose
+   * corpusId is null) with their corpus twins, so a corpus_ id resolves to the existing place
+   * instead of duplicating it. Mirrors the seed-time dedup in seed/placeholder.ts.
+   */
+  private storePlaceForCorpus(cp: { id: string; name: string; lat: number; lng: number }): Place | undefined {
+    const byId = this.store.places.find((p) => p.corpusId === cp.id);
+    if (byId) return byId;
+    const nn = normalizeName(cp.name);
+    return this.store.places.find(
+      (p) =>
+        p.status !== "proposed" &&
+        normalizeName(p.name) === nn &&
+        Math.abs(p.lat - cp.lat) <= 0.003 &&
+        Math.abs(p.lng - cp.lng) <= 0.003,
+    );
+  }
+
+  /** Build a fast predicate: "is this corpus row already represented by a stored place?" (name + proximity). */
+  private corpusTwinChecker(): (cp: { name: string; lat: number; lng: number }) => boolean {
+    const idx = new Map<string, Place[]>();
+    for (const p of this.store.places) {
+      if (p.status === "proposed") continue;
+      const k = normalizeName(p.name);
+      const arr = idx.get(k);
+      if (arr) arr.push(p);
+      else idx.set(k, [p]);
+    }
+    return (cp) => {
+      const arr = idx.get(normalizeName(cp.name));
+      return !!arr && arr.some((p) => Math.abs(p.lat - cp.lat) <= 0.003 && Math.abs(p.lng - cp.lng) <= 0.003);
+    };
   }
 
   /** Resolve a typed dish name against the category's vocabulary (snap / suggest / new). */
@@ -456,6 +494,10 @@ export class MemoryRepository implements Repository {
       return s;
     };
 
+    // Corpus rows that are really an existing place (incl. seeded real-data places whose corpusId
+    // is null) are deduped by normalized name + proximity so a restaurant never appears twice.
+    const corpusHasTwin = this.corpusTwinChecker();
+
     for (const p of this.store.places) {
       if (p.status === "proposed") continue;
       const dc = dishCount(p.id);
@@ -466,16 +508,14 @@ export class MemoryRepository implements Repository {
         borough: p.borough, source: "place", dishCount: dc, s,
       });
     }
-    const usedCorpus = new Set(this.store.places.map((p) => p.corpusId).filter(Boolean) as string[]);
     for (const cp of this.corpus) {
-      if (usedCorpus.has(cp.id)) continue;
+      if (corpusHasTwin(cp)) continue; // already represented by a stored place
       const s = score(cp.name, cp.address, 0);
       if (s < 0.62) continue; // higher bar for the big corpus so fuzzy noise doesn't flood
       hits.push({
         id: cp.id, name: cp.name, address: cp.address, neighborhood: cp.borough,
         borough: cp.borough, source: "corpus", dishCount: 0, s,
       });
-      if (hits.length > limit * 25) break;
     }
     hits.sort((a, b) => b.s - a.s || a.name.localeCompare(b.name));
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -486,10 +526,10 @@ export class MemoryRepository implements Repository {
     let place = this.place(placeId);
     let inCorpus = false;
     if (!place && placeId.startsWith("corpus_")) {
-      place = this.store.places.find((p) => p.corpusId === placeId);
+      const cp = this.corpus.find((c) => c.id === placeId);
+      if (!cp) return null;
+      place = this.storePlaceForCorpus(cp); // resolve to an existing place (incl. seeded twins)
       if (!place) {
-        const cp = this.corpus.find((c) => c.id === placeId);
-        if (!cp) return null;
         // Synthetic (un-persisted) place view: a corpus restaurant with no dishes logged yet.
         place = {
           id: cp.id, name: cp.name, neighborhood: cp.borough, borough: cp.borough,
@@ -501,7 +541,7 @@ export class MemoryRepository implements Repository {
     if (!place) return null;
 
     const dishes: PlaceDishView[] = this.store.contenders
-      .filter((c) => c.placeId === place!.id && c.status !== "hidden")
+      .filter((c) => c.placeId === place!.id && c.status !== "hidden" && c.status !== "proposed")
       .map((c) => {
         const sub = this.subById(c.subcategoryId);
         const cat = sub ? this.catById(sub.categoryId) : undefined;
@@ -546,9 +586,9 @@ export class MemoryRepository implements Repository {
         source: "place", existingContenderId: liveContender(p.id), catMatch: true,
       });
     }
-    const usedCorpus = new Set(this.store.places.map((p) => p.corpusId).filter(Boolean) as string[]);
+    const hasTwin = this.corpusTwinChecker();
     for (const cp of this.corpus) {
-      if (usedCorpus.has(cp.id) || !cp.name.toLowerCase().includes(q)) continue;
+      if (hasTwin(cp) || !cp.name.toLowerCase().includes(q)) continue;
       hits.push({
         id: cp.id, name: cp.name, address: cp.address, borough: cp.borough,
         source: "corpus", existingContenderId: null, catMatch: subSlug ? cp.cats.includes(subSlug) : true,
@@ -569,14 +609,15 @@ export class MemoryRepository implements Repository {
     const sub = this.subBySlug(subSlug);
     if (!sub) return { ok: false, error: "Unknown food type." };
     if (!this.getUser(userId)) return { ok: false, error: "Sign in first." };
+    if (!title?.trim()) return { ok: false, error: "Add a dish name." };
     const region = this.store.regions[0];
 
     let place = this.place(placeId);
     if (!place && placeId.startsWith("corpus_")) {
-      place = this.store.places.find((p) => p.corpusId === placeId);
+      const cp = this.corpus.find((c) => c.id === placeId);
+      if (!cp) return { ok: false, error: "Place not found." };
+      place = this.storePlaceForCorpus(cp); // reuse an existing place (incl. seeded twins) — don't fragment
       if (!place) {
-        const cp = this.corpus.find((c) => c.id === placeId);
-        if (!cp) return { ok: false, error: "Place not found." };
         place = {
           id: crypto.randomUUID(), name: cp.name, neighborhood: cp.borough, borough: cp.borough,
           address: cp.address, lat: cp.lat, lng: cp.lng, corpusId: cp.id, status: "active",
@@ -594,9 +635,7 @@ export class MemoryRepository implements Repository {
       return { ok: true, contenderId: existing.id };
     }
     // Canonicalize the dish name against the category vocabulary so near-duplicates snap together.
-    const resolvedTitle = title?.trim()
-      ? resolveDishName(title, this.dishTitlesIn(sub.id), sub.name).name
-      : sub.name;
+    const resolvedTitle = resolveDishName(title, this.dishTitlesIn(sub.id), sub.name).name;
     const con: Contender = {
       id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
       title: resolvedTitle, description: description?.trim() ?? "", dishVariantId: null,

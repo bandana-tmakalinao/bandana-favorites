@@ -1,8 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { btn } from "./bits";
+
+// Only honor same-origin relative paths (no "//evil.com" open-redirect).
+function safeReturnTo(v: string | null): string | null {
+  return v && v.startsWith("/") && !v.startsWith("//") ? v : null;
+}
 
 export default function SignInForm({
   signedInName,
@@ -10,6 +15,7 @@ export default function SignInForm({
   signedInName: string | null;
 }) {
   const router = useRouter();
+  const returnTo = safeReturnTo(useSearchParams().get("returnTo"));
   const [name, setName] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -29,7 +35,8 @@ export default function SignInForm({
         setError(data.error ?? "Could not sign in.");
         return;
       }
-      router.refresh();
+      if (returnTo) router.push(returnTo);
+      else router.refresh();
     } catch {
       setError("Network error.");
     } finally {
