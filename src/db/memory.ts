@@ -1,9 +1,8 @@
-import { RANKING } from "@/lib/config";
+import { RANKING, type ConfidenceTier } from "@/lib/config";
 import { trustToWeight } from "@/lib/ranking";
 import { recomputeSubcategory } from "@/seed/placeholder";
 import type {
   Category,
-  ConfidenceTier,
   Contender,
   ContenderView,
   Photo,

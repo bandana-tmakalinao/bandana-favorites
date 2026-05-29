@@ -38,6 +38,9 @@ export default function RootLayout({
               </div>
             </div>
           </header>
+          <div className="border-b border-[var(--color-border)] bg-[#1a140f] px-4 py-1.5 text-center text-xs text-[var(--color-gold)]">
+            Preview build — places &amp; photos are fictional placeholders, not real rankings yet.
+          </div>
           <main className="flex-1">{children}</main>
           <footer className="border-t border-[var(--color-border)] px-4 py-6 text-center text-xs text-[var(--color-ink-dim)]">
             Bandana Favorites · ranked by comparisons & earned trust, not mass voting · NYC

@@ -44,11 +44,48 @@ the questions for you to answer in the morning. Nothing here is irreversible.
    floor, I need a decision on the OTP provider (Twilio/Telnyx recommended over SendBandana for the
    security path) and Google/Apple OAuth credentials.
 
-## Phase status
+## Phase status (overnight build complete through MVP scaffold)
 
-- [x] Phase 0 — Next.js scaffold + config + app shell (boots)
-- [ ] Phase 0b — Drizzle schema + repository layer
-- [ ] Phase 1 — placeholder NYC seed + taxonomy
-- [ ] Phase 2 — browse (category list + map + detail)
-- [ ] Phase 3 — duels + ranking engine (+ unit tests)
-- [ ] Phase 4–6 — photos, light auth, recompute
+- [x] Phase 0 — Next.js 15 + Tailwind v4 + Drizzle scaffold, app shell (boots, `next build` clean)
+- [x] Phase 0b — Drizzle schema (15 tables, PostGIS) + migration generated (`drizzle/0000_*.sql`).
+      Repository seam (`Repository` interface; in-memory impl live, Postgres impl gated on provisioning).
+- [x] Phase 1 — placeholder NYC seed + taxonomy (13 categories, 22 subcategories, 263 contenders,
+      1,841 comparisons, 785 votes, deterministic via `npm run seed`)
+- [x] Phase 2 — browse: category hub `/nyc`, ranked list `/nyc/[sub]` with list/map toggle (MapLibre),
+      contender detail `/c/[id]`
+- [x] Phase 3 — duels (`/duel`) + ranking engine (Bradley-Terry + shrinkage), 6/6 unit tests green
+- [x] Phase 4–6 — photo upload (local-disk dev path), light cookie auth, batch recompute
+      (`npm run recompute`). Photo *verification gate* + real anti-Sybil deferred to v1 (per plan).
+
+## How to run (verified working)
+
+```bash
+npm install
+npm run seed       # → .data/store.json  (auto-seeds on first dev boot too)
+npm run dev        # http://localhost:3000   (a dev server is already running)
+npm test           # ranking engine unit tests
+npm run build      # full type-check + production build (passes)
+```
+
+Verified end-to-end via curl: sign-in → record duel → next pair served → up-vote moved a score
+(50.0 → 51.4, correctly small for a new low-trust user) → ranks reorder; unauthenticated writes 401.
+
+## Morning to-dos (need you / a decision)
+
+1. **Look at it** — `http://localhost:3000` (or `npm run dev`). Browse `/nyc`, open a list, hit "Rank
+   these" to duel, sign in on `/me`.
+2. **iCloud + node_modules** (open question #1) — decide whether to relocate the repo out of iCloud.
+3. **Provision Render** (open question #2) — say go + which workspace, and I'll create Postgres+PostGIS,
+   wire the `PgRepository`, run `drizzle/0000_*.sql`, and deploy. (Not done overnight — billable/outward.)
+4. **Real data** — approve building the Overture + NYC OpenData ingestion (`docs/data-sourcing-research.md`)
+   to replace the placeholder seed.
+5. **Anti-Sybil** (open question #4) — when ready, decide OTP provider + OAuth creds for the real floor.
+
+## Known limitations of the scaffold (by design, for the morning)
+
+- Data is fictional placeholder; photos are generic stock keyed by food type (clearly labeled).
+- Trust is a stub (everyone starts 0.1, curators preset higher); no phone/OAuth, no manipulation
+  detection, no photo-verification gate yet — all v1 per the plan.
+- In-memory store persists to `.data/store.json`; resets if that file is deleted. Postgres is the
+  production path (schema ready).
+- Map uses keyless OSM raster tiles (fine for dev; PMTiles/MapTiler is the production path).
