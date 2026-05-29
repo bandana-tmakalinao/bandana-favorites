@@ -1,0 +1,344 @@
+[
+  {
+    "name": "Minetta Tavern",
+    "neighborhood": "Greenwich Village",
+    "borough": "Manhattan",
+    "address": "113 MacDougal St, New York, NY 10012",
+    "lat": 40.729969,
+    "lng": -74.000605,
+    "signatureBowl": "Black Label Burger — prime dry-aged beef blend, sharp cheddar, caramelized onions on brioche (pub/bistro)",
+    "appearsOn": [
+      "The Infatuation",
+      "The MICHELIN Guide",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.95,
+    "geocoded": true
+  },
+  {
+    "name": "Raoul's",
+    "neighborhood": "SoHo",
+    "borough": "Manhattan",
+    "address": "180 Prince St, New York, NY 10012",
+    "lat": 40.726289,
+    "lng": -74.002079,
+    "signatureBowl": "Burger au poivre — black peppercorn-crusted patty with Saint-Andre cheese and cornichons (pub/bistro)",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.926,
+    "geocoded": true
+  },
+  {
+    "name": "Red Hook Tavern",
+    "neighborhood": "Red Hook",
+    "borough": "Brooklyn",
+    "address": "329 Van Brunt St, Brooklyn, NY 11231",
+    "lat": 40.678,
+    "lng": -74.012036,
+    "signatureBowl": "Dry-aged pub/tavern burger with American cheese and white onion on a sesame bun (fries included, ~$30)",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.902,
+    "geocoded": true
+  },
+  {
+    "name": "4 Charles Prime Rib",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "address": "4 Charles St, New York, NY 10014",
+    "lat": 40.735226,
+    "lng": -74.000499,
+    "signatureBowl": "Double wagyu pub/steakhouse burger with American cheese, pickles, onions, Marie Rose sauce",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.879,
+    "geocoded": true
+  },
+  {
+    "name": "Hamburger America",
+    "neighborhood": "Greenwich Village / SoHo",
+    "borough": "Manhattan",
+    "address": "155 W Houston St, New York, NY 10012",
+    "lat": 40.728417,
+    "lng": -74.003988,
+    "signatureBowl": "Fried-onion (Oklahoma-style) smash burger with American cheese at a lunch counter (George Motz)",
+    "appearsOn": [
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.855,
+    "geocoded": true
+  },
+  {
+    "name": "J.G. Melon",
+    "neighborhood": "Upper East Side",
+    "borough": "Manhattan",
+    "address": "1291 3rd Ave, New York, NY 10021",
+    "lat": 40.771138,
+    "lng": -73.959503,
+    "signatureBowl": "Classic pub/diner cheeseburger with American cheese, seared on the flat top; cottage fries",
+    "appearsOn": [
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.831,
+    "geocoded": true
+  },
+  {
+    "name": "Smacking Burger",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "address": "51-63 8th Ave, New York, NY 10014",
+    "lat": 40.73907,
+    "lng": -74.00319,
+    "signatureBowl": "'The Big Smack' — two griddled smash patties with onions and American cheese (inside a Mobil gas station)",
+    "appearsOn": [
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.807,
+    "geocoded": true
+  },
+  {
+    "name": "Nowon",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "507 E 6th St, New York, NY 10009",
+    "lat": 40.725435,
+    "lng": -73.983722,
+    "signatureBowl": "Double smash 'Legendary Cheeseburger' with kimchi mayo (also a Bushwick, Brooklyn location)",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.783,
+    "geocoded": true
+  },
+  {
+    "name": "Smashed",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "address": "516 Hudson St, New York, NY 10014",
+    "lat": 40.733604,
+    "lng": -74.006239,
+    "signatureBowl": "Smashburger — thin lacy patties, gooey cheese, special sauce, grilled and raw onions (also a DUMBO, Brooklyn location)",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.76,
+    "geocoded": true
+  },
+  {
+    "name": "Eel Bar",
+    "neighborhood": "Lower East Side",
+    "borough": "Manhattan",
+    "address": "252 Broome St, New York, NY 10002",
+    "lat": 40.718074,
+    "lng": -73.989867,
+    "signatureBowl": "Bar burger — thick grass-fed patty with anchovies and Roquefort (Hart's team)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.736,
+    "geocoded": true
+  },
+  {
+    "name": "Gallaghers Steakhouse",
+    "neighborhood": "Theater District / Midtown",
+    "borough": "Manhattan",
+    "address": "228 W 52nd St, New York, NY 10019",
+    "lat": 40.762909,
+    "lng": -73.983845,
+    "signatureBowl": "Steakhouse burger from fatty steak trimmings — one of the thickest and richest in town",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.712,
+    "geocoded": true
+  },
+  {
+    "name": "Gus's",
+    "neighborhood": "Carroll Gardens",
+    "borough": "Brooklyn",
+    "address": "215 Union St, Brooklyn, NY 11231",
+    "lat": 40.683374,
+    "lng": -73.99915,
+    "signatureBowl": "Pub burger — pork/chuck/dry-aged blend, caramelized onions, aged cheddar, dijonaise ($22)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.688,
+    "geocoded": true
+  },
+  {
+    "name": "Joe Jr.",
+    "neighborhood": "Gramercy",
+    "borough": "Manhattan",
+    "address": "167 3rd Ave, New York, NY 10003",
+    "lat": 40.734644,
+    "lng": -73.98611,
+    "signatureBowl": "Under-$10 diner burger, nicely seared on both sides",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.664,
+    "geocoded": true
+  },
+  {
+    "name": "Le B.",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "address": "283 W 12th St, New York, NY 10014",
+    "lat": 40.737604,
+    "lng": -74.003942,
+    "signatureBowl": "Luxe pub burger — 45-day dry-aged Angus, d'affinois cheese, caramelized onions, red wine sauce (Angie Mar)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.64,
+    "geocoded": true
+  },
+  {
+    "name": "Lori Jayne",
+    "neighborhood": "Bushwick",
+    "borough": "Brooklyn",
+    "address": "232 Knickerbocker Ave, Brooklyn, NY 11237",
+    "lat": 40.702928,
+    "lng": -73.925725,
+    "signatureBowl": "'Cartooney' smash-style burger — thick patty in American cheese, bone broth onions, house sauce on a Martin's roll",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.617,
+    "geocoded": true
+  },
+  {
+    "name": "Rolo's",
+    "neighborhood": "Ridgewood",
+    "borough": "Queens",
+    "address": "853 Onderdonk Ave, Queens, NY 11385",
+    "lat": 40.701953,
+    "lng": -73.903664,
+    "signatureBowl": "Double cheeseburger with jammy caramelized onions, pickled hot pepper on the side (~$20)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.593,
+    "geocoded": true
+  },
+  {
+    "name": "Keens Steakhouse",
+    "neighborhood": "Midtown",
+    "borough": "Manhattan",
+    "address": "72 W 36th St, New York, NY 10018",
+    "lat": 40.750651,
+    "lng": -73.985984,
+    "signatureBowl": "Charred steak-trimmings pub/steakhouse burger",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.569,
+    "geocoded": true
+  },
+  {
+    "name": "Lord's",
+    "neighborhood": "Greenwich Village",
+    "borough": "Manhattan",
+    "address": "506 LaGuardia Pl, New York, NY 10012",
+    "lat": 40.727947,
+    "lng": -73.999151,
+    "signatureBowl": "Dry-aged pub burger with Welsh rarebit on a pretzel bun (limited; ~12 daily)",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.545,
+    "geocoded": true
+  },
+  {
+    "name": "7th Street Burger",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "91 E 7th St, New York, NY 10009",
+    "lat": 40.727012,
+    "lng": -73.985651,
+    "signatureBowl": "Smash-style spicy jalapeno cheeseburger (also classic double smash); multiple NYC locations",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.521,
+    "geocoded": true
+  },
+  {
+    "name": "Deux Luxe",
+    "neighborhood": "Nolita",
+    "borough": "Manhattan",
+    "address": "384 Broome St, New York, NY 10012",
+    "lat": 40.719376,
+    "lng": -73.994161,
+    "signatureBowl": "'The Classic' — two Wagyu patties with cheddar and garlic aioli, cottage fries (pub/upscale)",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.498,
+    "geocoded": true
+  },
+  {
+    "name": "Peter Luger",
+    "neighborhood": "Williamsburg",
+    "borough": "Brooklyn",
+    "address": "178 Broadway, Brooklyn, NY 11211",
+    "lat": 40.710129,
+    "lng": -73.963099,
+    "signatureBowl": "'Luger Burger' — half-pound dry-aged beef patty with optional bacon (steakhouse pub)",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.474,
+    "geocoded": true
+  },
+  {
+    "name": "Sip & Guzzle",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "address": "29 Cornelia St, New York, NY 10014",
+    "lat": 40.731636,
+    "lng": -74.001736,
+    "signatureBowl": "A5 Wagyu tavern burger (12 daily, bar-only); named best in North America on 2025 World's Best Burgers list",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.45,
+    "geocoded": true
+  }
+]

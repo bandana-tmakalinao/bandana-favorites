@@ -1,0 +1,292 @@
+[
+  {
+    "name": "Daily Provisions",
+    "neighborhood": "Flatiron / Gramercy",
+    "borough": "Manhattan",
+    "address": "103 E 19th St, New York, NY 10003",
+    "lat": 40.737701,
+    "lng": -73.987919,
+    "signatureBowl": "BEC with thick-cut Berkshire bacon and American cheese on a poppy seed-coated Portuguese roll",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Resy"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.95,
+    "geocoded": true
+  },
+  {
+    "name": "Court Street Grocers",
+    "neighborhood": "Carroll Gardens",
+    "borough": "Brooklyn",
+    "address": "485 Court St, Brooklyn, NY 11231",
+    "lat": 40.676297,
+    "lng": -73.99874,
+    "signatureBowl": "The B+B — soft-scrambled eggs, bacon, cheddar, and arugula on Balthazar ciabatta",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.922,
+    "geocoded": true
+  },
+  {
+    "name": "Golden Diner",
+    "neighborhood": "Two Bridges / Chinatown",
+    "borough": "Manhattan",
+    "address": "123 Madison St, New York, NY 10002",
+    "lat": 40.712379,
+    "lng": -73.994232,
+    "signatureBowl": "Egg Sando — soft scrambled eggs, American cheese, smoky bacon, and a potato hash brown on a sesame scallion milk bun",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.894,
+    "geocoded": true
+  },
+  {
+    "name": "Win Son Bakery",
+    "neighborhood": "East Williamsburg",
+    "borough": "Brooklyn",
+    "address": "164 Graham Ave, Brooklyn, NY 11206",
+    "lat": 40.707284,
+    "lng": -73.943118,
+    "signatureBowl": "Scallion pancake BEC (bacon, egg & cheese on a scallion pancake)",
+    "appearsOn": [
+      "Resy",
+      "Eater NY"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.867,
+    "geocoded": true
+  },
+  {
+    "name": "Between the Bagel",
+    "neighborhood": "Astoria",
+    "borough": "Queens",
+    "address": "31-13 30th Ave, Queens, NY 11102",
+    "lat": 40.766875,
+    "lng": -73.921204,
+    "signatureBowl": "SMB — bulgogi, egg, and cheese with kimchi slaw on a bagel (bulgogi egg & cheese, not a BEC)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.839,
+    "geocoded": true
+  },
+  {
+    "name": "C&B Cafe",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "178 E 7th St, New York, NY 10009",
+    "lat": 40.725125,
+    "lng": -73.981487,
+    "signatureBowl": "Scrambled eggs and pork belly on a housemade roll (egg sandwich, not a BEC)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.811,
+    "geocoded": true
+  },
+  {
+    "name": "Cafe Mado",
+    "neighborhood": "Prospect Heights",
+    "borough": "Brooklyn",
+    "address": "791 Washington Ave, Brooklyn, NY 11238",
+    "lat": 40.672918,
+    "lng": -73.962739,
+    "signatureBowl": "Fried egg, melty caciocavallo cheese, and tomatillo sauce on a milk bun (egg & cheese, no bacon)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.783,
+    "geocoded": true
+  },
+  {
+    "name": "Frankel's Delicatessen & Appetizing",
+    "neighborhood": "Greenpoint",
+    "borough": "Brooklyn",
+    "address": "631 Manhattan Ave, Brooklyn, NY 11222",
+    "lat": 40.724025,
+    "lng": -73.951018,
+    "signatureBowl": "Default pastrami egg & cheese on a challah roll; bacon offered as a substitution (not a default BEC)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.756,
+    "geocoded": true
+  },
+  {
+    "name": "Sullivan Street Bakery",
+    "neighborhood": "Chelsea",
+    "borough": "Manhattan",
+    "address": "236 9th Ave, New York, NY 10001",
+    "lat": 40.747509,
+    "lng": -74.0005,
+    "signatureBowl": "Scrambled egg with fried prosciutto on a miniature brioche (egg sandwich, prosciutto in place of bacon)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.728,
+    "geocoded": true
+  },
+  {
+    "name": "Thai Diner",
+    "neighborhood": "Nolita",
+    "borough": "Manhattan",
+    "address": "186 Mott St, New York, NY 10012",
+    "lat": 40.720826,
+    "lng": -73.995701,
+    "signatureBowl": "Roti breakfast sandwich — egg, cheese, sausage, and Thai basil (sausage egg & cheese, not a BEC)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.7,
+    "geocoded": true
+  },
+  {
+    "name": "Baz Bagel and Restaurant",
+    "neighborhood": "Little Italy / Nolita",
+    "borough": "Manhattan",
+    "address": "181 Grand St, New York, NY 10013",
+    "lat": 40.7194,
+    "lng": -73.997708,
+    "signatureBowl": "Egg sandwich on a bagel stuffed with latke hash (optional bacon)",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.672,
+    "geocoded": true
+  },
+  {
+    "name": "Edith's",
+    "neighborhood": "Williamsburg",
+    "borough": "Brooklyn",
+    "address": "495 Lorimer St, Brooklyn, NY 11211",
+    "lat": 40.711758,
+    "lng": -73.949067,
+    "signatureBowl": "BEC&L on a bagel with a crispy latke stuffed inside",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.644,
+    "geocoded": true
+  },
+  {
+    "name": "Greenberg's Bagels",
+    "neighborhood": "Bedford-Stuyvesant",
+    "borough": "Brooklyn",
+    "address": "1065 Bedford Ave, Brooklyn, NY 11216",
+    "lat": 40.687448,
+    "lng": -73.95465,
+    "signatureBowl": "BEC on a thin, chewy bagel",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.617,
+    "geocoded": true
+  },
+  {
+    "name": "John's Deli",
+    "neighborhood": "Windsor Terrace",
+    "borough": "Brooklyn",
+    "address": "1269 Prospect Ave, Brooklyn, NY 11218",
+    "lat": 40.652092,
+    "lng": -73.975874,
+    "signatureBowl": "BEC on a hard roll",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.589,
+    "geocoded": true
+  },
+  {
+    "name": "Merriweather",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "address": "428 Hudson St, New York, NY 10014",
+    "lat": 40.730638,
+    "lng": -74.006714,
+    "signatureBowl": "BEC on brioche",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.561,
+    "geocoded": true
+  },
+  {
+    "name": "Modern Bread & Bagel",
+    "neighborhood": "Upper West Side",
+    "borough": "Manhattan",
+    "address": "472 Columbus Ave, New York, NY 10024",
+    "lat": 40.78418,
+    "lng": -73.97394,
+    "signatureBowl": "BEC on a bagel (gluten-free available)",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.533,
+    "geocoded": true
+  },
+  {
+    "name": "Rex",
+    "neighborhood": "Hell's Kitchen",
+    "borough": "Manhattan",
+    "address": "864 10th Ave, New York, NY 10019",
+    "lat": 40.768849,
+    "lng": -73.988669,
+    "signatureBowl": "BEC on a brioche bun with melted white cheddar",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.506,
+    "geocoded": true
+  },
+  {
+    "name": "Southside Coffee",
+    "neighborhood": "South Slope (Park Slope)",
+    "borough": "Brooklyn",
+    "address": "652 6th Ave, Brooklyn, NY 11215",
+    "lat": 40.661217,
+    "lng": -73.990064,
+    "signatureBowl": "BEC on a crusty seeded hero",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.478,
+    "geocoded": true
+  },
+  {
+    "name": "Montague Diner",
+    "neighborhood": "Brooklyn Heights",
+    "borough": "Brooklyn",
+    "address": "148 Montague St, Brooklyn, NY 11201",
+    "lat": 40.694465,
+    "lng": -73.993341,
+    "signatureBowl": "BEC — two scrambled eggs, thick-cut bacon, American cheese on a potato roll",
+    "appearsOn": [
+      "Resy"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.45,
+    "geocoded": true
+  }
+]

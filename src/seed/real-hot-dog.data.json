@@ -1,0 +1,345 @@
+[
+  {
+    "name": "Crif Dogs",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "113 St Marks Pl, New York, NY 10009",
+    "lat": 40.727408,
+    "lng": -73.984693,
+    "signatureBowl": "Bacon-wrapped dog with chili, coleslaw, and pickled jalapenos (Spicy Redneck); deep-fried Jersey-style dogs",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York",
+      "Secret NYC"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.95,
+    "geocoded": true
+  },
+  {
+    "name": "Dog Day Afternoon",
+    "neighborhood": "Windsor Terrace",
+    "borough": "Brooklyn",
+    "address": "266 Prospect Park W, Brooklyn, NY 11215",
+    "lat": 40.658544,
+    "lng": -73.982089,
+    "signatureBowl": "Chicago-style dog with tomatoes, sport peppers and kosher pickle; chili cheese dog",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York",
+      "Secret NYC"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.926,
+    "geocoded": true
+  },
+  {
+    "name": "Gray's Papaya",
+    "neighborhood": "Upper West Side",
+    "borough": "Manhattan",
+    "address": "2090 Broadway, New York, NY 10023",
+    "lat": 40.778822,
+    "lng": -73.981903,
+    "signatureBowl": "Crispy-skinned all-beef Sabrett dog with the Recession Special (two dogs + tropical drink)",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York",
+      "Secret NYC"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.902
+  },
+  {
+    "name": "Katz's Delicatessen",
+    "neighborhood": "Lower East Side",
+    "borough": "Manhattan",
+    "address": "205 E Houston St, New York, NY 10002",
+    "lat": 40.72244,
+    "lng": -73.987234,
+    "signatureBowl": "All-beef kosher natural-casing frankfurter with mustard and sauerkraut (grill station)",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York",
+      "Secret NYC"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.879,
+    "geocoded": true
+  },
+  {
+    "name": "Santa Salsa",
+    "neighborhood": "Bushwick",
+    "borough": "Brooklyn",
+    "address": "234 Starr St, Brooklyn, NY 11237",
+    "lat": 40.705339,
+    "lng": -73.922818,
+    "signatureBowl": "Perro con todo / Venezuelan street-style dog with bacon, guasacaca sauce and potato chips",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York",
+      "Secret NYC"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.855,
+    "geocoded": true
+  },
+  {
+    "name": "Schaller's Stube Sausage Bar",
+    "neighborhood": "Upper East Side (Yorkville)",
+    "borough": "Manhattan",
+    "address": "1652 2nd Ave, New York, NY 10028",
+    "lat": 40.777603,
+    "lng": -73.951854,
+    "signatureBowl": "Specialty franks/brats on a pretzel bun (Schaller & Weber butcher offshoot); Saigon Special, Berlin Wall",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York",
+      "Secret NYC"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.831,
+    "geocoded": true
+  },
+  {
+    "name": "Nathan's Famous",
+    "neighborhood": "Coney Island",
+    "borough": "Brooklyn",
+    "address": "1310 Surf Ave, Brooklyn, NY 11224",
+    "lat": 40.575492,
+    "lng": -73.981652,
+    "signatureBowl": "Classic tight-casing all-beef hot dog (institution since 1916); chili cheese dog",
+    "appearsOn": [
+      "Time Out New York",
+      "Secret NYC"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.807,
+    "geocoded": true
+  },
+  {
+    "name": "Rudy's Bar & Grill",
+    "neighborhood": "Hell's Kitchen",
+    "borough": "Manhattan",
+    "address": "627 9th Ave, New York, NY 10036",
+    "lat": 40.75994,
+    "lng": -73.991619,
+    "signatureBowl": "Free hot dog with mustard (with drink purchase); dive bar since 1933",
+    "appearsOn": [
+      "Time Out New York",
+      "Secret NYC"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.783,
+    "geocoded": true
+  },
+  {
+    "name": "Bobbi's Italian Beef",
+    "neighborhood": "Carroll Gardens",
+    "borough": "Brooklyn",
+    "address": "228 Smith St, Brooklyn, NY 11231",
+    "lat": 40.683976,
+    "lng": -73.992415,
+    "signatureBowl": "Chili cheese dog",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.76,
+    "geocoded": true
+  },
+  {
+    "name": "Dyckman Dogs",
+    "neighborhood": "Inwood",
+    "borough": "Manhattan",
+    "address": "105A Dyckman St, New York, NY 10040",
+    "lat": 40.861807,
+    "lng": -73.924794,
+    "signatureBowl": "Venezuelan Dog (cabbage, tomato, onion, cheese, cilantro mayo, potato sticks); Dominican Dog",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.736,
+    "geocoded": true
+  },
+  {
+    "name": "NoMad Diner",
+    "neighborhood": "NoMad",
+    "borough": "Manhattan",
+    "address": "11 E 31st St, New York, NY 10016",
+    "lat": 40.74625,
+    "lng": -73.98511,
+    "signatureBowl": "Arlo Dog (dijonnaise, chimichurri, crispy potatoes)",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.712,
+    "geocoded": true
+  },
+  {
+    "name": "Peek Inn",
+    "neighborhood": "Greenpoint",
+    "borough": "Brooklyn",
+    "address": "38 Driggs Ave, Brooklyn, NY 11222",
+    "lat": 40.723502,
+    "lng": -73.940406,
+    "signatureBowl": "Juicy, snappy oversized hot dogs (from The Meat Hook team)",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.688,
+    "geocoded": true
+  },
+  {
+    "name": "Skippy's Hot Dogs",
+    "neighborhood": "New Dorp",
+    "borough": "Staten Island",
+    "address": "1952 Hylan Blvd, Staten Island, NY 10306",
+    "lat": 40.581583,
+    "lng": -74.097903,
+    "signatureBowl": "Wally Dog (sauerkraut, cheese sauce, house red chili)",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.664,
+    "geocoded": true
+  },
+  {
+    "name": "Brooklyn Diner",
+    "neighborhood": "Midtown West",
+    "borough": "Manhattan",
+    "address": "212 W 57th St, New York, NY 10019",
+    "lat": 40.765851,
+    "lng": -73.980978,
+    "signatureBowl": "The '15-bite' oversized all-beef frank with hand-cut fries and juniper slaw",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.64,
+    "geocoded": true
+  },
+  {
+    "name": "La Perrada de Chalo",
+    "neighborhood": "Jackson Heights",
+    "borough": "Queens",
+    "address": "83-12 Northern Blvd, Jackson Heights, NY 11372",
+    "lat": 40.75562,
+    "lng": -73.884261,
+    "signatureBowl": "The Mexicano — Colombian-style dog with salsa verde, melted cheese and crushed potato chips",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.617,
+    "geocoded": true
+  },
+  {
+    "name": "Moritz",
+    "neighborhood": "Downtown Brooklyn",
+    "borough": "Brooklyn",
+    "address": "445 Albee Square W, Brooklyn, NY 11201",
+    "lat": 40.691146,
+    "lng": -73.983374,
+    "signatureBowl": "Thick brats on a pretzel bun with Bavarian mustard and sauerkraut",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.593,
+    "geocoded": true
+  },
+  {
+    "name": "Old Town Bar & Restaurant",
+    "neighborhood": "Flatiron",
+    "borough": "Manhattan",
+    "address": "45 E 18th St, New York, NY 10003",
+    "lat": 40.737673,
+    "lng": -73.989668,
+    "signatureBowl": "Chili dog — Sabrett with chili, onions and cheddar",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.569,
+    "geocoded": true
+  },
+  {
+    "name": "PDT (Please Don't Tell)",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "113 St Marks Pl, New York, NY 10009",
+    "lat": 40.727408,
+    "lng": -73.984693,
+    "signatureBowl": "Hot dog with kimchi and lemongrass chili (speakeasy hidden inside Crif Dogs)",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.545,
+    "geocoded": true
+  },
+  {
+    "name": "Prontito",
+    "neighborhood": "Elmhurst",
+    "borough": "Queens",
+    "address": "40-25 Forley St, Elmhurst, NY 11373",
+    "lat": 40.747726,
+    "lng": -73.880758,
+    "signatureBowl": "Colombian-style dog with potato chips, bacon, cheese, pineapple sauce and quail egg",
+    "appearsOn": [
+      "Time Out New York"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.521,
+    "geocoded": true
+  },
+  {
+    "name": "Emmett's",
+    "neighborhood": "SoHo",
+    "borough": "Manhattan",
+    "address": "50 MacDougal St, New York, NY 10012",
+    "lat": 40.727474,
+    "lng": -74.002529,
+    "signatureBowl": "Chicago-style hot dog",
+    "appearsOn": [
+      "Secret NYC"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.498,
+    "geocoded": true
+  },
+  {
+    "name": "Kings of Kobe",
+    "neighborhood": "Hell's Kitchen",
+    "borough": "Manhattan",
+    "address": "650 W 42nd St, New York, NY 10036",
+    "lat": 40.761394,
+    "lng": -73.99984,
+    "signatureBowl": "Frydom Fighter; Banh Mine",
+    "appearsOn": [
+      "Secret NYC"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.474,
+    "geocoded": true
+  },
+  {
+    "name": "Papaya King",
+    "neighborhood": "Upper East Side",
+    "borough": "Manhattan",
+    "address": "1535 3rd Ave, New York, NY 10028",
+    "lat": 40.778993,
+    "lng": -73.953771,
+    "signatureBowl": "Specialty frankfurters with tropical-drink combos",
+    "appearsOn": [
+      "Secret NYC"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.45,
+    "geocoded": true
+  }
+]

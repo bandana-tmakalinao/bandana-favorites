@@ -1,0 +1,335 @@
+[
+  {
+    "name": "RedFarm",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "address": "529 Hudson St, New York, NY 10014",
+    "lat": 40.734224,
+    "lng": -74.006291,
+    "signatureBowl": "Crab & pork soup dumplings with saffron-and-leek skin (mushroom, yellow leeks)",
+    "appearsOn": [
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.95,
+    "geocoded": true
+  },
+  {
+    "name": "Shanghai You Garden (You Garden Xiao Long Bao)",
+    "neighborhood": "Flushing",
+    "borough": "Queens",
+    "address": "135-33 40th Rd, Flushing, NY 11354",
+    "lat": 40.75863,
+    "lng": -73.830992,
+    "signatureBowl": "XL crab & pork xiao long bao (oversized soup dumpling served with a straw)",
+    "appearsOn": [
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.926,
+    "geocoded": true
+  },
+  {
+    "name": "The Bao",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "13 St Marks Pl, New York, NY 10003",
+    "lat": 40.729274,
+    "lng": -73.9891,
+    "signatureBowl": "Pork xiao long bao in many varieties incl. spicy, salted egg yolk, and black truffle",
+    "appearsOn": [
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.902,
+    "geocoded": true
+  },
+  {
+    "name": "Dim Sum Go Go",
+    "neighborhood": "Chinatown",
+    "borough": "Manhattan",
+    "address": "5 East Broadway, New York, NY 10038",
+    "lat": 40.713394,
+    "lng": -73.997743,
+    "signatureBowl": "Soup dumplings (xiaolongbao); also pan-fried pork dumplings",
+    "appearsOn": [
+      "The MICHELIN Guide"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.879,
+    "geocoded": true
+  },
+  {
+    "name": "Little Alley",
+    "neighborhood": "Murray Hill",
+    "borough": "Manhattan",
+    "address": "550 3rd Ave, New York, NY 10016",
+    "lat": 40.747344,
+    "lng": -73.977027,
+    "signatureBowl": "Pork and crab soup dumplings (xiao long bao)",
+    "appearsOn": [
+      "The MICHELIN Guide"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.855,
+    "geocoded": true
+  },
+  {
+    "name": "456 Shanghai Cuisine",
+    "neighborhood": "Chinatown",
+    "borough": "Manhattan",
+    "address": "69 Mott St A, New York, NY 10013",
+    "lat": 40.71605,
+    "lng": -73.998315,
+    "signatureBowl": "Pork XLB at a budget price",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.831,
+    "geocoded": true
+  },
+  {
+    "name": "Antidote",
+    "neighborhood": "Williamsburg",
+    "borough": "Brooklyn",
+    "address": "66 S 2nd St, Brooklyn, NY 11249",
+    "lat": 40.714274,
+    "lng": -73.965306,
+    "signatureBowl": "Thick-skinned pork XLB with abundant broth",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.807,
+    "geocoded": true
+  },
+  {
+    "name": "Baodega",
+    "neighborhood": "Flatiron",
+    "borough": "Manhattan",
+    "address": "7 W 20th St, New York, NY 10011",
+    "lat": 40.739828,
+    "lng": -73.991165,
+    "signatureBowl": "Pork or pork-with-crab XLB (steamed or pan-fried); chicken; vegetarian",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.783,
+    "geocoded": true
+  },
+  {
+    "name": "CheLi",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "19 Saint Marks Place, New York, NY 10003",
+    "lat": 40.729123,
+    "lng": -73.98875,
+    "signatureBowl": "Traditional pork and pork-with-crab XLB",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.76,
+    "geocoded": true
+  },
+  {
+    "name": "DD Soup Dumpling",
+    "neighborhood": "Hell's Kitchen",
+    "borough": "Manhattan",
+    "address": "690 9th Ave, New York, NY 10036",
+    "lat": 40.761891,
+    "lng": -73.990023,
+    "signatureBowl": "Pork; pork-and-crab; loofah XLB",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.736,
+    "geocoded": true
+  },
+  {
+    "name": "Din Tai Fung",
+    "neighborhood": "Midtown / Times Square",
+    "borough": "Manhattan",
+    "address": "1633 Broadway, New York, NY 10019",
+    "lat": 40.76156,
+    "lng": -73.984044,
+    "signatureBowl": "Signature pork XLB; pork-and-crab, chicken, chocolate dessert XLB",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.712,
+    "geocoded": true
+  },
+  {
+    "name": "Dumpling Story",
+    "neighborhood": "Chinatown / Lower East Side",
+    "borough": "Manhattan",
+    "address": "250 Grand Street, New York, NY 10002",
+    "lat": 40.718301,
+    "lng": -73.994126,
+    "signatureBowl": "Six varieties: pork, pork-crab, spicy pork, chicken, truffle, garlic XLB",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.688,
+    "geocoded": true
+  },
+  {
+    "name": "Grandma's Home",
+    "neighborhood": "Flatiron",
+    "borough": "Manhattan",
+    "address": "56 West 22nd Street, New York, NY 10010",
+    "lat": 40.741588,
+    "lng": -73.99191,
+    "signatureBowl": "Elegant, smaller Hangzhou-style XLB",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.664,
+    "geocoded": true
+  },
+  {
+    "name": "Jiang Nan",
+    "neighborhood": "Flushing",
+    "borough": "Queens",
+    "address": "133-42 39th Ave, Flushing, NY 11354",
+    "lat": 40.759237,
+    "lng": -73.833555,
+    "signatureBowl": "Pork-and-crab XLB with generous crustacean",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.64,
+    "geocoded": true
+  },
+  {
+    "name": "Joe's Shanghai",
+    "neighborhood": "Chinatown",
+    "borough": "Manhattan",
+    "address": "46 Bowery, New York, NY 10013",
+    "lat": 40.715629,
+    "lng": -73.996517,
+    "signatureBowl": "Classic pork XLB (the original NYC Joe's location)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.617,
+    "geocoded": true
+  },
+  {
+    "name": "La Salle Dumpling Room",
+    "neighborhood": "Morningside Heights",
+    "borough": "Manhattan",
+    "address": "3141 Broadway, New York, NY 10027",
+    "lat": 40.813917,
+    "lng": -73.959664,
+    "signatureBowl": "Crab-bearing XLB (crab mixed throughout the filling)",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.593,
+    "geocoded": true
+  },
+  {
+    "name": "Mr Bun",
+    "neighborhood": "Bensonhurst",
+    "borough": "Brooklyn",
+    "address": "2048 86th St, Brooklyn, NY 11214",
+    "lat": 40.603861,
+    "lng": -73.997139,
+    "signatureBowl": "Oversized pork and pork-crab XLB",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.569,
+    "geocoded": true
+  },
+  {
+    "name": "Nan Xiang Express",
+    "neighborhood": "Williamsburg",
+    "borough": "Brooklyn",
+    "address": "167 Grand St, Brooklyn, NY 11249",
+    "lat": 40.714626,
+    "lng": -73.961441,
+    "signatureBowl": "Pork; pork-crab; chicken; beef XLB",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.545,
+    "geocoded": true
+  },
+  {
+    "name": "Nan Xiang Xiao Long Bao",
+    "neighborhood": "Flushing",
+    "borough": "Queens",
+    "address": "39-16 Prince St #104, Flushing, NY 11354",
+    "lat": 40.7595,
+    "lng": -73.832325,
+    "signatureBowl": "Classic pork; crab-and-pork; squash; shrimp-pork; scallop XLB",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.521,
+    "geocoded": true
+  },
+  {
+    "name": "Pinch Chinese",
+    "neighborhood": "SoHo",
+    "borough": "Manhattan",
+    "address": "177 Prince St, New York, NY 10012",
+    "lat": 40.726336,
+    "lng": -74.001898,
+    "signatureBowl": "Chicken soup dumplings; pork XLB with spicy sauce",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.498,
+    "geocoded": true
+  },
+  {
+    "name": "Shanghai Heping",
+    "neighborhood": "Chinatown",
+    "borough": "Manhattan",
+    "address": "104 Mott St, New York, NY 10013",
+    "lat": 40.717428,
+    "lng": -73.997299,
+    "signatureBowl": "Pork and pork-crab XLB with rich vinegar-ginger sauce",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.474,
+    "geocoded": true
+  },
+  {
+    "name": "Shanghai Zhen Gong Fu",
+    "neighborhood": "Elmhurst",
+    "borough": "Queens",
+    "address": "86-16 Queens Blvd, Elmhurst, NY 11373",
+    "lat": 40.736279,
+    "lng": -73.877458,
+    "signatureBowl": "Black truffle XLB; regular pork XLB",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.45,
+    "geocoded": true
+  }
+]
