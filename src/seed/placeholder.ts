@@ -385,8 +385,11 @@ export function computeAllRankings(store: StoreData): void {
 
 /** Recompute one subcategory's ranking state in place. Called after every duel/vote mutation. */
 export function recomputeSubcategory(store: StoreData, subcategoryId: string): void {
-  const cons = store.contenders.filter((c) => c.subcategoryId === subcategoryId);
-  const ids = cons.map((c) => c.id);
+  // Only rank live contenders; proposed (awaiting approval) / hidden ones stay out until approved.
+  const rankable = store.contenders.filter(
+    (c) => c.subcategoryId === subcategoryId && c.status !== "proposed" && c.status !== "hidden",
+  );
+  const ids = rankable.map((c) => c.id);
   const idSet = new Set(ids);
   const duels = store.comparisons
     .filter((c) => c.subcategoryId === subcategoryId && c.source === "duel")
@@ -395,7 +398,7 @@ export function recomputeSubcategory(store: StoreData, subcategoryId: string): v
     .filter((v) => idSet.has(v.contenderId))
     .map((v) => ({ contenderId: v.contenderId, rating: v.rating, weight: v.weight }));
   const results = rankSubcategory(ids, duels, votes);
-  for (const con of cons) {
+  for (const con of rankable) {
     const r = results.get(con.id);
     if (!r) continue;
     con.theta = r.theta;

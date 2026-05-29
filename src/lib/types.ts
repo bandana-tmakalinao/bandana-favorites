@@ -38,6 +38,8 @@ export interface Place {
   address: string;
   lat: number;
   lng: number;
+  corpusId?: string | null; // links to the NYC corpus entry (for dedupe on re-add)
+  status?: "active" | "proposed"; // proposed = user-suggested, awaiting curator approval
 }
 
 /** The ranked unit: a place's offering within a food subcategory ("Ichiran's ramen"). */
@@ -60,7 +62,7 @@ export interface Contender {
   distinctOpponents: number;
   score: number; // displayed 0–100 (shrunk toward the category prior)
   sortKey: number; // score − LCB penalty; what the list sorts by
-  status: "provisional" | "active" | "hidden";
+  status: "provisional" | "active" | "hidden" | "proposed"; // proposed = awaiting curator approval
 }
 
 export interface User {

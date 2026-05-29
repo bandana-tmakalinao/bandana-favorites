@@ -16,19 +16,24 @@ import type {
   CategoryWithSubs,
   ContenderDetail,
   DuelPair,
+  PlaceHit,
+  ProposedItem,
   RankedList,
   Repository,
   SearchHitContender,
   SearchResults,
   ShowcaseEntry,
 } from "./repo";
-import { saveStore } from "./store";
+import { type CorpusPlace, saveStore } from "./store";
 
 const slugify = (s: string) =>
   s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") || "taster";
 
 export class MemoryRepository implements Repository {
-  constructor(private store: StoreData) {}
+  constructor(
+    private store: StoreData,
+    private corpus: CorpusPlace[] = [],
+  ) {}
 
   private persist() {
     try {
@@ -111,7 +116,7 @@ export class MemoryRepository implements Repository {
 
     const cons = this.store.contenders.filter((c) => c.subcategoryId === subcategory.id);
     const active = cons.filter((c) => c.status === "active").sort((a, b) => b.sortKey - a.sortKey);
-    const provisional = cons.filter((c) => c.status !== "active").sort((a, b) => b.score - a.score);
+    const provisional = cons.filter((c) => c.status === "provisional").sort((a, b) => b.score - a.score);
 
     return {
       region,
@@ -181,6 +186,7 @@ export class MemoryRepository implements Repository {
       }));
 
     const matches = this.store.contenders.filter((c) => {
+      if (c.status === "proposed" || c.status === "hidden") return false;
       if (c.title.toLowerCase().includes(q)) return true;
       const pl = this.place(c.placeId);
       return !!pl && (pl.name.toLowerCase().includes(q) || pl.neighborhood.toLowerCase().includes(q));
@@ -347,5 +353,142 @@ export class MemoryRepository implements Repository {
       votes: this.store.votes.length,
       subcategories: this.store.subcategories.length,
     };
+  }
+
+  // --- add-a-place flow ----------------------------------------------------------
+  private subBySlug(slug: string): Subcategory | undefined {
+    return this.store.subcategories.find((s) => s.slug === slug);
+  }
+
+  searchPlaces(query: string, subSlug: string, limit = 8): PlaceHit[] {
+    const q = query.trim().toLowerCase();
+    if (!q) return [];
+    const subId = this.subBySlug(subSlug)?.id;
+    const liveContender = (placeId: string) =>
+      subId
+        ? (this.store.contenders.find(
+            (c) => c.placeId === placeId && c.subcategoryId === subId && c.status !== "hidden",
+          )?.id ?? null)
+        : null;
+
+    type Hit = PlaceHit & { catMatch: boolean };
+    const hits: Hit[] = [];
+    for (const p of this.store.places) {
+      if (p.status === "proposed" || !p.name.toLowerCase().includes(q)) continue;
+      hits.push({
+        id: p.id, name: p.name, address: p.address, borough: p.borough,
+        source: "place", existingContenderId: liveContender(p.id), catMatch: true,
+      });
+    }
+    const usedCorpus = new Set(this.store.places.map((p) => p.corpusId).filter(Boolean) as string[]);
+    for (const cp of this.corpus) {
+      if (usedCorpus.has(cp.id) || !cp.name.toLowerCase().includes(q)) continue;
+      hits.push({
+        id: cp.id, name: cp.name, address: cp.address, borough: cp.borough,
+        source: "corpus", existingContenderId: null, catMatch: subSlug ? cp.cats.includes(subSlug) : true,
+      });
+      if (hits.length > limit * 10) break;
+    }
+    hits.sort((a, b) => {
+      if (a.catMatch !== b.catMatch) return a.catMatch ? -1 : 1;
+      const aS = a.name.toLowerCase().startsWith(q) ? 1 : 0;
+      const bS = b.name.toLowerCase().startsWith(q) ? 1 : 0;
+      return bS - aS || a.name.localeCompare(b.name);
+    });
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    return hits.slice(0, limit).map(({ catMatch, ...h }) => h);
+  }
+
+  addContenderAtPlace(userId: string, placeId: string, subSlug: string) {
+    const sub = this.subBySlug(subSlug);
+    if (!sub) return { ok: false, error: "Unknown food type." };
+    if (!this.getUser(userId)) return { ok: false, error: "Sign in first." };
+    const region = this.store.regions[0];
+
+    let place = this.place(placeId);
+    if (!place && placeId.startsWith("corpus_")) {
+      place = this.store.places.find((p) => p.corpusId === placeId);
+      if (!place) {
+        const cp = this.corpus.find((c) => c.id === placeId);
+        if (!cp) return { ok: false, error: "Place not found." };
+        place = {
+          id: crypto.randomUUID(), name: cp.name, neighborhood: cp.borough, borough: cp.borough,
+          address: cp.address, lat: cp.lat, lng: cp.lng, corpusId: cp.id, status: "active",
+        };
+        this.store.places.push(place);
+      }
+    }
+    if (!place) return { ok: false, error: "Place not found." };
+
+    const existing = this.store.contenders.find(
+      (c) => c.placeId === place!.id && c.subcategoryId === sub.id && c.status !== "hidden",
+    );
+    if (existing) {
+      this.persist();
+      return { ok: true, contenderId: existing.id };
+    }
+    const con: Contender = {
+      id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
+      title: sub.name, dishVariantId: null, seedSources: [], createdBy: userId,
+      createdAt: new Date().toISOString(), theta: 0, rd: 350, weightedVotes: 0,
+      comparisonCount: 0, distinctOpponents: 0, score: 50, sortKey: 0, status: "provisional",
+    };
+    this.store.contenders.push(con);
+    recomputeSubcategory(this.store, sub.id);
+    this.persist();
+    return { ok: true, contenderId: con.id };
+  }
+
+  suggestPlace(userId: string, input: { name: string; address: string; borough?: string; subSlug: string }) {
+    const sub = this.subBySlug(input.subSlug);
+    if (!sub) return { ok: false, error: "Unknown food type." };
+    if (!this.getUser(userId)) return { ok: false, error: "Sign in first." };
+    if (!input.name?.trim() || !input.address?.trim()) return { ok: false, error: "Name and address are required." };
+    const region = this.store.regions[0];
+    const place: Place = {
+      id: crypto.randomUUID(), name: input.name.trim(), neighborhood: input.borough ?? "",
+      borough: input.borough ?? "", address: input.address.trim(),
+      lat: region.center.lat, lng: region.center.lng, corpusId: null, status: "proposed",
+    };
+    this.store.places.push(place);
+    this.store.contenders.push({
+      id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
+      title: sub.name, dishVariantId: null, seedSources: [], createdBy: userId,
+      createdAt: new Date().toISOString(), theta: 0, rd: 350, weightedVotes: 0,
+      comparisonCount: 0, distinctOpponents: 0, score: 50, sortKey: 0, status: "proposed",
+    });
+    this.persist();
+    return { ok: true };
+  }
+
+  listProposed(): ProposedItem[] {
+    return this.store.contenders
+      .filter((c) => c.status === "proposed")
+      .map((c) => {
+        const sub = this.subById(c.subcategoryId);
+        const pl = this.place(c.placeId);
+        return {
+          contenderId: c.id, title: c.title, placeName: pl?.name ?? "?", address: pl?.address ?? "",
+          borough: pl?.borough ?? "", subSlug: sub?.slug ?? "", subName: sub?.name ?? "", proposedBy: c.createdBy,
+        };
+      });
+  }
+
+  reviewProposed(contenderId: string, approve: boolean) {
+    const con = this.store.contenders.find((c) => c.id === contenderId && c.status === "proposed");
+    if (!con) return { ok: false };
+    const place = this.place(con.placeId);
+    if (approve) {
+      con.status = "provisional";
+      if (place && place.status === "proposed") place.status = "active";
+      recomputeSubcategory(this.store, con.subcategoryId);
+    } else {
+      this.store.contenders = this.store.contenders.filter((c) => c.id !== contenderId);
+      if (place && place.status === "proposed" && !this.store.contenders.some((c) => c.placeId === place.id)) {
+        this.store.places = this.store.places.filter((p) => p.id !== place.id);
+      }
+    }
+    this.persist();
+    return { ok: true };
   }
 }

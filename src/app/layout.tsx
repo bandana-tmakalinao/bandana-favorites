@@ -39,6 +39,9 @@ export default function RootLayout({
                 <Link href="/duel" className="hover:text-[var(--color-ink)]">
                   Duel
                 </Link>
+                <Link href="/review" className="hidden hover:text-[var(--color-ink)] sm:inline">
+                  Review
+                </Link>
                 <Link href="/me" className="hover:text-[var(--color-ink)]">
                   Sign in
                 </Link>

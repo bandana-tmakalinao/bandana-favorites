@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getRepo } from "@/db/repo";
+import { getCurrentUser } from "@/lib/auth";
 import BrowseView from "@/components/BrowseView";
+import AddPlace from "@/components/AddPlace";
 
 export const dynamic = "force-dynamic";
 
@@ -17,6 +19,7 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
   const list = getRepo().getRankedList(sub);
   if (!list) notFound();
 
+  const user = await getCurrentUser();
   const { subcategory, category, region, ranked, contenders } = list;
 
   return (
@@ -51,6 +54,8 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
       <div className="mt-6">
         <BrowseView ranked={ranked} provisional={contenders} center={region.center} />
       </div>
+
+      <AddPlace subSlug={subcategory.slug} subName={subcategory.name} signedIn={!!user} />
     </div>
   );
 }

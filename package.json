@@ -2,7 +2,7 @@
   "name": "bandana-favorites",
   "version": "0.1.0",
   "private": true,
-  "description": "Bandana Favorites — crowd-ranked best-of-NYC by food type (the food is the title, the place is the subtitle).",
+  "description": "Bandana Favorites \u2014 crowd-ranked best-of-NYC by food type (the food is the title, the place is the subtitle).",
   "engines": {
     "node": ">=20"
   },
@@ -16,7 +16,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:push": "drizzle-kit push",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "corpus": "python3 scripts/ingest_corpus.py"
   },
   "dependencies": {
     "drizzle-orm": "^0.38.3",

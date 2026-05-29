@@ -12,7 +12,7 @@ import type {
 } from "@/lib/types";
 import { generateSeed } from "@/seed/placeholder";
 import { MemoryRepository } from "./memory";
-import { loadStore, saveStore } from "./store";
+import { type CorpusPlace, loadCorpus, loadStore, saveStore } from "./store";
 
 export type { CategoryWithSubs, RankedList };
 
@@ -51,6 +51,26 @@ export interface SearchResults {
   contenders: SearchHitContender[];
 }
 
+export interface PlaceHit {
+  id: string; // corpus id (corpus_*) or an existing place id
+  name: string;
+  address: string;
+  borough: string;
+  source: "corpus" | "place";
+  existingContenderId: string | null; // a live contender for (this place × subcategory), if any
+}
+
+export interface ProposedItem {
+  contenderId: string;
+  title: string;
+  placeName: string;
+  address: string;
+  borough: string;
+  subSlug: string;
+  subName: string;
+  proposedBy: string | null;
+}
+
 /**
  * The data-access seam. `MemoryRepository` (in-memory + .data/store.json) is the local-dev default;
  * a Postgres/Drizzle implementation slots in here when DATABASE_URL is configured.
@@ -71,11 +91,29 @@ export interface Repository {
   getOrCreateUser(name: string): User;
   getUser(id: string): User | null;
   stats(): { contenders: number; comparisons: number; votes: number; subcategories: number };
+
+  // --- add-a-place flow ---
+  /** Autocomplete real NYC places (corpus + existing) for adding under a food type. */
+  searchPlaces(query: string, subSlug: string, limit?: number): PlaceHit[];
+  /** Add (or find) the contender for a real place × food type; returns its id to go rate/duel. */
+  addContenderAtPlace(
+    userId: string,
+    placeId: string,
+    subSlug: string,
+  ): { ok: boolean; contenderId?: string; error?: string };
+  /** Suggest a place not in the corpus — created as `proposed`, pending curator approval. */
+  suggestPlace(
+    userId: string,
+    input: { name: string; address: string; borough?: string; subSlug: string },
+  ): { ok: boolean; error?: string };
+  /** Curator review queue. */
+  listProposed(): ProposedItem[];
+  reviewProposed(contenderId: string, approve: boolean): { ok: boolean };
 }
 
-// The store DATA is cached on globalThis (survives Next.js dev HMR reloads); the repository wrapper
-// is rebuilt each call so code edits to MemoryRepository hot-reload cleanly.
-const g = globalThis as unknown as { __bfStore?: StoreData };
+// The store DATA + corpus are cached on globalThis (survive Next.js dev HMR reloads); the repository
+// wrapper is rebuilt each call so code edits to MemoryRepository hot-reload cleanly.
+const g = globalThis as unknown as { __bfStore?: StoreData; __bfCorpus?: CorpusPlace[] };
 
 export function getRepo(): Repository {
   if (process.env.DATABASE_URL) {
@@ -92,5 +130,6 @@ export function getRepo(): Repository {
       return s;
     })();
   }
-  return new MemoryRepository(g.__bfStore);
+  if (!g.__bfCorpus) g.__bfCorpus = loadCorpus();
+  return new MemoryRepository(g.__bfStore, g.__bfCorpus);
 }
