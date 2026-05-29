@@ -1,0 +1,61 @@
+import type { ConfidenceTier } from "@/lib/config";
+
+const TIER: Record<ConfidenceTier, { label: string; dot: string; text: string }> = {
+  established: { label: "Established", dot: "bg-[var(--color-good)]", text: "text-[var(--color-good)]" },
+  rising: { label: "Rising", dot: "bg-[var(--color-gold)]", text: "text-[var(--color-gold)]" },
+  provisional: { label: "Provisional", dot: "bg-[var(--color-ink-dim)]", text: "text-[var(--color-ink-dim)]" },
+};
+
+export function ConfidenceDot({ tier, withLabel = false }: { tier: ConfidenceTier; withLabel?: boolean }) {
+  const t = TIER[tier];
+  return (
+    <span className="inline-flex items-center gap-1.5">
+      <span className={`h-2 w-2 rounded-full ${t.dot}`} aria-hidden />
+      {withLabel && <span className={`text-xs ${t.text}`}>{t.label}</span>}
+    </span>
+  );
+}
+
+export function tierLabel(tier: ConfidenceTier): string {
+  return TIER[tier].label;
+}
+
+function scoreColor(score: number): string {
+  if (score >= 75) return "text-[var(--color-good)] border-[var(--color-good)]/40";
+  if (score >= 60) return "text-[var(--color-gold)] border-[var(--color-gold)]/40";
+  return "text-[var(--color-ink-dim)] border-[var(--color-border)]";
+}
+
+export function ScoreBadge({ score, size = "md" }: { score: number; size?: "sm" | "md" | "lg" }) {
+  const pad = size === "lg" ? "h-14 w-14 text-2xl" : size === "sm" ? "h-9 w-9 text-sm" : "h-11 w-11 text-lg";
+  return (
+    <span
+      className={`grid ${pad} shrink-0 place-items-center rounded-xl border bg-[var(--color-surface-2)] font-black tabular-nums ${scoreColor(score)}`}
+      title="Trust-weighted, shrinkage-adjusted score (0–100)"
+    >
+      {Math.round(score)}
+    </span>
+  );
+}
+
+/** Tiny CSS food-toned placeholder so rows never show a broken image while a photo loads/fails. */
+export function PhotoThumb({
+  url,
+  alt,
+  className = "",
+}: {
+  url: string | null;
+  alt: string;
+  className?: string;
+}) {
+  return (
+    <span
+      className={`relative block overflow-hidden rounded-lg bg-gradient-to-br from-[var(--color-surface-2)] to-[#2a1f1c] ${className}`}
+    >
+      {url && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={url} alt={alt} loading="lazy" className="h-full w-full object-cover" />
+      )}
+    </span>
+  );
+}
