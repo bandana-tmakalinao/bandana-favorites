@@ -79,6 +79,8 @@ export interface Repository {
   getRegion(slug: string): Region | null;
   listCategories(): CategoryWithSubs[];
   getRankedList(subSlug: string): RankedList | null;
+  /** A single user's own ranking for a food type, from their ratings + duels (score = their score). */
+  getPersonalRankedList(userId: string, subSlug: string): ContenderView[];
   getContenderDetail(id: string): ContenderDetail | null;
   getHomeShowcase(perCategory?: number): ShowcaseEntry[];
   search(query: string, limit?: number): SearchResults;

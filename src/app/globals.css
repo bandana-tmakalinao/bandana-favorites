@@ -64,3 +64,35 @@ a {
 .bf-fade {
   animation: bf-fade 0.35s ease;
 }
+
+/* Clean rating slider (track fill is set inline by value) */
+.bf-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 9999px;
+  background: var(--color-surface-2);
+  outline: none;
+  cursor: pointer;
+}
+.bf-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: var(--color-brand);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+.bf-range::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 9999px;
+  background: var(--color-brand);
+  border: 3px solid #fff;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}

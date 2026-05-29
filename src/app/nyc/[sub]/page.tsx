@@ -20,6 +20,7 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
   if (!list) notFound();
 
   const user = await getCurrentUser();
+  const personal = user ? getRepo().getPersonalRankedList(user.id, sub) : [];
   const { subcategory, category, region, ranked, contenders } = list;
 
   return (
@@ -52,7 +53,14 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
       </div>
 
       <div className="mt-6">
-        <BrowseView ranked={ranked} provisional={contenders} center={region.center} />
+        <BrowseView
+          ranked={ranked}
+          provisional={contenders}
+          center={region.center}
+          personal={personal}
+          signedIn={!!user}
+          subName={subcategory.name}
+        />
       </div>
 
       <AddPlace subSlug={subcategory.slug} subName={subcategory.name} signedIn={!!user} />

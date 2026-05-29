@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { btn } from "./bits";
 
 export default function SignInForm({
   signedInName,
@@ -49,11 +50,7 @@ export default function SignInForm({
         <span>
           Signed in as <strong>{signedInName}</strong>
         </span>
-        <button
-          onClick={signOut}
-          disabled={busy}
-          className="rounded-lg border border-[var(--color-border)] px-3 py-1.5 text-sm transition hover:border-[var(--color-ink-dim)] disabled:opacity-50"
-        >
+        <button onClick={signOut} disabled={busy} className={btn("secondary")}>
           Sign out
         </button>
       </div>
@@ -73,11 +70,7 @@ export default function SignInForm({
           placeholder="e.g. Tim"
           className="flex-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2 outline-none focus:border-[var(--color-brand)]"
         />
-        <button
-          type="submit"
-          disabled={busy}
-          className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)] disabled:opacity-50"
-        >
+        <button type="submit" disabled={busy} className={btn("primary")}>
           Sign in
         </button>
       </div>

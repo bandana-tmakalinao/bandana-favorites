@@ -127,6 +127,44 @@ export class MemoryRepository implements Repository {
     };
   }
 
+  getPersonalRankedList(userId: string, subSlug: string): ContenderView[] {
+    const sub = this.store.subcategories.find((s) => s.slug === subSlug);
+    if (!sub) return [];
+    const subCons = this.store.contenders.filter(
+      (c) => c.subcategoryId === sub.id && c.status !== "proposed" && c.status !== "hidden",
+    );
+    const ids = new Set(subCons.map((c) => c.id));
+
+    const myRating = new Map<string, number>();
+    for (const v of this.store.votes) {
+      if (v.userId === userId && ids.has(v.contenderId)) myRating.set(v.contenderId, v.rating);
+    }
+    const wins = new Map<string, number>();
+    const losses = new Map<string, number>();
+    for (const cmp of this.store.comparisons) {
+      if (cmp.userId !== userId || cmp.subcategoryId !== sub.id) continue;
+      wins.set(cmp.winnerId, (wins.get(cmp.winnerId) ?? 0) + 1);
+      losses.set(cmp.loserId, (losses.get(cmp.loserId) ?? 0) + 1);
+    }
+
+    const scored: Array<{ con: Contender; score: number; rated: boolean }> = [];
+    for (const con of subCons) {
+      const w = wins.get(con.id) ?? 0;
+      const l = losses.get(con.id) ?? 0;
+      if (myRating.has(con.id)) {
+        scored.push({ con, score: myRating.get(con.id)!, rated: true });
+      } else if (w + l > 0) {
+        scored.push({ con, score: Math.round((w / (w + l)) * 100), rated: false });
+      }
+    }
+    scored.sort((a, b) => b.score - a.score);
+    return scored.map((s, i) => ({
+      ...this.toView(s.con, i + 1),
+      score: s.score,
+      tier: s.rated ? "established" : "rising",
+    }));
+  }
+
   getContenderDetail(id: string): ContenderDetail | null {
     const con = this.store.contenders.find((c) => c.id === id);
     if (!con) return null;

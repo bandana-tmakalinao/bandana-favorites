@@ -1,5 +1,15 @@
 import type { ConfidenceTier } from "@/lib/config";
 
+/** Consistent button classes for both <button> and <Link>. */
+export function btn(variant: "primary" | "secondary" | "ghost" = "primary"): string {
+  const base =
+    "inline-flex items-center justify-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed";
+  if (variant === "secondary")
+    return `${base} border border-[var(--color-border)] bg-[var(--color-surface)] hover:border-[var(--color-ink-dim)]`;
+  if (variant === "ghost") return `${base} text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]`;
+  return `${base} bg-[var(--color-brand)] text-white hover:bg-[var(--color-brand-soft)]`;
+}
+
 const TIER: Record<ConfidenceTier, { label: string; dot: string; text: string }> = {
   established: { label: "Established", dot: "bg-[var(--color-good)]", text: "text-[var(--color-good)]" },
   rising: { label: "Rising", dot: "bg-[var(--color-gold)]", text: "text-[#b57e12]" },
