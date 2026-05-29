@@ -40,6 +40,17 @@ export interface ShowcaseEntry {
   items: ContenderView[]; // top N ranked contenders
 }
 
+export interface SearchHitContender extends ContenderView {
+  subSlug: string;
+  subName: string;
+}
+
+export interface SearchResults {
+  query: string;
+  subcategories: Array<{ slug: string; name: string; emoji: string; categoryName: string; contenderCount: number }>;
+  contenders: SearchHitContender[];
+}
+
 /**
  * The data-access seam. `MemoryRepository` (in-memory + .data/store.json) is the local-dev default;
  * a Postgres/Drizzle implementation slots in here when DATABASE_URL is configured.
@@ -50,6 +61,7 @@ export interface Repository {
   getRankedList(subSlug: string): RankedList | null;
   getContenderDetail(id: string): ContenderDetail | null;
   getHomeShowcase(perCategory?: number): ShowcaseEntry[];
+  search(query: string, limit?: number): SearchResults;
   getDuelPair(subSlug?: string): DuelPair | null;
   recordDuel(userId: string, winnerId: string, loserId: string): { ok: boolean; error?: string };
   recordVote(userId: string, contenderId: string, value: 1 | -1): { ok: boolean; error?: string };

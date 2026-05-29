@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import "./globals.css";
+import SearchBar from "@/components/SearchBar";
 
 export const metadata: Metadata = {
   title: "Bandana Favorites — the best food in NYC, ranked by the food",
@@ -28,7 +29,10 @@ export default function RootLayout({
               <span className="ml-1 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs text-[var(--color-ink-dim)]">
                 NYC
               </span>
-              <div className="ml-auto flex items-center gap-4 text-sm text-[var(--color-ink-dim)]">
+              <div className="mx-2 hidden flex-1 justify-center sm:flex">
+                <SearchBar variant="header" />
+              </div>
+              <div className="ml-auto flex items-center gap-4 text-sm text-[var(--color-ink-dim)] sm:ml-0">
                 <Link href="/duel" className="hover:text-[var(--color-ink)]">
                   Duel
                 </Link>

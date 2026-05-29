@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getRepo } from "@/db/repo";
 import RotatingTopList from "@/components/RotatingTopList";
 import TopTenPanel from "@/components/TopTenPanel";
+import SearchBar from "@/components/SearchBar";
 
 export const dynamic = "force-dynamic";
 
@@ -30,7 +31,10 @@ export default function Home() {
           headline; the place is the subtitle. Ranked by head-to-head comparisons and earned trust —
           never mass voting.
         </p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-6">
+          <SearchBar variant="hero" />
+        </div>
+        <div className="mt-6 flex flex-wrap gap-3">
           <Link
             href="/nyc"
             className="rounded-lg bg-[var(--color-brand)] px-5 py-3 font-semibold text-black transition hover:bg-[var(--color-brand-soft)]"

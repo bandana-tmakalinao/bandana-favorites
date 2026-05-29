@@ -18,6 +18,8 @@ import type {
   DuelPair,
   RankedList,
   Repository,
+  SearchHitContender,
+  SearchResults,
   ShowcaseEntry,
 } from "./repo";
 import { saveStore } from "./store";
@@ -161,6 +163,40 @@ export class MemoryRepository implements Repository {
     }
     // Most-populated (most-dueled) food types first, so the rotation leads with the liveliest lists.
     return out.sort((a, b) => b.items.length - a.items.length);
+  }
+
+  search(query: string, limit = 8): SearchResults {
+    const q = query.trim().toLowerCase();
+    if (!q) return { query, subcategories: [], contenders: [] };
+
+    const subcategories = this.store.subcategories
+      .filter((s) => s.name.toLowerCase().includes(q) || s.slug.replace(/-/g, " ").includes(q))
+      .slice(0, 6)
+      .map((s) => ({
+        slug: s.slug,
+        name: s.name,
+        emoji: s.emoji,
+        categoryName: this.catById(s.categoryId)?.name ?? "",
+        contenderCount: this.store.contenders.filter((c) => c.subcategoryId === s.id).length,
+      }));
+
+    const matches = this.store.contenders.filter((c) => {
+      if (c.title.toLowerCase().includes(q)) return true;
+      const pl = this.place(c.placeId);
+      return !!pl && (pl.name.toLowerCase().includes(q) || pl.neighborhood.toLowerCase().includes(q));
+    });
+    // Prefer place-name matches, then higher score.
+    matches.sort((a, b) => {
+      const an = this.place(a.placeId)?.name.toLowerCase().startsWith(q) ? 1 : 0;
+      const bn = this.place(b.placeId)?.name.toLowerCase().startsWith(q) ? 1 : 0;
+      return bn - an || b.score - a.score;
+    });
+    const contenders: SearchHitContender[] = matches.slice(0, limit).map((c) => {
+      const sub = this.subById(c.subcategoryId);
+      return { ...this.toView(c, null), subSlug: sub?.slug ?? "", subName: sub?.name ?? "" };
+    });
+
+    return { query, subcategories, contenders };
   }
 
   getDuelPair(subSlug?: string): DuelPair | null {
