@@ -1,0 +1,118 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getRepo } from "@/db/repo";
+import { getCurrentUser } from "@/lib/auth";
+import { Avatar, ScoreBadge, btn } from "@/components/bits";
+
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
+  const { handle } = await params;
+  return { title: `@${handle} · Bandana Favorites` };
+}
+
+export default async function ProfilePage({ params }: { params: Promise<{ handle: string }> }) {
+  const { handle } = await params;
+  const profile = getRepo().getProfile(handle);
+  if (!profile) notFound();
+  const me = await getCurrentUser();
+  const isYou = me?.handle === handle;
+
+  return (
+    <div className="mx-auto max-w-3xl px-4 py-8">
+      <div className="flex items-start gap-4">
+        <Avatar url={profile.avatarUrl} name={profile.name} size={72} />
+        <div className="min-w-0 flex-1">
+          <h1 className="text-2xl font-black tracking-tight">{profile.name}</h1>
+          <p className="text-sm text-[var(--color-ink-dim)]">
+            @{profile.handle} · trust {profile.trustScore.toFixed(2)} · {profile.ratedCount} rated
+          </p>
+          {profile.bio && <p className="mt-2 text-[var(--color-ink)]">{profile.bio}</p>}
+        </div>
+        {isYou && (
+          <Link href="/me" className={btn("secondary")}>
+            Edit
+          </Link>
+        )}
+      </div>
+
+      <section className="mt-8">
+        <h2 className="mb-3 text-lg font-black">
+          🏔️ The Pinnacle{" "}
+          <span className="text-sm font-medium text-[var(--color-ink-dim)]">· all-time NYC favorites</span>
+        </h2>
+        {profile.pinnacle.length > 0 ? (
+          <ol className="space-y-2">
+            {profile.pinnacle.map((p, i) => (
+              <li key={p.id}>
+                <Link
+                  href={`/c/${p.id}`}
+                  className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-ink-dim)]"
+                >
+                  <span className="w-6 text-center text-lg font-black tabular-nums text-[var(--color-brand)]">
+                    {i + 1}
+                  </span>
+                  <span className="text-xl">{p.emoji}</span>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate font-semibold">{p.title}</span>
+                    <span className="block truncate text-sm text-[var(--color-ink-dim)]">
+                      {p.placeName} · {p.subName}
+                    </span>
+                  </span>
+                  <ScoreBadge score={p.score} size="sm" />
+                </Link>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <p className="text-[var(--color-ink-dim)]">
+            No favorites pinned yet.{isYou && " Open any dish and tap “Add to favorites.”"}
+          </p>
+        )}
+      </section>
+
+      {profile.showcase.map((s) => (
+        <section key={s.subSlug} className="mt-8">
+          <h2 className="mb-2 flex items-center justify-between text-lg font-black">
+            <span>
+              {s.emoji} {s.subName}
+            </span>
+            <Link href={`/nyc/${s.subSlug}`} className="text-sm font-medium text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]">
+              see all →
+            </Link>
+          </h2>
+          {s.items.length > 0 ? (
+            <div className="space-y-2">
+              {s.items.map((v) => (
+                <Link
+                  key={v.id}
+                  href={`/c/${v.id}`}
+                  className="flex items-center gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 transition hover:border-[var(--color-ink-dim)]"
+                >
+                  <span className="w-5 text-center text-sm font-bold text-[var(--color-ink-dim)]">{v.rank}</span>
+                  <span className="min-w-0 flex-1 truncate text-sm">
+                    <span className="font-medium">{v.title}</span>{" "}
+                    <span className="text-[var(--color-ink-dim)]">· {v.placeName}</span>
+                  </span>
+                  <ScoreBadge score={v.score} size="sm" />
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <p className="text-sm text-[var(--color-ink-dim)]">Nothing rated here yet.</p>
+          )}
+        </section>
+      ))}
+
+      {profile.showcase.length === 0 && isYou && (
+        <p className="mt-8 text-sm text-[var(--color-ink-dim)]">
+          Pick categories to showcase in your{" "}
+          <Link href="/me" className="font-semibold text-[var(--color-brand)] hover:underline">
+            profile settings
+          </Link>
+          .
+        </p>
+      )}
+    </div>
+  );
+}

@@ -71,6 +71,23 @@ export interface ProposedItem {
   proposedBy: string | null;
 }
 
+export interface PinnacleItem extends ContenderView {
+  subSlug: string;
+  subName: string;
+  emoji: string;
+}
+
+export interface ProfileView {
+  handle: string;
+  name: string;
+  bio: string;
+  avatarUrl: string | null;
+  trustScore: number;
+  ratedCount: number;
+  pinnacle: PinnacleItem[]; // ordered, all-time favorites (cross-category)
+  showcase: Array<{ subSlug: string; subName: string; emoji: string; items: ContenderView[] }>;
+}
+
 /**
  * The data-access seam. `MemoryRepository` (in-memory + .data/store.json) is the local-dev default;
  * a Postgres/Drizzle implementation slots in here when DATABASE_URL is configured.
@@ -111,6 +128,17 @@ export interface Repository {
   /** Curator review queue. */
   listProposed(): ProposedItem[];
   reviewProposed(contenderId: string, approve: boolean): { ok: boolean };
+
+  // --- profiles + pinnacle ---
+  getProfile(handle: string): ProfileView | null;
+  updateProfile(userId: string, patch: { name?: string; bio?: string; showcase?: string[] }): { ok: boolean };
+  setAvatar(userId: string, url: string): { ok: boolean };
+  /** Manage the user's all-time-favorites list (add/remove/reorder). */
+  pinnacleAction(
+    userId: string,
+    contenderId: string,
+    action: "add" | "remove" | "up" | "down",
+  ): { ok: boolean; error?: string };
 }
 
 // The store DATA + corpus are cached on globalThis (survive Next.js dev HMR reloads); the repository

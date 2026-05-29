@@ -48,6 +48,30 @@ export function ScoreBadge({ score, size = "md" }: { score: number; size?: "sm" 
   );
 }
 
+/** Round avatar — the user's photo, or a coral monogram fallback. */
+export function Avatar({ url, name, size = 44 }: { url: string | null; name: string; size?: number }) {
+  const initial = (name || "?").trim().charAt(0).toUpperCase() || "?";
+  if (url) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={url}
+        alt={name}
+        className="shrink-0 rounded-full object-cover"
+        style={{ width: size, height: size }}
+      />
+    );
+  }
+  return (
+    <span
+      className="grid shrink-0 place-items-center rounded-full bg-[var(--color-brand)] font-black text-white"
+      style={{ width: size, height: size, fontSize: Math.round(size * 0.42) }}
+    >
+      {initial}
+    </span>
+  );
+}
+
 /** Renders a photo when there is one, and NOTHING when there isn't (no empty placeholder blocks). */
 export function PhotoThumb({
   url,

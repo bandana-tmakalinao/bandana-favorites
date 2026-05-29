@@ -5,6 +5,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { ConfidenceDot, PhotoThumb, ScoreBadge, tierLabel } from "@/components/bits";
 import RatingControl from "@/components/RatingControl";
 import PhotoUpload from "@/components/PhotoUpload";
+import PinButton from "@/components/PinButton";
 
 export const dynamic = "force-dynamic";
 
@@ -74,6 +75,7 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
           >
             ⚔️ Duel this vs others
           </Link>
+          <PinButton contenderId={c.id} signedIn={!!user} initialPinned={(user?.pinnacle ?? []).includes(c.id)} />
           <PhotoUpload contenderId={c.id} signedIn={!!user} />
         </div>
       </div>

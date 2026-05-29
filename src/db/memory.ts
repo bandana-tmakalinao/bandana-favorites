@@ -16,7 +16,9 @@ import type {
   CategoryWithSubs,
   ContenderDetail,
   DuelPair,
+  PinnacleItem,
   PlaceHit,
+  ProfileView,
   ProposedItem,
   RankedList,
   Repository,
@@ -526,6 +528,88 @@ export class MemoryRepository implements Repository {
         this.store.places = this.store.places.filter((p) => p.id !== place.id);
       }
     }
+    this.persist();
+    return { ok: true };
+  }
+
+  // --- profiles + pinnacle -------------------------------------------------------
+  getProfile(handle: string): ProfileView | null {
+    const user = this.store.users.find((u) => u.handle === handle);
+    if (!user) return null;
+
+    const pinnacle: PinnacleItem[] = [];
+    for (const cid of user.pinnacle ?? []) {
+      const con = this.store.contenders.find((c) => c.id === cid && c.status !== "hidden");
+      if (!con) continue;
+      const sub = this.subById(con.subcategoryId);
+      pinnacle.push({
+        ...this.toView(con, null),
+        subSlug: sub?.slug ?? "",
+        subName: sub?.name ?? "",
+        emoji: sub?.emoji ?? "",
+      });
+    }
+
+    const showcase = (user.showcase ?? [])
+      .map((slug) => {
+        const sub = this.store.subcategories.find((s) => s.slug === slug);
+        if (!sub) return null;
+        return { subSlug: slug, subName: sub.name, emoji: sub.emoji, items: this.getPersonalRankedList(user.id, slug).slice(0, 8) };
+      })
+      .filter(Boolean) as ProfileView["showcase"];
+
+    return {
+      handle: user.handle,
+      name: user.name,
+      bio: user.bio ?? "",
+      avatarUrl: user.avatarUrl ?? null,
+      trustScore: user.trustScore,
+      ratedCount: user.ratedCount,
+      pinnacle,
+      showcase,
+    };
+  }
+
+  updateProfile(userId: string, patch: { name?: string; bio?: string; showcase?: string[] }): { ok: boolean } {
+    const user = this.getUser(userId);
+    if (!user) return { ok: false };
+    if (typeof patch.name === "string" && patch.name.trim()) user.name = patch.name.trim().slice(0, 60);
+    if (typeof patch.bio === "string") user.bio = patch.bio.slice(0, 280);
+    if (Array.isArray(patch.showcase)) {
+      const valid = new Set(this.store.subcategories.map((s) => s.slug));
+      user.showcase = patch.showcase.filter((s) => valid.has(s)).slice(0, 8);
+    }
+    this.persist();
+    return { ok: true };
+  }
+
+  setAvatar(userId: string, url: string): { ok: boolean } {
+    const user = this.getUser(userId);
+    if (!user) return { ok: false };
+    user.avatarUrl = url;
+    this.persist();
+    return { ok: true };
+  }
+
+  pinnacleAction(userId: string, contenderId: string, action: "add" | "remove" | "up" | "down") {
+    const user = this.getUser(userId);
+    if (!user) return { ok: false, error: "Sign in." };
+    const list = (user.pinnacle ?? []).slice();
+    const idx = list.indexOf(contenderId);
+    if (action === "add") {
+      if (idx === -1) {
+        if (!this.store.contenders.find((c) => c.id === contenderId)) return { ok: false, error: "Dish not found." };
+        if (list.length >= 25) return { ok: false, error: "Your Pinnacle is full (25 max)." };
+        list.push(contenderId);
+      }
+    } else if (action === "remove") {
+      if (idx !== -1) list.splice(idx, 1);
+    } else if (action === "up" && idx > 0) {
+      [list[idx - 1], list[idx]] = [list[idx], list[idx - 1]];
+    } else if (action === "down" && idx !== -1 && idx < list.length - 1) {
+      [list[idx + 1], list[idx]] = [list[idx], list[idx + 1]];
+    }
+    user.pinnacle = list;
     this.persist();
     return { ok: true };
   }

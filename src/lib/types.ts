@@ -73,6 +73,11 @@ export interface User {
   ratedCount: number;
   isCurator: boolean;
   createdAt: ISODate;
+  // --- profile ---
+  bio?: string;
+  avatarUrl?: string | null;
+  showcase?: string[]; // subcategory slugs to feature on the profile
+  pinnacle?: ID[]; // contender ids — the user's ordered, all-time favorite dishes (NYC)
 }
 
 export type ComparisonSource = "duel" | "up" | "down";
