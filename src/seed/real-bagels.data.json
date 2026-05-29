@@ -1,0 +1,328 @@
+[
+  {
+    "name": "Apollo Bagels",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "242 E 10th St, New York, NY 10003",
+    "lat": 40.7286,
+    "lng": -73.9836,
+    "signatureBowl": "Everything bagel with cream cheese (limited menu: plain, sesame, everything)",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 4,
+    "seedQuality": 0.95
+  },
+  {
+    "name": "Bo's Bagels",
+    "neighborhood": "Harlem",
+    "borough": "Manhattan",
+    "address": "235 W 116th St, New York, NY 10026",
+    "lat": 40.8025,
+    "lng": -73.9543,
+    "signatureBowl": "The Andrew — sesame bagel with egg, sausage, bacon, maple syrup and scallion cream cheese",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 4,
+    "seedQuality": 0.925
+  },
+  {
+    "name": "Russ & Daughters",
+    "neighborhood": "Lower East Side",
+    "borough": "Manhattan",
+    "address": "179 E Houston St, New York, NY 10002",
+    "lat": 40.7224,
+    "lng": -73.9882,
+    "signatureBowl": "The Boychik — smoked salmon and sable with plain cream cheese on an everything bagel",
+    "appearsOn": [
+      "The MICHELIN Guide",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.9
+  },
+  {
+    "name": "Shelsky's Brooklyn Bagels",
+    "neighborhood": "Park Slope",
+    "borough": "Brooklyn",
+    "address": "453 4th Ave, Brooklyn, NY 11215",
+    "lat": 40.6711,
+    "lng": -73.9879,
+    "signatureBowl": "Sichuan-peppercorn bagel with chile crisp cream cheese; Member Of The Tribe (nova with scallion cream cheese)",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.875
+  },
+  {
+    "name": "Tompkins Square Bagels",
+    "neighborhood": "East Village",
+    "borough": "Manhattan",
+    "address": "165 Avenue A, New York, NY 10009",
+    "lat": 40.7269,
+    "lng": -73.9836,
+    "signatureBowl": "The Weezer sandwich (bacon, chorizo, eggs, Cheddar, cream cheese) on a warm sesame bagel",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.85
+  },
+  {
+    "name": "Utopia Bagels",
+    "neighborhood": "Whitestone",
+    "borough": "Queens",
+    "address": "1909 Utopia Pkwy, Whitestone, NY 11357",
+    "lat": 40.7799,
+    "lng": -73.8067,
+    "signatureBowl": "Malty everything bagel with cream cheese and lox",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The New York Times"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.825
+  },
+  {
+    "name": "PopUp Bagels",
+    "neighborhood": "Greenwich Village",
+    "borough": "Manhattan",
+    "address": "177 Thompson St, New York, NY 10012",
+    "lat": 40.7281,
+    "lng": -74.0006,
+    "signatureBowl": "Hot, never-sliced bagel with a side of cream cheese ('rip and dip')",
+    "appearsOn": [
+      "Eater NY",
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.8
+  },
+  {
+    "name": "Bagel Pub",
+    "neighborhood": "Crown Heights",
+    "borough": "Brooklyn",
+    "address": "775 Franklin Ave, Brooklyn, NY 11238",
+    "lat": 40.6727,
+    "lng": -73.9568,
+    "signatureBowl": "Egg-and-cheese on a chewy everything bagel; poppyseed with lox, capers and tomato",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.775
+  },
+  {
+    "name": "Ess-a-Bagel",
+    "neighborhood": "Midtown East / Gramercy",
+    "borough": "Manhattan",
+    "address": "324 1st Ave, New York, NY 10009",
+    "lat": 40.7322,
+    "lng": -73.9824,
+    "signatureBowl": "Large crusty everything bagel with scallion cream cheese",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.75
+  },
+  {
+    "name": "2788 Bagels (formerly Absolute Bagels)",
+    "neighborhood": "Upper West Side",
+    "borough": "Manhattan",
+    "address": "2788 Broadway, New York, NY 10025",
+    "lat": 40.8014,
+    "lng": -73.9678,
+    "signatureBowl": "Sesame bagel with nova, onion, tomato, capers and cream cheese; plain with butter to showcase the crust",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.725
+  },
+  {
+    "name": "Bergen Bagels",
+    "neighborhood": "Prospect Heights",
+    "borough": "Brooklyn",
+    "address": "473 Bergen St, Brooklyn, NY 11217",
+    "lat": 40.6794,
+    "lng": -73.9743,
+    "signatureBowl": "Warm bagel with cucumber-dill schmear; lox, cream cheese and red onion",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.7
+  },
+  {
+    "name": "Best Bagel & Coffee",
+    "neighborhood": "Midtown",
+    "borough": "Manhattan",
+    "address": "225 W 35th St, New York, NY 10001",
+    "lat": 40.7517,
+    "lng": -73.9905,
+    "signatureBowl": "Big hot bagel breakfast sandwich; everything with jalapeño cream cheese",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.675
+  },
+  {
+    "name": "Knickerbocker Bagel",
+    "neighborhood": "Bushwick",
+    "borough": "Brooklyn",
+    "address": "367 Knickerbocker Ave, Brooklyn, NY 11237",
+    "lat": 40.7016,
+    "lng": -73.9181,
+    "signatureBowl": "Bacon, egg and cheese on an everything bagel; chunky home fries",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.65
+  },
+  {
+    "name": "Liberty Bagels",
+    "neighborhood": "Midtown",
+    "borough": "Manhattan",
+    "address": "260 W 35th St, New York, NY 10001",
+    "lat": 40.7521,
+    "lng": -73.9919,
+    "signatureBowl": "Everything bagel (soft doughy interior, firm seasoned crust); jalapeño everything with chipotle cream cheese",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.625
+  },
+  {
+    "name": "Terrace Bagels",
+    "neighborhood": "Windsor Terrace / Park Slope",
+    "borough": "Brooklyn",
+    "address": "222A Prospect Park West, Brooklyn, NY 11215",
+    "lat": 40.6592,
+    "lng": -73.9802,
+    "signatureBowl": "Classic bagel with airy crumb and chewy crust; blueberry bagel with strawberry cream cheese",
+    "appearsOn": [
+      "The Infatuation",
+      "The New York Times"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.6
+  },
+  {
+    "name": "Bagel Oasis",
+    "neighborhood": "Fresh Meadows",
+    "borough": "Queens",
+    "address": "183-12 Horace Harding Expy, Fresh Meadows, NY 11365",
+    "lat": 40.7378,
+    "lng": -73.7757,
+    "signatureBowl": "Bagel with cream cheese (shattering crust); seeded flagels; egg-onion",
+    "appearsOn": [
+      "The New York Times",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.575
+  },
+  {
+    "name": "Tal Bagels",
+    "neighborhood": "Upper East Side",
+    "borough": "Manhattan",
+    "address": "1228 Lexington Ave, New York, NY 10028",
+    "lat": 40.7779,
+    "lng": -73.9573,
+    "signatureBowl": "Fresh hot bagel with lox / nova / smoked salmon (full appetizing menu)",
+    "appearsOn": [
+      "Eater NY",
+      "The New York Times"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.55
+  },
+  {
+    "name": "Bagel Joint",
+    "neighborhood": "Greenpoint",
+    "borough": "Brooklyn",
+    "address": "230 Calyer St, Brooklyn, NY 11222",
+    "lat": 40.7274,
+    "lng": -73.9494,
+    "signatureBowl": "Miso everything bagel with wasabi cream cheese; salmon and caper sandwich",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.525
+  },
+  {
+    "name": "Bagels & Co.",
+    "neighborhood": "Upper West Side / Upper East Side",
+    "borough": "Manhattan",
+    "address": "391 Amsterdam Ave, New York, NY 10024",
+    "lat": 40.7858,
+    "lng": -73.9764,
+    "signatureBowl": "Everything bagel with tight crumb, no sweetness",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.5
+  },
+  {
+    "name": "Greenberg's Bagels",
+    "neighborhood": "Bed-Stuy / Williamsburg",
+    "borough": "Brooklyn",
+    "address": "1065 Bedford Ave, Brooklyn, NY 11216",
+    "lat": 40.6868,
+    "lng": -73.9533,
+    "signatureBowl": "Sausage, egg and cheese sandwich with hash brown; specialty BECs (spicy queso, cacio e pepe)",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.475
+  },
+  {
+    "name": "Murray's Bagels",
+    "neighborhood": "Greenwich Village",
+    "borough": "Manhattan",
+    "address": "500 6th Ave, New York, NY 10011",
+    "lat": 40.7374,
+    "lng": -73.9967,
+    "signatureBowl": "Hand-rolled kettle-boiled bagel; 'The Oy Vey!' sandwich (sausage, eggs, bacon, potato latke)",
+    "appearsOn": [
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.45
+  }
+]

@@ -1,0 +1,340 @@
+[
+  {
+    "name": "Cote",
+    "neighborhood": "Flatiron",
+    "borough": "Manhattan",
+    "address": "16 W 22nd St, New York, NY 10010",
+    "lat": 40.7411,
+    "lng": -73.9907,
+    "signatureBowl": "The Butcher's Feast — four cuts of USDA Prime and American Wagyu cooked tableside on a smokeless grill, with banchan",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The MICHELIN Guide",
+      "Time Out New York"
+    ],
+    "appearanceCount": 4,
+    "seedQuality": 0.95
+  },
+  {
+    "name": "Gallaghers Steakhouse",
+    "neighborhood": "Theater District / Midtown West",
+    "borough": "Manhattan",
+    "address": "228 W 52nd St, New York, NY 10019",
+    "lat": 40.7626,
+    "lng": -73.9842,
+    "signatureBowl": "Bone-in rib steak (rib eye) grilled over hickory; porterhouse with creamed spinach",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The MICHELIN Guide",
+      "Time Out New York"
+    ],
+    "appearanceCount": 4,
+    "seedQuality": 0.926
+  },
+  {
+    "name": "4 Charles Prime Rib",
+    "neighborhood": "West Village",
+    "borough": "Manhattan",
+    "address": "4 Charles St, New York, NY 10014",
+    "lat": 40.7345,
+    "lng": -74.0008,
+    "signatureBowl": "Prime rib served three ways (English, Chicago, and 'king' cuts); wagyu cheeseburger",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "The MICHELIN Guide"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.902
+  },
+  {
+    "name": "Gage & Tollner",
+    "neighborhood": "Downtown Brooklyn",
+    "borough": "Brooklyn",
+    "address": "372 Fulton St, Brooklyn, NY 11201",
+    "lat": 40.6927,
+    "lng": -73.9889,
+    "signatureBowl": "Big steaks (T-bone, ribeye, NY strip); baked alaska for dessert",
+    "appearsOn": [
+      "The Infatuation",
+      "The MICHELIN Guide",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.879
+  },
+  {
+    "name": "Peter Luger Steak House",
+    "neighborhood": "Williamsburg",
+    "borough": "Brooklyn",
+    "address": "178 Broadway, Brooklyn, NY 11211",
+    "lat": 40.7099,
+    "lng": -73.9626,
+    "signatureBowl": "Dry-aged-in-house porterhouse, broiled, with German fried potatoes and house sauce",
+    "appearsOn": [
+      "The Infatuation",
+      "The MICHELIN Guide",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.855
+  },
+  {
+    "name": "Gui Steakhouse",
+    "neighborhood": "Times Square / Midtown West",
+    "borough": "Manhattan",
+    "address": "776 8th Ave, New York, NY 10036",
+    "lat": 40.7607,
+    "lng": -73.9874,
+    "signatureBowl": "Aged steaks (Japanese Wagyu & USDA Prime) finished with Maldon salt; prime rib crusted with shio kombu",
+    "appearsOn": [
+      "Eater NY",
+      "The MICHELIN Guide",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.831
+  },
+  {
+    "name": "La Tete d'Or",
+    "neighborhood": "Flatiron / Gramercy",
+    "borough": "Manhattan",
+    "address": "318 Park Ave S, New York, NY 10010",
+    "lat": 40.7384,
+    "lng": -73.9853,
+    "signatureBowl": "Dry-aged steaks; prime rib sliced tableside from a roving trolley",
+    "appearsOn": [
+      "Eater NY",
+      "The MICHELIN Guide",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.807
+  },
+  {
+    "name": "Cuerno",
+    "neighborhood": "Midtown West",
+    "borough": "Manhattan",
+    "address": "1271 Avenue of the Americas, New York, NY 10020",
+    "lat": 40.7595,
+    "lng": -73.9817,
+    "signatureBowl": "Norteno-style salt-crusted ribeyes and filets with bone marrow; 54-oz tomahawk; steak tacos",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.783
+  },
+  {
+    "name": "Delmonico's",
+    "neighborhood": "Financial District",
+    "borough": "Manhattan",
+    "address": "56 Beaver St, New York, NY 10004",
+    "lat": 40.7048,
+    "lng": -74.0107,
+    "signatureBowl": "Signature Delmonico ribeye (18 oz)",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.76
+  },
+  {
+    "name": "Golden Steer",
+    "neighborhood": "Greenwich Village",
+    "borough": "Manhattan",
+    "address": "1 5th Ave, New York, NY 10003",
+    "lat": 40.7333,
+    "lng": -73.9954,
+    "signatureBowl": "Wet/dry-aged USDA Prime steaks (incl. 35-day dry-aged NY strip); tableside Caesar and flaming desserts",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.736
+  },
+  {
+    "name": "Hawksmoor",
+    "neighborhood": "Flatiron / Gramercy",
+    "borough": "Manhattan",
+    "address": "109 E 22nd St, New York, NY 10010",
+    "lat": 40.7392,
+    "lng": -73.9863,
+    "signatureBowl": "Dry-aged steaks grilled over charcoal (rib-eyes, filets, strips); sticky toffee pudding",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.712
+  },
+  {
+    "name": "Keens Steakhouse",
+    "neighborhood": "Garment District / Midtown",
+    "borough": "Manhattan",
+    "address": "72 W 36th St, New York, NY 10018",
+    "lat": 40.7506,
+    "lng": -73.9858,
+    "signatureBowl": "Legendary mutton chop; porterhouse",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 3,
+    "seedQuality": 0.688
+  },
+  {
+    "name": "Old Homestead Steakhouse",
+    "neighborhood": "Chelsea / Meatpacking",
+    "borough": "Manhattan",
+    "address": "56 9th Ave, New York, NY 10011",
+    "lat": 40.7416,
+    "lng": -74.0046,
+    "signatureBowl": "Porterhouse for two; herb- and spice-crusted ribeye",
+    "appearsOn": [
+      "The Infatuation",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.664
+  },
+  {
+    "name": "St. Anselm",
+    "neighborhood": "Williamsburg",
+    "borough": "Brooklyn",
+    "address": "355 Metropolitan Ave, Brooklyn, NY 11211",
+    "lat": 40.7141,
+    "lng": -73.9523,
+    "signatureBowl": "Hanger steak; rib-eye priced by the pound; butcher's steaks",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.64
+  },
+  {
+    "name": "The Grill",
+    "neighborhood": "Midtown East (Seagram Building)",
+    "borough": "Manhattan",
+    "address": "99 E 52nd St, New York, NY 10022",
+    "lat": 40.7585,
+    "lng": -73.9719,
+    "signatureBowl": "Steakhouse staples at premium prices; prime rib (recommended over the steak)",
+    "appearsOn": [
+      "The Infatuation",
+      "Eater NY"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.617
+  },
+  {
+    "name": "The Dynamo Room",
+    "neighborhood": "Midtown West (near Penn Station / MSG)",
+    "borough": "Manhattan",
+    "address": "2 Pennsylvania Plaza, New York, NY 10121",
+    "lat": 40.7505,
+    "lng": -73.9934,
+    "signatureBowl": "Bone-in ribeye dry-aged 50 days; NY strip",
+    "appearsOn": [
+      "Eater NY",
+      "Time Out New York"
+    ],
+    "appearanceCount": 2,
+    "seedQuality": 0.593
+  },
+  {
+    "name": "Carne Mare",
+    "neighborhood": "South Street Seaport (Pier 17)",
+    "borough": "Manhattan",
+    "address": "89 South St, New York, NY 10038",
+    "lat": 40.7058,
+    "lng": -74.0026,
+    "signatureBowl": "Gorgonzola-cured Wagyu strip loin (Italian chophouse)",
+    "appearsOn": [
+      "The MICHELIN Guide"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.569
+  },
+  {
+    "name": "Minetta Tavern",
+    "neighborhood": "Greenwich Village",
+    "borough": "Manhattan",
+    "address": "113 MacDougal St, New York, NY 10012",
+    "lat": 40.7299,
+    "lng": -74.0008,
+    "signatureBowl": "Grilled beef filet with sauce au poivre (also the famed burger)",
+    "appearsOn": [
+      "The MICHELIN Guide"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.545
+  },
+  {
+    "name": "Christos Steakhouse",
+    "neighborhood": "Astoria",
+    "borough": "Queens",
+    "address": "41-08 23rd Ave, Astoria, NY 11105",
+    "lat": 40.7798,
+    "lng": -73.9112,
+    "signatureBowl": "Greek-seasoned steaks; lobster mashed potatoes",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.521
+  },
+  {
+    "name": "Smith & Wollensky",
+    "neighborhood": "Midtown East",
+    "borough": "Manhattan",
+    "address": "797 3rd Ave, New York, NY 10022",
+    "lat": 40.7551,
+    "lng": -73.9716,
+    "signatureBowl": "Bone-in dry-aged filet; prime rib",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.498
+  },
+  {
+    "name": "Wolfgang's Steakhouse",
+    "neighborhood": "Murray Hill / Midtown",
+    "borough": "Manhattan",
+    "address": "4 Park Ave, New York, NY 10016",
+    "lat": 40.7466,
+    "lng": -73.9818,
+    "signatureBowl": "Porterhouse with creamed spinach",
+    "appearsOn": [
+      "The Infatuation"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.474
+  },
+  {
+    "name": "Bowery Meat Company",
+    "neighborhood": "East Village / Bowery",
+    "borough": "Manhattan",
+    "address": "9 E 1st St, New York, NY 10003",
+    "lat": 40.7251,
+    "lng": -73.9921,
+    "signatureBowl": "Porterhouse for two; three-ounce Japanese Wagyu add-on",
+    "appearsOn": [
+      "Eater NY"
+    ],
+    "appearanceCount": 1,
+    "seedQuality": 0.45
+  }
+]
