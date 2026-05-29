@@ -49,7 +49,7 @@ export default function RootLayout({
             </div>
           </header>
           <div className="border-b border-[var(--color-border)] bg-[var(--color-banner)] px-4 py-1.5 text-center text-xs font-medium text-[var(--color-ink)]">
-            ⭐ Ramen, pizza, bagels, ice cream &amp; steak are seeded from NYC&apos;s 2025+ best-of lists — rankings move as people duel. Other foods are sample data; photos are placeholders.
+            ⭐ Every list is seeded from NYC&apos;s 2025+ best-of guides — rankings move as people duel &amp; rate. Photos are coming (user-uploaded).
           </div>
           <main className="flex-1">{children}</main>
           <footer className="border-t border-[var(--color-border)] px-4 py-6 text-center text-xs text-[var(--color-ink-dim)]">

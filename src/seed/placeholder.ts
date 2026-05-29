@@ -255,17 +255,7 @@ export function generateSeed(): StoreData {
       contenders.push(con);
       subContenders.push(con);
       quality.set(con.id, opts.q);
-      // placeholder photo (generic stock keyed by food type; clearly not the actual dish)
-      photos.push({
-        id: `photo_${photoN++}`,
-        contenderId: con.id,
-        uploaderId: R.pick(users).id,
-        url: `https://loremflickr.com/800/600/${sub.img}?lock=${photoN}`,
-        status: "verified",
-        vouchCount: R.i(0, 6),
-        placeholder: true,
-        createdAt: GENERATED_AT,
-      });
+      // No seeded photos — real photos are user-uploaded. Cards/rows show a clean placeholder.
     };
 
     const realList = REAL_DATA[sub.slug];
