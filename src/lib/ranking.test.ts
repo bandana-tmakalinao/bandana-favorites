@@ -4,7 +4,7 @@ import { rankSubcategory, trustToWeight, type RankInputDuel, type RankInputVote 
 import { RANKING, TRUST } from "./config";
 
 const duel = (winnerId: string, loserId: string, weight = 1): RankInputDuel => ({ winnerId, loserId, weight });
-const vote = (contenderId: string, value: 1 | -1, weight = 1): RankInputVote => ({ contenderId, value, weight });
+const vote = (contenderId: string, rating: number, weight = 1): RankInputVote => ({ contenderId, rating, weight });
 
 test("recovers a consistent total order A > B > C", () => {
   const ids = ["A", "B", "C"];
@@ -42,7 +42,7 @@ test("eligibility gate: an unproven item stays provisional with no rank", () => 
   const ids = ["A", "B", "C", "Lonely"];
   // A, B, C form a triangle → each has 2 distinct opponents and enough evidence to be eligible.
   const duels = [duel("A", "B"), duel("B", "C"), duel("C", "A"), duel("A", "B"), duel("B", "C")];
-  const votes = [vote("Lonely", 1)]; // one thumb, no duels → 0 opponents
+  const votes = [vote("Lonely", 100)]; // one rating, no duels → 0 opponents
   const r = rankSubcategory(ids, duels, votes);
   assert.equal(r.get("Lonely")!.status, "provisional");
   assert.equal(r.get("Lonely")!.rank, null);
@@ -54,11 +54,11 @@ test("up/down votes feed the same model in the right direction", () => {
   const baseDuels = [duel("U", "D")];
   const before = rankSubcategory(ids, baseDuels, []);
   const after = rankSubcategory(ids, baseDuels, [
-    ...Array(10).fill(0).map(() => vote("D", 1)), // many upvotes on D
-    ...Array(10).fill(0).map(() => vote("U", -1)), // many downvotes on U
+    ...Array(10).fill(0).map(() => vote("D", 100)), // strong positive ratings on D
+    ...Array(10).fill(0).map(() => vote("U", 0)), // strong negative ratings on U
   ]);
-  assert.ok(after.get("D")!.score > before.get("D")!.score, "upvotes raise D");
-  assert.ok(after.get("U")!.score < before.get("U")!.score, "downvotes lower U");
+  assert.ok(after.get("D")!.score > before.get("D")!.score, "high ratings raise D");
+  assert.ok(after.get("U")!.score < before.get("U")!.score, "low ratings lower U");
   assert.ok(after.get("D")!.theta > after.get("D")!.theta - 1); // sanity: finite
 });
 

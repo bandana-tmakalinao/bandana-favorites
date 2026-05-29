@@ -339,18 +339,18 @@ export function generateSeed(): StoreData {
       });
     }
 
-    // a few standing up/down votes per contender, biased by quality
+    // a few standing 0–100 ratings per contender, centered on its hidden quality
     for (const con of subContenders) {
       const q = quality.get(con.id)!;
-      const ups = Math.round(q * 4);
-      const downs = Math.round((1 - q) * 2);
-      const voters = [...users].sort(() => r() - 0.5).slice(0, ups + downs);
-      voters.forEach((u, idx) => {
+      const nRaters = Math.round(q * 4) + Math.round((1 - q) * 2);
+      const raters = [...users].sort(() => r() - 0.5).slice(0, nRaters);
+      raters.forEach((u) => {
+        const rating = Math.max(0, Math.min(100, Math.round(q * 100 + (r() - 0.5) * 30)));
         votes.push({
           id: `vote_${voteN++}`,
           contenderId: con.id,
           userId: u.id,
-          value: idx < ups ? 1 : -1,
+          rating,
           weight: +weightOf(u).toFixed(3),
           createdAt: GENERATED_AT,
         });
@@ -393,7 +393,7 @@ export function recomputeSubcategory(store: StoreData, subcategoryId: string): v
     .map((c) => ({ winnerId: c.winnerId, loserId: c.loserId, weight: c.weight }));
   const votes = store.votes
     .filter((v) => idSet.has(v.contenderId))
-    .map((v) => ({ contenderId: v.contenderId, value: v.value, weight: v.weight }));
+    .map((v) => ({ contenderId: v.contenderId, rating: v.rating, weight: v.weight }));
   const results = rankSubcategory(ids, duels, votes);
   for (const con of cons) {
     const r = results.get(con.id);

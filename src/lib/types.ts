@@ -88,12 +88,12 @@ export interface Comparison {
   createdAt: ISODate;
 }
 
-/** A user's standing up/down on a contender (one per user per contender). */
+/** A user's standing 0–100 "how good is it" rating on a contender (one per user per contender). */
 export interface Vote {
   id: ID;
   contenderId: ID;
   userId: ID;
-  value: 1 | -1;
+  rating: number; // 0–100 (50 = neutral); folded into the model as a weighted baseline comparison
   weight: number;
   createdAt: ISODate;
 }

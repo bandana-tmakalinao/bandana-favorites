@@ -65,7 +65,7 @@ export interface Repository {
   /** keepId = "king of the hill": keep that contender on one side and rotate in a fresh challenger. */
   getDuelPair(subSlug?: string, keepId?: string): DuelPair | null;
   recordDuel(userId: string, winnerId: string, loserId: string): { ok: boolean; error?: string };
-  recordVote(userId: string, contenderId: string, value: 1 | -1): { ok: boolean; error?: string };
+  recordVote(userId: string, contenderId: string, rating: number): { ok: boolean; error?: string };
   addPhoto(userId: string, contenderId: string, url: string): Photo | null;
   vouchPhoto(userId: string, photoId: string): { ok: boolean };
   getOrCreateUser(name: string): User;

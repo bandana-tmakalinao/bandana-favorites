@@ -26,7 +26,7 @@ export interface RankInputDuel {
 }
 export interface RankInputVote {
   contenderId: ID;
-  value: 1 | -1;
+  rating: number; // 0–100 (50 = neutral)
   weight: number;
 }
 export interface RankResult {
@@ -101,11 +101,14 @@ export function rankSubcategory(
     opponents.get(d.loserId)!.add(d.winnerId);
   }
 
-  // Up/down votes → comparisons vs the baseline anchor, at reduced weight
+  // 0–100 ratings → a weighted comparison vs the baseline anchor (strength = how far from neutral).
+  // 100 = strong "beats the field", 50 = neutral (no signal), 0 = strong "below the field".
   for (const v of votes) {
     if (!ids.has(v.contenderId)) continue;
-    const w = v.weight * RANKING.THUMB_WEIGHT;
-    if (v.value === 1) addComparison(v.contenderId, BASELINE, w);
+    const signed = (v.rating - 50) / 50; // [-1, 1]
+    const w = Math.abs(signed) * v.weight * RANKING.THUMB_WEIGHT;
+    if (w <= 0) continue;
+    if (signed > 0) addComparison(v.contenderId, BASELINE, w);
     else addComparison(BASELINE, v.contenderId, w);
     bump(realEvidence, v.contenderId, w);
   }

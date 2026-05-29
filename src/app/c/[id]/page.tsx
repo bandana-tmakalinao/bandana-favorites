@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
 import { ConfidenceDot, PhotoThumb, ScoreBadge, tierLabel } from "@/components/bits";
-import VoteButtons from "@/components/VoteButtons";
+import RatingControl from "@/components/RatingControl";
 import PhotoUpload from "@/components/PhotoUpload";
 
 export const dynamic = "force-dynamic";
@@ -66,7 +66,7 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
       )}
 
       <div className="mt-6 space-y-4 border-t border-[var(--color-border)] pt-6">
-        <VoteButtons contenderId={c.id} signedIn={!!user} />
+        <RatingControl contenderId={c.id} signedIn={!!user} />
         <div className="flex flex-wrap items-center gap-3">
           <Link
             href={`/duel?sub=${subcategory.slug}&keep=${c.id}`}

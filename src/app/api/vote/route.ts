@@ -11,13 +11,13 @@ export async function POST(req: Request) {
 
   const body = await req.json().catch(() => null);
   const contenderId = body?.contenderId as string | undefined;
-  const value = body?.value as number | undefined;
-  if (!contenderId || (value !== 1 && value !== -1)) {
-    return NextResponse.json({ error: "contenderId and value (1 or -1) are required." }, { status: 400 });
+  const rating = body?.rating as number | undefined;
+  if (!contenderId || typeof rating !== "number" || rating < 0 || rating > 100) {
+    return NextResponse.json({ error: "contenderId and rating (0–100) are required." }, { status: 400 });
   }
 
   const repo = getRepo();
-  const result = repo.recordVote(user.id, contenderId, value as 1 | -1);
+  const result = repo.recordVote(user.id, contenderId, rating);
   if (!result.ok) return NextResponse.json({ error: result.error }, { status: 400 });
 
   const detail = repo.getContenderDetail(contenderId);

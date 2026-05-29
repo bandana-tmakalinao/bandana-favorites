@@ -265,23 +265,24 @@ export class MemoryRepository implements Repository {
     return { ok: true };
   }
 
-  recordVote(userId: string, contenderId: string, value: 1 | -1): { ok: boolean; error?: string } {
+  recordVote(userId: string, contenderId: string, rating: number): { ok: boolean; error?: string } {
     const con = this.store.contenders.find((c) => c.id === contenderId);
     if (!con) return { ok: false, error: "Contender not found." };
     const user = this.getUser(userId);
-    if (!user) return { ok: false, error: "Sign in to vote." };
+    if (!user) return { ok: false, error: "Sign in to rate." };
+    const r = Math.max(0, Math.min(100, Math.round(rating)));
 
     const existing = this.store.votes.find((v) => v.userId === userId && v.contenderId === contenderId);
     const weight = +trustToWeight(user.trustScore).toFixed(3);
     if (existing) {
-      existing.value = value;
+      existing.rating = r;
       existing.weight = weight;
     } else {
       this.store.votes.push({
         id: crypto.randomUUID(),
         contenderId,
         userId,
-        value,
+        rating: r,
         weight,
         createdAt: new Date().toISOString(),
       });
