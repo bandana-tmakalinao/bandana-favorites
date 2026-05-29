@@ -38,7 +38,7 @@ export function ScoreBadge({ score, size = "md" }: { score: number; size?: "sm" 
   );
 }
 
-/** Tiny CSS food-toned placeholder so rows never show a broken image while a photo loads/fails. */
+/** Renders a photo when there is one, and NOTHING when there isn't (no empty placeholder blocks). */
 export function PhotoThumb({
   url,
   alt,
@@ -48,14 +48,11 @@ export function PhotoThumb({
   alt: string;
   className?: string;
 }) {
+  if (!url) return null;
   return (
-    <span
-      className={`relative block overflow-hidden rounded-lg bg-gradient-to-br from-[#f3ede0] to-[#e9ddc8] ${className}`}
-    >
-      {url && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src={url} alt={alt} loading="lazy" className="h-full w-full object-cover" />
-      )}
+    <span className={`relative block overflow-hidden rounded-lg bg-[var(--color-surface-2)] ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img src={url} alt={alt} loading="lazy" className="h-full w-full object-cover" />
     </span>
   );
 }
