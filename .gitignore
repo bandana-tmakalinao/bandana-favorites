@@ -1,0 +1,41 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# next.js
+/.next/
+/out/
+next-env.d.ts
+
+# production
+/build
+
+# local data (memory-store persistence + dev photo uploads)
+/.data/
+/public/uploads/
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# env files
+.env
+.env*.local
+.env.local
+
+# typescript
+*.tsbuildinfo
+
+# drizzle
+/drizzle/meta/_journal_local.json
+
+# os / icloud
+.AppleDouble
+.LSOverride
+Icon?
