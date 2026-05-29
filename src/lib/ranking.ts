@@ -134,15 +134,28 @@ export function rankSubcategory(
     for (const [id, g] of next) gamma.set(id, g);
   }
 
+  // θ per contender, centered on the category mean so an average item maps to ~50.
+  const thetas = new Map<ID, number>();
+  for (const id of contenderIds) thetas.set(id, Math.log(gamma.get(id)!));
+  const meanTheta = contenderIds.length
+    ? [...thetas.values()].reduce((a, b) => a + b, 0) / contenderIds.length
+    : 0;
+  const varTheta = contenderIds.length
+    ? [...thetas.values()].reduce((s, t) => s + (t - meanTheta) ** 2, 0) / contenderIds.length
+    : 0;
+  const stdTheta = Math.sqrt(varTheta) || 1;
+
   // Derive display fields
   const results = new Map<ID, RankResult>();
   for (const id of contenderIds) {
-    const theta = Math.log(gamma.get(id)!);
+    const theta = thetas.get(id)!;
     const v = realEvidence.get(id)!;
     const rd = RANKING.RD_BASE / Math.sqrt(1 + v / RANKING.RD_Q);
-    const R = clamp(RANKING.CATEGORY_PRIOR_C + RANKING.THETA_TO_SCORE_SCALE * theta, 1, 99);
+    // Harsh 0–100 curve, normalized by the category's spread: average ≈ 50, elite → ~100, weak → low.
+    const z = (theta - meanTheta) / stdTheta;
+    const scoreRaw = 100 / (1 + Math.exp(-RANKING.HARSHNESS * z));
     const m = RANKING.SHRINKAGE_M;
-    const score = (v / (v + m)) * R + (m / (v + m)) * RANKING.CATEGORY_PRIOR_C;
+    const score = (v / (v + m)) * scoreRaw + (m / (v + m)) * RANKING.CATEGORY_PRIOR_C;
     const sortKey = score - RANKING.LCB_LAMBDA * (rd / RANKING.RD_BASE) * 100;
     const distinct = opponents.get(id)!.size;
     const eligible = v >= RANKING.MIN_WEIGHTED_VOTES && distinct >= RANKING.MIN_DISTINCT_OPPONENTS;

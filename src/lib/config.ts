@@ -11,13 +11,18 @@ export const RANKING = {
    * score = (v/(v+m))·R + (m/(v+m))·C, where C is the category midpoint (50).
    * m=40 → an item is ~83% its own score by ~200 weighted votes; "fast-ish but not flighty".
    */
-  SHRINKAGE_M: Number(process.env.RANKING_SHRINKAGE_M ?? 40),
+  SHRINKAGE_M: Number(process.env.RANKING_SHRINKAGE_M ?? 6),
 
   /** Category prior the displayed score shrinks toward, on the public 0–100 scale. */
   CATEGORY_PRIOR_C: 50,
 
-  /** Maps Bradley-Terry latent strength θ (logit units) onto the 0–100 display scale: R = 50 + SCALE·θ. */
-  THETA_TO_SCORE_SCALE: 12,
+  /**
+   * Harshness of the 0–100 curve. scoreRaw = 100·logistic(HARSHNESS · z), where z = (θ − category-mean θ)
+   * / category-std θ. Normalizing by the category's spread makes the shape consistent regardless of how
+   * compressed the BT strengths are: the AVERAGE spot ≈ 50, the elite approach ~100, weak spots sink low.
+   * Higher = harsher/wider. 2.2 is genuinely punishing — only the clear greats break the 80s. Parameter #11.
+   */
+  HARSHNESS: 2.2,
 
   /** Evidence weight of an up/down thumb vs an explicit head-to-head duel (a thumb is weaker). */
   THUMB_WEIGHT: 0.4,

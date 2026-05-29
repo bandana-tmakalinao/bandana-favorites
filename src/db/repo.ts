@@ -62,7 +62,8 @@ export interface Repository {
   getContenderDetail(id: string): ContenderDetail | null;
   getHomeShowcase(perCategory?: number): ShowcaseEntry[];
   search(query: string, limit?: number): SearchResults;
-  getDuelPair(subSlug?: string): DuelPair | null;
+  /** keepId = "king of the hill": keep that contender on one side and rotate in a fresh challenger. */
+  getDuelPair(subSlug?: string, keepId?: string): DuelPair | null;
   recordDuel(userId: string, winnerId: string, loserId: string): { ok: boolean; error?: string };
   recordVote(userId: string, contenderId: string, value: 1 | -1): { ok: boolean; error?: string };
   addPhoto(userId: string, contenderId: string, url: string): Photo | null;

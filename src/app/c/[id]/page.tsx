@@ -69,10 +69,10 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
         <VoteButtons contenderId={c.id} signedIn={!!user} />
         <div className="flex flex-wrap items-center gap-3">
           <Link
-            href={`/duel?sub=${subcategory.slug}`}
+            href={`/duel?sub=${subcategory.slug}&keep=${c.id}`}
             className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
           >
-            ⚔️ Duel {subcategory.name.toLowerCase()}
+            ⚔️ Duel this vs others
           </Link>
           <PhotoUpload contenderId={c.id} signedIn={!!user} />
         </div>

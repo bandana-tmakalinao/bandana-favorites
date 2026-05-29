@@ -199,9 +199,11 @@ export class MemoryRepository implements Repository {
     return { query, subcategories, contenders };
   }
 
-  getDuelPair(subSlug?: string): DuelPair | null {
+  getDuelPair(subSlug?: string, keepId?: string): DuelPair | null {
     let subcategory: Subcategory | undefined;
-    if (subSlug) subcategory = this.store.subcategories.find((s) => s.slug === subSlug);
+    const king = keepId ? this.store.contenders.find((c) => c.id === keepId) : undefined;
+    if (king) subcategory = this.subById(king.subcategoryId);
+    if (!subcategory && subSlug) subcategory = this.store.subcategories.find((s) => s.slug === subSlug);
     if (!subcategory) {
       const eligible = this.store.subcategories.filter(
         (s) => this.store.contenders.filter((c) => c.subcategoryId === s.id).length >= 2,
@@ -215,27 +217,25 @@ export class MemoryRepository implements Repository {
     const pool = this.store.contenders.filter((c) => c.subcategoryId === subcategory!.id);
     if (pool.length < 2) return null;
 
-    // Pick A preferring higher uncertainty (rd), then B preferring a close, also-uncertain opponent
-    // with an exploration chance. This is the lightweight active-pairing sampler.
-    const byUncertainty = [...pool].sort((a, b) => b.rd - a.rd);
-    const a = byUncertainty[Math.floor(Math.random() * Math.min(pool.length, Math.ceil(pool.length / 2)))];
+    // "a" = the king (kept side) when given and in this pool; otherwise an uncertainty-weighted pick.
+    let a: Contender;
+    if (king && king.subcategoryId === subcategory.id) {
+      a = king;
+    } else {
+      const byUncertainty = [...pool].sort((x, y) => y.rd - x.rd);
+      a = byUncertainty[Math.floor(Math.random() * Math.min(pool.length, Math.ceil(pool.length / 2)))];
+    }
+    // "b" = a fresh challenger: close in score & uncertain, with an exploration chance.
     const rest = pool.filter((c) => c.id !== a.id);
     let b: Contender;
     if (Math.random() < 0.25) {
       b = rest[Math.floor(Math.random() * rest.length)];
     } else {
-      const close = rest.sort(
-        (x, y) => Math.abs(x.sortKey - a.sortKey) - Math.abs(y.sortKey - a.sortKey),
-      );
+      const close = rest.sort((x, y) => Math.abs(x.sortKey - a.sortKey) - Math.abs(y.sortKey - a.sortKey));
       const top = close.slice(0, Math.min(4, close.length));
       b = top[Math.floor(Math.random() * top.length)];
     }
-    return {
-      category,
-      subcategory,
-      a: this.toView(a, null),
-      b: this.toView(b, null),
-    };
+    return { category, subcategory, a: this.toView(a, null), b: this.toView(b, null) };
   }
 
   recordDuel(userId: string, winnerId: string, loserId: string): { ok: boolean; error?: string } {
