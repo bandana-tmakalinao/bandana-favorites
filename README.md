@@ -5,8 +5,9 @@ absolute, community-built ranked list of ramens, where the **food is the title**
 subtitle**. Ranking comes from trust-weighted **head-to-head comparisons** (Bradley-Terry/Elo) wrapped
 in **Bayesian shrinkage** toward the category average, not mass voting.
 
-> Full design rationale and the build plan live in
-> `~/.claude/plans/i-want-to-build-ancient-hamming.md`.
+> **New here? Read [`docs/OVERVIEW.md`](docs/OVERVIEW.md)** — the full walkthrough of what this is, why
+> it's built this way, how the ranking + dedupe work, the data story, and where it stands.
+> Full design rationale and the build plan also live in `~/.claude/plans/i-want-to-build-ancient-hamming.md`.
 
 ## Run it (zero setup)
 
