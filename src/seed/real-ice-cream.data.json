@@ -4,8 +4,8 @@
     "neighborhood": "Carroll Gardens",
     "borough": "Brooklyn",
     "address": "513 Henry St, Brooklyn, NY 11231",
-    "lat": 40.6809,
-    "lng": -74.0001,
+    "lat": 40.684067,
+    "lng": -73.999358,
     "signatureBowl": "Vintage soda-fountain sundaes; egg creams; ice cream floats",
     "appearsOn": [
       "The Infatuation",
@@ -13,15 +13,16 @@
       "Time Out New York"
     ],
     "appearanceCount": 3,
-    "seedQuality": 0.95
+    "seedQuality": 0.95,
+    "geocoded": true
   },
   {
     "name": "Caffè Panna",
     "neighborhood": "Gramercy",
     "borough": "Manhattan",
     "address": "77 Irving Pl, New York, NY 10003",
-    "lat": 40.7359,
-    "lng": -73.9866,
+    "lat": 40.73696,
+    "lng": -73.98669,
     "signatureBowl": "Italian-style scoops topped with panna (whipped cream); affogato sundaes",
     "appearsOn": [
       "The Infatuation",
@@ -29,15 +30,16 @@
       "Time Out New York"
     ],
     "appearanceCount": 3,
-    "seedQuality": 0.926
+    "seedQuality": 0.926,
+    "geocoded": true
   },
   {
     "name": "Eddie's Sweet Shop",
     "neighborhood": "Forest Hills",
     "borough": "Queens",
     "address": "105-29 Metropolitan Ave, Forest Hills, NY 11375",
-    "lat": 40.7124,
-    "lng": -73.8517,
+    "lat": 40.710035,
+    "lng": -73.847856,
     "signatureBowl": "Classic soda-fountain sundaes (Banana Royal); homemade ice cream, malted milkshakes",
     "appearsOn": [
       "The Infatuation",
@@ -45,15 +47,16 @@
       "Time Out New York"
     ],
     "appearanceCount": 3,
-    "seedQuality": 0.902
+    "seedQuality": 0.902,
+    "geocoded": true
   },
   {
     "name": "Malai Ice Cream",
     "neighborhood": "Carroll Gardens",
     "borough": "Brooklyn",
     "address": "268 Smith St, Brooklyn, NY 11231",
-    "lat": 40.6818,
-    "lng": -73.9959,
+    "lat": 40.682707,
+    "lng": -73.993274,
     "signatureBowl": "Masala chai; eggless South Asian-inspired flavors (rose, golden turmeric, carrot halwa)",
     "appearsOn": [
       "The Infatuation",
@@ -61,15 +64,16 @@
       "Time Out New York"
     ],
     "appearanceCount": 3,
-    "seedQuality": 0.879
+    "seedQuality": 0.879,
+    "geocoded": true
   },
   {
     "name": "Morgenstern's Finest Ice Cream",
     "neighborhood": "Lower East Side",
     "borough": "Manhattan",
     "address": "2 Rivington St, New York, NY 10002",
-    "lat": 40.7216,
-    "lng": -73.9928,
+    "lat": 40.721666,
+    "lng": -73.993423,
     "signatureBowl": "Bitter chocolate ash; olive oil; salted egg yolk",
     "appearsOn": [
       "The Infatuation",
@@ -77,15 +81,16 @@
       "Time Out New York"
     ],
     "appearanceCount": 3,
-    "seedQuality": 0.855
+    "seedQuality": 0.855,
+    "geocoded": true
   },
   {
     "name": "Salt & Straw",
     "neighborhood": "Upper West Side",
     "borough": "Manhattan",
     "address": "360 Amsterdam Ave, New York, NY 10024",
-    "lat": 40.7847,
-    "lng": -73.9772,
+    "lat": 40.781914,
+    "lng": -73.979313,
     "signatureBowl": "Sea salt with caramel ribbons",
     "appearsOn": [
       "The Infatuation",
@@ -93,15 +98,16 @@
       "Time Out New York"
     ],
     "appearanceCount": 3,
-    "seedQuality": 0.831
+    "seedQuality": 0.831,
+    "geocoded": true
   },
   {
     "name": "Sugar Hill Creamery",
     "neighborhood": "Harlem",
     "borough": "Manhattan",
     "address": "184 Malcolm X Blvd, New York, NY 10026",
-    "lat": 40.8035,
-    "lng": -73.9456,
+    "lat": 40.804101,
+    "lng": -73.948082,
     "signatureBowl": "Seasonal small-batch scoops (soursop; PB&J; quirky-named flavors)",
     "appearsOn": [
       "The Infatuation",
@@ -109,15 +115,16 @@
       "Time Out New York"
     ],
     "appearanceCount": 3,
-    "seedQuality": 0.807
+    "seedQuality": 0.807,
+    "geocoded": true
   },
   {
     "name": "The Original Chinatown Ice Cream Factory",
     "neighborhood": "Chinatown",
     "borough": "Manhattan",
     "address": "65 Bayard St, New York, NY 10013",
-    "lat": 40.7156,
-    "lng": -73.9981,
+    "lat": 40.715428,
+    "lng": -73.998102,
     "signatureBowl": "Black sesame; red bean; egg custard; durian; pandan",
     "appearsOn": [
       "The Infatuation",
@@ -125,206 +132,221 @@
       "Time Out New York"
     ],
     "appearanceCount": 3,
-    "seedQuality": 0.783
+    "seedQuality": 0.783,
+    "geocoded": true
   },
   {
     "name": "Il Laboratorio del Gelato",
     "neighborhood": "Lower East Side",
     "borough": "Manhattan",
     "address": "188 Ludlow St, New York, NY 10002",
-    "lat": 40.7211,
-    "lng": -73.9882,
+    "lat": 40.722099,
+    "lng": -73.987245,
     "signatureBowl": "Thai chili chocolate; dozens of unusual gelato flavors (beet, cheddar)",
     "appearsOn": [
       "The Infatuation",
       "Eater NY"
     ],
     "appearanceCount": 2,
-    "seedQuality": 0.76
+    "seedQuality": 0.76,
+    "geocoded": true
   },
   {
     "name": "Julia Jean's Ice Cream",
     "neighborhood": "Lower East Side",
     "borough": "Manhattan",
     "address": "202 Clinton St, New York, NY 10002",
-    "lat": 40.7167,
-    "lng": -73.9837,
+    "lat": 40.714071,
+    "lng": -73.987055,
     "signatureBowl": "Butter pecan / cherry-vanilla; classic flavors, banana splits, fruity sorbets",
     "appearsOn": [
       "The Infatuation",
       "Eater NY"
     ],
     "appearanceCount": 2,
-    "seedQuality": 0.736
+    "seedQuality": 0.736,
+    "geocoded": true
   },
   {
     "name": "OddFellows Ice Cream Co.",
     "neighborhood": "Williamsburg",
     "borough": "Brooklyn",
     "address": "175 Kent Ave, Brooklyn, NY 11249",
-    "lat": 40.7203,
-    "lng": -73.9626,
+    "lat": 40.718247,
+    "lng": -73.96385,
     "signatureBowl": "Thai iced tea; lemon thyme shortbread; matcha rocky road; black pepper fig",
     "appearsOn": [
       "Eater NY",
       "Time Out New York"
     ],
     "appearanceCount": 2,
-    "seedQuality": 0.712
+    "seedQuality": 0.712,
+    "geocoded": true
   },
   {
     "name": "Van Leeuwen Artisan Ice Cream",
     "neighborhood": "Greenpoint",
     "borough": "Brooklyn",
     "address": "620 Manhattan Ave, Brooklyn, NY 11222",
-    "lat": 40.7269,
-    "lng": -73.9543,
+    "lat": 40.723611,
+    "lng": -73.950616,
     "signatureBowl": "Sicilian pistachio; honeycomb; vegan options",
     "appearsOn": [
       "Eater NY",
       "Time Out New York"
     ],
     "appearanceCount": 2,
-    "seedQuality": 0.688
+    "seedQuality": 0.688,
+    "geocoded": true
   },
   {
     "name": "Island Pops",
     "neighborhood": "Crown Heights",
     "borough": "Brooklyn",
     "address": "670 Nostrand Ave, Brooklyn, NY 11216",
-    "lat": 40.6726,
-    "lng": -73.9501,
+    "lat": 40.675598,
+    "lng": -73.950039,
     "signatureBowl": "Guinness caramel; Caribbean-inspired flavors",
     "appearsOn": [
       "The Infatuation"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.664
+    "seedQuality": 0.664,
+    "geocoded": true
   },
   {
     "name": "Lai Rai",
     "neighborhood": "Chinatown",
     "borough": "Manhattan",
     "address": "76 Forsyth St, New York, NY 10002",
-    "lat": 40.717,
-    "lng": -73.9929,
+    "lat": 40.717505,
+    "lng": -73.993227,
     "signatureBowl": "Ambarella sorbet; Vietnamese-inspired flavors",
     "appearsOn": [
       "The Infatuation"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.64
+    "seedQuality": 0.64,
+    "geocoded": true
   },
   {
     "name": "Mr. P's Homemade Ice Cream",
     "neighborhood": "Flatbush",
     "borough": "Brooklyn",
     "address": "1397 Nostrand Ave, Brooklyn, NY 11226",
-    "lat": 40.6533,
-    "lng": -73.9505,
+    "lat": 40.65246,
+    "lng": -73.949673,
     "signatureBowl": "Soursop",
     "appearsOn": [
       "The Infatuation"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.617
+    "seedQuality": 0.617,
+    "geocoded": true
   },
   {
     "name": "Taiyaki NYC",
     "neighborhood": "Chinatown",
     "borough": "Manhattan",
     "address": "119 Baxter St, New York, NY 10013",
-    "lat": 40.7178,
-    "lng": -73.9998,
+    "lat": 40.717935,
+    "lng": -73.99899,
     "signatureBowl": "Straight Outta Japan soft-serve in a fish-shaped taiyaki cone",
     "appearsOn": [
       "The Infatuation"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.593
+    "seedQuality": 0.593,
+    "geocoded": true
   },
   {
     "name": "Big Gay Ice Cream Shop",
     "neighborhood": "Tribeca",
     "borough": "Manhattan",
     "address": "450 Washington St, New York, NY 10013",
-    "lat": 40.7269,
-    "lng": -74.0119,
+    "lat": 40.723942,
+    "lng": -74.010342,
     "signatureBowl": "The Dorothy (vanilla soft-serve, dulce de leche & crushed Nilla wafers)",
     "appearsOn": [
       "Time Out New York"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.569
+    "seedQuality": 0.569,
+    "geocoded": true
   },
   {
     "name": "Ferrara Bakery & Cafe",
     "neighborhood": "Little Italy",
     "borough": "Manhattan",
     "address": "195 Grand St, New York, NY 10013",
-    "lat": 40.7191,
-    "lng": -73.9971,
+    "lat": 40.719172,
+    "lng": -73.997033,
     "signatureBowl": "Pistachio gelato; salt-and-caramel; granita",
     "appearsOn": [
       "Eater NY"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.545
+    "seedQuality": 0.545,
+    "geocoded": true
   },
   {
     "name": "Gelateria Gentile",
     "neighborhood": "West Village",
     "borough": "Manhattan",
     "address": "43 8th Ave, New York, NY 10014",
-    "lat": 40.739,
-    "lng": -74.0019,
+    "lat": 40.738301,
+    "lng": -74.004075,
     "signatureBowl": "Gelato affogato (Bari, Italy heritage recipe)",
     "appearsOn": [
       "Eater NY"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.521
+    "seedQuality": 0.521,
+    "geocoded": true
   },
   {
     "name": "Glace",
     "neighborhood": "Upper East Side",
     "borough": "Manhattan",
     "address": "1266 Madison Ave, New York, NY 10128",
-    "lat": 40.7845,
-    "lng": -73.9568,
+    "lat": 40.783888,
+    "lng": -73.956685,
     "signatureBowl": "Nutella Fluffernutter sundae; macaron ice cream sandwiches",
     "appearsOn": [
       "Eater NY"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.498
+    "seedQuality": 0.498,
+    "geocoded": true
   },
   {
     "name": "Sedutto",
     "neighborhood": "Upper East Side",
     "borough": "Manhattan",
     "address": "1498 1st Ave, New York, NY 10075",
-    "lat": 40.7693,
-    "lng": -73.9533,
+    "lat": 40.771752,
+    "lng": -73.953031,
     "signatureBowl": "Wine ice creams (with booze); classic flavors and sorbets",
     "appearsOn": [
       "Eater NY"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.474
+    "seedQuality": 0.474,
+    "geocoded": true
   },
   {
     "name": "Superiority Burger",
     "neighborhood": "East Village",
     "borough": "Manhattan",
     "address": "119 Avenue A, New York, NY 10009",
-    "lat": 40.7268,
-    "lng": -73.9836,
+    "lat": 40.726359,
+    "lng": -73.9834,
     "signatureBowl": "Rotating daily gelato/sorbetto (fennel, coconut, labneh) from Brooks Headley",
     "appearsOn": [
       "Eater NY"
     ],
     "appearanceCount": 1,
-    "seedQuality": 0.45
+    "seedQuality": 0.45,
+    "geocoded": true
   }
 ]
