@@ -3,6 +3,19 @@
 Autonomous overnight build (started 2026-05-29). This file logs the decisions I made without you and
 the questions for you to answer in the morning. Nothing here is irreversible.
 
+## Update — morning session (2026-05-29)
+
+- **Home rotating Top-10 widget** added (right of the hero): auto-cycles all 22 food types, each
+  showing its top 10. (`src/components/RotatingTopList.tsx`, `repo.getHomeShowcase`.)
+- **Real NYC ramen seed ingested.** A 6-source research pass (Infatuation, Eater, MICHELIN, NYT, Time
+  Out, crowd) → a 22-shop consensus ranked by how many lists feature each (Ivan Ramen 5×, Okiboru /
+  Tonchin 4×, …). `/nyc/ramen` now shows real shops with real addresses; each carries a "Seed informed
+  by: …" credit. Order is our own consensus synthesis (NOT a copy of any list) and is overwritten by
+  user duels. Coords are neighborhood-approximate pending Overture reconciliation.
+  Files: `src/seed/real-ramen.ts` + `real-ramen.data.json`; ramen branch in `src/seed/placeholder.ts`.
+- **Same pattern repeats per food type** when you want it (pizza, tacos, soup dumplings…): research →
+  consensus seed → swap in.
+
 ## Decisions made autonomously (with rationale)
 
 1. **Local-first scaffold, production adapters env-gated.** The app boots and the full loop runs with

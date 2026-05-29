@@ -9,6 +9,7 @@
  */
 import { rankSubcategory, trustToWeight } from "../lib/ranking";
 import { NYC } from "../lib/config";
+import { REAL_RAMEN } from "./real-ramen";
 import type {
   Category,
   Comparison,
@@ -206,43 +207,39 @@ export function generateSeed(): StoreData {
   const usedNames = new Set<string>();
 
   for (const sub of SUBS) {
-    const k = R.i(9, 14);
     const subContenders: Contender[] = [];
     const quality = new Map<string, number>();
 
-    for (let j = 0; j < k; j++) {
-      // unique fictional place name
-      let name = "";
-      for (let tries = 0; tries < 60; tries++) {
-        const cand = `${R.pick(PREFIXES)} ${sub.suffix}`;
-        if (!usedNames.has(cand)) {
-          name = cand;
-          break;
-        }
-      }
-      if (!name) name = `${R.pick(PREFIXES)} ${sub.suffix} ${j}`;
-      usedNames.add(name);
-
-      const nb = R.pick(NEIGHBORHOODS);
+    // Shared: create a place + contender + placeholder photo and register its hidden quality.
+    const addContender = (opts: {
+      name: string;
+      neighborhood: string;
+      borough: string;
+      address: string;
+      lat: number;
+      lng: number;
+      title: string;
+      q: number;
+      seedSources: string[];
+    }) => {
       const place: Place = {
         id: `place_${placeN++}`,
-        name,
-        neighborhood: nb.name,
-        borough: nb.borough,
-        address: `${R.i(1, 540)} ${R.pick(STREETS)}, ${nb.name}`,
-        lat: +(nb.lat + R.f(-0.008, 0.008)).toFixed(5),
-        lng: +(nb.lng + R.f(-0.008, 0.008)).toFixed(5),
+        name: opts.name,
+        neighborhood: opts.neighborhood,
+        borough: opts.borough,
+        address: opts.address,
+        lat: +opts.lat.toFixed(5),
+        lng: +opts.lng.toFixed(5),
       };
       places.push(place);
-
-      const title = sub.dishes.length ? sub.dishes[j % sub.dishes.length] : sub.name;
       const con: Contender = {
         id: `con_${conN++}`,
         placeId: place.id,
         subcategoryId: `sub_${sub.slug}`,
         regionId: region.id,
-        title,
+        title: opts.title,
         dishVariantId: null,
+        seedSources: opts.seedSources,
         createdBy: null,
         createdAt: GENERATED_AT,
         theta: 0,
@@ -256,9 +253,8 @@ export function generateSeed(): StoreData {
       };
       contenders.push(con);
       subContenders.push(con);
-      quality.set(con.id, R.f(0.05, 0.97));
-
-      // one placeholder photo (generic stock keyed by food type; clearly not the real dish)
+      quality.set(con.id, opts.q);
+      // placeholder photo (generic stock keyed by food type; clearly not the actual dish)
       photos.push({
         id: `photo_${photoN++}`,
         contenderId: con.id,
@@ -269,10 +265,53 @@ export function generateSeed(): StoreData {
         placeholder: true,
         createdAt: GENERATED_AT,
       });
+    };
+
+    if (sub.slug === "ramen" && REAL_RAMEN.length > 0) {
+      // Real NYC ramen, consensus-ordered from public best-of lists (see src/seed/real-ramen.ts).
+      for (const shop of REAL_RAMEN) {
+        addContender({
+          name: shop.name,
+          neighborhood: shop.neighborhood,
+          borough: shop.borough,
+          address: shop.address,
+          lat: shop.lat,
+          lng: shop.lng,
+          title: shop.signatureBowl || "Ramen",
+          q: shop.seedQuality,
+          seedSources: shop.appearsOn,
+        });
+      }
+    } else {
+      const k = R.i(9, 14);
+      for (let j = 0; j < k; j++) {
+        let name = "";
+        for (let tries = 0; tries < 60; tries++) {
+          const cand = `${R.pick(PREFIXES)} ${sub.suffix}`;
+          if (!usedNames.has(cand)) {
+            name = cand;
+            break;
+          }
+        }
+        if (!name) name = `${R.pick(PREFIXES)} ${sub.suffix} ${j}`;
+        usedNames.add(name);
+        const nb = R.pick(NEIGHBORHOODS);
+        addContender({
+          name,
+          neighborhood: nb.name,
+          borough: nb.borough,
+          address: `${R.i(1, 540)} ${R.pick(STREETS)}, ${nb.name}`,
+          lat: nb.lat + R.f(-0.008, 0.008),
+          lng: nb.lng + R.f(-0.008, 0.008),
+          title: sub.dishes.length ? sub.dishes[j % sub.dishes.length] : sub.name,
+          q: R.f(0.05, 0.97),
+          seedSources: [],
+        });
+      }
     }
 
     // seed duels consistent with hidden quality
-    const duelCount = k * 7;
+    const duelCount = subContenders.length * 7;
     for (let d = 0; d < duelCount; d++) {
       const a = R.pick(subContenders);
       let b = R.pick(subContenders);

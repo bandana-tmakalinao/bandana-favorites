@@ -48,6 +48,7 @@ export interface Contender {
   regionId: ID;
   title: string; // the FOOD — display headline (place is the subtitle)
   dishVariantId: ID | null; // reserved for future per-named-dish granularity
+  seedSources: string[]; // publications this seed entry was informed by (curator seed only)
   createdBy: ID | null;
   createdAt: ISODate;
 
@@ -139,6 +140,7 @@ export interface ContenderView {
   weightedVotes: number;
   comparisonCount: number;
   photoUrl: string | null;
+  seedSources: string[];
 }
 
 export interface RankedList {

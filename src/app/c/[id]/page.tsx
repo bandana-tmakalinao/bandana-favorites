@@ -48,6 +48,16 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
         </div>
       </div>
 
+      {c.seedSources.length > 0 && (
+        <p className="mt-3 text-sm text-[var(--color-ink-dim)]">
+          <span className="text-[var(--color-gold)]">★</span> Seed informed by:{" "}
+          <span className="text-[var(--color-ink)]">{c.seedSources.join(", ")}</span>
+          <span className="block text-xs">
+            Starting position from public best-of lists — your duels decide the real order.
+          </span>
+        </p>
+      )}
+
       {c.tier === "provisional" && (
         <p className="mt-4 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-3 text-sm text-[var(--color-ink-dim)]">
           Provisional — not enough trusted votes yet to lock in a rank. Duel it to help the crowd

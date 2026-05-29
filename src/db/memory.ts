@@ -74,6 +74,7 @@ export class MemoryRepository implements Repository {
       weightedVotes: Math.round(con.weightedVotes * 10) / 10,
       comparisonCount: con.comparisonCount,
       photoUrl: this.photoUrlFor(con.id),
+      seedSources: con.seedSources ?? [],
     };
   }
 
