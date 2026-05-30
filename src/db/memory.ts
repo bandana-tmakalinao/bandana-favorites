@@ -37,11 +37,12 @@ const slugify = (s: string) =>
 
 export class MemoryRepository implements Repository {
   constructor(
-    private store: StoreData,
+    protected store: StoreData,
     private corpus: CorpusPlace[] = [],
   ) {}
 
-  private persist() {
+  // `protected` so PgRepository can override persistence to write through to Postgres.
+  protected persist() {
     try {
       saveStore(this.store);
     } catch {

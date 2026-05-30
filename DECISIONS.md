@@ -3,6 +3,37 @@
 Autonomous overnight build (started 2026-05-29). This file logs the decisions I made without you and
 the questions for you to answer in the morning. Nothing here is irreversible.
 
+## Update — Postgres persistence + Render launch (2026-05-30)
+
+**PgRepository — durable working-set architecture** (`src/db/pg.ts`, `src/instrumentation.ts`). When
+`DATABASE_URL` is set, the full dataset loads from Postgres into an in-memory `StoreData` at boot
+(`instrumentation.register()` → `initPgStore`), seeding the DB if empty. All reads/writes then use the
+proven `MemoryRepository` logic in memory; `PgRepository` overrides `persist()` to schedule a **debounced,
+delta-only write-through** (only rows whose JSON changed since the last flush are upserted; deletes
+applied). Why this shape:
+- **Concurrency (100+ users):** Node's event loop serializes the synchronous mutations; the flush is
+  async + coalesced. One web instance handles it fine. (Single-instance for launch — see scale-out below.)
+- **Connections:** a tiny pool (`PG_POOL_MAX`, default 5), no per-request queries → trivial load on the
+  managed-Postgres connection cap. SIGTERM flushes pending deltas before the instance dies.
+- **Schema:** real relational tables (typed columns + indexes: `idx_contenders_sub`,
+  `idx_comparisons_sub/user`, `idx_votes_contender`, …); JSON-as-text only for genuinely nested user
+  fields (categoryFavorites/showcase/pinnacle/oauth). **No PostGIS** — the app only renders stored
+  lat/lng and ranks by score-adjacency, so coordinates are plain `double precision` (PostGIS is a future
+  add for real "near me" search). This also simplifies the Render DB (no extension needed).
+- **Scale-out path:** when multiple web instances are needed, a per-row query repository against this same
+  schema is the upgrade — the tables + indexes are already in place. The old aspirational Drizzle schema
+  (`schema.ts`) is superseded by the live DDL in `pg.ts`.
+
+**Validated against the real Render Postgres** (`scripts/smoke-pg.ts` + a prod-server run): schema created,
+577 contenders / 554 places / 21 categories seeded, duel + category-favorite + OAuth-user writes persisted
+through the delta flush, prod server served `/nyc/pizza`, `/map`, `/u/:handle` at HTTP 200.
+
+**Render deploy:** Web Service — build `npm install && npm run build`, start `npm start`, **1 instance**.
+Env: `DATABASE_URL` (the Render Postgres), `SESSION_SECRET` (strong), `NEXT_PUBLIC_SITE_URL` (the service
+URL). First boot loads the already-seeded DB (no re-seed). ⚠️ The 13.6k-place add-search corpus
+(`.data/nyc-corpus.json`, gitignored 2.5MB) isn't deployed yet → restaurant-add search is limited to
+seeded places until the corpus is loaded into PG (follow-up).
+
 ## Update — profile #1 Picks + auth guardrails (2026-05-30)
 
 **Profile "#1 Picks" (gold showcase).** The profile now headlines with a gold row of your declared #1

@@ -13,6 +13,7 @@ import type {
 import type { DishResolution } from "@/lib/match";
 import { generateSeed } from "@/seed/placeholder";
 import { MemoryRepository } from "./memory";
+import { getPgRepository } from "./pg";
 import { type CorpusPlace, loadCorpus, loadStore, saveStore } from "./store";
 
 export type { CategoryWithSubs, RankedList };
@@ -234,11 +235,8 @@ const g = globalThis as unknown as { __bfStore?: StoreData; __bfCorpus?: CorpusP
 
 export function getRepo(): Repository {
   if (process.env.DATABASE_URL) {
-    // The Drizzle schema (src/db/schema.ts) is ready; the Postgres repository is wired once a
-    // database is provisioned (see DECISIONS.md). Until then, unset DATABASE_URL for local dev.
-    throw new Error(
-      "PgRepository not yet wired — unset DATABASE_URL to use the local in-memory store. See DECISIONS.md.",
-    );
+    // Postgres-backed durable working set (loaded/seeded at boot by src/instrumentation.ts → initPgStore).
+    return getPgRepository();
   }
   if (!g.__bfStore) {
     g.__bfStore = loadStore() ?? ((): StoreData => {
