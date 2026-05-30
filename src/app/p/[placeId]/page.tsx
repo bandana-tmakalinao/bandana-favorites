@@ -27,9 +27,10 @@ export default async function PlacePage({ params }: { params: Promise<{ placeId:
       subs: c.subcategories.map((s) => ({ slug: s.slug, name: s.name, emoji: s.emoji })),
     }))
     .filter((g) => g.subs.length > 0);
-  // Food types already logged here → pre-block re-adding the same (place × food type).
-  const existing: Record<string, { id: string; title: string }> = {};
-  for (const d of dishes) if (d.subSlug && !existing[d.subSlug]) existing[d.subSlug] = { id: d.id, title: d.title };
+  // Dishes already logged here, grouped by food type — shown as quick "rate it" links in the adder
+  // (a place can hold several dishes of one type, so this no longer blocks adding another).
+  const existing: Record<string, { id: string; title: string }[]> = {};
+  for (const d of dishes) if (d.subSlug) (existing[d.subSlug] ??= []).push({ id: d.id, title: d.title });
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">

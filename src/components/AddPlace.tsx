@@ -11,7 +11,7 @@ interface PlaceHit {
   address: string;
   borough: string;
   source: "corpus" | "place";
-  existingContenderId: string | null;
+  existingDishes: { id: string; title: string }[];
 }
 
 const BOROUGHS = ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"];
@@ -82,10 +82,8 @@ export default function AddPlace({
   }, [dish, picked, subSlug]);
 
   function chooseHit(hit: PlaceHit) {
-    if (hit.existingContenderId) {
-      router.push(`/c/${hit.existingContenderId}`);
-      return;
-    }
+    // Always go to the dish form — a place can hold several dishes of this type, so even one with
+    // existing dishes can have another added. Existing dishes are shown as quick "rate it" links.
     setPicked(hit);
     setDish("");
     setNote("");
@@ -253,19 +251,33 @@ export default function AddPlace({
           />
           <div className="mt-2 max-h-72 overflow-auto">
             {hits.map((h) => (
-              <button
-                key={h.id}
-                onClick={() => chooseHit(h)}
-                className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left hover:bg-[var(--color-surface-2)]"
-              >
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-medium">{h.name}</span>
-                  <span className="block truncate text-xs text-[var(--color-ink-dim)]">{h.address || h.borough}</span>
-                </span>
-                <span className="shrink-0 text-xs font-semibold text-[var(--color-brand)]">
-                  {h.existingContenderId ? "Rate it →" : "Add →"}
-                </span>
-              </button>
+              <div key={h.id} className="border-b border-[var(--color-border)] py-1 last:border-0">
+                <button
+                  onClick={() => chooseHit(h)}
+                  className="flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left hover:bg-[var(--color-surface-2)]"
+                >
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-sm font-medium">{h.name}</span>
+                    <span className="block truncate text-xs text-[var(--color-ink-dim)]">{h.address || h.borough}</span>
+                  </span>
+                  <span className="shrink-0 text-xs font-semibold text-[var(--color-brand)]">
+                    {h.existingDishes.length ? `+ Add ${subName.toLowerCase()}` : "Add →"}
+                  </span>
+                </button>
+                {h.existingDishes.length > 0 && (
+                  <div className="mb-1 ml-2 flex flex-wrap gap-1.5">
+                    {h.existingDishes.map((d) => (
+                      <Link
+                        key={d.id}
+                        href={`/c/${d.id}`}
+                        className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg)] px-2.5 py-1 text-xs text-[var(--color-ink)] transition hover:border-[var(--color-brand)]"
+                      >
+                        {d.title} · rate →
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             {q.trim() && hits.length === 0 && (
               <p className="px-2 py-3 text-sm text-[var(--color-ink-dim)]">No match in our NYC list.</p>

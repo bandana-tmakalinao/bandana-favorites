@@ -67,7 +67,8 @@ export interface PlaceHit {
   address: string;
   borough: string;
   source: "corpus" | "place";
-  existingContenderId: string | null; // a live contender for (this place × subcategory), if any
+  /** Dishes already logged for (this place × subcategory) — a place can have several (e.g. two ramens). */
+  existingDishes: { id: string; title: string }[];
 }
 
 /** Category-agnostic place search hit for the restaurant-first add flow. */

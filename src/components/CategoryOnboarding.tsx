@@ -11,7 +11,7 @@ interface PlaceHit {
   address: string;
   borough: string;
   source: "corpus" | "place";
-  existingContenderId: string | null;
+  existingDishes: { id: string; title: string }[];
 }
 
 type Phase = "idle" | "step1" | "step2" | "saving";
@@ -256,24 +256,37 @@ export default function CategoryOnboarding({
                     {searchHits.length > 0 && (
                       <ul className="mt-2 divide-y divide-[var(--color-border)] rounded-lg border border-[var(--color-border)]">
                         {searchHits.map((h) => (
-                          <li key={h.id}>
-                            <button
-                              onClick={() => {
-                                if (h.existingContenderId) {
-                                  // For existing contenders from search, we know the place name from the hit
-                                  confirmFavorite(h.existingContenderId, h.id, h.name);
-                                } else {
+                          <li key={h.id} className="px-3 py-2.5">
+                            <div className="flex items-center justify-between gap-2">
+                              <div className="min-w-0">
+                                <span className="block truncate font-semibold">{h.name}</span>
+                                <span className="block truncate text-xs text-[var(--color-ink-dim)]">
+                                  {h.address} · {h.borough}
+                                </span>
+                              </div>
+                              <button
+                                onClick={() => {
                                   setPickedHit(h);
                                   setSearchHits([]);
-                                }
-                              }}
-                              className="flex w-full flex-col gap-0.5 px-3 py-2.5 text-left hover:bg-[var(--color-surface)]"
-                            >
-                              <span className="font-semibold">{h.name}</span>
-                              <span className="text-xs text-[var(--color-ink-dim)]">
-                                {h.address} · {h.borough}
-                              </span>
-                            </button>
+                                }}
+                                className="shrink-0 text-xs font-semibold text-[var(--color-brand)]"
+                              >
+                                {h.existingDishes.length ? "+ new dish" : "Pick →"}
+                              </button>
+                            </div>
+                            {h.existingDishes.length > 0 && (
+                              <div className="mt-2 flex flex-wrap gap-1.5">
+                                {h.existingDishes.map((d) => (
+                                  <button
+                                    key={d.id}
+                                    onClick={() => confirmFavorite(d.id, h.id, h.name)}
+                                    className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg)] px-2.5 py-1 text-xs transition hover:border-[var(--color-brand)]"
+                                  >
+                                    ⭐ {d.title}
+                                  </button>
+                                ))}
+                              </div>
+                            )}
                           </li>
                         ))}
                       </ul>

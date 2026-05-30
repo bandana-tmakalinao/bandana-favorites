@@ -28,7 +28,7 @@ export default function AddDishHere({
   placeId: string;
   groups: CatGroup[];
   signedIn: boolean;
-  existing?: Record<string, { id: string; title: string }>; // food types already logged here
+  existing?: Record<string, { id: string; title: string }[]>; // dishes already logged here, per food type
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -151,17 +151,24 @@ export default function AddDishHere({
           </select>
         </div>
 
-        {already ? (
+        {already && already.length > 0 && (
           <div className="rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-3 text-sm">
-            <p className="text-[var(--color-ink-dim)]">
-              This place already has a dish logged for that food type.
+            <p className="mb-1.5 text-xs text-[var(--color-ink-dim)]">
+              Already logged here — rate them, or add another below:
             </p>
-            <Link href={`/c/${already.id}`} className="font-semibold text-[var(--color-brand)] hover:underline">
-              Open “{already.title}” to rate or duel it →
-            </Link>
+            <div className="flex flex-wrap gap-1.5">
+              {already.map((d) => (
+                <Link
+                  key={d.id}
+                  href={`/c/${d.id}`}
+                  className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs transition hover:border-[var(--color-brand)]"
+                >
+                  {d.title} · rate →
+                </Link>
+              ))}
+            </div>
           </div>
-        ) : (
-          <>
+        )}
         <div>
           <label className="mb-1 block text-sm font-medium">Dish name</label>
           <input
@@ -203,8 +210,6 @@ export default function AddDishHere({
           </button>
           {msg && <span className="text-xs text-[var(--color-ink-dim)]">{msg}</span>}
         </div>
-          </>
-        )}
       </div>
     </div>
   );

@@ -650,12 +650,12 @@ export class MemoryRepository implements Repository {
     const q = query.trim().toLowerCase();
     if (!q) return [];
     const subId = this.subBySlug(subSlug)?.id;
-    const liveContender = (placeId: string) =>
+    const liveDishes = (placeId: string): { id: string; title: string }[] =>
       subId
-        ? (this.store.contenders.find(
-            (c) => c.placeId === placeId && c.subcategoryId === subId && c.status !== "hidden",
-          )?.id ?? null)
-        : null;
+        ? this.store.contenders
+            .filter((c) => c.placeId === placeId && c.subcategoryId === subId && c.status !== "hidden")
+            .map((c) => ({ id: c.id, title: c.title }))
+        : [];
 
     type Hit = PlaceHit & { catMatch: boolean };
     const hits: Hit[] = [];
@@ -663,7 +663,7 @@ export class MemoryRepository implements Repository {
       if (p.status === "proposed" || !p.name.toLowerCase().includes(q)) continue;
       hits.push({
         id: p.id, name: p.name, address: p.address, borough: p.borough,
-        source: "place", existingContenderId: liveContender(p.id), catMatch: true,
+        source: "place", existingDishes: liveDishes(p.id), catMatch: true,
       });
     }
     const hasTwin = this.corpusTwinChecker();
@@ -671,7 +671,7 @@ export class MemoryRepository implements Repository {
       if (hasTwin(cp) || !cp.name.toLowerCase().includes(q)) continue;
       hits.push({
         id: cp.id, name: cp.name, address: cp.address, borough: cp.borough,
-        source: "corpus", existingContenderId: null, catMatch: subSlug ? cp.cats.includes(subSlug) : true,
+        source: "corpus", existingDishes: [], catMatch: subSlug ? cp.cats.includes(subSlug) : true,
       });
       if (hits.length > limit * 10) break;
     }
@@ -707,15 +707,21 @@ export class MemoryRepository implements Repository {
     }
     if (!place) return { ok: false, error: "Place not found." };
 
+    // Canonicalize the dish name against the category vocabulary so near-duplicates snap together,
+    // THEN dedup by (place × sub × dish). A place can hold several dishes of the same type (two ramens,
+    // many pizzas) — only re-adding the SAME dish returns the existing contender.
+    const resolvedTitle = resolveDishName(title, this.dishTitlesIn(sub.id), sub.name).name;
     const existing = this.store.contenders.find(
-      (c) => c.placeId === place!.id && c.subcategoryId === sub.id && c.status !== "hidden",
+      (c) =>
+        c.placeId === place!.id &&
+        c.subcategoryId === sub.id &&
+        c.status !== "hidden" &&
+        normalizeName(c.title) === normalizeName(resolvedTitle),
     );
     if (existing) {
       this.persist();
       return { ok: true, contenderId: existing.id, placeId: place.id };
     }
-    // Canonicalize the dish name against the category vocabulary so near-duplicates snap together.
-    const resolvedTitle = resolveDishName(title, this.dishTitlesIn(sub.id), sub.name).name;
     const con: Contender = {
       id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
       title: resolvedTitle, description: description?.trim() ?? "", dishVariantId: null,
