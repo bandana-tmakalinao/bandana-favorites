@@ -81,3 +81,19 @@ export async function getCurrentUser(): Promise<User | null> {
   if (!uid) return null;
   return getRepo().getUser(uid);
 }
+
+export interface PublicUser {
+  handle: string;
+  name: string;
+  isCurator: boolean;
+  trustScore: number;
+}
+
+/**
+ * Strip every sensitive/PII field (passwordHash, email, oauth) before a user object crosses the wire.
+ * ALWAYS use this when returning a user from an API route or passing one to a client component.
+ */
+export function publicUser(u: User | null): PublicUser | null {
+  if (!u) return null;
+  return { handle: u.handle, name: u.name, isCurator: u.isCurator, trustScore: u.trustScore };
+}

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getRepo } from "@/db/repo";
 import { sessionCookie } from "@/lib/auth";
-import { verifyPassword } from "@/lib/password";
+import { verifyPassword, TIMING_DUMMY } from "@/lib/password";
 import { rateLimit, clientIp } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
   const user = getRepo().getUserByEmail(email);
   // Always run a verify (against a dummy hash when the email is unknown) so timing doesn't leak
   // whether an account exists, and return a single generic message either way.
-  const valid = await verifyPassword(password, user?.passwordHash ?? "00:00");
+  const valid = await verifyPassword(password, user?.passwordHash ?? TIMING_DUMMY);
   if (!user || !valid) {
     return NextResponse.json({ error: "Invalid email or password." }, { status: 401 });
   }

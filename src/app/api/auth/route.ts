@@ -1,14 +1,14 @@
 import { NextResponse } from "next/server";
 import { getRepo } from "@/db/repo";
-import { clearedCookie, getCurrentUser, sessionCookie } from "@/lib/auth";
+import { clearedCookie, getCurrentUser, publicUser, sessionCookie } from "@/lib/auth";
 import { rateLimit, clientIp } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const user = await getCurrentUser();
-  return NextResponse.json({ user });
+  // publicUser() strips passwordHash / email / oauth — never send the raw user to the client.
+  return NextResponse.json({ user: publicUser(await getCurrentUser()) });
 }
 
 export async function POST(req: Request) {
@@ -24,7 +24,7 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Enter a name (at least 2 characters)." }, { status: 400 });
   }
   const user = getRepo().getOrCreateUser(name);
-  const res = NextResponse.json({ user });
+  const res = NextResponse.json({ user: publicUser(user) });
   const c = sessionCookie(user.id);
   res.cookies.set(c.name, c.value, c);
   return res;

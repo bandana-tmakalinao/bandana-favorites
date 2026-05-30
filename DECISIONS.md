@@ -3,6 +3,21 @@
 Autonomous overnight build (started 2026-05-29). This file logs the decisions I made without you and
 the questions for you to answer in the morning. Nothing here is irreversible.
 
+## Update — password/email security hardening (2026-05-30)
+
+Treated the user-credential surface like a security review. **Passwords** (`src/lib/password.ts`):
+OWASP-strength scrypt (N=2^15, r=8, p=1), a unique 16-byte salt per password, an **upgradeable
+self-describing format** `s1$N$r$p$salt$hash` (raise cost later without breaking old hashes), and an
+optional **server-side pepper** (HMAC-SHA256 via `PASSWORD_PEPPER`, set on Render) — so a stolen DB
+dump alone can't be cracked without the app secret. Verify is constant-time; the unknown-email path
+runs a full-cost **timing dummy** so login response time doesn't reveal whether an account exists.
+Login/register are rate-limited with generic errors (no account enumeration). **Fixed a real leak:**
+`GET/POST /api/auth` were returning the raw user object (passwordHash + email) — added `publicUser()`
+(handle/name/isCurator/trustScore only) and applied it; audited that no page leaks the full user into
+client components. **At rest:** Render Postgres is disk-encrypted by default; **in transit:** TLS
+(`ssl: require`). **Recommended next (infra):** the DB's `ipAllowList` is `0.0.0.0/0` — tighten it and
+point the web service at the *internal* DB URL so the database isn't reachable from the public internet.
+
 ## Update — Postgres persistence + Render launch (2026-05-30)
 
 **PgRepository — durable working-set architecture** (`src/db/pg.ts`, `src/instrumentation.ts`). When
