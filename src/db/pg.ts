@@ -63,7 +63,10 @@ CREATE TABLE IF NOT EXISTS regions (id text PRIMARY KEY, slug text, name text, c
 CREATE TABLE IF NOT EXISTS categories (id text PRIMARY KEY, slug text, name text, kind text, emoji text, sort integer);
 CREATE TABLE IF NOT EXISTS subcategories (id text PRIMARY KEY, category_id text, slug text, name text, emoji text, blurb text);
 CREATE TABLE IF NOT EXISTS places (id text PRIMARY KEY, name text, neighborhood text, borough text, address text, lat double precision, lng double precision, corpus_id text, status text);
-CREATE TABLE IF NOT EXISTS app_users (id text PRIMARY KEY, handle text, name text, trust_score double precision, rated_count integer, is_curator boolean, created_at text, bio text, avatar_url text, email text, showcase text, pinnacle text, category_favorites text, category_trust text, category_roles text, oauth text);
+CREATE TABLE IF NOT EXISTS app_users (id text PRIMARY KEY, handle text, name text, trust_score double precision, rated_count integer, is_curator boolean, created_at text, bio text, avatar_url text, email text, password_hash text, email_verified boolean, showcase text, pinnacle text, category_favorites text, category_trust text, category_roles text, oauth text);
+ALTER TABLE app_users ADD COLUMN IF NOT EXISTS password_hash text;
+ALTER TABLE app_users ADD COLUMN IF NOT EXISTS email_verified boolean;
+CREATE INDEX IF NOT EXISTS idx_users_email ON app_users (lower(email));
 CREATE TABLE IF NOT EXISTS contenders (id text PRIMARY KEY, place_id text, subcategory_id text, region_id text, title text, description text, dish_variant_id text, seed_sources text, created_by text, created_at text, theta double precision, rd double precision, weighted_votes double precision, comparison_count integer, distinct_opponents integer, score double precision, sort_key double precision, status text);
 CREATE TABLE IF NOT EXISTS comparisons (id text PRIMARY KEY, subcategory_id text, region_id text, user_id text, winner_id text, loser_id text, source text, weight double precision, created_at text);
 CREATE TABLE IF NOT EXISTS votes (id text PRIMARY KEY, contender_id text, user_id text, rating integer, weight double precision, created_at text);
@@ -137,11 +140,12 @@ const TABLES: Spec<any>[] = [
   },
   {
     name: "app_users",
-    cols: ["id", "handle", "name", "trust_score", "rated_count", "is_curator", "created_at", "bio", "avatar_url", "email", "showcase", "pinnacle", "category_favorites", "category_trust", "category_roles", "oauth"],
+    cols: ["id", "handle", "name", "trust_score", "rated_count", "is_curator", "created_at", "bio", "avatar_url", "email", "password_hash", "email_verified", "showcase", "pinnacle", "category_favorites", "category_trust", "category_roles", "oauth"],
     rows: (s) => s.users,
     toRow: (e: User) => ({
       id: e.id, handle: e.handle, name: e.name, trust_score: e.trustScore, rated_count: e.ratedCount,
       is_curator: e.isCurator, created_at: e.createdAt, bio: u(e.bio), avatar_url: u(e.avatarUrl), email: u(e.email),
+      password_hash: u(e.passwordHash), email_verified: u(e.emailVerified),
       showcase: J(e.showcase), pinnacle: J(e.pinnacle), category_favorites: J(e.categoryFavorites),
       category_trust: J(e.categoryTrust), category_roles: J(e.categoryRoles), oauth: J(e.oauth),
     }),
@@ -149,6 +153,7 @@ const TABLES: Spec<any>[] = [
       id: r.id as string, handle: r.handle as string, name: r.name as string, trustScore: r.trust_score as number,
       ratedCount: r.rated_count as number, isCurator: r.is_curator as boolean, createdAt: r.created_at as string,
       bio: (r.bio as string) ?? undefined, avatarUrl: (r.avatar_url as string) ?? null, email: (r.email as string) ?? undefined,
+      passwordHash: (r.password_hash as string) ?? undefined, emailVerified: (r.email_verified as boolean) ?? undefined,
       showcase: P(r.showcase, undefined as string[] | undefined), pinnacle: P(r.pinnacle, undefined as string[] | undefined),
       categoryFavorites: P(r.category_favorites, undefined as Record<string, string> | undefined),
       categoryTrust: P(r.category_trust, undefined as Record<string, number> | undefined),

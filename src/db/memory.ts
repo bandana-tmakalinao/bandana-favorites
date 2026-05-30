@@ -433,6 +433,36 @@ export class MemoryRepository implements Repository {
     return user;
   }
 
+  getUserByEmail(email: string): User | null {
+    const e = email.trim().toLowerCase();
+    if (!e) return null;
+    return this.store.users.find((u) => (u.email ?? "").toLowerCase() === e) ?? null;
+  }
+
+  createPasswordUser(input: { email: string; name: string; passwordHash: string }) {
+    const email = input.email.trim().toLowerCase();
+    if (this.getUserByEmail(email)) return { ok: false, error: "An account with this email already exists." };
+    const display = (input.name || email.split("@")[0] || "Taster").trim();
+    const base = slugify(display) || slugify(email.split("@")[0]) || "taster";
+    let handle = base;
+    for (let n = 2; this.store.users.some((u) => u.handle === handle); n++) handle = `${base}${n}`;
+    const user: User = {
+      id: crypto.randomUUID(),
+      handle,
+      name: display.slice(0, 60),
+      trustScore: 0.1,
+      ratedCount: 0,
+      isCurator: false,
+      createdAt: new Date().toISOString(),
+      email,
+      passwordHash: input.passwordHash,
+      avatarUrl: null,
+    };
+    this.store.users.push(user);
+    this.persist();
+    return { ok: true, user };
+  }
+
   findOrCreateOAuthUser(p: {
     provider: string;
     sub: string;

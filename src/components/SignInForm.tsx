@@ -9,6 +9,9 @@ function safeReturnTo(v: string | null): string | null {
   return v && v.startsWith("/") && !v.startsWith("//") ? v : null;
 }
 
+const inputCls =
+  "w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2 text-sm outline-none focus:border-[var(--color-brand)]";
+
 export default function SignInForm({
   signedInName,
   googleEnabled = false,
@@ -18,11 +21,44 @@ export default function SignInForm({
 }) {
   const router = useRouter();
   const returnTo = safeReturnTo(useSearchParams().get("returnTo"));
+  const [mode, setMode] = useState<"login" | "register">("login");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [guest, setGuest] = useState(false);
+  const [guestName, setGuestName] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
+  function done() {
+    if (returnTo) router.push(returnTo);
+    else router.refresh();
+  }
+
   async function submit(e: React.FormEvent) {
+    e.preventDefault();
+    setBusy(true);
+    setError(null);
+    try {
+      const res = await fetch(mode === "register" ? "/api/auth/register" : "/api/auth/login", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(mode === "register" ? { email, password, name } : { email, password }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(data.error ?? "Something went wrong.");
+        return;
+      }
+      done();
+    } catch {
+      setError("Network error.");
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  async function guestSubmit(e: React.FormEvent) {
     e.preventDefault();
     setBusy(true);
     setError(null);
@@ -30,15 +66,14 @@ export default function SignInForm({
       const res = await fetch("/api/auth", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ name }),
+        body: JSON.stringify({ name: guestName }),
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error ?? "Could not sign in.");
+        setError(data.error ?? "Could not continue.");
         return;
       }
-      if (returnTo) router.push(returnTo);
-      else router.refresh();
+      done();
     } catch {
       setError("Network error.");
     } finally {
@@ -66,8 +101,13 @@ export default function SignInForm({
     );
   }
 
+  const tab = (active: boolean) =>
+    `flex-1 rounded-md px-3 py-1.5 text-sm font-semibold transition ${
+      active ? "bg-[var(--color-brand)] text-white" : "text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]"
+    }`;
+
   return (
-    <form onSubmit={submit} className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+    <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
       {googleEnabled && (
         <>
           <a
@@ -87,22 +127,71 @@ export default function SignInForm({
           </div>
         </>
       )}
-      <label className="block text-sm font-medium">Pick a display name to start</label>
-      <p className="mb-3 text-xs text-[var(--color-ink-dim)]">
-        Dev sign-in for the scaffold. The real version verifies a phone and earns trust over time.
-      </p>
-      <div className="flex gap-2">
-        <input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="e.g. Tim"
-          className="flex-1 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2 outline-none focus:border-[var(--color-brand)]"
-        />
-        <button type="submit" disabled={busy} className={btn("primary")}>
+
+      <div className="mb-3 inline-flex w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] p-1">
+        <button onClick={() => { setMode("login"); setError(null); }} className={tab(mode === "login")}>
           Sign in
         </button>
+        <button onClick={() => { setMode("register"); setError(null); }} className={tab(mode === "register")}>
+          Create account
+        </button>
       </div>
+
+      <form onSubmit={submit} className="space-y-2">
+        {mode === "register" && (
+          <input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Display name"
+            autoComplete="name"
+            className={inputCls}
+          />
+        )}
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+          autoComplete="email"
+          className={inputCls}
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder={mode === "register" ? "Password (8+ characters)" : "Password"}
+          autoComplete={mode === "register" ? "new-password" : "current-password"}
+          className={inputCls}
+        />
+        <button type="submit" disabled={busy} className={`${btn("primary")} w-full`}>
+          {busy ? "…" : mode === "register" ? "Create account" : "Sign in"}
+        </button>
+      </form>
+
       {error && <p className="mt-2 text-sm text-[var(--color-brand)]">{error}</p>}
-    </form>
+
+      <div className="mt-3 border-t border-[var(--color-border)] pt-3 text-center">
+        {!guest ? (
+          <button
+            onClick={() => { setGuest(true); setError(null); }}
+            className="text-xs text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]"
+          >
+            or just pick a name to try it →
+          </button>
+        ) : (
+          <form onSubmit={guestSubmit} className="flex gap-2">
+            <input
+              value={guestName}
+              onChange={(e) => setGuestName(e.target.value)}
+              placeholder="Display name"
+              className={`${inputCls} flex-1`}
+            />
+            <button type="submit" disabled={busy} className={btn("secondary")}>
+              Continue
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
   );
 }

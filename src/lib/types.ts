@@ -93,6 +93,8 @@ export interface User {
   categoryRoles?: Record<string, "member">;
   // --- auth ---
   email?: string;
+  passwordHash?: string; // scrypt salt:hash (email+password accounts); never plaintext
+  emailVerified?: boolean; // reserved — email-confirmation flow slots in here later
   /** Linked external identity (e.g. Google), so the same person maps to one account across sign-ins. */
   oauth?: { provider: string; sub: string };
 }

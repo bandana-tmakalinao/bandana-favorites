@@ -159,6 +159,14 @@ export interface Repository {
   addPhoto(userId: string, contenderId: string, url: string): Photo | null;
   vouchPhoto(userId: string, photoId: string): { ok: boolean };
   getOrCreateUser(name: string): User;
+  /** Look up a user by email (lowercased match) — for password login. */
+  getUserByEmail(email: string): User | null;
+  /** Create an email+password account (route hashes the password first). Fails if the email is taken. */
+  createPasswordUser(input: { email: string; name: string; passwordHash: string }): {
+    ok: boolean;
+    user?: User;
+    error?: string;
+  };
   /** Find an existing user by linked OAuth identity (provider+sub), or create one. */
   findOrCreateOAuthUser(p: {
     provider: string;
