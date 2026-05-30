@@ -1,4 +1,4 @@
-import { RANKING, MATCH, type ConfidenceTier } from "@/lib/config";
+import { RANKING, MATCH, TRUST, type ConfidenceTier } from "@/lib/config";
 import { trustToWeight } from "@/lib/ranking";
 import { normalizeName, resolveDishName, similarity, type DishResolution } from "@/lib/match";
 import { recomputeSubcategory } from "@/seed/placeholder";
@@ -75,6 +75,7 @@ export class MemoryRepository implements Repository {
     const pl = this.place(con.placeId);
     return {
       id: con.id,
+      placeId: con.placeId,
       rank,
       title: con.title,
       description: con.description ?? "",
@@ -108,6 +109,8 @@ export class MemoryRepository implements Repository {
             ...s,
             contenderCount: cons.length,
             topPhotoUrl: top ? this.photoUrlFor(top.id) : null,
+            topTitle: top?.title ?? null,
+            topPlaceName: top ? (this.place(top.placeId)?.name ?? null) : null,
           };
         });
       return { category, subcategories: subs };
@@ -250,7 +253,7 @@ export class MemoryRepository implements Repository {
     return { query, subcategories, contenders };
   }
 
-  getDuelPair(subSlug?: string, keepId?: string): DuelPair | null {
+  getDuelPair(subSlug?: string, keepId?: string, prefer?: string[]): DuelPair | null {
     let subcategory: Subcategory | undefined;
     const king = keepId ? this.store.contenders.find((c) => c.id === keepId) : undefined;
     if (king) subcategory = this.subById(king.subcategoryId);
@@ -276,17 +279,53 @@ export class MemoryRepository implements Repository {
       const byUncertainty = [...pool].sort((x, y) => y.rd - x.rd);
       a = byUncertainty[Math.floor(Math.random() * Math.min(pool.length, Math.ceil(pool.length / 2)))];
     }
-    // "b" = a fresh challenger: close in score & uncertain, with an exploration chance.
+
+    // "b" = challenger. When a prefer list is given, pick the first ID from it that's in the pool.
+    // Falls back to the normal proximity/random logic when the prefer list is empty or exhausted.
     const rest = pool.filter((c) => c.id !== a.id);
-    let b: Contender;
-    if (Math.random() < 0.25) {
-      b = rest[Math.floor(Math.random() * rest.length)];
-    } else {
-      const close = rest.sort((x, y) => Math.abs(x.sortKey - a.sortKey) - Math.abs(y.sortKey - a.sortKey));
-      const top = close.slice(0, Math.min(4, close.length));
-      b = top[Math.floor(Math.random() * top.length)];
-    }
+    const b = this.pickChallenger(a, rest, prefer);
     return { category, subcategory, a: this.toView(a, null), b: this.toView(b, null) };
+  }
+
+  /** Returns the trust cap for a user in a category (lifted for community members). */
+  private catTrustCap(user: User, subSlug: string): number {
+    return user.categoryRoles?.[subSlug] === "member" ? TRUST.EXPERT_CAP : TRUST.NORMAL_CAP;
+  }
+
+  /**
+   * Returns the effective (cap-clamped) trust score for a user in a specific food category.
+   * Clamping at read time means a revoked member role immediately reduces influence, while the
+   * stored value is preserved (so re-promotion restores their earned trust).
+   */
+  private catTrustFor(user: User, subSlug: string): number {
+    const raw = user.categoryTrust?.[subSlug] ?? user.trustScore;
+    return Math.min(raw, this.catTrustCap(user, subSlug));
+  }
+
+  /** Grows the user's per-category trust by one comparison increment, respecting their cap. */
+  private growCategoryTrust(user: User, subSlug: string): void {
+    const current = this.catTrustFor(user, subSlug);
+    const cap = this.catTrustCap(user, subSlug);
+    if (current >= cap) return;
+    const next = Math.min(cap, current + TRUST.GROWTH_PER_COMPARISON);
+    if (!user.categoryTrust) user.categoryTrust = {};
+    user.categoryTrust[subSlug] = +next.toFixed(4);
+  }
+
+  private pickChallenger(a: Contender, rest: Contender[], prefer?: string[]): Contender {
+    if (prefer && prefer.length > 0) {
+      const firstPreferred = prefer
+        .map((id) => rest.find((c) => c.id === id))
+        .find((c): c is Contender => c !== undefined);
+      if (firstPreferred) return firstPreferred;
+    }
+    // Default: 25% exploration (random), 75% proximity (close score + high uncertainty).
+    if (Math.random() < 0.25) {
+      return rest[Math.floor(Math.random() * rest.length)];
+    }
+    const close = [...rest].sort((x, y) => Math.abs(x.sortKey - a.sortKey) - Math.abs(y.sortKey - a.sortKey));
+    const top = close.slice(0, Math.min(4, close.length));
+    return top[Math.floor(Math.random() * top.length)];
   }
 
   recordDuel(userId: string, winnerId: string, loserId: string): { ok: boolean; error?: string } {
@@ -299,6 +338,8 @@ export class MemoryRepository implements Repository {
     const user = this.getUser(userId);
     if (!user) return { ok: false, error: "Sign in to vote." };
 
+    const sub = this.subById(w.subcategoryId);
+    const catTrust = sub ? this.catTrustFor(user, sub.slug) : user.trustScore;
     this.store.comparisons.push({
       id: crypto.randomUUID(),
       subcategoryId: w.subcategoryId,
@@ -307,10 +348,11 @@ export class MemoryRepository implements Repository {
       winnerId,
       loserId,
       source: "duel",
-      weight: +trustToWeight(user.trustScore).toFixed(3),
+      weight: +trustToWeight(catTrust).toFixed(3),
       createdAt: new Date().toISOString(),
     });
     user.ratedCount += 1;
+    if (sub) this.growCategoryTrust(user, sub.slug);
     recomputeSubcategory(this.store, w.subcategoryId);
     this.persist();
     return { ok: true };
@@ -324,7 +366,9 @@ export class MemoryRepository implements Repository {
     const r = Math.max(0, Math.min(100, Math.round(rating)));
 
     const existing = this.store.votes.find((v) => v.userId === userId && v.contenderId === contenderId);
-    const weight = +trustToWeight(user.trustScore).toFixed(3);
+    const sub = this.subById(con.subcategoryId);
+    const catTrust = sub ? this.catTrustFor(user, sub.slug) : user.trustScore;
+    const weight = +trustToWeight(catTrust).toFixed(3);
     if (existing) {
       existing.rating = r;
       existing.weight = weight;
@@ -338,6 +382,7 @@ export class MemoryRepository implements Repository {
         createdAt: new Date().toISOString(),
       });
     }
+    if (sub) this.growCategoryTrust(user, sub.slug);
     recomputeSubcategory(this.store, con.subcategoryId);
     this.persist();
     return { ok: true };
@@ -381,6 +426,40 @@ export class MemoryRepository implements Repository {
       ratedCount: 0,
       isCurator: false,
       createdAt: new Date().toISOString(),
+    };
+    this.store.users.push(user);
+    this.persist();
+    return user;
+  }
+
+  findOrCreateOAuthUser(p: {
+    provider: string;
+    sub: string;
+    name?: string;
+    email?: string;
+    avatarUrl?: string;
+  }): User {
+    const existing = this.store.users.find(
+      (u) => u.oauth?.provider === p.provider && u.oauth?.sub === p.sub,
+    );
+    if (existing) return existing;
+
+    const display = (p.name || p.email?.split("@")[0] || "Taster").trim();
+    const base = slugify(display) || "taster";
+    let handle = base;
+    for (let n = 2; this.store.users.some((u) => u.handle === handle); n++) handle = `${base}${n}`;
+
+    const user: User = {
+      id: crypto.randomUUID(),
+      handle,
+      name: display.slice(0, 60),
+      trustScore: 0.1,
+      ratedCount: 0,
+      isCurator: false,
+      createdAt: new Date().toISOString(),
+      email: p.email,
+      avatarUrl: p.avatarUrl ?? null,
+      oauth: { provider: p.provider, sub: p.sub },
     };
     this.store.users.push(user);
     this.persist();
@@ -632,7 +711,7 @@ export class MemoryRepository implements Repository {
     );
     if (existing) {
       this.persist();
-      return { ok: true, contenderId: existing.id };
+      return { ok: true, contenderId: existing.id, placeId: place.id };
     }
     // Canonicalize the dish name against the category vocabulary so near-duplicates snap together.
     const resolvedTitle = resolveDishName(title, this.dishTitlesIn(sub.id), sub.name).name;
@@ -645,7 +724,7 @@ export class MemoryRepository implements Repository {
     this.store.contenders.push(con);
     recomputeSubcategory(this.store, sub.id);
     this.persist();
-    return { ok: true, contenderId: con.id };
+    return { ok: true, contenderId: con.id, placeId: place.id };
   }
 
   suggestPlace(userId: string, input: { name: string; address: string; borough?: string; subSlug: string }) {
@@ -731,13 +810,25 @@ export class MemoryRepository implements Repository {
       });
     }
 
-    const showcase = (user.showcase ?? [])
-      .map((slug) => {
-        const sub = this.store.subcategories.find((s) => s.slug === slug);
-        if (!sub) return null;
-        return { subSlug: slug, subName: sub.name, emoji: sub.emoji, items: this.getPersonalRankedList(user.id, slug).slice(0, 8) };
-      })
-      .filter(Boolean) as ProfileView["showcase"];
+    // "#1 Picks" — for each showcased category, the user's declared favorite (from onboarding),
+    // falling back to their personal #1 from ratings/duels. This is the gold headline of the profile.
+    const topPicks: ProfileView["topPicks"] = [];
+    const showcase: ProfileView["showcase"] = [];
+    for (const slug of user.showcase ?? []) {
+      const sub = this.store.subcategories.find((s) => s.slug === slug);
+      if (!sub) continue;
+      const personal = this.getPersonalRankedList(user.id, slug);
+      showcase.push({ subSlug: slug, subName: sub.name, emoji: sub.emoji, items: personal.slice(0, 8) });
+
+      const favId = user.categoryFavorites?.[slug];
+      let pick: ContenderView | undefined;
+      if (favId) {
+        const con = this.store.contenders.find((c) => c.id === favId && c.status !== "hidden");
+        if (con) pick = this.toView(con, null);
+      }
+      if (!pick && personal[0]) pick = personal[0];
+      if (pick) topPicks.push({ subSlug: slug, subName: sub.name, emoji: sub.emoji, contender: pick });
+    }
 
     return {
       handle: user.handle,
@@ -747,6 +838,7 @@ export class MemoryRepository implements Repository {
       trustScore: user.trustScore,
       ratedCount: user.ratedCount,
       pinnacle,
+      topPicks,
       showcase,
     };
   }
@@ -768,6 +860,52 @@ export class MemoryRepository implements Repository {
     const user = this.getUser(userId);
     if (!user) return { ok: false };
     user.avatarUrl = url;
+    this.persist();
+    return { ok: true };
+  }
+
+  setCategoryRole(curatorId: string, targetUserId: string, subSlug: string, role: "member" | null) {
+    const curator = this.getUser(curatorId);
+    if (!curator?.isCurator) return { ok: false, error: "Curator access required." };
+    const sub = this.store.subcategories.find((s) => s.slug === subSlug);
+    if (!sub) return { ok: false, error: "Unknown food type." };
+    const target = this.getUser(targetUserId);
+    if (!target) return { ok: false, error: "User not found." };
+    if (role === null) {
+      if (target.categoryRoles) delete target.categoryRoles[subSlug];
+    } else {
+      if (!target.categoryRoles) target.categoryRoles = {};
+      target.categoryRoles[subSlug] = role;
+    }
+    this.persist();
+    return { ok: true };
+  }
+
+  getCategoryFavorite(userId: string, subSlug: string): string | null {
+    const user = this.getUser(userId);
+    return user?.categoryFavorites?.[subSlug] ?? null;
+  }
+
+  getCategoryStanding(userId: string, subSlug: string) {
+    const user = this.getUser(userId);
+    if (!user) return null;
+    const sub = this.subBySlug(subSlug);
+    if (!sub) return null;
+    const trust = this.catTrustFor(user, subSlug);
+    const cap = this.catTrustCap(user, subSlug);
+    const role = user.categoryRoles?.[subSlug] ?? null;
+    return { trust, cap, role, weight: +trustToWeight(trust).toFixed(2) };
+  }
+
+  setCategoryFavorite(userId: string, subSlug: string, contenderId: string): { ok: boolean; error?: string } {
+    const user = this.getUser(userId);
+    if (!user) return { ok: false, error: "Sign in." };
+    const sub = this.store.subcategories.find((s) => s.slug === subSlug);
+    if (!sub) return { ok: false, error: "Unknown food type." };
+    const con = this.store.contenders.find((c) => c.id === contenderId && c.subcategoryId === sub.id);
+    if (!con) return { ok: false, error: "Dish not found in this category." };
+    if (!user.categoryFavorites) user.categoryFavorites = {};
+    user.categoryFavorites[subSlug] = contenderId;
     this.persist();
     return { ok: true };
   }

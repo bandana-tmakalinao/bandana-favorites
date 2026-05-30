@@ -1,382 +1,609 @@
 [
-  {
-    "name": "Birria-Landia",
-    "neighborhood": "Jackson Heights",
-    "borough": "Queens",
-    "address": "77-99 Roosevelt Ave, Queens, NY 11372",
-    "lat": 40.747279,
-    "lng": -73.88787,
-    "signatureBowl": "Broth-dipped birria tacos with consome",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Birria Tacos",
-    "description": "Broth-dipped, served with consome"
-  },
-  {
-    "name": "Carnitas Ramirez",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "210 E 3rd St, New York, NY 10009",
-    "lat": 40.722592,
-    "lng": -73.982935,
-    "signatureBowl": "Carnitas surtida (mixed nose-to-tail pork cuts); lengua and trompa",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.926,
-    "geocoded": true,
-    "title": "Carnitas Surtida",
-    "description": "Mixed nose-to-tail pork; lengua and trompa"
-  },
-  {
-    "name": "Esse Taco",
-    "neighborhood": "Williamsburg",
-    "borough": "Brooklyn",
-    "address": "219 Bedford Ave, Brooklyn, NY 11211",
-    "lat": 40.716571,
-    "lng": -73.958984,
-    "signatureBowl": "Rib eye and fatty pork adobada tacos",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.902,
-    "geocoded": true,
-    "title": "Adobada Taco",
-    "description": "Rib eye and fatty pork adobada"
-  },
-  {
-    "name": "Los Tacos No. 1",
-    "neighborhood": "Chelsea",
-    "borough": "Manhattan",
-    "address": "75 9th Ave, New York, NY 10011",
-    "lat": 40.741898,
-    "lng": -74.004768,
-    "signatureBowl": "Adobada (red-chili-marinated pork); also carne asada and nopal",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.879,
-    "geocoded": true,
-    "title": "Adobada Taco",
-    "description": "Red-chili-marinated pork; also carne asada, nopal"
-  },
-  {
-    "name": "Tacos El Bronco",
-    "neighborhood": "Sunset Park",
-    "borough": "Brooklyn",
-    "address": "4324 4th Ave, Brooklyn, NY 11232",
-    "lat": 40.650267,
-    "lng": -74.008723,
-    "signatureBowl": "Birria, al pastor, campechanos; tripe (also famous lengua)",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.855,
-    "geocoded": true,
-    "title": "Birria Taco",
-    "description": "Al pastor, campechanos, tripe; famous lengua"
-  },
-  {
-    "name": "Taqueria Al Pastor",
-    "neighborhood": "Bushwick",
-    "borough": "Brooklyn",
-    "address": "128 Wyckoff Ave, Brooklyn, NY 11237",
-    "lat": 40.703393,
-    "lng": -73.917884,
-    "signatureBowl": "Al pastor; carne asada",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.831,
-    "geocoded": true,
-    "title": "Al Pastor Taco",
-    "description": "Also carne asada"
-  },
-  {
-    "name": "Taqueria Ramirez",
-    "neighborhood": "Greenpoint",
-    "borough": "Brooklyn",
-    "address": "94 Franklin St, Brooklyn, NY 11222",
-    "lat": 40.727819,
-    "lng": -73.957177,
-    "signatureBowl": "Suadero; tripa (blowtorched)",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.807,
-    "geocoded": true,
-    "title": "Suadero Taco",
-    "description": "Plus blowtorched tripa"
-  },
-  {
-    "name": "Cosme",
-    "neighborhood": "Flatiron",
-    "borough": "Manhattan",
-    "address": "35 E 21st St, New York, NY 10010",
-    "lat": 40.739034,
-    "lng": -73.987451,
-    "signatureBowl": "Cobia al pastor; duck carnitas",
-    "appearsOn": [
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.783,
-    "geocoded": true,
-    "title": "Cobia Al Pastor",
-    "description": "Also duck carnitas"
-  },
-  {
-    "name": "Oso",
-    "neighborhood": "Hamilton Heights",
-    "borough": "Manhattan",
-    "address": "1618 Amsterdam Ave, New York, NY 10031",
-    "lat": 40.821946,
-    "lng": -73.9501,
-    "signatureBowl": "Authentic tacos and antojitos (Mexico City street-food style)",
-    "appearsOn": [
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.76,
-    "geocoded": true,
-    "title": "Street Tacos",
-    "description": "Mexico City street-food style tacos and antojitos"
-  },
-  {
-    "name": "Taco Mix",
-    "neighborhood": "East Harlem",
-    "borough": "Manhattan",
-    "address": "234 E 116th St, New York, NY 10029",
-    "lat": 40.797319,
-    "lng": -73.938692,
-    "signatureBowl": "Al pastor (pork from a twirling trompo)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.736,
-    "geocoded": true,
-    "title": "Al Pastor Taco",
-    "description": "Pork carved from a twirling trompo"
-  },
-  {
-    "name": "Taqueria El Gallo Azteca",
-    "neighborhood": "Tompkinsville",
-    "borough": "Staten Island",
-    "address": "75 Victory Blvd, Staten Island, NY 10301",
-    "lat": 40.638296,
-    "lng": -74.078585,
-    "signatureBowl": "Braised lengua (tongue) tacos; al pastor",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.712,
-    "geocoded": true,
-    "title": "Lengua Taco",
-    "description": "Braised tongue; also al pastor"
-  },
-  {
-    "name": "Taqueria Sinaloense",
-    "neighborhood": "Marble Hill",
-    "borough": "Bronx",
-    "address": "113 W 225th St, Bronx, NY 10463",
-    "lat": 40.874517,
-    "lng": -73.91064,
-    "signatureBowl": "Tacos gobernador (governor's tacos)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.688,
-    "geocoded": true,
-    "title": "Tacos Gobernador",
-    "description": ""
-  },
-  {
-    "name": "Beto's Carnitas & Guisados",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "69 Clinton St, New York, NY 10002",
-    "lat": 40.719258,
-    "lng": -73.985063,
-    "signatureBowl": "Guisados (chicken in mole verde, chamberete morita)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.664,
-    "geocoded": true,
-    "title": "Guisados Taco",
-    "description": "Chicken in mole verde; chamberete morita"
-  },
-  {
-    "name": "Border Town",
-    "neighborhood": "Greenpoint",
-    "borough": "Brooklyn",
-    "address": "148 Nassau Ave, Brooklyn, NY 11222",
-    "lat": 40.724854,
-    "lng": -73.947324,
-    "signatureBowl": "Flour tortilla tacos with carne con chile",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.64,
-    "geocoded": true,
-    "title": "Carne Con Chile",
-    "description": "On flour tortillas"
-  },
-  {
-    "name": "Cuerno",
-    "neighborhood": "Midtown",
-    "borough": "Manhattan",
-    "address": "1271 6th Ave, New York, NY 10020",
-    "lat": 40.7607,
-    "lng": -73.9803,
-    "signatureBowl": "Taco Richi (ribeye, chicharron en salsa verde, avocado)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.617,
-    "title": "Taco Richi",
-    "description": "Ribeye, chicharron en salsa verde, avocado"
-  },
-  {
-    "name": "Los Mariscos",
-    "neighborhood": "Chelsea",
-    "borough": "Manhattan",
-    "address": "409 W 15th St, New York, NY 10011",
-    "lat": 40.741812,
-    "lng": -74.005112,
-    "signatureBowl": "Fried battered fish tacos",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.593,
-    "geocoded": true,
-    "title": "Fried Fish Taco",
-    "description": "Battered and fried"
-  },
-  {
-    "name": "Plaza Ortega",
-    "neighborhood": "Bushwick",
-    "borough": "Brooklyn",
-    "address": "140 Stanhope St, Brooklyn, NY 11221",
-    "lat": 40.698226,
-    "lng": -73.922774,
-    "signatureBowl": "Birria tacos; gringas al pastor",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.569,
-    "geocoded": true,
-    "title": "Birria Tacos",
-    "description": "Also gringas al pastor"
-  },
-  {
-    "name": "Santo Taco",
-    "neighborhood": "Nolita",
-    "borough": "Manhattan",
-    "address": "114 Kenmare St, New York, NY 10012",
-    "lat": 40.721211,
-    "lng": -73.996873,
-    "signatureBowl": "Steak trompo taco (ribeye and strip steak)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.545,
-    "geocoded": true,
-    "title": "Steak Trompo Taco",
-    "description": "Ribeye and strip steak"
-  },
-  {
-    "name": "Tacoway Beach",
-    "neighborhood": "Rockaway Beach",
-    "borough": "Queens",
-    "address": "302 Beach 87th St, Rockaway Beach, NY 11693",
-    "lat": 40.588712,
-    "lng": -73.812208,
-    "signatureBowl": "Beer-battered / crispy fried fish taco",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.521,
-    "geocoded": true,
-    "title": "Fried Fish Taco",
-    "description": "Beer-battered, crispy"
-  },
-  {
-    "name": "Taqueria El Chato",
-    "neighborhood": "Greenwich Village",
-    "borough": "Manhattan",
-    "address": "120 MacDougal St, New York, NY 10012",
-    "lat": 40.729908,
-    "lng": -74.000477,
-    "signatureBowl": "Vampiro (cheesy, crunchy taco); lengua, steak, chorizo",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.498,
-    "geocoded": true,
-    "title": "Vampiro Taco",
-    "description": "Cheesy and crunchy; lengua, steak, chorizo"
-  },
-  {
-    "name": "Wayne & Sons",
-    "neighborhood": "Williamsburg",
-    "borough": "Brooklyn",
-    "address": "57 S 5th St, Brooklyn, NY 11249",
-    "lat": 40.712209,
-    "lng": -73.966401,
-    "signatureBowl": "Hard-shell beef picadillo taco",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.474,
-    "geocoded": true,
-    "title": "Beef Picadillo Taco",
-    "description": "Hard-shell"
-  },
-  {
-    "name": "Yellow Rose",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "102 3rd Ave, New York, NY 10003",
-    "lat": 40.732524,
-    "lng": -73.987831,
-    "signatureBowl": "Sonoran-style flour tortilla tacos with carne guisada",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Carne Guisada Taco",
-    "description": "Sonoran-style flour tortillas"
-  }
+ {
+  "name": "Birria-Landia",
+  "neighborhood": "Jackson Heights",
+  "borough": "Queens",
+  "address": "77-99 Roosevelt Ave, Queens, NY 11372",
+  "lat": 40.747279,
+  "lng": -73.88787,
+  "signatureBowl": "Broth-dipped birria tacos with consome",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Birria Tacos",
+  "description": "Broth-dipped, served with consome"
+ },
+ {
+  "name": "Carnitas Ramirez",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "210 E 3rd St, New York, NY 10009",
+  "lat": 40.722592,
+  "lng": -73.982935,
+  "signatureBowl": "Carnitas surtida (mixed nose-to-tail pork cuts); lengua and trompa",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.926,
+  "geocoded": true,
+  "title": "Carnitas Surtida",
+  "description": "Mixed nose-to-tail pork; lengua and trompa"
+ },
+ {
+  "name": "Esse Taco",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "219 Bedford Ave, Brooklyn, NY 11211",
+  "lat": 40.716571,
+  "lng": -73.958984,
+  "signatureBowl": "Rib eye and fatty pork adobada tacos",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.902,
+  "geocoded": true,
+  "title": "Adobada Taco",
+  "description": "Rib eye and fatty pork adobada"
+ },
+ {
+  "name": "Los Tacos No. 1",
+  "neighborhood": "Chelsea",
+  "borough": "Manhattan",
+  "address": "75 9th Ave, New York, NY 10011",
+  "lat": 40.741898,
+  "lng": -74.004768,
+  "signatureBowl": "Adobada (red-chili-marinated pork); also carne asada and nopal",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.879,
+  "geocoded": true,
+  "title": "Adobada Taco",
+  "description": "Red-chili-marinated pork; also carne asada, nopal"
+ },
+ {
+  "name": "Tacos El Bronco",
+  "neighborhood": "Sunset Park",
+  "borough": "Brooklyn",
+  "address": "4324 4th Ave, Brooklyn, NY 11232",
+  "lat": 40.650267,
+  "lng": -74.008723,
+  "signatureBowl": "Birria, al pastor, campechanos; tripe (also famous lengua)",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.855,
+  "geocoded": true,
+  "title": "Birria Taco",
+  "description": "Al pastor, campechanos, tripe; famous lengua"
+ },
+ {
+  "name": "Taqueria Al Pastor",
+  "neighborhood": "Bushwick",
+  "borough": "Brooklyn",
+  "address": "128 Wyckoff Ave, Brooklyn, NY 11237",
+  "lat": 40.703393,
+  "lng": -73.917884,
+  "signatureBowl": "Al pastor; carne asada",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.831,
+  "geocoded": true,
+  "title": "Al Pastor Taco",
+  "description": "Also carne asada"
+ },
+ {
+  "name": "Taqueria Ramirez",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "94 Franklin St, Brooklyn, NY 11222",
+  "lat": 40.727819,
+  "lng": -73.957177,
+  "signatureBowl": "Suadero; tripa (blowtorched)",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.807,
+  "geocoded": true,
+  "title": "Suadero Taco",
+  "description": "Plus blowtorched tripa"
+ },
+ {
+  "name": "Cosme",
+  "neighborhood": "Flatiron",
+  "borough": "Manhattan",
+  "address": "35 E 21st St, New York, NY 10010",
+  "lat": 40.739034,
+  "lng": -73.987451,
+  "signatureBowl": "Cobia al pastor; duck carnitas",
+  "appearsOn": [
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.783,
+  "geocoded": true,
+  "title": "Cobia Al Pastor",
+  "description": "Also duck carnitas"
+ },
+ {
+  "name": "Oso",
+  "neighborhood": "Hamilton Heights",
+  "borough": "Manhattan",
+  "address": "1618 Amsterdam Ave, New York, NY 10031",
+  "lat": 40.821946,
+  "lng": -73.9501,
+  "signatureBowl": "Authentic tacos and antojitos (Mexico City street-food style)",
+  "appearsOn": [
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.76,
+  "geocoded": true,
+  "title": "Street Tacos",
+  "description": "Mexico City street-food style tacos and antojitos"
+ },
+ {
+  "name": "Taco Mix",
+  "neighborhood": "East Harlem",
+  "borough": "Manhattan",
+  "address": "234 E 116th St, New York, NY 10029",
+  "lat": 40.797319,
+  "lng": -73.938692,
+  "signatureBowl": "Al pastor (pork from a twirling trompo)",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.736,
+  "geocoded": true,
+  "title": "Al Pastor Taco",
+  "description": "Pork carved from a twirling trompo"
+ },
+ {
+  "name": "Taqueria El Gallo Azteca",
+  "neighborhood": "Tompkinsville",
+  "borough": "Staten Island",
+  "address": "75 Victory Blvd, Staten Island, NY 10301",
+  "lat": 40.638296,
+  "lng": -74.078585,
+  "signatureBowl": "Braised lengua (tongue) tacos; al pastor",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.712,
+  "geocoded": true,
+  "title": "Lengua Taco",
+  "description": "Braised tongue; also al pastor"
+ },
+ {
+  "name": "Taqueria Sinaloense",
+  "neighborhood": "Marble Hill",
+  "borough": "Bronx",
+  "address": "113 W 225th St, Bronx, NY 10463",
+  "lat": 40.874517,
+  "lng": -73.91064,
+  "signatureBowl": "Tacos gobernador (governor's tacos)",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.688,
+  "geocoded": true,
+  "title": "Tacos Gobernador",
+  "description": ""
+ },
+ {
+  "name": "Beto's Carnitas & Guisados",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "69 Clinton St, New York, NY 10002",
+  "lat": 40.719258,
+  "lng": -73.985063,
+  "signatureBowl": "Guisados (chicken in mole verde, chamberete morita)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.664,
+  "geocoded": true,
+  "title": "Guisados Taco",
+  "description": "Chicken in mole verde; chamberete morita"
+ },
+ {
+  "name": "Border Town",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "148 Nassau Ave, Brooklyn, NY 11222",
+  "lat": 40.724854,
+  "lng": -73.947324,
+  "signatureBowl": "Flour tortilla tacos with carne con chile",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.64,
+  "geocoded": true,
+  "title": "Carne Con Chile",
+  "description": "On flour tortillas"
+ },
+ {
+  "name": "Cuerno",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "1271 6th Ave, New York, NY 10020",
+  "lat": 40.7607,
+  "lng": -73.9803,
+  "signatureBowl": "Taco Richi (ribeye, chicharron en salsa verde, avocado)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.617,
+  "title": "Taco Richi",
+  "description": "Ribeye, chicharron en salsa verde, avocado"
+ },
+ {
+  "name": "Los Mariscos",
+  "neighborhood": "Chelsea",
+  "borough": "Manhattan",
+  "address": "409 W 15th St, New York, NY 10011",
+  "lat": 40.741812,
+  "lng": -74.005112,
+  "signatureBowl": "Fried battered fish tacos",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.593,
+  "geocoded": true,
+  "title": "Fried Fish Taco",
+  "description": "Battered and fried"
+ },
+ {
+  "name": "Plaza Ortega",
+  "neighborhood": "Bushwick",
+  "borough": "Brooklyn",
+  "address": "140 Stanhope St, Brooklyn, NY 11221",
+  "lat": 40.698226,
+  "lng": -73.922774,
+  "signatureBowl": "Birria tacos; gringas al pastor",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.569,
+  "geocoded": true,
+  "title": "Birria Tacos",
+  "description": "Also gringas al pastor"
+ },
+ {
+  "name": "Santo Taco",
+  "neighborhood": "Nolita",
+  "borough": "Manhattan",
+  "address": "114 Kenmare St, New York, NY 10012",
+  "lat": 40.721211,
+  "lng": -73.996873,
+  "signatureBowl": "Steak trompo taco (ribeye and strip steak)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.545,
+  "geocoded": true,
+  "title": "Steak Trompo Taco",
+  "description": "Ribeye and strip steak"
+ },
+ {
+  "name": "Tacoway Beach",
+  "neighborhood": "Rockaway Beach",
+  "borough": "Queens",
+  "address": "302 Beach 87th St, Rockaway Beach, NY 11693",
+  "lat": 40.588712,
+  "lng": -73.812208,
+  "signatureBowl": "Beer-battered / crispy fried fish taco",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.521,
+  "geocoded": true,
+  "title": "Fried Fish Taco",
+  "description": "Beer-battered, crispy"
+ },
+ {
+  "name": "Taqueria El Chato",
+  "neighborhood": "Greenwich Village",
+  "borough": "Manhattan",
+  "address": "120 MacDougal St, New York, NY 10012",
+  "lat": 40.729908,
+  "lng": -74.000477,
+  "signatureBowl": "Vampiro (cheesy, crunchy taco); lengua, steak, chorizo",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.498,
+  "geocoded": true,
+  "title": "Vampiro Taco",
+  "description": "Cheesy and crunchy; lengua, steak, chorizo"
+ },
+ {
+  "name": "Wayne & Sons",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "57 S 5th St, Brooklyn, NY 11249",
+  "lat": 40.712209,
+  "lng": -73.966401,
+  "signatureBowl": "Hard-shell beef picadillo taco",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.474,
+  "geocoded": true,
+  "title": "Beef Picadillo Taco",
+  "description": "Hard-shell"
+ },
+ {
+  "name": "Yellow Rose",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "102 3rd Ave, New York, NY 10003",
+  "lat": 40.732524,
+  "lng": -73.987831,
+  "signatureBowl": "Sonoran-style flour tortilla tacos with carne guisada",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Carne Guisada Taco",
+  "description": "Sonoran-style flour tortillas"
+ },
+ {
+  "name": "Casa Carmen",
+  "neighborhood": "Tribeca",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.71812,
+  "lng": -74.0134,
+  "signatureBowl": "Lamb barbacoa tacos",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Lamb Barbacoa Taco",
+  "description": "lamb barbacoa, sold by the pair"
+ },
+ {
+  "name": "El Lado Taco",
+  "neighborhood": "Astoria",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.76032,
+  "lng": -73.92512,
+  "signatureBowl": "Breakfast tacos",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Breakfast Taco",
+  "description": "eggs on corn or flour tortillas"
+ },
+ {
+  "name": "Don Pepe Tortas Y Jugos",
+  "neighborhood": "Sunset Park",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.650532,
+  "lng": -74.017948,
+  "signatureBowl": "Tacos arabes",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Tacos Arabes",
+  "description": "cumin-spiced pork with pineapple"
+ },
+ {
+  "name": "The Blue Light Speak Cheesy",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.732284,
+  "lng": -73.95072,
+  "signatureBowl": "Breakfast tacos",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": false,
+  "title": "Breakfast Taco",
+  "description": "Wednesday-only soft/crunchy hybrid shell"
+ },
+ {
+  "name": "Mama Lupita's Bistro",
+  "neighborhood": "Greenwood Heights",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.655192,
+  "lng": -74.001132,
+  "signatureBowl": "Steak taquitos",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.56,
+  "geocoded": false,
+  "title": "Steak Taquitos",
+  "description": "grilled peppery steak taquitos"
+ },
+ {
+  "name": "La Abuelita",
+  "neighborhood": "Bushwick",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.699944,
+  "lng": -73.91824,
+  "signatureBowl": "Tinga taco",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Tinga Taco",
+  "description": "tinga con todo, fresh-pressed tortillas"
+ },
+ {
+  "name": "Cariñito Tacos",
+  "neighborhood": "Greenwich Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.736036,
+  "lng": -74.0054,
+  "signatureBowl": "Katz's-inspired pastrami brisket 'What She's Having' taco",
+  "appearsOn": [
+   "The Infatuation",
+   "The LO Times",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.9,
+  "geocoded": false,
+  "title": "What She's Having Taco",
+  "description": "Mexico City taqueria with Southeast Asian-inflected tacos"
+ },
+ {
+  "name": "Dolores",
+  "neighborhood": "Bed-Stuy",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.686756,
+  "lng": -73.938032,
+  "signatureBowl": "Short rib tacos on see-through flour tortillas",
+  "appearsOn": [
+   "The LO Times"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.72,
+  "geocoded": false,
+  "title": "Short Rib Taco",
+  "description": "Modern tacos on translucent flour tortillas"
+ },
+ {
+  "name": "Casa Azul",
+  "neighborhood": "Park Slope",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.66802,
+  "lng": -73.97596,
+  "signatureBowl": "Fried cod tacos",
+  "appearsOn": [
+   "The Infatuation",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.62,
+  "geocoded": false,
+  "title": "Fried Cod Taco",
+  "description": "Park Slope fish taco"
+ },
+ {
+  "name": "Nene's Taqueria",
+  "neighborhood": "Bushwick",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.694772,
+  "lng": -73.917316,
+  "signatureBowl": "Orange-tinged birria tacos dunked in consommé",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.56,
+  "geocoded": false,
+  "title": "Birria Taco",
+  "description": "Bushwick birria with consommé"
+ },
+ {
+  "name": "Oxomoco",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.736328,
+  "lng": -73.956396,
+  "signatureBowl": "Barbacoa tacos",
+  "appearsOn": [
+   "Resy",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Barbacoa Taco",
+  "description": "Michelin-recognized wood-fired Mexican"
+ },
+ {
+  "name": "Gordo's Cantina",
+  "neighborhood": "Bushwick",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.693152,
+  "lng": -73.916932,
+  "signatureBowl": "Tacos with chorizo; chile relleno with queso fresco",
+  "appearsOn": [
+   "The Infatuation",
+   "MICHELIN Guide"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Chorizo Taco",
+  "description": "Bib Gourmand family taqueria"
+ },
+ {
+  "name": "Atla",
+  "neighborhood": "NoHo",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.778588,
+  "lng": -73.966784,
+  "signatureBowl": "Suadero tacos; octopus tacos with Chihuahua cheese",
+  "appearsOn": [
+   "MICHELIN Guide",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Suadero Taco",
+  "description": "Bib Gourmand all-day Mexican with housemade tortillas"
+ }
 ]

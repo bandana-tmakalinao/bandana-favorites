@@ -1,316 +1,487 @@
 [
-  {
-    "name": "Eileen's Special Cheesecake",
-    "neighborhood": "Nolita",
-    "borough": "Manhattan",
-    "address": "17 Cleveland Pl, New York, NY 10012",
-    "lat": 40.721538,
-    "lng": -73.997292,
-    "signatureBowl": "Airy, moist, custard-like cheesecake with a graham cracker crust; traditional NY recipe with 20+ flavors, family-run since 1975",
-    "appearsOn": [
-      "The Infatuation",
-      "The New York Times",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "NY Cheesecake",
-    "description": "Airy custard-like filling, graham crust, 20+ flavors"
-  },
-  {
-    "name": "Junior's Restaurant",
-    "neighborhood": "Downtown Brooklyn",
-    "borough": "Brooklyn",
-    "address": "386 Flatbush Avenue Ext, Brooklyn, NY 11201",
-    "lat": 40.689971,
-    "lng": -73.981666,
-    "signatureBowl": "Thick New York cheesecake on a thin sponge-cake base instead of crust; classic NYC institution since 1950",
-    "appearsOn": [
-      "The Infatuation",
-      "The New York Times",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.921,
-    "geocoded": true,
-    "title": "NY Cheesecake",
-    "description": "Thick filling on thin sponge-cake base instead of crust"
-  },
-  {
-    "name": "Peter Luger",
-    "neighborhood": "Williamsburg",
-    "borough": "Brooklyn",
-    "address": "178 Broadway, Brooklyn, NY 11211",
-    "lat": 40.710129,
-    "lng": -73.963099,
-    "signatureBowl": "Classic New York cheesecake (rich, dense, creamy with a sour tang) sourced from outside bakery, served with a dollop of homemade schlag (whipped cream)",
-    "appearsOn": [
-      "The MICHELIN Guide",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.891,
-    "geocoded": true,
-    "title": "Cheesecake With Schlag",
-    "description": "Rich, dense, sour-tangy classic; homemade whipped cream"
-  },
-  {
-    "name": "La Cheesecake",
-    "neighborhood": "College Point",
-    "borough": "Queens",
-    "address": "126-06 14th Ave, College Point, NY 11356",
-    "lat": 40.785221,
-    "lng": -73.84199,
-    "signatureBowl": "Light, fluffy crustless NY-style cheesecake with a chewy sponge-cake crust and silky cream cheese core; neighborhood favorite since 1985",
-    "appearsOn": [
-      "The Infatuation",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.862,
-    "geocoded": true,
-    "title": "Crustless NY Cheesecake",
-    "description": "Light, fluffy, chewy sponge-cake crust, silky cream cheese core"
-  },
-  {
-    "name": "Mah-Ze-Dahr Bakery",
-    "neighborhood": "West Village",
-    "borough": "Manhattan",
-    "address": "28 Greenwich Ave, New York, NY 10011",
-    "lat": 40.735134,
-    "lng": -74.000168,
-    "signatureBowl": "Dense, sweet cheesecake with lemon zest and vanilla bean; creamy tang offset by a harder crust",
-    "appearsOn": [
-      "The Infatuation",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.832,
-    "geocoded": true,
-    "title": "Lemon Vanilla Cheesecake",
-    "description": "Dense, sweet, lemon zest, vanilla bean, harder crust"
-  },
-  {
-    "name": "Sarge's Delicatessen",
-    "neighborhood": "Murray Hill",
-    "borough": "Manhattan",
-    "address": "548 3rd Ave, New York, NY 10016",
-    "lat": 40.747279,
-    "lng": -73.977075,
-    "signatureBowl": "Massive, dense classic NY-style cheesecake (3+ inches) with a dappled surface; tangy cream cheese, notably salty",
-    "appearsOn": [
-      "The Infatuation",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.803,
-    "geocoded": true,
-    "title": "NY Cheesecake",
-    "description": "Massive, 3+ inches, tangy cream cheese, notably salty"
-  },
-  {
-    "name": "Veniero's Pasticceria & Caffe",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "342 E 11th St, New York, NY 10003",
-    "lat": 40.729901,
-    "lng": -73.985388,
-    "signatureBowl": "Deep-dish crustless New York cheesecake with fresh ricotta and whole eggs; creamy, delicate, tangy; landmark since 1894",
-    "appearsOn": [
-      "The Infatuation",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.774,
-    "geocoded": true,
-    "title": "Ricotta Cheesecake",
-    "description": "Deep-dish, crustless, fresh ricotta, whole eggs, creamy and tangy"
-  },
-  {
-    "name": "Francie",
-    "neighborhood": "Williamsburg",
-    "borough": "Brooklyn",
-    "address": "136 Broadway, Brooklyn, NY 11249",
-    "lat": 40.710247,
-    "lng": -73.963961,
-    "signatureBowl": "Reimagined guava cheesecake by pastry chef Justin Binnie: creamy cheesecake piped into dehydrated guava puree with prickly pear sorbet, dragon fruit and coconut-lime pudding",
-    "appearsOn": [
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.744,
-    "geocoded": true,
-    "title": "Guava Cheesecake",
-    "description": "Dehydrated guava, prickly pear sorbet, dragon fruit, coconut-lime pudding"
-  },
-  {
-    "name": "Junoon",
-    "neighborhood": "Flatiron",
-    "borough": "Manhattan",
-    "address": "19 W 24th St, New York, NY 10010",
-    "lat": 40.742577,
-    "lng": -73.989834,
-    "signatureBowl": "Cheesecake with an Indian twist: cream cheese blended with hung dahi (curd), whipped cream and butternut squash, with a jaggery-cardamom crumble and dragon fruit sorbet",
-    "appearsOn": [
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.715,
-    "geocoded": true,
-    "title": "Indian-Spiced Cheesecake",
-    "description": "Hung dahi, butternut squash, jaggery-cardamom crumble, dragon fruit sorbet"
-  },
-  {
-    "name": "Caputo's Bake Shop",
-    "neighborhood": "Carroll Gardens",
-    "borough": "Brooklyn",
-    "address": "329 Court St, Brooklyn, NY 11231",
-    "lat": 40.68287,
-    "lng": -73.995574,
-    "signatureBowl": "Straightforward crustless cheesecake with a classic look and sweeter profile; among the most affordable in the city",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.685,
-    "geocoded": true,
-    "title": "Crustless Cheesecake",
-    "description": "Classic look, sweeter profile, among the most affordable"
-  },
-  {
-    "name": "Carnegie Deli",
-    "neighborhood": "Midtown",
-    "borough": "Manhattan",
-    "address": "8 Seventh Ave, New York, NY 10001",
-    "lat": 40.736884,
-    "lng": -74.000966,
-    "signatureBowl": "Dense, creamy cheesecake with a thick cookie crust; counter located inside Madison Square Garden",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.656,
-    "geocoded": true,
-    "title": "NY Cheesecake",
-    "description": "Dense, creamy, thick cookie crust; inside Madison Square Garden"
-  },
-  {
-    "name": "Mia's Brooklyn Bakery",
-    "neighborhood": "Cobble Hill",
-    "borough": "Brooklyn",
-    "address": "139 Smith St, Brooklyn, NY 11201",
-    "lat": 40.687055,
-    "lng": -73.990159,
-    "signatureBowl": "Two-textured cheesecake with a thick fudgy top and molten lava-cake center; hidden graham cracker crust",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.626,
-    "geocoded": true,
-    "title": "Lava Cheesecake",
-    "description": "Fudgy top, molten center, hidden graham cracker crust"
-  },
-  {
-    "name": "S & S Cheesecake",
-    "neighborhood": "Kingsbridge",
-    "borough": "Bronx",
-    "address": "222 W 238th St, Bronx, NY 10463",
-    "lat": 40.884815,
-    "lng": -73.899906,
-    "signatureBowl": "Smooth, dense crustless cheesecake from the original 1960 recipe; lightly sweet with subtle sourness and a sandy crust; supplies local shops including Peter Luger",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.597,
-    "geocoded": true,
-    "title": "Crustless Cheesecake",
-    "description": "Smooth, dense, lightly sweet, subtle sourness, sandy crust"
-  },
-  {
-    "name": "Stu's Cheesecake",
-    "neighborhood": "Rockaway Park",
-    "borough": "Queens",
-    "address": "Rockaway Park, NYC",
-    "lat": 40.72788,
-    "lng": -73.79609,
-    "signatureBowl": "Hand-delivered cheesecake with a signature crack; creamy center with breadier cake-like edges and no chemical aftertaste",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.568,
-    "title": "Cracked-Top Cheesecake",
-    "description": "Creamy center, breadier cake-like edges, no chemical aftertaste"
-  },
-  {
-    "name": "The Cheesecake Factory",
-    "neighborhood": "Elmhurst",
-    "borough": "Queens",
-    "address": "90-15 Queens Blvd, Elmhurst, NY 11373",
-    "lat": 40.734193,
-    "lng": -73.871738,
-    "signatureBowl": "Soft, wobbly, slightly tangy cheesecake with Nilla Wafer nostalgia; Queens Center Mall location",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.538,
-    "geocoded": true,
-    "title": "Original Cheesecake",
-    "description": "Soft, wobbly, slightly tangy, Nilla Wafer nostalgia"
-  },
-  {
-    "name": "Breads Bakery",
-    "neighborhood": "Union Square",
-    "borough": "Manhattan",
-    "address": "18 E 16th St, New York, NY 10003",
-    "lat": 40.737129,
-    "lng": -73.992329,
-    "signatureBowl": "Basque-style cheesecake with vanilla and lemon zest and a caramelized top; seasonal varieties",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.509,
-    "geocoded": true,
-    "title": "Basque Cheesecake",
-    "description": "Vanilla, lemon zest, caramelized top, seasonal varieties"
-  },
-  {
-    "name": "Harbs",
-    "neighborhood": "Chelsea",
-    "borough": "Manhattan",
-    "address": "198 9th Ave, New York, NY 10011",
-    "lat": 40.745849,
-    "lng": -74.001707,
-    "signatureBowl": "Mille crepes cake with cream cheese and blueberries; classic NY cheesecake also available",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.479,
-    "geocoded": true,
-    "title": "Blueberry Mille Crepes",
-    "description": "Cream cheese and blueberries; classic NY cheesecake also available"
-  },
-  {
-    "name": "Keki Modern Cakes",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "79 Mott St, New York, NY 10013",
-    "lat": 40.716294,
-    "lng": -73.998165,
-    "signatureBowl": "Japanese-style 'Original Fancy' cheesecake with premium cheese and creme fraiche",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Japanese Cheesecake",
-    "description": "'Original Fancy' style, premium cheese, creme fraiche"
-  }
+ {
+  "name": "Eileen's Special Cheesecake",
+  "neighborhood": "Nolita",
+  "borough": "Manhattan",
+  "address": "17 Cleveland Pl, New York, NY 10012",
+  "lat": 40.721538,
+  "lng": -73.997292,
+  "signatureBowl": "Airy, moist, custard-like cheesecake with a graham cracker crust; traditional NY recipe with 20+ flavors, family-run since 1975",
+  "appearsOn": [
+   "The Infatuation",
+   "The New York Times",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "NY Cheesecake",
+  "description": "Airy custard-like filling, graham crust, 20+ flavors"
+ },
+ {
+  "name": "Junior's Restaurant",
+  "neighborhood": "Downtown Brooklyn",
+  "borough": "Brooklyn",
+  "address": "386 Flatbush Avenue Ext, Brooklyn, NY 11201",
+  "lat": 40.689971,
+  "lng": -73.981666,
+  "signatureBowl": "Thick New York cheesecake on a thin sponge-cake base instead of crust; classic NYC institution since 1950",
+  "appearsOn": [
+   "The Infatuation",
+   "The New York Times",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.921,
+  "geocoded": true,
+  "title": "NY Cheesecake",
+  "description": "Thick filling on thin sponge-cake base instead of crust"
+ },
+ {
+  "name": "Peter Luger",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "178 Broadway, Brooklyn, NY 11211",
+  "lat": 40.710129,
+  "lng": -73.963099,
+  "signatureBowl": "Classic New York cheesecake (rich, dense, creamy with a sour tang) sourced from outside bakery, served with a dollop of homemade schlag (whipped cream)",
+  "appearsOn": [
+   "The MICHELIN Guide",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.891,
+  "geocoded": true,
+  "title": "Cheesecake With Schlag",
+  "description": "Rich, dense, sour-tangy classic; homemade whipped cream"
+ },
+ {
+  "name": "La Cheesecake",
+  "neighborhood": "College Point",
+  "borough": "Queens",
+  "address": "126-06 14th Ave, College Point, NY 11356",
+  "lat": 40.785221,
+  "lng": -73.84199,
+  "signatureBowl": "Light, fluffy crustless NY-style cheesecake with a chewy sponge-cake crust and silky cream cheese core; neighborhood favorite since 1985",
+  "appearsOn": [
+   "The Infatuation",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.862,
+  "geocoded": true,
+  "title": "Crustless NY Cheesecake",
+  "description": "Light, fluffy, chewy sponge-cake crust, silky cream cheese core"
+ },
+ {
+  "name": "Mah-Ze-Dahr Bakery",
+  "neighborhood": "West Village",
+  "borough": "Manhattan",
+  "address": "28 Greenwich Ave, New York, NY 10011",
+  "lat": 40.735134,
+  "lng": -74.000168,
+  "signatureBowl": "Dense, sweet cheesecake with lemon zest and vanilla bean; creamy tang offset by a harder crust",
+  "appearsOn": [
+   "The Infatuation",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.832,
+  "geocoded": true,
+  "title": "Lemon Vanilla Cheesecake",
+  "description": "Dense, sweet, lemon zest, vanilla bean, harder crust"
+ },
+ {
+  "name": "Sarge's Delicatessen",
+  "neighborhood": "Murray Hill",
+  "borough": "Manhattan",
+  "address": "548 3rd Ave, New York, NY 10016",
+  "lat": 40.747279,
+  "lng": -73.977075,
+  "signatureBowl": "Massive, dense classic NY-style cheesecake (3+ inches) with a dappled surface; tangy cream cheese, notably salty",
+  "appearsOn": [
+   "The Infatuation",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.803,
+  "geocoded": true,
+  "title": "NY Cheesecake",
+  "description": "Massive, 3+ inches, tangy cream cheese, notably salty"
+ },
+ {
+  "name": "Veniero's Pasticceria & Caffe",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "342 E 11th St, New York, NY 10003",
+  "lat": 40.729901,
+  "lng": -73.985388,
+  "signatureBowl": "Deep-dish crustless New York cheesecake with fresh ricotta and whole eggs; creamy, delicate, tangy; landmark since 1894",
+  "appearsOn": [
+   "The Infatuation",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.774,
+  "geocoded": true,
+  "title": "Ricotta Cheesecake",
+  "description": "Deep-dish, crustless, fresh ricotta, whole eggs, creamy and tangy"
+ },
+ {
+  "name": "Francie",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "136 Broadway, Brooklyn, NY 11249",
+  "lat": 40.710247,
+  "lng": -73.963961,
+  "signatureBowl": "Reimagined guava cheesecake by pastry chef Justin Binnie: creamy cheesecake piped into dehydrated guava puree with prickly pear sorbet, dragon fruit and coconut-lime pudding",
+  "appearsOn": [
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.744,
+  "geocoded": true,
+  "title": "Guava Cheesecake",
+  "description": "Dehydrated guava, prickly pear sorbet, dragon fruit, coconut-lime pudding"
+ },
+ {
+  "name": "Junoon",
+  "neighborhood": "Flatiron",
+  "borough": "Manhattan",
+  "address": "19 W 24th St, New York, NY 10010",
+  "lat": 40.742577,
+  "lng": -73.989834,
+  "signatureBowl": "Cheesecake with an Indian twist: cream cheese blended with hung dahi (curd), whipped cream and butternut squash, with a jaggery-cardamom crumble and dragon fruit sorbet",
+  "appearsOn": [
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.715,
+  "geocoded": true,
+  "title": "Indian-Spiced Cheesecake",
+  "description": "Hung dahi, butternut squash, jaggery-cardamom crumble, dragon fruit sorbet"
+ },
+ {
+  "name": "Caputo's Bake Shop",
+  "neighborhood": "Carroll Gardens",
+  "borough": "Brooklyn",
+  "address": "329 Court St, Brooklyn, NY 11231",
+  "lat": 40.68287,
+  "lng": -73.995574,
+  "signatureBowl": "Straightforward crustless cheesecake with a classic look and sweeter profile; among the most affordable in the city",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.685,
+  "geocoded": true,
+  "title": "Crustless Cheesecake",
+  "description": "Classic look, sweeter profile, among the most affordable"
+ },
+ {
+  "name": "Carnegie Deli",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "8 Seventh Ave, New York, NY 10001",
+  "lat": 40.736884,
+  "lng": -74.000966,
+  "signatureBowl": "Dense, creamy cheesecake with a thick cookie crust; counter located inside Madison Square Garden",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.656,
+  "geocoded": true,
+  "title": "NY Cheesecake",
+  "description": "Dense, creamy, thick cookie crust; inside Madison Square Garden"
+ },
+ {
+  "name": "Mia's Brooklyn Bakery",
+  "neighborhood": "Cobble Hill",
+  "borough": "Brooklyn",
+  "address": "139 Smith St, Brooklyn, NY 11201",
+  "lat": 40.687055,
+  "lng": -73.990159,
+  "signatureBowl": "Two-textured cheesecake with a thick fudgy top and molten lava-cake center; hidden graham cracker crust",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.626,
+  "geocoded": true,
+  "title": "Lava Cheesecake",
+  "description": "Fudgy top, molten center, hidden graham cracker crust"
+ },
+ {
+  "name": "S & S Cheesecake",
+  "neighborhood": "Kingsbridge",
+  "borough": "Bronx",
+  "address": "222 W 238th St, Bronx, NY 10463",
+  "lat": 40.884815,
+  "lng": -73.899906,
+  "signatureBowl": "Smooth, dense crustless cheesecake from the original 1960 recipe; lightly sweet with subtle sourness and a sandy crust; supplies local shops including Peter Luger",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.597,
+  "geocoded": true,
+  "title": "Crustless Cheesecake",
+  "description": "Smooth, dense, lightly sweet, subtle sourness, sandy crust"
+ },
+ {
+  "name": "Stu's Cheesecake",
+  "neighborhood": "Rockaway Park",
+  "borough": "Queens",
+  "address": "Rockaway Park, NYC",
+  "lat": 40.72788,
+  "lng": -73.79609,
+  "signatureBowl": "Hand-delivered cheesecake with a signature crack; creamy center with breadier cake-like edges and no chemical aftertaste",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.568,
+  "title": "Cracked-Top Cheesecake",
+  "description": "Creamy center, breadier cake-like edges, no chemical aftertaste"
+ },
+ {
+  "name": "The Cheesecake Factory",
+  "neighborhood": "Elmhurst",
+  "borough": "Queens",
+  "address": "90-15 Queens Blvd, Elmhurst, NY 11373",
+  "lat": 40.734193,
+  "lng": -73.871738,
+  "signatureBowl": "Soft, wobbly, slightly tangy cheesecake with Nilla Wafer nostalgia; Queens Center Mall location",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.538,
+  "geocoded": true,
+  "title": "Original Cheesecake",
+  "description": "Soft, wobbly, slightly tangy, Nilla Wafer nostalgia"
+ },
+ {
+  "name": "Breads Bakery",
+  "neighborhood": "Union Square",
+  "borough": "Manhattan",
+  "address": "18 E 16th St, New York, NY 10003",
+  "lat": 40.737129,
+  "lng": -73.992329,
+  "signatureBowl": "Basque-style cheesecake with vanilla and lemon zest and a caramelized top; seasonal varieties",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.509,
+  "geocoded": true,
+  "title": "Basque Cheesecake",
+  "description": "Vanilla, lemon zest, caramelized top, seasonal varieties"
+ },
+ {
+  "name": "Harbs",
+  "neighborhood": "Chelsea",
+  "borough": "Manhattan",
+  "address": "198 9th Ave, New York, NY 10011",
+  "lat": 40.745849,
+  "lng": -74.001707,
+  "signatureBowl": "Mille crepes cake with cream cheese and blueberries; classic NY cheesecake also available",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.479,
+  "geocoded": true,
+  "title": "Blueberry Mille Crepes",
+  "description": "Cream cheese and blueberries; classic NY cheesecake also available"
+ },
+ {
+  "name": "Keki Modern Cakes",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "79 Mott St, New York, NY 10013",
+  "lat": 40.716294,
+  "lng": -73.998165,
+  "signatureBowl": "Japanese-style 'Original Fancy' cheesecake with premium cheese and creme fraiche",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Japanese Cheesecake",
+  "description": "'Original Fancy' style, premium cheese, creme fraiche"
+ },
+ {
+  "name": "Sarge's Delicatessen & Diner",
+  "neighborhood": "Murray Hill",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.742524,
+  "lng": -73.97032,
+  "signatureBowl": "Classic New York slice over three inches high with sour cream cheese filling; dense, crumbly, salty",
+  "appearsOn": [
+   "The Infatuation – 12 Best NY Cheesecakes (Oct 2025)",
+   "Time Out New York – Best Cheesecake in NYC (Jan 2025)"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.8,
+  "geocoded": false,
+  "title": "Three-Inch Deli Cheesecake",
+  "description": "Towering classic deli slice, dense and crumbly with a salty edge"
+ },
+ {
+  "name": "Peter Luger Steak House",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.704668,
+  "lng": -73.954424,
+  "signatureBowl": "Cheesecake made by Ferrara Bakery, served with schlag (whipped cream)",
+  "appearsOn": [
+   "Time Out New York – Best Cheesecake in NYC (Jan 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.62,
+  "geocoded": false,
+  "title": "Cheesecake with Schlag",
+  "description": "Ferrara-made cheesecake served with a mound of whipped cream"
+ },
+ {
+  "name": "Ernesto's",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.720256,
+  "lng": -73.98772,
+  "signatureBowl": "Basque cheesecake, creamy, gooey, tangy, and nicely burnt",
+  "appearsOn": [
+   "The Infatuation – Great Cheesecakes That Aren't NY-Style (Oct 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.63,
+  "geocoded": false,
+  "title": "Basque Burnt Cheesecake",
+  "description": "Picture-perfect creamy, gooey, tangy, nicely burnt Basque cheesecake"
+ },
+ {
+  "name": "Kuih Cafe",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.709588,
+  "lng": -73.989856,
+  "signatureBowl": "Pandan Basque burnt cheesecake and durian cheesecake with deeply browned, almost-bitter surface and creamy center",
+  "appearsOn": [
+   "The Infatuation – Great Cheesecakes That Aren't NY-Style (Oct 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Pandan Basque Burnt Cheesecake",
+  "description": "Floral pandan Basque cheesecake, bitter-browned top, creamy center"
+ },
+ {
+  "name": "El Quijote",
+  "neighborhood": "Chelsea",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.747604,
+  "lng": -74.002048,
+  "signatureBowl": "Basque cheesecake, rich, tangy, and creamy with charred flavor, served with seasonal fruit compote",
+  "appearsOn": [
+   "The Infatuation – Great Cheesecakes That Aren't NY-Style (Oct 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Basque Cheesecake",
+  "description": "Rich, tangy, creamy charred Basque cheesecake with fruit compote"
+ },
+ {
+  "name": "Torrisi",
+  "neighborhood": "Nolita",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.719336,
+  "lng": -74.001184,
+  "signatureBowl": "One perfect almond cheesecake",
+  "appearsOn": [
+   "Resy – Incredible Desserts in New York (June 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Almond Cheesecake",
+  "description": "One perfect almond cheesecake"
+ },
+ {
+  "name": "Ci Siamo",
+  "neighborhood": "Hudson Yards",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.784312,
+  "lng": -73.973624,
+  "signatureBowl": "Basque cheesecake with seasonal citrus",
+  "appearsOn": [
+   "Resy – Incredible Desserts in New York (June 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Basque Cheesecake with Citrus",
+  "description": "Basque cheesecake finished with seasonal citrus"
+ },
+ {
+  "name": "Café Sabarsky",
+  "neighborhood": "Upper East Side",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.769388,
+  "lng": -73.95918,
+  "signatureBowl": "Quark cheesecake",
+  "appearsOn": [
+   "Resy – Incredible Desserts in New York (June 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Quark Cheesecake",
+  "description": "Viennese quark cheesecake at the Neue Galerie"
+ },
+ {
+  "name": "Theodora",
+  "neighborhood": "Fort Greene",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.689276,
+  "lng": -73.978952,
+  "signatureBowl": "Camembert cheesecake",
+  "appearsOn": [
+   "Resy – Incredible Desserts in New York (June 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Camembert Cheesecake",
+  "description": "Runny Camembert cheesecake from chef Tomer Blechman"
+ },
+ {
+  "name": "da Toscano",
+  "neighborhood": "Greenwich Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.738976,
+  "lng": -73.997012,
+  "signatureBowl": "Grandpa Lusk's cheesecake with sour cream topping and graham cracker crust",
+  "appearsOn": [
+   "Resy – Incredible Desserts in New York (June 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Grandpa Lusk's Cheesecake",
+  "description": "Family-recipe cheesecake with sour cream top and graham crust"
+ }
 ]

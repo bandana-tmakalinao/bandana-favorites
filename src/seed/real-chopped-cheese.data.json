@@ -1,104 +1,104 @@
 [
-  {
-    "name": "Blue Sky Deli (Hajji's)",
-    "neighborhood": "East Harlem",
-    "borough": "Manhattan",
-    "address": "2135 1st Ave, New York, NY 10029",
-    "lat": 40.792045,
-    "lng": -73.938381,
-    "signatureBowl": "Classic chopped cheese loaded with sazon; widely cited as the birthplace of the NYC chopped cheese",
-    "appearsOn": [
-      "The Infatuation",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Chopped Cheese",
-    "description": "Classic, loaded with sazon; birthplace of the NYC chopped cheese"
-  },
-  {
-    "name": "Bodega Truck",
-    "neighborhood": "Tribeca / Chambers St area (mobile truck)",
-    "borough": "Manhattan",
-    "address": "Broadway & Chambers St, New York, NY 10007 (mobile location, varies)",
-    "lat": 40.7138,
-    "lng": -74.008,
-    "signatureBowl": "OG chopped cheese: gooey beef, American cheese, lettuce, tomato, and pink bodega sauce on a squishy hero roll ($9)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.85,
-    "title": "Chopped Cheese",
-    "description": "Gooey beef, American cheese, lettuce, tomato, pink sauce on hero"
-  },
-  {
-    "name": "Compton's",
-    "neighborhood": "Greenpoint",
-    "borough": "Brooklyn",
-    "address": "99 Franklin St, Brooklyn, NY 11222",
-    "lat": 40.729576,
-    "lng": -73.957621,
-    "signatureBowl": "Chopped cheese on a crusty sesame semolina loaf with crunchy iceberg lettuce and gooey cheese ($15)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.75,
-    "geocoded": true,
-    "title": "Chopped Cheese",
-    "description": "Crusty sesame semolina loaf, crunchy iceberg, gooey cheese"
-  },
-  {
-    "name": "Cubby's",
-    "neighborhood": "Hell's Kitchen",
-    "borough": "Manhattan",
-    "address": "630 Tenth Ave, New York, NY 10036",
-    "lat": 40.761356,
-    "lng": -73.994125,
-    "signatureBowl": "Off-menu chopped cheese on a pillowy soft burger roll with salty caramelized beef and pickled jalapenos",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.65,
-    "geocoded": true,
-    "title": "Chopped Cheese",
-    "description": "Pillowy burger roll, caramelized beef, pickled jalapenos"
-  },
-  {
-    "name": "Nishaan",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "160 1st Ave, New York, NY 10009",
-    "lat": 40.728622,
-    "lng": -73.984479,
-    "signatureBowl": "Pakistani-American chopped cheese with chapli-kabob cumin and coriander spices, lime-cilantro sauce, and sweet tamarind chutney",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.55,
-    "geocoded": true,
-    "title": "Pakistani Chopped Cheese",
-    "description": "Chapli-kabob cumin and coriander, lime-cilantro sauce, tamarind chutney"
-  },
-  {
-    "name": "Titi's Empanadas",
-    "neighborhood": "Williamsburg",
-    "borough": "Brooklyn",
-    "address": "160 Havemeyer St, Brooklyn, NY 11211",
-    "lat": 40.711406,
-    "lng": -73.957745,
-    "signatureBowl": "Chopped cheese with hard-seared beef for crunchy texture and an herby, mayo-heavy green sauce",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Chopped Cheese",
-    "description": "Hard-seared beef for crunch, herby mayo-heavy green sauce"
-  }
+ {
+  "name": "Blue Sky Deli (Hajji's)",
+  "neighborhood": "East Harlem",
+  "borough": "Manhattan",
+  "address": "2135 1st Ave, New York, NY 10029",
+  "lat": 40.792045,
+  "lng": -73.938381,
+  "signatureBowl": "Classic chopped cheese loaded with sazon; widely cited as the birthplace of the NYC chopped cheese",
+  "appearsOn": [
+   "The Infatuation",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Chopped Cheese",
+  "description": "Classic, loaded with sazon; birthplace of the NYC chopped cheese"
+ },
+ {
+  "name": "Bodega Truck",
+  "neighborhood": "Tribeca / Chambers St area (mobile truck)",
+  "borough": "Manhattan",
+  "address": "Broadway & Chambers St, New York, NY 10007 (mobile location, varies)",
+  "lat": 40.7138,
+  "lng": -74.008,
+  "signatureBowl": "OG chopped cheese: gooey beef, American cheese, lettuce, tomato, and pink bodega sauce on a squishy hero roll ($9)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.85,
+  "title": "Chopped Cheese",
+  "description": "Gooey beef, American cheese, lettuce, tomato, pink sauce on hero"
+ },
+ {
+  "name": "Compton's",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "99 Franklin St, Brooklyn, NY 11222",
+  "lat": 40.729576,
+  "lng": -73.957621,
+  "signatureBowl": "Chopped cheese on a crusty sesame semolina loaf with crunchy iceberg lettuce and gooey cheese ($15)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.75,
+  "geocoded": true,
+  "title": "Chopped Cheese",
+  "description": "Crusty sesame semolina loaf, crunchy iceberg, gooey cheese"
+ },
+ {
+  "name": "Cubby's",
+  "neighborhood": "Hell's Kitchen",
+  "borough": "Manhattan",
+  "address": "630 Tenth Ave, New York, NY 10036",
+  "lat": 40.761356,
+  "lng": -73.994125,
+  "signatureBowl": "Off-menu chopped cheese on a pillowy soft burger roll with salty caramelized beef and pickled jalapenos",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.65,
+  "geocoded": true,
+  "title": "Chopped Cheese",
+  "description": "Pillowy burger roll, caramelized beef, pickled jalapenos"
+ },
+ {
+  "name": "Nishaan",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "160 1st Ave, New York, NY 10009",
+  "lat": 40.728622,
+  "lng": -73.984479,
+  "signatureBowl": "Pakistani-American chopped cheese with chapli-kabob cumin and coriander spices, lime-cilantro sauce, and sweet tamarind chutney",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": true,
+  "title": "Pakistani Chopped Cheese",
+  "description": "Chapli-kabob cumin and coriander, lime-cilantro sauce, tamarind chutney"
+ },
+ {
+  "name": "Titi's Empanadas",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "160 Havemeyer St, Brooklyn, NY 11211",
+  "lat": 40.711406,
+  "lng": -73.957745,
+  "signatureBowl": "Chopped cheese with hard-seared beef for crunchy texture and an herby, mayo-heavy green sauce",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Chopped Cheese",
+  "description": "Hard-seared beef for crunch, herby mayo-heavy green sauce"
+ }
 ]

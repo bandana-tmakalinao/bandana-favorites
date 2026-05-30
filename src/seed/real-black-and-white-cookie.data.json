@@ -1,87 +1,104 @@
 [
-  {
-    "name": "Russ & Daughters Cafe",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "127 Orchard St, New York, NY 10002",
-    "lat": 40.719786,
-    "lng": -73.989463,
-    "signatureBowl": "Black and white cookie (mentioned as a pro tip within a brunch list, not a ranked cookie guide)",
-    "appearsOn": [
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Black And White Cookie",
-    "description": ""
-  },
-  {
-    "name": "Lee Lee's Baked Goods",
-    "neighborhood": "Harlem",
-    "borough": "Manhattan",
-    "address": "283 W 118th St, New York, NY 10026",
-    "lat": 40.805476,
-    "lng": -73.953672,
-    "signatureBowl": "Black and white cookies (alongside rugelach and crumble-topped pies)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.825,
-    "geocoded": true,
-    "title": "Black And White Cookie",
-    "description": ""
-  },
-  {
-    "name": "William Greenberg Desserts",
-    "neighborhood": "Upper East Side",
-    "borough": "Manhattan",
-    "address": "1100 Madison Ave, New York, NY 10028",
-    "lat": 40.778526,
-    "lng": -73.960599,
-    "signatureBowl": "Black and white cookie (making them since 1946)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.7,
-    "geocoded": true,
-    "title": "Black And White Cookie",
-    "description": "made since 1946"
-  },
-  {
-    "name": "Madonia Bakery",
-    "neighborhood": "Belmont (Arthur Avenue)",
-    "borough": "Bronx",
-    "address": "2348 Arthur Ave, Bronx, NY 10458",
-    "lat": 40.854327,
-    "lng": -73.88854,
-    "signatureBowl": "Black and white cookie — super soft, light cake with balanced, not-overly-sweet fondants",
-    "appearsOn": [
-      "Eat This NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.575,
-    "geocoded": true,
-    "title": "Black And White Cookie",
-    "description": "super soft light cake, balanced not-too-sweet fondant"
-  },
-  {
-    "name": "Partybus Bakeshop",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "31 Essex St, New York, NY 10002",
-    "lat": 40.715736,
-    "lng": -73.98974,
-    "signatureBowl": "Black and white cookie — super-browned, crumbly, buttery; smooth chocolate frosting, vanilla-flecked white frosting",
-    "appearsOn": [
-      "Eat This NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Black And White Cookie",
-    "description": "browned crumbly buttery; smooth chocolate, vanilla-flecked white frosting"
-  }
+ {
+  "name": "Russ & Daughters Cafe",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "127 Orchard St, New York, NY 10002",
+  "lat": 40.719786,
+  "lng": -73.989463,
+  "signatureBowl": "Black and white cookie (mentioned as a pro tip within a brunch list, not a ranked cookie guide)",
+  "appearsOn": [
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Black And White Cookie",
+  "description": ""
+ },
+ {
+  "name": "Lee Lee's Baked Goods",
+  "neighborhood": "Harlem",
+  "borough": "Manhattan",
+  "address": "283 W 118th St, New York, NY 10026",
+  "lat": 40.805476,
+  "lng": -73.953672,
+  "signatureBowl": "Black and white cookies (alongside rugelach and crumble-topped pies)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.825,
+  "geocoded": true,
+  "title": "Black And White Cookie",
+  "description": ""
+ },
+ {
+  "name": "William Greenberg Desserts",
+  "neighborhood": "Upper East Side",
+  "borough": "Manhattan",
+  "address": "1100 Madison Ave, New York, NY 10028",
+  "lat": 40.778526,
+  "lng": -73.960599,
+  "signatureBowl": "Black and white cookie (making them since 1946)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.7,
+  "geocoded": true,
+  "title": "Black And White Cookie",
+  "description": "made since 1946"
+ },
+ {
+  "name": "Madonia Bakery",
+  "neighborhood": "Belmont (Arthur Avenue)",
+  "borough": "Bronx",
+  "address": "2348 Arthur Ave, Bronx, NY 10458",
+  "lat": 40.854327,
+  "lng": -73.88854,
+  "signatureBowl": "Black and white cookie — super soft, light cake with balanced, not-overly-sweet fondants",
+  "appearsOn": [
+   "Eat This NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.575,
+  "geocoded": true,
+  "title": "Black And White Cookie",
+  "description": "super soft light cake, balanced not-too-sweet fondant"
+ },
+ {
+  "name": "Partybus Bakeshop",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "31 Essex St, New York, NY 10002",
+  "lat": 40.715736,
+  "lng": -73.98974,
+  "signatureBowl": "Black and white cookie — super-browned, crumbly, buttery; smooth chocolate frosting, vanilla-flecked white frosting",
+  "appearsOn": [
+   "Eat This NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Black And White Cookie",
+  "description": "browned crumbly buttery; smooth chocolate, vanilla-flecked white frosting"
+ },
+ {
+  "name": "Russ & Daughters",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.720988,
+  "lng": -73.981408,
+  "signatureBowl": "Black and white cookie with a nice shell-like icing that adds texture to the spongy cookie",
+  "appearsOn": [
+   "The Infatuation - Russ & Daughters review"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Black & White Cookie",
+  "description": "Classic Jewish appetizing shop; its black & white has a shell-like icing over a spongy cookie."
+ }
 ]

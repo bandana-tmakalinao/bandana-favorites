@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { resolveMapStyle } from "@/lib/mapStyle";
 
 export interface MapPoint {
   id: string;
@@ -13,28 +14,12 @@ export interface MapPoint {
   placeName: string;
 }
 
-// Keyless OSM raster style for local dev. Production: set NEXT_PUBLIC_MAP_STYLE to a PMTiles/MapTiler URL.
-const KEYLESS_OSM_STYLE = {
-  version: 8 as const,
-  sources: {
-    osm: {
-      type: "raster" as const,
-      tiles: [
-        "https://a.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        "https://b.tile.openstreetmap.org/{z}/{x}/{y}.png",
-        "https://c.tile.openstreetmap.org/{z}/{x}/{y}.png",
-      ],
-      tileSize: 256,
-      attribution: "© OpenStreetMap contributors",
-    },
-  },
-  layers: [{ id: "osm", type: "raster" as const, source: "osm", minzoom: 0, maxzoom: 19 }],
-};
-
-function pinColor(score: number): string {
-  if (score >= 75) return "#009275"; // bandana green
-  if (score >= 60) return "#efb745"; // gold
-  return "#bcb69e"; // tan
+// Rank-driven pin color: a gold podium for the top 3, coral for the rest of the board.
+function pinColor(rank: number | null): string {
+  if (rank === 1) return "#efb745"; // gold
+  if (rank === 2) return "#b8b3a4"; // silver
+  if (rank === 3) return "#c9925f"; // bronze
+  return "#ed7f54"; // coral (brand)
 }
 
 export default function MapView({ points, center }: { points: MapPoint[]; center: { lat: number; lng: number } }) {
@@ -47,36 +32,44 @@ export default function MapView({ points, center }: { points: MapPoint[]; center
     (async () => {
       const maplibregl = (await import("maplibre-gl")).default;
       if (cancelled || !ref.current) return;
-      const envStyle = process.env.NEXT_PUBLIC_MAP_STYLE;
-      const style = envStyle && envStyle.startsWith("http") ? envStyle : (KEYLESS_OSM_STYLE as unknown as string);
 
       map = new maplibregl.Map({
         container: ref.current,
-        style: style as never,
+        style: resolveMapStyle() as never,
         center: [center.lng, center.lat],
         zoom: 11,
+        attributionControl: false,
       });
+      map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
       map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
 
       const bounds = new maplibregl.LngLatBounds();
       for (const p of points) {
+        const color = pinColor(p.rank);
+        // Teardrop pin (rotated rounded square) with the rank counter-rotated to read upright.
         const el = document.createElement("a");
         el.href = `/c/${p.id}`;
-        el.textContent = p.rank ? String(p.rank) : "•";
-        el.style.cssText = `display:grid;place-items:center;width:26px;height:26px;border-radius:9999px;
-          background:${pinColor(p.score)};color:#fff;font-weight:800;font-size:12px;
-          border:2px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.35);cursor:pointer;text-decoration:none;`;
-        const popup = new maplibregl.Popup({ offset: 18, closeButton: false }).setHTML(
-          `<div style="font-family:system-ui;min-width:160px">
-             <div style="font-weight:700">${escapeHtml(p.title)}</div>
-             <div style="color:#666;font-size:12px">${escapeHtml(p.placeName)}</div>
-             <div style="margin-top:4px;font-size:12px">Score <b>${Math.round(p.score)}</b>${p.rank ? ` · #${p.rank}` : ""}</div>
+        el.style.cssText = `display:grid;place-items:center;width:30px;height:30px;
+          border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+          background:${color};box-shadow:0 2px 6px rgba(35,28,22,.35);
+          border:2px solid #fff;cursor:pointer;text-decoration:none;transition:transform .12s ease;`;
+        const label = document.createElement("span");
+        label.textContent = p.rank ? String(p.rank) : "•";
+        label.style.cssText = `transform:rotate(45deg);color:#fff;font-weight:800;font-size:12px;line-height:1;`;
+        el.appendChild(label);
+        el.onmouseenter = () => (el.style.transform = "rotate(-45deg) scale(1.12)");
+        el.onmouseleave = () => (el.style.transform = "rotate(-45deg)");
+        const popup = new maplibregl.Popup({ offset: 22, closeButton: false }).setHTML(
+          `<div style="font-family:'Helvetica Neue',Helvetica,system-ui;min-width:160px">
+             <div style="font-weight:700;color:#231c16">${escapeHtml(p.title)}</div>
+             <div style="color:#7a7264;font-size:12px">${escapeHtml(p.placeName)}</div>
+             <div style="margin-top:4px;font-size:12px;color:#231c16">Score <b>${Math.round(p.score)}</b>${p.rank ? ` · #${p.rank}` : ""}</div>
            </div>`,
         );
-        new maplibregl.Marker({ element: el }).setLngLat([p.lng, p.lat]).setPopup(popup).addTo(map);
+        new maplibregl.Marker({ element: el, anchor: "bottom" }).setLngLat([p.lng, p.lat]).setPopup(popup).addTo(map);
         bounds.extend([p.lng, p.lat]);
       }
-      if (points.length) map.fitBounds(bounds, { padding: 56, maxZoom: 14, duration: 0 });
+      if (points.length) map.fitBounds(bounds, { padding: 64, maxZoom: 14, duration: 0 });
     })();
 
     return () => {
@@ -88,7 +81,7 @@ export default function MapView({ points, center }: { points: MapPoint[]; center
   return (
     <div
       ref={ref}
-      className="h-[62vh] w-full overflow-hidden rounded-xl border border-[var(--color-border)]"
+      className="h-[62vh] w-full overflow-hidden rounded-2xl border border-[var(--color-border)] shadow-[0_4px_24px_-12px_rgba(35,28,22,0.25)]"
     />
   );
 }

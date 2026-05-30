@@ -9,24 +9,52 @@ import type { ContenderView } from "@/lib/types";
 const MapView = dynamic(() => import("./MapView"), {
   ssr: false,
   loading: () => (
-    <div className="grid h-[62vh] place-items-center rounded-xl border border-[var(--color-border)] text-sm text-[var(--color-ink-dim)]">
+    <div className="grid h-[62vh] place-items-center rounded-2xl border border-[var(--color-border)] text-sm text-[var(--color-ink-dim)]">
       Loading map…
     </div>
   ),
 });
 
+// Gold / silver / bronze medallions for the podium; clean numerals below.
+const MEDAL: Record<number, string> = {
+  1: "bg-gradient-to-br from-[#f6d36b] to-[#e0a93c] text-white shadow-[0_2px_8px_-2px_rgba(224,169,60,0.6)]",
+  2: "bg-gradient-to-br from-[#dcd9cf] to-[#b3ad9d] text-white",
+  3: "bg-gradient-to-br from-[#e2b483] to-[#c2895a] text-white",
+};
+
+function RankBadge({ rank }: { rank: number | null }) {
+  if (rank == null) {
+    return (
+      <span className="grid h-9 w-9 shrink-0 place-items-center text-sm font-black tabular-nums text-[var(--color-ink-dim)]">
+        –
+      </span>
+    );
+  }
+  const medal = MEDAL[rank];
+  if (medal) {
+    return (
+      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-black tabular-nums ${medal}`}>
+        {rank}
+      </span>
+    );
+  }
+  return (
+    <span className="grid h-9 w-9 shrink-0 place-items-center text-base font-black tabular-nums text-[var(--color-ink-dim)]">
+      {rank}
+    </span>
+  );
+}
+
 function Row({ v }: { v: ContenderView }) {
   return (
     <Link
       href={`/c/${v.id}`}
-      className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-ink-dim)]"
+      className="flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition duration-150 hover:-translate-y-px hover:border-[var(--color-brand)] hover:shadow-[0_6px_20px_-12px_rgba(35,28,22,0.35)]"
     >
-      <span className="w-6 shrink-0 text-center text-lg font-black tabular-nums text-[var(--color-ink-dim)]">
-        {v.rank ?? "–"}
-      </span>
+      <RankBadge rank={v.rank} />
       {v.photoUrl && <PhotoThumb url={v.photoUrl} alt={v.title} className="h-14 w-14 shrink-0" />}
       <span className="min-w-0 flex-1">
-        <span className="block truncate font-semibold">{v.title}</span>
+        <span className="block truncate font-bold tracking-tight">{v.title}</span>
         <span className="block truncate text-sm text-[var(--color-ink-dim)]">
           {v.placeName} · {v.neighborhood}
         </span>

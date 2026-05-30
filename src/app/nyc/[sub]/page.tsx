@@ -4,6 +4,8 @@ import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
 import BrowseView from "@/components/BrowseView";
 import AddPlace from "@/components/AddPlace";
+import CategoryFavoriteBanner from "@/components/CategoryFavoriteBanner";
+import CategoryOnboarding from "@/components/CategoryOnboarding";
 
 export const dynamic = "force-dynamic";
 
@@ -23,6 +25,13 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
   const personal = user ? getRepo().getPersonalRankedList(user.id, sub) : [];
   const { subcategory, category, region, ranked, contenders } = list;
   const dishNames = Array.from(new Set([...ranked, ...contenders].map((v) => v.title).filter(Boolean))).slice(0, 40);
+
+  const favoriteId = user ? getRepo().getCategoryFavorite(user.id, sub) : null;
+  let favoriteView = favoriteId ? ([...ranked, ...contenders].find((v) => v.id === favoriteId) ?? null) : null;
+  if (favoriteId && !favoriteView) {
+    const detail = getRepo().getContenderDetail(favoriteId);
+    if (detail) favoriteView = detail.contender;
+  }
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -54,6 +63,12 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
       </div>
 
       <div className="mt-6">
+        {favoriteView && (
+          <CategoryFavoriteBanner sub={subcategory.slug} subName={subcategory.name} favorite={favoriteView} />
+        )}
+        {user && !favoriteId && (
+          <CategoryOnboarding sub={subcategory.slug} subName={subcategory.name} top20={ranked.slice(0, 20)} />
+        )}
         <BrowseView
           ranked={ranked}
           provisional={contenders}

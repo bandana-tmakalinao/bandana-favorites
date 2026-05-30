@@ -1,362 +1,415 @@
 [
-  {
-    "name": "Gino's Pastry Shop",
-    "neighborhood": "Belmont (Arthur Avenue)",
-    "borough": "Bronx",
-    "address": "580 E 187th St, Bronx, NY 10458",
-    "lat": 40.855799,
-    "lng": -73.888161,
-    "signatureBowl": "Cannoli filled to order with a not-too-sweet ricotta cream; light, crunchy in-house-fried shell, dusted with powdered sugar (also chocolate-dipped or rainbow-sprinkle versions)",
-    "appearsOn": [
-      "The Infatuation",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Ricotta Cannoli",
-    "description": "Filled to order, not-too-sweet cream, crunchy in-house-fried shell"
-  },
-  {
-    "name": "Ferrara Bakery & Cafe",
-    "neighborhood": "Little Italy",
-    "borough": "Manhattan",
-    "address": "195 Grand St, New York, NY 10013",
-    "lat": 40.719172,
-    "lng": -73.997033,
-    "signatureBowl": "Classic cannoli: creamy sweet ricotta studded with chips in a crisp, sugar-dusted shell, or dunked in melted chocolate",
-    "appearsOn": [
-      "Time Out New York",
-      "No Sleep City"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.925,
-    "geocoded": true,
-    "title": "Chocolate-Chip Cannoli",
-    "description": "Sweet ricotta with chips in a crisp, sugar-dusted shell"
-  },
-  {
-    "name": "Veniero's Pasticceria & Caffe",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "342 E 11th St, New York, NY 10003",
-    "lat": 40.729901,
-    "lng": -73.985388,
-    "signatureBowl": "Cannoli with a crisp, crumbling shell and luscious ricotta filling",
-    "appearsOn": [
-      "Time Out New York",
-      "No Sleep City"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.9,
-    "geocoded": true,
-    "title": "Ricotta Cannoli",
-    "description": "Crisp, crumbling shell with luscious ricotta filling"
-  },
-  {
-    "name": "Circo's Pastry Shop",
-    "neighborhood": "Bushwick",
-    "borough": "Brooklyn",
-    "address": "312 Knickerbocker Ave, Brooklyn, NY 11237",
-    "lat": 40.701517,
-    "lng": -73.923238,
-    "signatureBowl": "The 'Mother Cannoli' ($7), a giant cannoli stuffed with smaller cannoli; also a Holy Cannoli doughnut topped with cannoli cream and crushed shells",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.875,
-    "geocoded": true,
-    "title": "Mother Cannoli",
-    "description": "Giant cannoli stuffed with smaller cannoli inside"
-  },
-  {
-    "name": "Artuso Pastry Shop",
-    "neighborhood": "Belmont (Arthur Avenue)",
-    "borough": "Bronx",
-    "address": "670 E 187th St, Bronx, NY 10458",
-    "lat": 40.854484,
-    "lng": -73.885527,
-    "signatureBowl": "Cannoli, plus cannoli chips and dip and a giant cannolo filled with mini cannoli",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.85,
-    "geocoded": true,
-    "title": "Giant Cannolo",
-    "description": "Big cannolo filled with mini cannoli; chips and dip"
-  },
-  {
-    "name": "DeLillo Pastry Shop",
-    "neighborhood": "Belmont (Arthur Avenue)",
-    "borough": "Bronx",
-    "address": "610 E 187th St, Bronx, NY 10458",
-    "lat": 40.855316,
-    "lng": -73.88723,
-    "signatureBowl": "Cannoli with darker-than-most shells and a warmly spiced filling",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.825,
-    "geocoded": true,
-    "title": "Spiced Cannoli",
-    "description": "Darker-than-most shells with a warmly spiced filling"
-  },
-  {
-    "name": "Egidio Pastry Shop",
-    "neighborhood": "Belmont (Arthur Avenue)",
-    "borough": "Bronx",
-    "address": "622 E 187th St, Bronx, NY 10458",
-    "lat": 40.855105,
-    "lng": -73.886809,
-    "signatureBowl": "Cannoli, including a version sprinkled with green-dyed coconut flakes",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.8,
-    "geocoded": true,
-    "title": "Coconut Cannoli",
-    "description": "Version sprinkled with green-dyed coconut flakes"
-  },
-  {
-    "name": "Madonia Bakery",
-    "neighborhood": "Belmont (Arthur Avenue)",
-    "borough": "Bronx",
-    "address": "2348 Arthur Ave, Bronx, NY 10458",
-    "lat": 40.854327,
-    "lng": -73.88854,
-    "signatureBowl": "Cannoli filled fresh to order with a notably vanilla-forward ricotta cream; open since 1918",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.775,
-    "geocoded": true,
-    "title": "Vanilla Ricotta Cannoli",
-    "description": "Filled fresh to order, vanilla-forward ricotta cream"
-  },
-  {
-    "name": "Morrone Pastry Shop & Cafe",
-    "neighborhood": "Belmont (Arthur Avenue)",
-    "borough": "Bronx",
-    "address": "2349 Arthur Ave, Bronx, NY 10458",
-    "lat": 40.854462,
-    "lng": -73.888601,
-    "signatureBowl": "Cannoli with a creamy, not-too-sweet filling, chocolate chips, and a whisper of cinnamon",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.75,
-    "geocoded": true,
-    "title": "Cinnamon Cannoli",
-    "description": "Creamy filling, chocolate chips, a whisper of cinnamon"
-  },
-  {
-    "name": "Caffe Palermo",
-    "neighborhood": "Little Italy",
-    "borough": "Manhattan",
-    "address": "148 Mulberry St, New York, NY 10013",
-    "lat": 40.718918,
-    "lng": -73.997415,
-    "signatureBowl": "Classic cannoli (the self-styled 'Cannoli King' spot)",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.725,
-    "geocoded": true,
-    "title": "Classic Cannoli",
-    "description": "Self-styled Cannoli King spot"
-  },
-  {
-    "name": "Cannoli Plus",
-    "neighborhood": "Bensonhurst / Dyker Heights",
-    "borough": "Brooklyn",
-    "address": "6903 New Utrecht Ave, Brooklyn, NY 11228",
-    "lat": 40.620279,
-    "lng": -73.998577,
-    "signatureBowl": "Classic ricotta and chocolate-chip cannoli with crisp shells",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.7,
-    "geocoded": true,
-    "title": "Chocolate-Chip Cannoli",
-    "description": "Classic ricotta and chocolate-chip with crisp shells"
-  },
-  {
-    "name": "Cannoli World",
-    "neighborhood": "Little Italy",
-    "borough": "Manhattan",
-    "address": "188 Grand St, New York, NY 10013",
-    "lat": 40.719352,
-    "lng": -73.997202,
-    "signatureBowl": "Cannoli (Italian restaurant / cannoli spot)",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.675,
-    "geocoded": true,
-    "title": "Classic Cannoli",
-    "description": ""
-  },
-  {
-    "name": "Carlo's Bakery",
-    "neighborhood": "Times Square / Midtown",
-    "borough": "Manhattan",
-    "address": "625 8th Ave, New York, NY 10018",
-    "lat": 40.756143,
-    "lng": -73.990672,
-    "signatureBowl": "Cannoli in classic, chocolate-hazelnut, and pistachio flavors",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.65,
-    "geocoded": true,
-    "title": "Pistachio Cannoli",
-    "description": "Classic, chocolate-hazelnut, and pistachio flavors"
-  },
-  {
-    "name": "Fortunato Brothers",
-    "neighborhood": "Williamsburg",
-    "borough": "Brooklyn",
-    "address": "289 Manhattan Ave, Brooklyn, NY 11211",
-    "lat": 40.713684,
-    "lng": -73.946031,
-    "signatureBowl": "Signature Nutella cannoli (chocolate-hazelnut cream)",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.625,
-    "geocoded": true,
-    "title": "Nutella Cannoli",
-    "description": "Signature chocolate-hazelnut cream filling"
-  },
-  {
-    "name": "Joe's Sicilian Bakery",
-    "neighborhood": "Bayside / Oakland Gardens",
-    "borough": "Queens",
-    "address": "212-16 48th Ave, Bayside, NY 11364",
-    "lat": 40.755322,
-    "lng": -73.768641,
-    "signatureBowl": "Sicilian-style cannoli",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.6,
-    "geocoded": true,
-    "title": "Sicilian Cannoli",
-    "description": ""
-  },
-  {
-    "name": "La Bella Ferrara",
-    "neighborhood": "Little Italy",
-    "borough": "Manhattan",
-    "address": "108 Mulberry St, New York, NY 10013",
-    "lat": 40.7174,
-    "lng": -73.998318,
-    "signatureBowl": "Cannoli in a range of flavors",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.575,
-    "geocoded": true,
-    "title": "Classic Cannoli",
-    "description": "Available in a range of flavors"
-  },
-  {
-    "name": "La Delice Pastry Shop",
-    "neighborhood": "Kips Bay / Murray Hill",
-    "borough": "Manhattan",
-    "address": "372 3rd Ave, New York, NY 10016",
-    "lat": 40.741331,
-    "lng": -73.981415,
-    "signatureBowl": "Pastry-shop cannoli",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.55,
-    "geocoded": true,
-    "title": "Classic Cannoli",
-    "description": ""
-  },
-  {
-    "name": "Napoli Pastry Co.",
-    "neighborhood": "Little Italy",
-    "borough": "Manhattan",
-    "address": "191 Hester St, New York, NY 10013",
-    "lat": 40.718189,
-    "lng": -73.997831,
-    "signatureBowl": "Italian cannoli",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.525,
-    "geocoded": true,
-    "title": "Italian Cannoli",
-    "description": ""
-  },
-  {
-    "name": "Pasticceria Monteleone",
-    "neighborhood": "Carroll Gardens",
-    "borough": "Brooklyn",
-    "address": "355 Court St, Brooklyn, NY 11231",
-    "lat": 40.681966,
-    "lng": -73.996007,
-    "signatureBowl": "Italian-bakery cannoli",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.5,
-    "geocoded": true,
-    "title": "Italian Cannoli",
-    "description": ""
-  },
-  {
-    "name": "Pasticceria Rocco",
-    "neighborhood": "Greenwich Village / West Village",
-    "borough": "Manhattan",
-    "address": "243 Bleecker St, New York, NY 10014",
-    "lat": 40.730842,
-    "lng": -74.002693,
-    "signatureBowl": "Traditional Italian cannoli",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.475,
-    "geocoded": true,
-    "title": "Traditional Cannoli",
-    "description": ""
-  },
-  {
-    "name": "Zeppola Bakery",
-    "neighborhood": "Garment District / Midtown",
-    "borough": "Manhattan",
-    "address": "499 7th Ave, New York, NY 10018",
-    "lat": 40.752814,
-    "lng": -73.989213,
-    "signatureBowl": "Cannoli filled with smooth, not-too-sweet ricotta in a crisp shell",
-    "appearsOn": [
-      "No Sleep City"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Ricotta Cannoli",
-    "description": "Smooth, not-too-sweet ricotta in a crisp shell"
-  }
+ {
+  "name": "Gino's Pastry Shop",
+  "neighborhood": "Belmont (Arthur Avenue)",
+  "borough": "Bronx",
+  "address": "580 E 187th St, Bronx, NY 10458",
+  "lat": 40.855799,
+  "lng": -73.888161,
+  "signatureBowl": "Cannoli filled to order with a not-too-sweet ricotta cream; light, crunchy in-house-fried shell, dusted with powdered sugar (also chocolate-dipped or rainbow-sprinkle versions)",
+  "appearsOn": [
+   "The Infatuation",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Ricotta Cannoli",
+  "description": "Filled to order, not-too-sweet cream, crunchy in-house-fried shell"
+ },
+ {
+  "name": "Ferrara Bakery & Cafe",
+  "neighborhood": "Little Italy",
+  "borough": "Manhattan",
+  "address": "195 Grand St, New York, NY 10013",
+  "lat": 40.719172,
+  "lng": -73.997033,
+  "signatureBowl": "Classic cannoli: creamy sweet ricotta studded with chips in a crisp, sugar-dusted shell, or dunked in melted chocolate",
+  "appearsOn": [
+   "Time Out New York",
+   "No Sleep City"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.925,
+  "geocoded": true,
+  "title": "Chocolate-Chip Cannoli",
+  "description": "Sweet ricotta with chips in a crisp, sugar-dusted shell"
+ },
+ {
+  "name": "Veniero's Pasticceria & Caffe",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "342 E 11th St, New York, NY 10003",
+  "lat": 40.729901,
+  "lng": -73.985388,
+  "signatureBowl": "Cannoli with a crisp, crumbling shell and luscious ricotta filling",
+  "appearsOn": [
+   "Time Out New York",
+   "No Sleep City"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.9,
+  "geocoded": true,
+  "title": "Ricotta Cannoli",
+  "description": "Crisp, crumbling shell with luscious ricotta filling"
+ },
+ {
+  "name": "Circo's Pastry Shop",
+  "neighborhood": "Bushwick",
+  "borough": "Brooklyn",
+  "address": "312 Knickerbocker Ave, Brooklyn, NY 11237",
+  "lat": 40.701517,
+  "lng": -73.923238,
+  "signatureBowl": "The 'Mother Cannoli' ($7), a giant cannoli stuffed with smaller cannoli; also a Holy Cannoli doughnut topped with cannoli cream and crushed shells",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.875,
+  "geocoded": true,
+  "title": "Mother Cannoli",
+  "description": "Giant cannoli stuffed with smaller cannoli inside"
+ },
+ {
+  "name": "Artuso Pastry Shop",
+  "neighborhood": "Belmont (Arthur Avenue)",
+  "borough": "Bronx",
+  "address": "670 E 187th St, Bronx, NY 10458",
+  "lat": 40.854484,
+  "lng": -73.885527,
+  "signatureBowl": "Cannoli, plus cannoli chips and dip and a giant cannolo filled with mini cannoli",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.85,
+  "geocoded": true,
+  "title": "Giant Cannolo",
+  "description": "Big cannolo filled with mini cannoli; chips and dip"
+ },
+ {
+  "name": "DeLillo Pastry Shop",
+  "neighborhood": "Belmont (Arthur Avenue)",
+  "borough": "Bronx",
+  "address": "610 E 187th St, Bronx, NY 10458",
+  "lat": 40.855316,
+  "lng": -73.88723,
+  "signatureBowl": "Cannoli with darker-than-most shells and a warmly spiced filling",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.825,
+  "geocoded": true,
+  "title": "Spiced Cannoli",
+  "description": "Darker-than-most shells with a warmly spiced filling"
+ },
+ {
+  "name": "Egidio Pastry Shop",
+  "neighborhood": "Belmont (Arthur Avenue)",
+  "borough": "Bronx",
+  "address": "622 E 187th St, Bronx, NY 10458",
+  "lat": 40.855105,
+  "lng": -73.886809,
+  "signatureBowl": "Cannoli, including a version sprinkled with green-dyed coconut flakes",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.8,
+  "geocoded": true,
+  "title": "Coconut Cannoli",
+  "description": "Version sprinkled with green-dyed coconut flakes"
+ },
+ {
+  "name": "Madonia Bakery",
+  "neighborhood": "Belmont (Arthur Avenue)",
+  "borough": "Bronx",
+  "address": "2348 Arthur Ave, Bronx, NY 10458",
+  "lat": 40.854327,
+  "lng": -73.88854,
+  "signatureBowl": "Cannoli filled fresh to order with a notably vanilla-forward ricotta cream; open since 1918",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.775,
+  "geocoded": true,
+  "title": "Vanilla Ricotta Cannoli",
+  "description": "Filled fresh to order, vanilla-forward ricotta cream"
+ },
+ {
+  "name": "Morrone Pastry Shop & Cafe",
+  "neighborhood": "Belmont (Arthur Avenue)",
+  "borough": "Bronx",
+  "address": "2349 Arthur Ave, Bronx, NY 10458",
+  "lat": 40.854462,
+  "lng": -73.888601,
+  "signatureBowl": "Cannoli with a creamy, not-too-sweet filling, chocolate chips, and a whisper of cinnamon",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.75,
+  "geocoded": true,
+  "title": "Cinnamon Cannoli",
+  "description": "Creamy filling, chocolate chips, a whisper of cinnamon"
+ },
+ {
+  "name": "Caffe Palermo",
+  "neighborhood": "Little Italy",
+  "borough": "Manhattan",
+  "address": "148 Mulberry St, New York, NY 10013",
+  "lat": 40.718918,
+  "lng": -73.997415,
+  "signatureBowl": "Classic cannoli (the self-styled 'Cannoli King' spot)",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.725,
+  "geocoded": true,
+  "title": "Classic Cannoli",
+  "description": "Self-styled Cannoli King spot"
+ },
+ {
+  "name": "Cannoli Plus",
+  "neighborhood": "Bensonhurst / Dyker Heights",
+  "borough": "Brooklyn",
+  "address": "6903 New Utrecht Ave, Brooklyn, NY 11228",
+  "lat": 40.620279,
+  "lng": -73.998577,
+  "signatureBowl": "Classic ricotta and chocolate-chip cannoli with crisp shells",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.7,
+  "geocoded": true,
+  "title": "Chocolate-Chip Cannoli",
+  "description": "Classic ricotta and chocolate-chip with crisp shells"
+ },
+ {
+  "name": "Cannoli World",
+  "neighborhood": "Little Italy",
+  "borough": "Manhattan",
+  "address": "188 Grand St, New York, NY 10013",
+  "lat": 40.719352,
+  "lng": -73.997202,
+  "signatureBowl": "Cannoli (Italian restaurant / cannoli spot)",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.675,
+  "geocoded": true,
+  "title": "Classic Cannoli",
+  "description": ""
+ },
+ {
+  "name": "Carlo's Bakery",
+  "neighborhood": "Times Square / Midtown",
+  "borough": "Manhattan",
+  "address": "625 8th Ave, New York, NY 10018",
+  "lat": 40.756143,
+  "lng": -73.990672,
+  "signatureBowl": "Cannoli in classic, chocolate-hazelnut, and pistachio flavors",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.65,
+  "geocoded": true,
+  "title": "Pistachio Cannoli",
+  "description": "Classic, chocolate-hazelnut, and pistachio flavors"
+ },
+ {
+  "name": "Fortunato Brothers",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "289 Manhattan Ave, Brooklyn, NY 11211",
+  "lat": 40.713684,
+  "lng": -73.946031,
+  "signatureBowl": "Signature Nutella cannoli (chocolate-hazelnut cream)",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.625,
+  "geocoded": true,
+  "title": "Nutella Cannoli",
+  "description": "Signature chocolate-hazelnut cream filling"
+ },
+ {
+  "name": "Joe's Sicilian Bakery",
+  "neighborhood": "Bayside / Oakland Gardens",
+  "borough": "Queens",
+  "address": "212-16 48th Ave, Bayside, NY 11364",
+  "lat": 40.755322,
+  "lng": -73.768641,
+  "signatureBowl": "Sicilian-style cannoli",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": true,
+  "title": "Sicilian Cannoli",
+  "description": ""
+ },
+ {
+  "name": "La Bella Ferrara",
+  "neighborhood": "Little Italy",
+  "borough": "Manhattan",
+  "address": "108 Mulberry St, New York, NY 10013",
+  "lat": 40.7174,
+  "lng": -73.998318,
+  "signatureBowl": "Cannoli in a range of flavors",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.575,
+  "geocoded": true,
+  "title": "Classic Cannoli",
+  "description": "Available in a range of flavors"
+ },
+ {
+  "name": "La Delice Pastry Shop",
+  "neighborhood": "Kips Bay / Murray Hill",
+  "borough": "Manhattan",
+  "address": "372 3rd Ave, New York, NY 10016",
+  "lat": 40.741331,
+  "lng": -73.981415,
+  "signatureBowl": "Pastry-shop cannoli",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": true,
+  "title": "Classic Cannoli",
+  "description": ""
+ },
+ {
+  "name": "Napoli Pastry Co.",
+  "neighborhood": "Little Italy",
+  "borough": "Manhattan",
+  "address": "191 Hester St, New York, NY 10013",
+  "lat": 40.718189,
+  "lng": -73.997831,
+  "signatureBowl": "Italian cannoli",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.525,
+  "geocoded": true,
+  "title": "Italian Cannoli",
+  "description": ""
+ },
+ {
+  "name": "Pasticceria Monteleone",
+  "neighborhood": "Carroll Gardens",
+  "borough": "Brooklyn",
+  "address": "355 Court St, Brooklyn, NY 11231",
+  "lat": 40.681966,
+  "lng": -73.996007,
+  "signatureBowl": "Italian-bakery cannoli",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.5,
+  "geocoded": true,
+  "title": "Italian Cannoli",
+  "description": ""
+ },
+ {
+  "name": "Pasticceria Rocco",
+  "neighborhood": "Greenwich Village / West Village",
+  "borough": "Manhattan",
+  "address": "243 Bleecker St, New York, NY 10014",
+  "lat": 40.730842,
+  "lng": -74.002693,
+  "signatureBowl": "Traditional Italian cannoli",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.475,
+  "geocoded": true,
+  "title": "Traditional Cannoli",
+  "description": ""
+ },
+ {
+  "name": "Zeppola Bakery",
+  "neighborhood": "Garment District / Midtown",
+  "borough": "Manhattan",
+  "address": "499 7th Ave, New York, NY 10018",
+  "lat": 40.752814,
+  "lng": -73.989213,
+  "signatureBowl": "Cannoli filled with smooth, not-too-sweet ricotta in a crisp shell",
+  "appearsOn": [
+   "No Sleep City"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Ricotta Cannoli",
+  "description": "Smooth, not-too-sweet ricotta in a crisp shell"
+ },
+ {
+  "name": "Gino's Pastry Shop & Café",
+  "neighborhood": "Belmont (Arthur Avenue)",
+  "borough": "Bronx",
+  "address": "",
+  "lat": 40.839304,
+  "lng": -73.859844,
+  "signatureBowl": "Light and crunchy pastry dappled with little holes and pockets, filled to order with a cream that's not too sweet",
+  "appearsOn": [
+   "The Infatuation - The Best Cannoli On Arthur Avenue, Ranked",
+   "The Infatuation - The 16 Best Desserts In NYC",
+   "Time Out New York - The 30 Best Bakeries in NYC"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.92,
+  "geocoded": false,
+  "title": "Fresh-Filled Ricotta Cannoli",
+  "description": "Shells fried in-house, filled to order; light, crunchy, not-too-sweet ricotta cream"
+ },
+ {
+  "name": "Caffé Roma",
+  "neighborhood": "Little Italy",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.782656,
+  "lng": -73.977044,
+  "signatureBowl": "Classic cannolis made with sweet ricotta; a fresh ricotta cannoli dotted with chocolate chips",
+  "appearsOn": [
+   "Time Out New York - NYC's Best Little Italy Restaurants"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.62,
+  "geocoded": false,
+  "title": "Sweet Ricotta Cannoli",
+  "description": "Classic fresh ricotta cannoli dotted with chocolate chips at one of NYC's oldest Italian cafes"
+ },
+ {
+  "name": "Morrone Pastry Shop & Café",
+  "neighborhood": "Belmont (Arthur Avenue)",
+  "borough": "Bronx",
+  "address": "",
+  "lat": 40.848784,
+  "lng": -73.869948,
+  "signatureBowl": "Very nice cannoli with creamy filling not too sweet, with chocolate chips and just a whisper of cinnamon",
+  "appearsOn": [
+   "The Infatuation - The Best Cannoli On Arthur Avenue, Ranked"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Cinnamon Chocolate-Chip Cannoli",
+  "description": "Creamy, not-too-sweet filling with chocolate chips and a whisper of cinnamon"
+ }
 ]

@@ -99,8 +99,11 @@ export default function ProfileEditor({
 
       <div>
         <label className="mb-1 block text-sm font-medium">
-          Showcase categories <span className="text-[var(--color-ink-dim)]">({showcase.length}/8)</span>
+          🥇 #1 Picks to showcase <span className="text-[var(--color-ink-dim)]">({showcase.length}/8)</span>
         </label>
+        <p className="mb-2 text-xs text-[var(--color-ink-dim)]">
+          Pick the categories you want to flex — your declared #1 in each shows in gold at the top of your profile.
+        </p>
         <div className="flex flex-wrap gap-2">
           {cats.map((c) => {
             const on = showcase.includes(c.slug);

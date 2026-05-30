@@ -1,396 +1,993 @@
 [
-  {
-    "name": "Brooklyn Farmacy & Soda Fountain",
-    "neighborhood": "Carroll Gardens",
-    "borough": "Brooklyn",
-    "address": "513 Henry St, Brooklyn, NY 11231",
-    "lat": 40.684067,
-    "lng": -73.999358,
-    "signatureBowl": "Vintage soda-fountain sundaes; egg creams; ice cream floats",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Soda-Fountain Sundae",
-    "description": "Vintage sundaes, egg creams, ice cream floats"
-  },
-  {
-    "name": "Caffè Panna",
-    "neighborhood": "Gramercy",
-    "borough": "Manhattan",
-    "address": "77 Irving Pl, New York, NY 10003",
-    "lat": 40.73696,
-    "lng": -73.98669,
-    "signatureBowl": "Italian-style scoops topped with panna (whipped cream); affogato sundaes",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.926,
-    "geocoded": true,
-    "title": "Affogato Sundae",
-    "description": "Italian scoops topped with panna whipped cream"
-  },
-  {
-    "name": "Eddie's Sweet Shop",
-    "neighborhood": "Forest Hills",
-    "borough": "Queens",
-    "address": "105-29 Metropolitan Ave, Forest Hills, NY 11375",
-    "lat": 40.710035,
-    "lng": -73.847856,
-    "signatureBowl": "Classic soda-fountain sundaes (Banana Royal); homemade ice cream, malted milkshakes",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.902,
-    "geocoded": true,
-    "title": "Banana Royal Sundae",
-    "description": "Homemade ice cream, malted milkshakes"
-  },
-  {
-    "name": "Malai Ice Cream",
-    "neighborhood": "Carroll Gardens",
-    "borough": "Brooklyn",
-    "address": "268 Smith St, Brooklyn, NY 11231",
-    "lat": 40.682707,
-    "lng": -73.993274,
-    "signatureBowl": "Masala chai; eggless South Asian-inspired flavors (rose, golden turmeric, carrot halwa)",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.879,
-    "geocoded": true,
-    "title": "Masala Chai",
-    "description": "Eggless South Asian flavors: rose, turmeric, carrot halwa"
-  },
-  {
-    "name": "Morgenstern's Finest Ice Cream",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "2 Rivington St, New York, NY 10002",
-    "lat": 40.721666,
-    "lng": -73.993423,
-    "signatureBowl": "Bitter chocolate ash; olive oil; salted egg yolk",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.855,
-    "geocoded": true,
-    "title": "Bitter Chocolate Ash",
-    "description": "Olive oil, salted egg yolk"
-  },
-  {
-    "name": "Salt & Straw",
-    "neighborhood": "Upper West Side",
-    "borough": "Manhattan",
-    "address": "360 Amsterdam Ave, New York, NY 10024",
-    "lat": 40.781914,
-    "lng": -73.979313,
-    "signatureBowl": "Sea salt with caramel ribbons",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.831,
-    "geocoded": true,
-    "title": "Sea Salt Caramel",
-    "description": "Sea salt with caramel ribbons"
-  },
-  {
-    "name": "Sugar Hill Creamery",
-    "neighborhood": "Harlem",
-    "borough": "Manhattan",
-    "address": "184 Malcolm X Blvd, New York, NY 10026",
-    "lat": 40.804101,
-    "lng": -73.948082,
-    "signatureBowl": "Seasonal small-batch scoops (soursop; PB&J; quirky-named flavors)",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.807,
-    "geocoded": true,
-    "title": "Soursop Scoop",
-    "description": "Seasonal small-batch flavors: soursop, PB&J"
-  },
-  {
-    "name": "The Original Chinatown Ice Cream Factory",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "65 Bayard St, New York, NY 10013",
-    "lat": 40.715428,
-    "lng": -73.998102,
-    "signatureBowl": "Black sesame; red bean; egg custard; durian; pandan",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.783,
-    "geocoded": true,
-    "title": "Black Sesame",
-    "description": "Red bean, egg custard, durian, pandan"
-  },
-  {
-    "name": "Il Laboratorio del Gelato",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "188 Ludlow St, New York, NY 10002",
-    "lat": 40.722099,
-    "lng": -73.987245,
-    "signatureBowl": "Thai chili chocolate; dozens of unusual gelato flavors (beet, cheddar)",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.76,
-    "geocoded": true,
-    "title": "Thai Chili Chocolate",
-    "description": "Unusual gelato flavors: beet, cheddar"
-  },
-  {
-    "name": "Julia Jean's Ice Cream",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "202 Clinton St, New York, NY 10002",
-    "lat": 40.714071,
-    "lng": -73.987055,
-    "signatureBowl": "Butter pecan / cherry-vanilla; classic flavors, banana splits, fruity sorbets",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.736,
-    "geocoded": true,
-    "title": "Butter Pecan",
-    "description": "Cherry-vanilla, banana splits, fruity sorbets"
-  },
-  {
-    "name": "OddFellows Ice Cream Co.",
-    "neighborhood": "Williamsburg",
-    "borough": "Brooklyn",
-    "address": "175 Kent Ave, Brooklyn, NY 11249",
-    "lat": 40.718247,
-    "lng": -73.96385,
-    "signatureBowl": "Thai iced tea; lemon thyme shortbread; matcha rocky road; black pepper fig",
-    "appearsOn": [
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.712,
-    "geocoded": true,
-    "title": "Thai Iced Tea",
-    "description": "Lemon thyme shortbread, matcha rocky road, black pepper fig"
-  },
-  {
-    "name": "Van Leeuwen Artisan Ice Cream",
-    "neighborhood": "Greenpoint",
-    "borough": "Brooklyn",
-    "address": "620 Manhattan Ave, Brooklyn, NY 11222",
-    "lat": 40.723611,
-    "lng": -73.950616,
-    "signatureBowl": "Sicilian pistachio; honeycomb; vegan options",
-    "appearsOn": [
-      "Eater NY",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.688,
-    "geocoded": true,
-    "title": "Sicilian Pistachio",
-    "description": "Honeycomb, vegan options"
-  },
-  {
-    "name": "Island Pops",
-    "neighborhood": "Crown Heights",
-    "borough": "Brooklyn",
-    "address": "670 Nostrand Ave, Brooklyn, NY 11216",
-    "lat": 40.675598,
-    "lng": -73.950039,
-    "signatureBowl": "Guinness caramel; Caribbean-inspired flavors",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.664,
-    "geocoded": true,
-    "title": "Guinness Caramel",
-    "description": "Caribbean-inspired flavors"
-  },
-  {
-    "name": "Lai Rai",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "76 Forsyth St, New York, NY 10002",
-    "lat": 40.717505,
-    "lng": -73.993227,
-    "signatureBowl": "Ambarella sorbet; Vietnamese-inspired flavors",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.64,
-    "geocoded": true,
-    "title": "Ambarella Sorbet",
-    "description": "Vietnamese-inspired flavors"
-  },
-  {
-    "name": "Mr. P's Homemade Ice Cream",
-    "neighborhood": "Flatbush",
-    "borough": "Brooklyn",
-    "address": "1397 Nostrand Ave, Brooklyn, NY 11226",
-    "lat": 40.65246,
-    "lng": -73.949673,
-    "signatureBowl": "Soursop",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.617,
-    "geocoded": true,
-    "title": "Soursop",
-    "description": ""
-  },
-  {
-    "name": "Taiyaki NYC",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "119 Baxter St, New York, NY 10013",
-    "lat": 40.717935,
-    "lng": -73.99899,
-    "signatureBowl": "Straight Outta Japan soft-serve in a fish-shaped taiyaki cone",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.593,
-    "geocoded": true,
-    "title": "Taiyaki Soft-Serve",
-    "description": "Soft-serve in a fish-shaped taiyaki cone"
-  },
-  {
-    "name": "Big Gay Ice Cream Shop",
-    "neighborhood": "Tribeca",
-    "borough": "Manhattan",
-    "address": "450 Washington St, New York, NY 10013",
-    "lat": 40.723942,
-    "lng": -74.010342,
-    "signatureBowl": "The Dorothy (vanilla soft-serve, dulce de leche & crushed Nilla wafers)",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.569,
-    "geocoded": true,
-    "title": "The Dorothy",
-    "description": "Vanilla soft-serve, dulce de leche, crushed Nilla wafers"
-  },
-  {
-    "name": "Ferrara Bakery & Cafe",
-    "neighborhood": "Little Italy",
-    "borough": "Manhattan",
-    "address": "195 Grand St, New York, NY 10013",
-    "lat": 40.719172,
-    "lng": -73.997033,
-    "signatureBowl": "Pistachio gelato; salt-and-caramel; granita",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.545,
-    "geocoded": true,
-    "title": "Pistachio Gelato",
-    "description": "Salt-and-caramel, granita"
-  },
-  {
-    "name": "Gelateria Gentile",
-    "neighborhood": "West Village",
-    "borough": "Manhattan",
-    "address": "43 8th Ave, New York, NY 10014",
-    "lat": 40.738301,
-    "lng": -74.004075,
-    "signatureBowl": "Gelato affogato (Bari, Italy heritage recipe)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.521,
-    "geocoded": true,
-    "title": "Gelato Affogato",
-    "description": "Bari, Italy heritage recipe"
-  },
-  {
-    "name": "Glace",
-    "neighborhood": "Upper East Side",
-    "borough": "Manhattan",
-    "address": "1266 Madison Ave, New York, NY 10128",
-    "lat": 40.783888,
-    "lng": -73.956685,
-    "signatureBowl": "Nutella Fluffernutter sundae; macaron ice cream sandwiches",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.498,
-    "geocoded": true,
-    "title": "Nutella Fluffernutter Sundae",
-    "description": "Macaron ice cream sandwiches"
-  },
-  {
-    "name": "Sedutto",
-    "neighborhood": "Upper East Side",
-    "borough": "Manhattan",
-    "address": "1498 1st Ave, New York, NY 10075",
-    "lat": 40.771752,
-    "lng": -73.953031,
-    "signatureBowl": "Wine ice creams (with booze); classic flavors and sorbets",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.474,
-    "geocoded": true,
-    "title": "Wine Ice Cream",
-    "description": "Boozy ice creams, classic flavors and sorbets"
-  },
-  {
-    "name": "Superiority Burger",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "119 Avenue A, New York, NY 10009",
-    "lat": 40.726359,
-    "lng": -73.9834,
-    "signatureBowl": "Rotating daily gelato/sorbetto (fennel, coconut, labneh) from Brooks Headley",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Daily Gelato",
-    "description": "Rotating fennel, coconut, labneh from Brooks Headley"
-  }
+ {
+  "name": "Brooklyn Farmacy & Soda Fountain",
+  "neighborhood": "Carroll Gardens",
+  "borough": "Brooklyn",
+  "address": "513 Henry St, Brooklyn, NY 11231",
+  "lat": 40.684067,
+  "lng": -73.999358,
+  "signatureBowl": "Vintage soda-fountain sundaes; egg creams; ice cream floats",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Soda-Fountain Sundae",
+  "description": "Vintage sundaes, egg creams, ice cream floats"
+ },
+ {
+  "name": "Caffè Panna",
+  "neighborhood": "Gramercy",
+  "borough": "Manhattan",
+  "address": "77 Irving Pl, New York, NY 10003",
+  "lat": 40.73696,
+  "lng": -73.98669,
+  "signatureBowl": "Italian-style scoops topped with panna (whipped cream); affogato sundaes",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.926,
+  "geocoded": true,
+  "title": "Affogato Sundae",
+  "description": "Italian scoops topped with panna whipped cream"
+ },
+ {
+  "name": "Eddie's Sweet Shop",
+  "neighborhood": "Forest Hills",
+  "borough": "Queens",
+  "address": "105-29 Metropolitan Ave, Forest Hills, NY 11375",
+  "lat": 40.710035,
+  "lng": -73.847856,
+  "signatureBowl": "Classic soda-fountain sundaes (Banana Royal); homemade ice cream, malted milkshakes",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.902,
+  "geocoded": true,
+  "title": "Banana Royal Sundae",
+  "description": "Homemade ice cream, malted milkshakes"
+ },
+ {
+  "name": "Malai Ice Cream",
+  "neighborhood": "Carroll Gardens",
+  "borough": "Brooklyn",
+  "address": "268 Smith St, Brooklyn, NY 11231",
+  "lat": 40.682707,
+  "lng": -73.993274,
+  "signatureBowl": "Masala chai; eggless South Asian-inspired flavors (rose, golden turmeric, carrot halwa)",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.879,
+  "geocoded": true,
+  "title": "Masala Chai",
+  "description": "Eggless South Asian flavors: rose, turmeric, carrot halwa"
+ },
+ {
+  "name": "Morgenstern's Finest Ice Cream",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "2 Rivington St, New York, NY 10002",
+  "lat": 40.721666,
+  "lng": -73.993423,
+  "signatureBowl": "Bitter chocolate ash; olive oil; salted egg yolk",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.855,
+  "geocoded": true,
+  "title": "Bitter Chocolate Ash",
+  "description": "Olive oil, salted egg yolk"
+ },
+ {
+  "name": "Salt & Straw",
+  "neighborhood": "Upper West Side",
+  "borough": "Manhattan",
+  "address": "360 Amsterdam Ave, New York, NY 10024",
+  "lat": 40.781914,
+  "lng": -73.979313,
+  "signatureBowl": "Sea salt with caramel ribbons",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.831,
+  "geocoded": true,
+  "title": "Sea Salt Caramel",
+  "description": "Sea salt with caramel ribbons"
+ },
+ {
+  "name": "Sugar Hill Creamery",
+  "neighborhood": "Harlem",
+  "borough": "Manhattan",
+  "address": "184 Malcolm X Blvd, New York, NY 10026",
+  "lat": 40.804101,
+  "lng": -73.948082,
+  "signatureBowl": "Seasonal small-batch scoops (soursop; PB&J; quirky-named flavors)",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.807,
+  "geocoded": true,
+  "title": "Soursop Scoop",
+  "description": "Seasonal small-batch flavors: soursop, PB&J"
+ },
+ {
+  "name": "The Original Chinatown Ice Cream Factory",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "65 Bayard St, New York, NY 10013",
+  "lat": 40.715428,
+  "lng": -73.998102,
+  "signatureBowl": "Black sesame; red bean; egg custard; durian; pandan",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.783,
+  "geocoded": true,
+  "title": "Black Sesame",
+  "description": "Red bean, egg custard, durian, pandan"
+ },
+ {
+  "name": "Il Laboratorio del Gelato",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "188 Ludlow St, New York, NY 10002",
+  "lat": 40.722099,
+  "lng": -73.987245,
+  "signatureBowl": "Thai chili chocolate; dozens of unusual gelato flavors (beet, cheddar)",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.76,
+  "geocoded": true,
+  "title": "Thai Chili Chocolate",
+  "description": "Unusual gelato flavors: beet, cheddar"
+ },
+ {
+  "name": "Julia Jean's Ice Cream",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "202 Clinton St, New York, NY 10002",
+  "lat": 40.714071,
+  "lng": -73.987055,
+  "signatureBowl": "Butter pecan / cherry-vanilla; classic flavors, banana splits, fruity sorbets",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.736,
+  "geocoded": true,
+  "title": "Butter Pecan",
+  "description": "Cherry-vanilla, banana splits, fruity sorbets"
+ },
+ {
+  "name": "OddFellows Ice Cream Co.",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "175 Kent Ave, Brooklyn, NY 11249",
+  "lat": 40.718247,
+  "lng": -73.96385,
+  "signatureBowl": "Thai iced tea; lemon thyme shortbread; matcha rocky road; black pepper fig",
+  "appearsOn": [
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.712,
+  "geocoded": true,
+  "title": "Thai Iced Tea",
+  "description": "Lemon thyme shortbread, matcha rocky road, black pepper fig"
+ },
+ {
+  "name": "Van Leeuwen Artisan Ice Cream",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "620 Manhattan Ave, Brooklyn, NY 11222",
+  "lat": 40.723611,
+  "lng": -73.950616,
+  "signatureBowl": "Sicilian pistachio; honeycomb; vegan options",
+  "appearsOn": [
+   "Eater NY",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.688,
+  "geocoded": true,
+  "title": "Sicilian Pistachio",
+  "description": "Honeycomb, vegan options"
+ },
+ {
+  "name": "Island Pops",
+  "neighborhood": "Crown Heights",
+  "borough": "Brooklyn",
+  "address": "670 Nostrand Ave, Brooklyn, NY 11216",
+  "lat": 40.675598,
+  "lng": -73.950039,
+  "signatureBowl": "Guinness caramel; Caribbean-inspired flavors",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.664,
+  "geocoded": true,
+  "title": "Guinness Caramel",
+  "description": "Caribbean-inspired flavors"
+ },
+ {
+  "name": "Lai Rai",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "76 Forsyth St, New York, NY 10002",
+  "lat": 40.717505,
+  "lng": -73.993227,
+  "signatureBowl": "Ambarella sorbet; Vietnamese-inspired flavors",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.64,
+  "geocoded": true,
+  "title": "Ambarella Sorbet",
+  "description": "Vietnamese-inspired flavors"
+ },
+ {
+  "name": "Mr. P's Homemade Ice Cream",
+  "neighborhood": "Flatbush",
+  "borough": "Brooklyn",
+  "address": "1397 Nostrand Ave, Brooklyn, NY 11226",
+  "lat": 40.65246,
+  "lng": -73.949673,
+  "signatureBowl": "Soursop",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.617,
+  "geocoded": true,
+  "title": "Soursop",
+  "description": ""
+ },
+ {
+  "name": "Taiyaki NYC",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "119 Baxter St, New York, NY 10013",
+  "lat": 40.717935,
+  "lng": -73.99899,
+  "signatureBowl": "Straight Outta Japan soft-serve in a fish-shaped taiyaki cone",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.593,
+  "geocoded": true,
+  "title": "Taiyaki Soft-Serve",
+  "description": "Soft-serve in a fish-shaped taiyaki cone"
+ },
+ {
+  "name": "Big Gay Ice Cream Shop",
+  "neighborhood": "Tribeca",
+  "borough": "Manhattan",
+  "address": "450 Washington St, New York, NY 10013",
+  "lat": 40.723942,
+  "lng": -74.010342,
+  "signatureBowl": "The Dorothy (vanilla soft-serve, dulce de leche & crushed Nilla wafers)",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.569,
+  "geocoded": true,
+  "title": "The Dorothy",
+  "description": "Vanilla soft-serve, dulce de leche, crushed Nilla wafers"
+ },
+ {
+  "name": "Ferrara Bakery & Cafe",
+  "neighborhood": "Little Italy",
+  "borough": "Manhattan",
+  "address": "195 Grand St, New York, NY 10013",
+  "lat": 40.719172,
+  "lng": -73.997033,
+  "signatureBowl": "Pistachio gelato; salt-and-caramel; granita",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.545,
+  "geocoded": true,
+  "title": "Pistachio Gelato",
+  "description": "Salt-and-caramel, granita"
+ },
+ {
+  "name": "Gelateria Gentile",
+  "neighborhood": "West Village",
+  "borough": "Manhattan",
+  "address": "43 8th Ave, New York, NY 10014",
+  "lat": 40.738301,
+  "lng": -74.004075,
+  "signatureBowl": "Gelato affogato (Bari, Italy heritage recipe)",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.521,
+  "geocoded": true,
+  "title": "Gelato Affogato",
+  "description": "Bari, Italy heritage recipe"
+ },
+ {
+  "name": "Glace",
+  "neighborhood": "Upper East Side",
+  "borough": "Manhattan",
+  "address": "1266 Madison Ave, New York, NY 10128",
+  "lat": 40.783888,
+  "lng": -73.956685,
+  "signatureBowl": "Nutella Fluffernutter sundae; macaron ice cream sandwiches",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.498,
+  "geocoded": true,
+  "title": "Nutella Fluffernutter Sundae",
+  "description": "Macaron ice cream sandwiches"
+ },
+ {
+  "name": "Sedutto",
+  "neighborhood": "Upper East Side",
+  "borough": "Manhattan",
+  "address": "1498 1st Ave, New York, NY 10075",
+  "lat": 40.771752,
+  "lng": -73.953031,
+  "signatureBowl": "Wine ice creams (with booze); classic flavors and sorbets",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.474,
+  "geocoded": true,
+  "title": "Wine Ice Cream",
+  "description": "Boozy ice creams, classic flavors and sorbets"
+ },
+ {
+  "name": "Superiority Burger",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "119 Avenue A, New York, NY 10009",
+  "lat": 40.726359,
+  "lng": -73.9834,
+  "signatureBowl": "Rotating daily gelato/sorbetto (fennel, coconut, labneh) from Brooks Headley",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Daily Gelato",
+  "description": "Rotating fennel, coconut, labneh from Brooks Headley"
+ },
+ {
+  "name": "Malai",
+  "neighborhood": "Carroll Gardens",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.68346,
+  "lng": -74.001016,
+  "signatureBowl": "Masala chai cone; rose with cinnamon roasted almonds; golden turmeric; saffron-pistachio swirl",
+  "appearsOn": [
+   "Time Out New York - 11 Best Ice Cream Shops in NYC",
+   "The Infatuation - The Best Soft Serve In NYC"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.8,
+  "geocoded": false,
+  "title": "Masala Chai Cone",
+  "description": "Southeast/South Asian-inspired eggless ice cream"
+ },
+ {
+  "name": "Leo",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.705184,
+  "lng": -73.96064,
+  "signatureBowl": "Seasonal soft serve - fig leaf, melon, grapefruit brûlée, concord grape",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams",
+   "The Infatuation - The Best Soft Serve In NYC"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.79,
+  "geocoded": false,
+  "title": "Fig Leaf Soft Serve",
+  "description": "Pizza spot with seasonal soft serve in a frosty dish"
+ },
+ {
+  "name": "Van Leeuwen Ice Cream",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.733124,
+  "lng": -73.950876,
+  "signatureBowl": "Sicilian pistachio; honeycomb",
+  "appearsOn": [
+   "Time Out New York - 11 Best Ice Cream Shops in NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Sicilian Pistachio Ice Cream",
+  "description": "Artisan creamery now citywide"
+ },
+ {
+  "name": "Big Gay Ice Cream",
+  "neighborhood": "Tribeca",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.7231,
+  "lng": -74.00596,
+  "signatureBowl": "The Dorothy - vanilla with dulce de leche and Nilla wafers",
+  "appearsOn": [
+   "Time Out New York - 11 Best Ice Cream Shops in NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "The Dorothy Soft Serve",
+  "description": "Cult soft serve shop with loaded cones"
+ },
+ {
+  "name": "L'Albero dei Gelati",
+  "neighborhood": "Park Slope",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.674956,
+  "lng": -73.977616,
+  "signatureBowl": "Gianduia; seasonal gelato offerings",
+  "appearsOn": [
+   "The Infatuation - The 19 Best Ice Cream Spots In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.63,
+  "geocoded": false,
+  "title": "Gianduia Gelato",
+  "description": "Park Slope gelateria with seasonal organic gelato"
+ },
+ {
+  "name": "Nun Left",
+  "neighborhood": "West Harlem",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.779368,
+  "lng": -73.972064,
+  "signatureBowl": "Strawberry with basil shortbread; Thai tea brownie",
+  "appearsOn": [
+   "The Infatuation - The 19 Best Ice Cream Spots In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Strawberry Basil Shortbread Ice Cream",
+  "description": "Inventive uptown scoop shop"
+ },
+ {
+  "name": "Biddrina Gelato",
+  "neighborhood": "Clinton Hill",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.678872,
+  "lng": -73.942988,
+  "signatureBowl": "Peak-season cantaloupe gelato",
+  "appearsOn": [
+   "The Infatuation - The 19 Best Ice Cream Spots In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Cantaloupe Gelato",
+  "description": "Seasonal rotating gelato shop"
+ },
+ {
+  "name": "Sundaes Best",
+  "neighborhood": "Koreatown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.748088,
+  "lng": -73.982184,
+  "signatureBowl": "Miso caramel and makgeolli",
+  "appearsOn": [
+   "The Infatuation - The 19 Best Ice Cream Spots In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Makgeolli Ice Cream",
+  "description": "Korean-inflected sundae shop"
+ },
+ {
+  "name": "Sundaes and Cones",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.732008,
+  "lng": -73.986456,
+  "signatureBowl": "Black sesame; Thai iced tea",
+  "appearsOn": [
+   "The Infatuation - The 19 Best Ice Cream Spots In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Thai Iced Tea Ice Cream",
+  "description": "Long-running shop with Asian flavors and many toppings"
+ },
+ {
+  "name": "Crevette",
+  "neighborhood": "West Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.7304,
+  "lng": -74.003996,
+  "signatureBowl": "Fior di latte soft serve with milk crumble and macerated strawberries",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.61,
+  "geocoded": false,
+  "title": "Fior di Latte Soft Serve",
+  "description": "Seafood spot with a standout soft serve"
+ },
+ {
+  "name": "Gem Home",
+  "neighborhood": "Nolita",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.71708,
+  "lng": -73.996768,
+  "signatureBowl": "Buckwheat ice cream",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Buckwheat Ice Cream",
+  "description": "Tasting-menu offshoot serving refined scoops"
+ },
+ {
+  "name": "Frena",
+  "neighborhood": "Hell's Kitchen",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.76248,
+  "lng": -73.98988,
+  "signatureBowl": "Halva sundae - vanilla ice cream, caramelized rice Krispies granola, date syrup",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Halva Sundae",
+  "description": "Bakery with a Middle Eastern sundae"
+ },
+ {
+  "name": "NY Kimchi",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.753448,
+  "lng": -73.986904,
+  "signatureBowl": "Cheesecake soft-serve with caramel and housemade cornflakes; yuzu sorbet swirl",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Cheesecake Soft-Serve",
+  "description": "Korean soft serve with cornflake crunch"
+ },
+ {
+  "name": "Casa Enrique",
+  "neighborhood": "Long Island City",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.74734,
+  "lng": -73.952472,
+  "signatureBowl": "Rotating daily housemade flavors - cheese, chocolate cinnamon, pecan, coconut",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Chocolate Cinnamon Ice Cream",
+  "description": "Michelin Mexican spot with daily housemade ice cream"
+ },
+ {
+  "name": "Penny",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.724004,
+  "lng": -73.986624,
+  "signatureBowl": "Ice cream sandwich in sesame brioche - corn ice cream, blueberry jam, honeycomb",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.61,
+  "geocoded": false,
+  "title": "Ice Cream Sandwich on Sesame Brioche",
+  "description": "Buzzy seafood spot with a seasonal ice cream sandwich"
+ },
+ {
+  "name": "Red Hook Tavern",
+  "neighborhood": "Red Hook",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.672352,
+  "lng": -74.01062,
+  "signatureBowl": "Hot fudge sundae with Dolce Brooklyn fior di latte gelato, candied pecans, homemade hot fudge",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Hot Fudge Sundae",
+  "description": "Tavern serving a fior di latte gelato sundae"
+ },
+ {
+  "name": "Serendipity 3",
+  "neighborhood": "Upper East Side",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.777008,
+  "lng": -73.962168,
+  "signatureBowl": "Frrrozen Hot Chocolate with whipped cream and chocolate shavings",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Frrrozen Hot Chocolate",
+  "description": "Iconic dessert parlor"
+ },
+ {
+  "name": "Misi",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.70948,
+  "lng": -73.954328,
+  "signatureBowl": "Housemade gelati - fior di latte, pistachio, mint stracciatella, amaretti",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.61,
+  "geocoded": false,
+  "title": "Mint Stracciatella Gelato",
+  "description": "Missy Robbins pasta spot with housemade gelati"
+ },
+ {
+  "name": "Shukette",
+  "neighborhood": "Chelsea",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.75076,
+  "lng": -74.002132,
+  "signatureBowl": "Mic Drop soft-serve - tahini, halva floss, hazelnut, pomegranate; Mandarin Sunset sorbet",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Mic Drop Soft-Serve",
+  "description": "Middle Eastern spot with a dense soft serve"
+ },
+ {
+  "name": "Ovelia",
+  "neighborhood": "Astoria",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.766656,
+  "lng": -73.923092,
+  "signatureBowl": "Kaimaki - orchid-rosewater flavor with sour cherry and hazelnut chocolate bar",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Kaimaki Ice Cream",
+  "description": "Greek taverna with housemade kaimaki"
+ },
+ {
+  "name": "Patti Ann's",
+  "neighborhood": "Prospect Heights",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.677708,
+  "lng": -73.970172,
+  "signatureBowl": "Build-your-own Neapolitan banana split",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Neapolitan Banana Split",
+  "description": "Greta Hardgrove restaurant with build-your-own splits"
+ },
+ {
+  "name": "Barbuto",
+  "neighborhood": "West Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.738932,
+  "lng": -74.002844,
+  "signatureBowl": "Rotating gelato - gin-and-tonic, honey, coffee",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Gin-and-Tonic Gelato",
+  "description": "Jonathan Waxman trattoria with rotating gelato"
+ },
+ {
+  "name": "Keens Steakhouse",
+  "neighborhood": "Herald Square",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.783496,
+  "lng": -73.966268,
+  "signatureBowl": "Butterscotch and hot fudge sundaes",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Butterscotch Sundae",
+  "description": "Historic steakhouse with classic sundaes"
+ },
+ {
+  "name": "Sofreh",
+  "neighborhood": "Prospect Heights",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.677468,
+  "lng": -73.96596,
+  "signatureBowl": "Traditional Persian ice cream - saffron, rosewater, pistachio",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.59,
+  "geocoded": false,
+  "title": "Saffron Rosewater Persian Ice Cream",
+  "description": "Persian restaurant with traditional ice cream"
+ },
+ {
+  "name": "Bonnie's",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.71284,
+  "lng": -73.953668,
+  "signatureBowl": "Chow nai sundae - malted fried milk custard, Ovaltine hot fudge, vanilla ice cream, buttered peanuts",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Chow Nai Sundae",
+  "description": "Cantonese-American spot with a fried-milk sundae"
+ },
+ {
+  "name": "Moono",
+  "neighborhood": "Koreatown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.744776,
+  "lng": -73.981284,
+  "signatureBowl": "Burdock ice cream with chocolate mousse; buckwheat with sesame caramel",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Burdock Ice Cream",
+  "description": "Korean dessert bar with unusual roots-and-grains flavors"
+ },
+ {
+  "name": "Stretch Pizza",
+  "neighborhood": "Flatiron District",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.788008,
+  "lng": -73.967528,
+  "signatureBowl": "Seasonal soft-serve - banana with peanut butter, chocolate babka",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Chocolate Babka Soft-Serve",
+  "description": "Pizza spot with seasonal soft serve"
+ },
+ {
+  "name": "Noona's",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.732128,
+  "lng": -73.977252,
+  "signatureBowl": "Pandan with caramelized sugar; strawberry yuzu dreamsicle; banana pudding mochi",
+  "appearsOn": [
+   "Resy - 22 of New York's Best Ice Creams"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Pandan Caramelized Sugar Ice Cream",
+  "description": "Asian-inspired ice cream brand"
+ },
+ {
+  "name": "Soft Swerve",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.713536,
+  "lng": -73.984492,
+  "signatureBowl": "Ube and black sesame soft serve",
+  "appearsOn": [
+   "The Infatuation - The Best Soft Serve In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Ube Soft Serve",
+  "description": "Asian-flavored soft serve mini-chain"
+ },
+ {
+  "name": "L'Industrie Pizzeria",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.707188,
+  "lng": -73.960856,
+  "signatureBowl": "Concord grape soft serve",
+  "appearsOn": [
+   "The Infatuation - The Best Soft Serve In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.59,
+  "geocoded": false,
+  "title": "Concord Grape Soft Serve",
+  "description": "Cult pizza slice shop with seasonal soft serve"
+ },
+ {
+  "name": "Dolly's",
+  "neighborhood": "Bedford-Stuyvesant",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.682448,
+  "lng": -73.945052,
+  "signatureBowl": "Blueberry pancake soft serve",
+  "appearsOn": [
+   "The Infatuation - The Best Soft Serve In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Blueberry Pancake Soft Serve",
+  "description": "Bed-Stuy soft serve shop"
+ },
+ {
+  "name": "Mister Dips",
+  "neighborhood": "South Street Seaport",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.787252,
+  "lng": -73.975484,
+  "signatureBowl": "Berry Gibbs - strawberry soft serve with Nilla wafers",
+  "appearsOn": [
+   "The Infatuation - The Best Soft Serve In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Berry Gibbs Soft Serve",
+  "description": "Burger-and-dipped-cone spot"
+ },
+ {
+  "name": "Softside",
+  "neighborhood": "Soho",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.727092,
+  "lng": -74.008592,
+  "signatureBowl": "Pistachio and strawberry swirl; vanilla with olive oil",
+  "appearsOn": [
+   "The Infatuation - The Best Soft Serve In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Strawberry Swirl Soft Serve",
+  "description": "Airy soft serve shop that carries Lactaid"
+ },
+ {
+  "name": "Ray's Candy Store",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.732344,
+  "lng": -73.986192,
+  "signatureBowl": "Chocolate, vanilla, or swirl soft serve",
+  "appearsOn": [
+   "The Infatuation - The Best Soft Serve In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Soft Serve Swirl",
+  "description": "Beloved late-night East Village institution"
+ },
+ {
+  "name": "Mommy Pai's",
+  "neighborhood": "Nolita",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.721424,
+  "lng": -74.002276,
+  "signatureBowl": "Thai tea and condensed milk twist",
+  "appearsOn": [
+   "The Infatuation - The Best Soft Serve In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Thai Tea Twist Soft Serve",
+  "description": "Thai soft serve counter"
+ }
 ]

@@ -36,6 +36,49 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
         )}
       </div>
 
+      {/* 🥇 #1 Picks — the gold headline: your declared #1 in each showcased category */}
+      {profile.topPicks.length > 0 ? (
+        <section className="mt-7">
+          <h2 className="mb-3 text-lg font-black tracking-tight">
+            🥇 {profile.name.split(" ")[0]}&apos;s #1 Picks
+          </h2>
+          <div className="-mx-1 flex gap-3 overflow-x-auto px-1 pb-2">
+            {profile.topPicks.map((p) => (
+              <Link
+                key={p.subSlug}
+                href={`/c/${p.contender.id}`}
+                className="group flex w-40 shrink-0 flex-col items-center gap-1.5 rounded-2xl border-2 border-[var(--color-gold)]/45 bg-gradient-to-b from-[#fdf4dd] to-[var(--color-surface)] p-4 text-center shadow-[0_4px_16px_-10px_rgba(224,169,60,0.7)] transition hover:-translate-y-0.5 hover:border-[var(--color-gold)] hover:shadow-[0_10px_24px_-10px_rgba(224,169,60,0.8)]"
+              >
+                <span className="grid h-16 w-16 place-items-center rounded-full bg-white text-3xl shadow-[0_2px_8px_-2px_rgba(35,28,22,0.25)] ring-2 ring-[var(--color-gold)] transition-transform group-hover:scale-105">
+                  {p.emoji}
+                </span>
+                <span className="mt-0.5 text-[11px] font-black uppercase tracking-wide text-[#b57e12]">
+                  #1 {p.subName}
+                </span>
+                <span className="w-full truncate text-sm font-bold leading-tight">{p.contender.title}</span>
+                <span className="w-full truncate text-xs text-[var(--color-ink-dim)]">
+                  {p.contender.placeName}
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      ) : (
+        isYou && (
+          <section className="mt-7 rounded-2xl border-2 border-dashed border-[var(--color-gold)]/50 bg-[#fdf4dd]/40 p-5 text-center">
+            <p className="text-2xl">🥇</p>
+            <p className="mt-1 font-bold">Show off your #1 Picks</p>
+            <p className="mt-0.5 text-sm text-[var(--color-ink-dim)]">
+              Pick categories in your{" "}
+              <Link href="/me" className="font-semibold text-[var(--color-brand)] hover:underline">
+                profile settings
+              </Link>{" "}
+              — your declared #1 in each lands here in gold.
+            </p>
+          </section>
+        )
+      )}
+
       <section className="mt-8">
         <h2 className="mb-3 text-lg font-black">
           🏔️ The Pinnacle{" "}

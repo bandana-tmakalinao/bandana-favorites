@@ -1,307 +1,307 @@
 [
-  {
-    "name": "Cull & Pistol Oyster Bar",
-    "neighborhood": "Chelsea (Chelsea Market)",
-    "borough": "Manhattan",
-    "address": "75 9th Ave, New York, NY 10011",
-    "lat": 40.741898,
-    "lng": -74.004768,
-    "signatureBowl": "Two rolls: chilled/Maine-style (lobster salad, mayo & scallion) and warm/Connecticut-style (buttered knuckle & claw, fines herbes, Kewpie mayo & lemon) on a toasted top-split bun",
-    "appearsOn": [
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Two-Style Lobster Roll",
-    "description": "Chilled Maine mayo-scallion and warm Connecticut buttered claw on top-split bun"
-  },
-  {
-    "name": "Burger & Lobster",
-    "neighborhood": "Midtown West (Bryant Park)",
-    "borough": "Manhattan",
-    "address": "132 W 43rd St, New York, NY 10036",
-    "lat": 40.755826,
-    "lng": -73.984511,
-    "signatureBowl": "Classic lobster roll with lemon-garlic butter dip (Connecticut-leaning)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.921,
-    "geocoded": true,
-    "title": "Connecticut Lobster Roll",
-    "description": "Classic roll with lemon-garlic butter dip"
-  },
-  {
-    "name": "Essex Pearl",
-    "neighborhood": "Chelsea",
-    "borough": "Manhattan",
-    "address": "25 11th Ave, New York, NY 10011",
-    "lat": 40.743989,
-    "lng": -74.008647,
-    "signatureBowl": "Butter and mayo versions with Asian twists",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.891,
-    "geocoded": true,
-    "title": "Asian Lobster Roll",
-    "description": "Butter and mayo versions with Asian twists"
-  },
-  {
-    "name": "Fish Tales",
-    "neighborhood": "Cobble Hill",
-    "borough": "Brooklyn",
-    "address": "191A Court St, Brooklyn, NY 11201",
-    "lat": 40.687604,
-    "lng": -73.993292,
-    "signatureBowl": "Creamy lobster roll (mayo-leaning; style not specified)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.862,
-    "geocoded": true,
-    "title": "Creamy Lobster Roll",
-    "description": "Mayo-leaning, creamy"
-  },
-  {
-    "name": "Grand Army",
-    "neighborhood": "Boerum Hill",
-    "borough": "Brooklyn",
-    "address": "336 State St, Brooklyn, NY 11217",
-    "lat": 40.68833,
-    "lng": -73.986536,
-    "signatureBowl": "Mayo-based lobster roll (Maine-style)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.832,
-    "geocoded": true,
-    "title": "Maine Lobster Roll",
-    "description": "Mayo-based"
-  },
-  {
-    "name": "Greenpoint Fish & Lobster Co.",
-    "neighborhood": "Greenpoint",
-    "borough": "Brooklyn",
-    "address": "114 Nassau Ave, Brooklyn, NY 11222",
-    "lat": 40.724259,
-    "lng": -73.949123,
-    "signatureBowl": "Both styles offered: hot with butter (Connecticut) and cold with mayo (Maine)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.803,
-    "geocoded": true,
-    "title": "Two-Style Lobster Roll",
-    "description": "Hot buttered Connecticut and cold mayo Maine"
-  },
-  {
-    "name": "Jeffrey's Grocery",
-    "neighborhood": "West Village",
-    "borough": "Manhattan",
-    "address": "172 Waverly Pl, New York, NY 10014",
-    "lat": 40.73396,
-    "lng": -74.001318,
-    "signatureBowl": "Herb mayo-based lobster roll (Maine-style)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.774,
-    "geocoded": true,
-    "title": "Maine Lobster Roll",
-    "description": "Herb mayo-based"
-  },
-  {
-    "name": "Lobster Place",
-    "neighborhood": "Chelsea (Chelsea Market)",
-    "borough": "Manhattan",
-    "address": "75 9th Ave, New York, NY 10011",
-    "lat": 40.741898,
-    "lng": -74.004768,
-    "signatureBowl": "Mayo-based, lemony with scallions (Maine-style)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.744,
-    "geocoded": true,
-    "title": "Maine Lobster Roll",
-    "description": "Mayo-based, lemony with scallions"
-  },
-  {
-    "name": "Luke's Lobster",
-    "neighborhood": "Financial District",
-    "borough": "Manhattan",
-    "address": "26 S William St, New York, NY 10004",
-    "lat": 40.704614,
-    "lng": -74.010682,
-    "signatureBowl": "Minimally dressed purist-style lobster roll (Maine-leaning)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.715,
-    "geocoded": true,
-    "title": "Maine Lobster Roll",
-    "description": "Minimally dressed, purist-style"
-  },
-  {
-    "name": "Lure Fishbar",
-    "neighborhood": "SoHo",
-    "borough": "Manhattan",
-    "address": "142 Mercer St, New York, NY 10012",
-    "lat": 40.724694,
-    "lng": -73.998442,
-    "signatureBowl": "Mayo-based with chives (Maine-style)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.685,
-    "geocoded": true,
-    "title": "Maine Lobster Roll",
-    "description": "Mayo-based with chives"
-  },
-  {
-    "name": "Minetta Tavern",
-    "neighborhood": "Greenwich Village",
-    "borough": "Manhattan",
-    "address": "113 Macdougal St, New York, NY 10012",
-    "lat": 40.729969,
-    "lng": -74.000605,
-    "signatureBowl": "Lobster in light tarragon-infused aioli on thin brioche with radish (mayo/aioli-style)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.656,
-    "geocoded": true,
-    "title": "Tarragon Lobster Roll",
-    "description": "Light tarragon aioli on thin brioche with radish"
-  },
-  {
-    "name": "Oyster Party",
-    "neighborhood": "Park Slope",
-    "borough": "Brooklyn",
-    "address": "Park Slope, NYC",
-    "lat": 40.67796,
-    "lng": -73.94551,
-    "signatureBowl": "Cold lobster roll, lightly dressed (Maine-style)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.626,
-    "title": "Maine Lobster Roll",
-    "description": "Cold, lightly dressed"
-  },
-  {
-    "name": "P.J. Clarke's",
-    "neighborhood": "Midtown East",
-    "borough": "Manhattan",
-    "address": "915 3rd Ave, New York, NY 10022",
-    "lat": 40.75903,
-    "lng": -73.968333,
-    "signatureBowl": "Lobster roll available Connecticut or Maine style",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.597,
-    "geocoded": true,
-    "title": "Two-Style Lobster Roll",
-    "description": "Available Connecticut or Maine style"
-  },
-  {
-    "name": "Red Hook Lobster Pound",
-    "neighborhood": "Red Hook",
-    "borough": "Brooklyn",
-    "address": "284 Van Brunt St, Brooklyn, NY 11231",
-    "lat": 40.679764,
-    "lng": -74.010174,
-    "signatureBowl": "Both Maine and Connecticut styles, plus lobster BLT, California-style, and fried lobster roll",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.568,
-    "geocoded": true,
-    "title": "Lobster Roll Flight",
-    "description": "Maine, Connecticut, lobster BLT, California-style, and fried versions"
-  },
-  {
-    "name": "Smithereens",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "414 E 9th St, New York, NY 10009",
-    "lat": 40.727992,
-    "lng": -73.984549,
-    "signatureBowl": "Cold lobster in lobster-shell-infused mayo and butter on a warm buttery bun (Maine-style/mayo)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.538,
-    "geocoded": true,
-    "title": "Maine Lobster Roll",
-    "description": "Cold lobster in shell-infused mayo and butter on warm bun"
-  },
-  {
-    "name": "The Crabby Shack",
-    "neighborhood": "Crown Heights",
-    "borough": "Brooklyn",
-    "address": "613 Franklin Ave, Brooklyn, NY 11238",
-    "lat": 40.677449,
-    "lng": -73.955442,
-    "signatureBowl": "Butter-based with Old Bay seasoning (Connecticut-leaning)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.509,
-    "geocoded": true,
-    "title": "Old Bay Lobster Roll",
-    "description": "Butter-based with Old Bay seasoning"
-  },
-  {
-    "name": "The Fulton",
-    "neighborhood": "Financial District (South Street Seaport)",
-    "borough": "Manhattan",
-    "address": "89 South St, New York, NY 10038",
-    "lat": 40.705875,
-    "lng": -74.00386,
-    "signatureBowl": "Butter-based (Connecticut-style)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.479,
-    "geocoded": true,
-    "title": "Connecticut Lobster Roll",
-    "description": "Butter-based"
-  },
-  {
-    "name": "The Mermaid Inn",
-    "neighborhood": "Chelsea",
-    "borough": "Manhattan",
-    "address": "227 10th Ave, New York, NY 10011",
-    "lat": 40.748185,
-    "lng": -74.003892,
-    "signatureBowl": "Both Maine (mayo) and Connecticut (butter) styles",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Two-Style Lobster Roll",
-    "description": "Maine mayo and Connecticut butter styles"
-  }
+ {
+  "name": "Cull & Pistol Oyster Bar",
+  "neighborhood": "Chelsea (Chelsea Market)",
+  "borough": "Manhattan",
+  "address": "75 9th Ave, New York, NY 10011",
+  "lat": 40.741898,
+  "lng": -74.004768,
+  "signatureBowl": "Two rolls: chilled/Maine-style (lobster salad, mayo & scallion) and warm/Connecticut-style (buttered knuckle & claw, fines herbes, Kewpie mayo & lemon) on a toasted top-split bun",
+  "appearsOn": [
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Two-Style Lobster Roll",
+  "description": "Chilled Maine mayo-scallion and warm Connecticut buttered claw on top-split bun"
+ },
+ {
+  "name": "Burger & Lobster",
+  "neighborhood": "Midtown West (Bryant Park)",
+  "borough": "Manhattan",
+  "address": "132 W 43rd St, New York, NY 10036",
+  "lat": 40.755826,
+  "lng": -73.984511,
+  "signatureBowl": "Classic lobster roll with lemon-garlic butter dip (Connecticut-leaning)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.921,
+  "geocoded": true,
+  "title": "Connecticut Lobster Roll",
+  "description": "Classic roll with lemon-garlic butter dip"
+ },
+ {
+  "name": "Essex Pearl",
+  "neighborhood": "Chelsea",
+  "borough": "Manhattan",
+  "address": "25 11th Ave, New York, NY 10011",
+  "lat": 40.743989,
+  "lng": -74.008647,
+  "signatureBowl": "Butter and mayo versions with Asian twists",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.891,
+  "geocoded": true,
+  "title": "Asian Lobster Roll",
+  "description": "Butter and mayo versions with Asian twists"
+ },
+ {
+  "name": "Fish Tales",
+  "neighborhood": "Cobble Hill",
+  "borough": "Brooklyn",
+  "address": "191A Court St, Brooklyn, NY 11201",
+  "lat": 40.687604,
+  "lng": -73.993292,
+  "signatureBowl": "Creamy lobster roll (mayo-leaning; style not specified)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.862,
+  "geocoded": true,
+  "title": "Creamy Lobster Roll",
+  "description": "Mayo-leaning, creamy"
+ },
+ {
+  "name": "Grand Army",
+  "neighborhood": "Boerum Hill",
+  "borough": "Brooklyn",
+  "address": "336 State St, Brooklyn, NY 11217",
+  "lat": 40.68833,
+  "lng": -73.986536,
+  "signatureBowl": "Mayo-based lobster roll (Maine-style)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.832,
+  "geocoded": true,
+  "title": "Maine Lobster Roll",
+  "description": "Mayo-based"
+ },
+ {
+  "name": "Greenpoint Fish & Lobster Co.",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "114 Nassau Ave, Brooklyn, NY 11222",
+  "lat": 40.724259,
+  "lng": -73.949123,
+  "signatureBowl": "Both styles offered: hot with butter (Connecticut) and cold with mayo (Maine)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.803,
+  "geocoded": true,
+  "title": "Two-Style Lobster Roll",
+  "description": "Hot buttered Connecticut and cold mayo Maine"
+ },
+ {
+  "name": "Jeffrey's Grocery",
+  "neighborhood": "West Village",
+  "borough": "Manhattan",
+  "address": "172 Waverly Pl, New York, NY 10014",
+  "lat": 40.73396,
+  "lng": -74.001318,
+  "signatureBowl": "Herb mayo-based lobster roll (Maine-style)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.774,
+  "geocoded": true,
+  "title": "Maine Lobster Roll",
+  "description": "Herb mayo-based"
+ },
+ {
+  "name": "Lobster Place",
+  "neighborhood": "Chelsea (Chelsea Market)",
+  "borough": "Manhattan",
+  "address": "75 9th Ave, New York, NY 10011",
+  "lat": 40.741898,
+  "lng": -74.004768,
+  "signatureBowl": "Mayo-based, lemony with scallions (Maine-style)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.744,
+  "geocoded": true,
+  "title": "Maine Lobster Roll",
+  "description": "Mayo-based, lemony with scallions"
+ },
+ {
+  "name": "Luke's Lobster",
+  "neighborhood": "Financial District",
+  "borough": "Manhattan",
+  "address": "26 S William St, New York, NY 10004",
+  "lat": 40.704614,
+  "lng": -74.010682,
+  "signatureBowl": "Minimally dressed purist-style lobster roll (Maine-leaning)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.715,
+  "geocoded": true,
+  "title": "Maine Lobster Roll",
+  "description": "Minimally dressed, purist-style"
+ },
+ {
+  "name": "Lure Fishbar",
+  "neighborhood": "SoHo",
+  "borough": "Manhattan",
+  "address": "142 Mercer St, New York, NY 10012",
+  "lat": 40.724694,
+  "lng": -73.998442,
+  "signatureBowl": "Mayo-based with chives (Maine-style)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.685,
+  "geocoded": true,
+  "title": "Maine Lobster Roll",
+  "description": "Mayo-based with chives"
+ },
+ {
+  "name": "Minetta Tavern",
+  "neighborhood": "Greenwich Village",
+  "borough": "Manhattan",
+  "address": "113 Macdougal St, New York, NY 10012",
+  "lat": 40.729969,
+  "lng": -74.000605,
+  "signatureBowl": "Lobster in light tarragon-infused aioli on thin brioche with radish (mayo/aioli-style)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.656,
+  "geocoded": true,
+  "title": "Tarragon Lobster Roll",
+  "description": "Light tarragon aioli on thin brioche with radish"
+ },
+ {
+  "name": "Oyster Party",
+  "neighborhood": "Park Slope",
+  "borough": "Brooklyn",
+  "address": "Park Slope, NYC",
+  "lat": 40.67796,
+  "lng": -73.94551,
+  "signatureBowl": "Cold lobster roll, lightly dressed (Maine-style)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.626,
+  "title": "Maine Lobster Roll",
+  "description": "Cold, lightly dressed"
+ },
+ {
+  "name": "P.J. Clarke's",
+  "neighborhood": "Midtown East",
+  "borough": "Manhattan",
+  "address": "915 3rd Ave, New York, NY 10022",
+  "lat": 40.75903,
+  "lng": -73.968333,
+  "signatureBowl": "Lobster roll available Connecticut or Maine style",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.597,
+  "geocoded": true,
+  "title": "Two-Style Lobster Roll",
+  "description": "Available Connecticut or Maine style"
+ },
+ {
+  "name": "Red Hook Lobster Pound",
+  "neighborhood": "Red Hook",
+  "borough": "Brooklyn",
+  "address": "284 Van Brunt St, Brooklyn, NY 11231",
+  "lat": 40.679764,
+  "lng": -74.010174,
+  "signatureBowl": "Both Maine and Connecticut styles, plus lobster BLT, California-style, and fried lobster roll",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.568,
+  "geocoded": true,
+  "title": "Lobster Roll Flight",
+  "description": "Maine, Connecticut, lobster BLT, California-style, and fried versions"
+ },
+ {
+  "name": "Smithereens",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "414 E 9th St, New York, NY 10009",
+  "lat": 40.727992,
+  "lng": -73.984549,
+  "signatureBowl": "Cold lobster in lobster-shell-infused mayo and butter on a warm buttery bun (Maine-style/mayo)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.538,
+  "geocoded": true,
+  "title": "Maine Lobster Roll",
+  "description": "Cold lobster in shell-infused mayo and butter on warm bun"
+ },
+ {
+  "name": "The Crabby Shack",
+  "neighborhood": "Crown Heights",
+  "borough": "Brooklyn",
+  "address": "613 Franklin Ave, Brooklyn, NY 11238",
+  "lat": 40.677449,
+  "lng": -73.955442,
+  "signatureBowl": "Butter-based with Old Bay seasoning (Connecticut-leaning)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.509,
+  "geocoded": true,
+  "title": "Old Bay Lobster Roll",
+  "description": "Butter-based with Old Bay seasoning"
+ },
+ {
+  "name": "The Fulton",
+  "neighborhood": "Financial District (South Street Seaport)",
+  "borough": "Manhattan",
+  "address": "89 South St, New York, NY 10038",
+  "lat": 40.705875,
+  "lng": -74.00386,
+  "signatureBowl": "Butter-based (Connecticut-style)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.479,
+  "geocoded": true,
+  "title": "Connecticut Lobster Roll",
+  "description": "Butter-based"
+ },
+ {
+  "name": "The Mermaid Inn",
+  "neighborhood": "Chelsea",
+  "borough": "Manhattan",
+  "address": "227 10th Ave, New York, NY 10011",
+  "lat": 40.748185,
+  "lng": -74.003892,
+  "signatureBowl": "Both Maine (mayo) and Connecticut (butter) styles",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Two-Style Lobster Roll",
+  "description": "Maine mayo and Connecticut butter styles"
+ }
 ]

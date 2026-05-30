@@ -1,230 +1,350 @@
 [
-  {
-    "name": "Ly Ly Vietnam Cookhouse",
-    "neighborhood": "Upper East Side",
-    "borough": "Manhattan",
-    "address": "306 E 81st St, New York, NY 10028",
-    "lat": 40.774518,
-    "lng": -73.953926,
-    "signatureBowl": "'UES' phở (smoked five-spice short rib; 20-hour broth)",
-    "appearsOn": [
-      "The MICHELIN Guide",
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Short Rib Pho",
-    "description": "Smoked five-spice short rib, 20-hour broth"
-  },
-  {
-    "name": "Bánh Anh Em",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "99 3rd Ave, New York, NY 10003",
-    "lat": 40.732348,
-    "lng": -73.987787,
-    "signatureBowl": "Brisket-and-tripe phở",
-    "appearsOn": [
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.908,
-    "geocoded": true,
-    "title": "Brisket Tripe Pho",
-    "description": ""
-  },
-  {
-    "name": "La Dong",
-    "neighborhood": "Flatiron / Union Square",
-    "borough": "Manhattan",
-    "address": "11 E 17th St, New York, NY 10003",
-    "lat": 40.737679,
-    "lng": -73.991493,
-    "signatureBowl": "Phở with thin slivers of Miyazaki A5 wagyu, poured tableside",
-    "appearsOn": [
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.867,
-    "geocoded": true,
-    "title": "Wagyu Pho",
-    "description": "Miyazaki A5 wagyu, poured tableside"
-  },
-  {
-    "name": "Bánh",
-    "neighborhood": "Upper West Side",
-    "borough": "Manhattan",
-    "address": "942 Amsterdam Ave, New York, NY 10025",
-    "lat": 40.800673,
-    "lng": -73.965626,
-    "signatureBowl": "Phở Đặc Biệt (brisket, tendon, tripe)",
-    "appearsOn": [
-      "Time Out New York",
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.825,
-    "geocoded": true,
-    "title": "Pho Dac Biet",
-    "description": "Brisket, tendon, tripe"
-  },
-  {
-    "name": "Madame Vo",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "212 E 10th St, New York, NY 10003",
-    "lat": 40.729445,
-    "lng": -73.986174,
-    "signatureBowl": "The Madame Phở (southern-style: eye of round, brisket, meatball; short rib add-on)",
-    "appearsOn": [
-      "Time Out New York",
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.783,
-    "geocoded": true,
-    "title": "Madame Pho",
-    "description": "Southern-style: eye of round, brisket, meatball; short rib add-on"
-  },
-  {
-    "name": "Mắm",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "70 Forsyth St, New York, NY 10002",
-    "lat": 40.71736,
-    "lng": -73.993302,
-    "signatureBowl": "Phở bò (beef pho with brisket, flank, and sirloin; wide noodles)",
-    "appearsOn": [
-      "Time Out New York",
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.742,
-    "geocoded": true,
-    "title": "Pho Bo",
-    "description": "Brisket, flank, sirloin; wide noodles"
-  },
-  {
-    "name": "Phở Bằng",
-    "neighborhood": "Little Italy",
-    "borough": "Manhattan",
-    "address": "157 Mott St, New York, NY 10013",
-    "lat": 40.7194,
-    "lng": -73.996419,
-    "signatureBowl": "#1 Tái Nạm Gầu Gân Sách (eye of round, brisket, tendon, omasum); southern-style",
-    "appearsOn": [
-      "Time Out New York",
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.7,
-    "geocoded": true,
-    "title": "Pho Dac Biet",
-    "description": "Eye of round, brisket, tendon, omasum; southern-style"
-  },
-  {
-    "name": "Phở Gà Vàng",
-    "neighborhood": "Two Bridges",
-    "borough": "Manhattan",
-    "address": "30 Market St, New York, NY 10002",
-    "lat": 40.712531,
-    "lng": -73.994316,
-    "signatureBowl": "Phở gà (traditional chopped chicken pho; concentrated chicken-essence broth)",
-    "appearsOn": [
-      "Time Out New York",
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.658,
-    "geocoded": true,
-    "title": "Pho Ga",
-    "description": "Chopped chicken, concentrated chicken-essence broth"
-  },
-  {
-    "name": "Đi Ăn Đi",
-    "neighborhood": "Greenpoint",
-    "borough": "Brooklyn",
-    "address": "68 Greenpoint Ave, Brooklyn, NY 11222",
-    "lat": 40.729762,
-    "lng": -73.958231,
-    "signatureBowl": "Phở Thìn Hà Nội (northern-style, wok-seared brisket, scallions, pickled garlic, chili)",
-    "appearsOn": [
-      "Time Out New York",
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.617,
-    "geocoded": true,
-    "title": "Pho Thin Ha Noi",
-    "description": "Northern-style, wok-seared brisket, scallions, pickled garlic, chili"
-  },
-  {
-    "name": "Hello Saigon",
-    "neighborhood": "Greenwich Village",
-    "borough": "Manhattan",
-    "address": "180 Bleecker St, New York, NY 10012",
-    "lat": 40.72897,
-    "lng": -74.000931,
-    "signatureBowl": "Phở Hello Saigon (eye of round beef, brisket, beef ball)",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.575,
-    "geocoded": true,
-    "title": "Hello Saigon Pho",
-    "description": "Eye of round beef, brisket, beef ball"
-  },
-  {
-    "name": "Nha Trang One",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "87 Baxter St, New York, NY 10013",
-    "lat": 40.716962,
-    "lng": -73.999592,
-    "signatureBowl": "Phở Đặc Biệt (beef brisket, eye round, tendon)",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.533,
-    "geocoded": true,
-    "title": "Pho Dac Biet",
-    "description": "Beef brisket, eye round, tendon"
-  },
-  {
-    "name": "Pasteur Grill & Noodles",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "85 Baxter St, New York, NY 10013",
-    "lat": 40.716863,
-    "lng": -73.999652,
-    "signatureBowl": "Phở xe lửa (special combination: medium-rare beef, brisket, beef balls, tendon, tripe)",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.492,
-    "geocoded": true,
-    "title": "Pho Xe Lua",
-    "description": "Medium-rare beef, brisket, beef balls, tendon, tripe"
-  },
-  {
-    "name": "Saigon Social",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "172 Orchard St, New York, NY 10002",
-    "lat": 40.721495,
-    "lng": -73.988423,
-    "signatureBowl": "Beef phở with ribeye and brisket",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Ribeye Brisket Pho",
-    "description": "Beef pho with ribeye and brisket"
-  }
+ {
+  "name": "Ly Ly Vietnam Cookhouse",
+  "neighborhood": "Upper East Side",
+  "borough": "Manhattan",
+  "address": "306 E 81st St, New York, NY 10028",
+  "lat": 40.774518,
+  "lng": -73.953926,
+  "signatureBowl": "'UES' phở (smoked five-spice short rib; 20-hour broth)",
+  "appearsOn": [
+   "The MICHELIN Guide",
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Short Rib Pho",
+  "description": "Smoked five-spice short rib, 20-hour broth"
+ },
+ {
+  "name": "Bánh Anh Em",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "99 3rd Ave, New York, NY 10003",
+  "lat": 40.732348,
+  "lng": -73.987787,
+  "signatureBowl": "Brisket-and-tripe phở",
+  "appearsOn": [
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.908,
+  "geocoded": true,
+  "title": "Brisket Tripe Pho",
+  "description": ""
+ },
+ {
+  "name": "La Dong",
+  "neighborhood": "Flatiron / Union Square",
+  "borough": "Manhattan",
+  "address": "11 E 17th St, New York, NY 10003",
+  "lat": 40.737679,
+  "lng": -73.991493,
+  "signatureBowl": "Phở with thin slivers of Miyazaki A5 wagyu, poured tableside",
+  "appearsOn": [
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.867,
+  "geocoded": true,
+  "title": "Wagyu Pho",
+  "description": "Miyazaki A5 wagyu, poured tableside"
+ },
+ {
+  "name": "Bánh",
+  "neighborhood": "Upper West Side",
+  "borough": "Manhattan",
+  "address": "942 Amsterdam Ave, New York, NY 10025",
+  "lat": 40.800673,
+  "lng": -73.965626,
+  "signatureBowl": "Phở Đặc Biệt (brisket, tendon, tripe)",
+  "appearsOn": [
+   "Time Out New York",
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.825,
+  "geocoded": true,
+  "title": "Pho Dac Biet",
+  "description": "Brisket, tendon, tripe"
+ },
+ {
+  "name": "Madame Vo",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "212 E 10th St, New York, NY 10003",
+  "lat": 40.729445,
+  "lng": -73.986174,
+  "signatureBowl": "The Madame Phở (southern-style: eye of round, brisket, meatball; short rib add-on)",
+  "appearsOn": [
+   "Time Out New York",
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.783,
+  "geocoded": true,
+  "title": "Madame Pho",
+  "description": "Southern-style: eye of round, brisket, meatball; short rib add-on"
+ },
+ {
+  "name": "Mắm",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "70 Forsyth St, New York, NY 10002",
+  "lat": 40.71736,
+  "lng": -73.993302,
+  "signatureBowl": "Phở bò (beef pho with brisket, flank, and sirloin; wide noodles)",
+  "appearsOn": [
+   "Time Out New York",
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.742,
+  "geocoded": true,
+  "title": "Pho Bo",
+  "description": "Brisket, flank, sirloin; wide noodles"
+ },
+ {
+  "name": "Phở Bằng",
+  "neighborhood": "Little Italy",
+  "borough": "Manhattan",
+  "address": "157 Mott St, New York, NY 10013",
+  "lat": 40.7194,
+  "lng": -73.996419,
+  "signatureBowl": "#1 Tái Nạm Gầu Gân Sách (eye of round, brisket, tendon, omasum); southern-style",
+  "appearsOn": [
+   "Time Out New York",
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.7,
+  "geocoded": true,
+  "title": "Pho Dac Biet",
+  "description": "Eye of round, brisket, tendon, omasum; southern-style"
+ },
+ {
+  "name": "Phở Gà Vàng",
+  "neighborhood": "Two Bridges",
+  "borough": "Manhattan",
+  "address": "30 Market St, New York, NY 10002",
+  "lat": 40.712531,
+  "lng": -73.994316,
+  "signatureBowl": "Phở gà (traditional chopped chicken pho; concentrated chicken-essence broth)",
+  "appearsOn": [
+   "Time Out New York",
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.658,
+  "geocoded": true,
+  "title": "Pho Ga",
+  "description": "Chopped chicken, concentrated chicken-essence broth"
+ },
+ {
+  "name": "Đi Ăn Đi",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "68 Greenpoint Ave, Brooklyn, NY 11222",
+  "lat": 40.729762,
+  "lng": -73.958231,
+  "signatureBowl": "Phở Thìn Hà Nội (northern-style, wok-seared brisket, scallions, pickled garlic, chili)",
+  "appearsOn": [
+   "Time Out New York",
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.617,
+  "geocoded": true,
+  "title": "Pho Thin Ha Noi",
+  "description": "Northern-style, wok-seared brisket, scallions, pickled garlic, chili"
+ },
+ {
+  "name": "Hello Saigon",
+  "neighborhood": "Greenwich Village",
+  "borough": "Manhattan",
+  "address": "180 Bleecker St, New York, NY 10012",
+  "lat": 40.72897,
+  "lng": -74.000931,
+  "signatureBowl": "Phở Hello Saigon (eye of round beef, brisket, beef ball)",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.575,
+  "geocoded": true,
+  "title": "Hello Saigon Pho",
+  "description": "Eye of round beef, brisket, beef ball"
+ },
+ {
+  "name": "Nha Trang One",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "87 Baxter St, New York, NY 10013",
+  "lat": 40.716962,
+  "lng": -73.999592,
+  "signatureBowl": "Phở Đặc Biệt (beef brisket, eye round, tendon)",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.533,
+  "geocoded": true,
+  "title": "Pho Dac Biet",
+  "description": "Beef brisket, eye round, tendon"
+ },
+ {
+  "name": "Pasteur Grill & Noodles",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "85 Baxter St, New York, NY 10013",
+  "lat": 40.716863,
+  "lng": -73.999652,
+  "signatureBowl": "Phở xe lửa (special combination: medium-rare beef, brisket, beef balls, tendon, tripe)",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.492,
+  "geocoded": true,
+  "title": "Pho Xe Lua",
+  "description": "Medium-rare beef, brisket, beef balls, tendon, tripe"
+ },
+ {
+  "name": "Saigon Social",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "172 Orchard St, New York, NY 10002",
+  "lat": 40.721495,
+  "lng": -73.988423,
+  "signatureBowl": "Beef phở with ribeye and brisket",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Ribeye Brisket Pho",
+  "description": "Beef pho with ribeye and brisket"
+ },
+ {
+  "name": "Hanoi House",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.729536,
+  "lng": -73.97898,
+  "signatureBowl": "House special phở (with roasted bone marrow and oxtail)",
+  "appearsOn": [
+   "The Infatuation",
+   "Resy"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.8,
+  "geocoded": false,
+  "title": "Phở Bắc",
+  "description": "East Village favorite for northern-style Hanoi beef phở with bone marrow and oxtail"
+ },
+ {
+  "name": "Pho Bang",
+  "neighborhood": "Little Italy",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.786076,
+  "lng": -73.967888,
+  "signatureBowl": "#1 Phở (eye of round, brisket, tendon, omosa)",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Phở #1 Đặc Biệt",
+  "description": "Longstanding Chinatown-area spot with a loaded combination beef phở"
+ },
+ {
+  "name": "District Saigon",
+  "neighborhood": "Astoria",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.76614,
+  "lng": -73.9277,
+  "signatureBowl": "Smoked brisket phở (super smoky broth)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Smoked Brisket Phở",
+  "description": "Astoria go-to for smoky smoked-brisket phở and a vegan option"
+ },
+ {
+  "name": "Thái Sơn",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.715788,
+  "lng": -73.995716,
+  "signatureBowl": "Phở tái (rare beef shavings in savory broth)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Phở Tái",
+  "description": "Busy Chinatown room where rare-beef phở is the star"
+ },
+ {
+  "name": "High Lúa",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.71368,
+  "lng": -73.958012,
+  "signatureBowl": "Classic beef phở",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Classic Beef Phở",
+  "description": "Williamsburg Vietnamese serving classic beef and chicken phở"
+ },
+ {
+  "name": "Lucy's Vietnamese Kitchen",
+  "neighborhood": "Bushwick",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.692624,
+  "lng": -73.918888,
+  "signatureBowl": "Phở with 14-hour smoked brisket",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Smoked Brisket Phở",
+  "description": "Brooklyn mini-chain known for a 14-hour smoked-brisket phở"
+ },
+ {
+  "name": "VPho & Pizzeria",
+  "neighborhood": "Morris Park",
+  "borough": "Bronx",
+  "address": "",
+  "lat": 40.839568,
+  "lng": -73.861344,
+  "signatureBowl": "Spicy phở sate with tripe",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Phở Sate",
+  "description": "Bronx spot serving a spicy satay-style phở with tripe"
+ }
 ]

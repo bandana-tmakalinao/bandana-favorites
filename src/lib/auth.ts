@@ -9,27 +9,50 @@ import { getRepo } from "@/db/repo";
 import type { User } from "@/lib/types";
 
 export const SESSION_COOKIE = "bf_session";
-const SECRET = process.env.SESSION_SECRET || "dev-insecure-secret-change-me";
+const DEFAULT_SECRET = "dev-insecure-secret-change-me";
+const SECRET = process.env.SESSION_SECRET || DEFAULT_SECRET;
 const MAX_AGE = 60 * 60 * 24 * 365; // 1 year
 
+// Guardrail: a forgeable session in production is a hard security hole. Warn loudly at boot.
+if (process.env.NODE_ENV === "production" && SECRET === DEFAULT_SECRET) {
+  console.warn(
+    "[auth] SESSION_SECRET is unset in production — session cookies are FORGEABLE. Set a strong SESSION_SECRET before launch.",
+  );
+}
+
+function hmac(payload: string): string {
+  return crypto.createHmac("sha256", SECRET).update(payload).digest("base64url");
+}
+
+function timingEq(a: string, b: string): boolean {
+  try {
+    return a.length === b.length && crypto.timingSafeEqual(Buffer.from(a), Buffer.from(b));
+  } catch {
+    return false;
+  }
+}
+
+// Token = `uid.issuedAt.sig` — binding issuedAt bounds a leaked cookie's lifetime (not valid forever).
 function sign(uid: string): string {
-  const sig = crypto.createHmac("sha256", SECRET).update(uid).digest("base64url");
-  return `${uid}.${sig}`;
+  const iat = Math.floor(Date.now() / 1000).toString(36);
+  return `${uid}.${iat}.${hmac(`${uid}.${iat}`)}`;
 }
 
 export function verifyToken(token: string | undefined): string | null {
   if (!token) return null;
-  const i = token.lastIndexOf(".");
-  if (i < 0) return null;
-  const uid = token.slice(0, i);
-  const sig = token.slice(i + 1);
-  const expected = crypto.createHmac("sha256", SECRET).update(uid).digest("base64url");
-  try {
-    if (sig.length === expected.length && crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(expected))) {
-      return uid;
-    }
-  } catch {
-    /* fall through */
+  const parts = token.split(".");
+  if (parts.length === 3) {
+    const [uid, iatB36, sig] = parts;
+    if (!timingEq(sig, hmac(`${uid}.${iatB36}`))) return null;
+    const iat = parseInt(iatB36, 36);
+    if (!Number.isFinite(iat) || Date.now() / 1000 - iat > MAX_AGE) return null; // expired
+    return uid;
+  }
+  // Legacy `uid.sig` tokens (no bound expiry) — accept once so existing sessions survive; the next
+  // sign-in re-issues the hardened format. User ids carry no dots, so this split is unambiguous.
+  if (parts.length === 2) {
+    const [uid, sig] = parts;
+    if (timingEq(sig, hmac(uid))) return uid;
   }
   return null;
 }

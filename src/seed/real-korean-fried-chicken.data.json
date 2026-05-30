@@ -1,90 +1,142 @@
 [
-  {
-    "name": "Coqodaq",
-    "neighborhood": "Flatiron",
-    "borough": "Manhattan",
-    "address": "12 E 22nd St, New York, NY 10010",
-    "lat": 40.740405,
-    "lng": -73.98911,
-    "signatureBowl": "Bone-in Korean fried chicken 'bucket' feast — multiple rounds of gluten-free fried chicken in two styles served with house sauces (gochujang or soy-garlic glaze), plus chicken consomme, banchan, cold perilla seed noodles, and soft-serve",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Fried Chicken Bucket",
-    "description": "Bone-in, two styles, gochujang or soy-garlic, consomme, banchan, soft-serve"
-  },
-  {
-    "name": "Chick Chick",
-    "neighborhood": "Upper West Side",
-    "borough": "Manhattan",
-    "address": "618 Amsterdam Ave, New York, NY 10024",
-    "lat": 40.79022,
-    "lng": -73.973248,
-    "signatureBowl": "Korean and Nashville-style fried chicken (tenders, sandwiches, wings, or whole bird); crisp amber skin with sticky-sweet black pepper soy glaze and a spicy chile finish",
-    "appearsOn": [
-      "Eater NY",
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.825,
-    "geocoded": true,
-    "title": "Soy Glaze Fried Chicken",
-    "description": "Crisp amber skin, sticky black pepper soy glaze, spicy chile finish"
-  },
-  {
-    "name": "Ariari",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "119 1st Ave, New York, NY 10003",
-    "lat": 40.727195,
-    "lng": -73.985691,
-    "signatureBowl": "Korean fried chicken tidbits in a thick, crunchy curry-powder wrapper with a gochujang-style chile-paste aioli dipping sauce; neither too spicy nor too sweet",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.7,
-    "geocoded": true,
-    "title": "Curry Fried Chicken",
-    "description": "Crunchy curry-powder crust, gochujang chile-paste aioli dip"
-  },
-  {
-    "name": "Atoboy",
-    "neighborhood": "Flatiron",
-    "borough": "Manhattan",
-    "address": "43 E 28th St, New York, NY 10016",
-    "lat": 40.743832,
-    "lng": -73.985122,
-    "signatureBowl": "Korean fried chicken (thighs and drums) with a thick, crispy crust topped with fried garlic chips; offered as a fried chicken add-on to the prix fixe",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.575,
-    "geocoded": true,
-    "title": "Garlic Fried Chicken",
-    "description": "Thighs and drums, crispy crust, fried garlic chips"
-  },
-  {
-    "name": "Yetnal Tongdak",
-    "neighborhood": "Flushing",
-    "borough": "Queens",
-    "address": "40-24 162nd St, Flushing, NY 11358",
-    "lat": 40.761891,
-    "lng": -73.803851,
-    "signatureBowl": "Whole bird fried without starch; soy-garlic glazed wings (subtly sweet and tangy)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Soy-Garlic Wings",
-    "description": "Starch-free whole bird, sweet-tangy soy-garlic glaze"
-  }
+ {
+  "name": "Coqodaq",
+  "neighborhood": "Flatiron",
+  "borough": "Manhattan",
+  "address": "12 E 22nd St, New York, NY 10010",
+  "lat": 40.740405,
+  "lng": -73.98911,
+  "signatureBowl": "Bone-in Korean fried chicken 'bucket' feast — multiple rounds of gluten-free fried chicken in two styles served with house sauces (gochujang or soy-garlic glaze), plus chicken consomme, banchan, cold perilla seed noodles, and soft-serve",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Fried Chicken Bucket",
+  "description": "Bone-in, two styles, gochujang or soy-garlic, consomme, banchan, soft-serve"
+ },
+ {
+  "name": "Chick Chick",
+  "neighborhood": "Upper West Side",
+  "borough": "Manhattan",
+  "address": "618 Amsterdam Ave, New York, NY 10024",
+  "lat": 40.79022,
+  "lng": -73.973248,
+  "signatureBowl": "Korean and Nashville-style fried chicken (tenders, sandwiches, wings, or whole bird); crisp amber skin with sticky-sweet black pepper soy glaze and a spicy chile finish",
+  "appearsOn": [
+   "Eater NY",
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.825,
+  "geocoded": true,
+  "title": "Soy Glaze Fried Chicken",
+  "description": "Crisp amber skin, sticky black pepper soy glaze, spicy chile finish"
+ },
+ {
+  "name": "Ariari",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "119 1st Ave, New York, NY 10003",
+  "lat": 40.727195,
+  "lng": -73.985691,
+  "signatureBowl": "Korean fried chicken tidbits in a thick, crunchy curry-powder wrapper with a gochujang-style chile-paste aioli dipping sauce; neither too spicy nor too sweet",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.7,
+  "geocoded": true,
+  "title": "Curry Fried Chicken",
+  "description": "Crunchy curry-powder crust, gochujang chile-paste aioli dip"
+ },
+ {
+  "name": "Atoboy",
+  "neighborhood": "Flatiron",
+  "borough": "Manhattan",
+  "address": "43 E 28th St, New York, NY 10016",
+  "lat": 40.743832,
+  "lng": -73.985122,
+  "signatureBowl": "Korean fried chicken (thighs and drums) with a thick, crispy crust topped with fried garlic chips; offered as a fried chicken add-on to the prix fixe",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.575,
+  "geocoded": true,
+  "title": "Garlic Fried Chicken",
+  "description": "Thighs and drums, crispy crust, fried garlic chips"
+ },
+ {
+  "name": "Yetnal Tongdak",
+  "neighborhood": "Flushing",
+  "borough": "Queens",
+  "address": "40-24 162nd St, Flushing, NY 11358",
+  "lat": 40.761891,
+  "lng": -73.803851,
+  "signatureBowl": "Whole bird fried without starch; soy-garlic glazed wings (subtly sweet and tangy)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Soy-Garlic Wings",
+  "description": "Starch-free whole bird, sweet-tangy soy-garlic glaze"
+ },
+ {
+  "name": "Tofu Tofu",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.711396,
+  "lng": -73.996112,
+  "signatureBowl": "Honey spicy fried chicken",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": false,
+  "title": "Honey Spicy Fried Chicken",
+  "description": "spicy fried chicken glazed like pure honey"
+ },
+ {
+  "name": "Golden HOF - Korean Bar & Grill",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.75196,
+  "lng": -73.981924,
+  "signatureBowl": "Korean fried chicken in four glazes ($19 each) - garlic-soy, General Sam's (kkanpunggi-style), gochujang, and cumin with green Szechuan peppercorn (the recommended one)",
+  "appearsOn": [
+   "Resy - Golden HOF and NY Kimchi Revive Two Great Restaurant Traditions",
+   "Resy - The Top Restaurants in NYC Right Now (Hit List)"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.78,
+  "geocoded": false,
+  "title": "Cumin Green Szechuan Fried Chicken",
+  "description": "Korean fried chicken with the cumin and green Sichuan peppercorn variety as the standout"
+ },
+ {
+  "name": "Turntable Chicken & Rock",
+  "neighborhood": "Koreatown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.7457,
+  "lng": -73.983528,
+  "signatureBowl": "Classic Korean fried chicken wings (8 for $17) - soy garlic, spicy gochujang, or half-half - with a crunchy, saucy crust and juicy meat, served with pickled radish",
+  "appearsOn": [
+   "Resy - Where to Find Every Kind of Korean Food in New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Soy Garlic Chicken Wings",
+  "description": "Retro vinyl-themed chimaek gastropub; classic wings with a crunchy, saucy crust"
+ }
 ]

@@ -1,330 +1,636 @@
 [
-  {
-    "name": "Daily Provisions",
-    "neighborhood": "Flatiron / Gramercy",
-    "borough": "Manhattan",
-    "address": "103 E 19th St, New York, NY 10003",
-    "lat": 40.737701,
-    "lng": -73.987919,
-    "signatureBowl": "BEC with thick-cut Berkshire bacon and American cheese on a poppy seed-coated Portuguese roll",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY",
-      "Resy"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Bacon Egg Cheese",
-    "description": "Berkshire bacon, American cheese, poppy seed Portuguese roll"
-  },
-  {
-    "name": "Court Street Grocers",
-    "neighborhood": "Carroll Gardens",
-    "borough": "Brooklyn",
-    "address": "485 Court St, Brooklyn, NY 11231",
-    "lat": 40.676297,
-    "lng": -73.99874,
-    "signatureBowl": "The B+B — soft-scrambled eggs, bacon, cheddar, and arugula on Balthazar ciabatta",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.922,
-    "geocoded": true,
-    "title": "The B+B",
-    "description": "Soft-scrambled eggs, bacon, cheddar, arugula on ciabatta"
-  },
-  {
-    "name": "Golden Diner",
-    "neighborhood": "Two Bridges / Chinatown",
-    "borough": "Manhattan",
-    "address": "123 Madison St, New York, NY 10002",
-    "lat": 40.712379,
-    "lng": -73.994232,
-    "signatureBowl": "Egg Sando — soft scrambled eggs, American cheese, smoky bacon, and a potato hash brown on a sesame scallion milk bun",
-    "appearsOn": [
-      "The Infatuation",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.894,
-    "geocoded": true,
-    "title": "Egg Sando",
-    "description": "Scrambled egg, American, bacon, hash brown, scallion milk bun"
-  },
-  {
-    "name": "Win Son Bakery",
-    "neighborhood": "East Williamsburg",
-    "borough": "Brooklyn",
-    "address": "164 Graham Ave, Brooklyn, NY 11206",
-    "lat": 40.707284,
-    "lng": -73.943118,
-    "signatureBowl": "Scallion pancake BEC (bacon, egg & cheese on a scallion pancake)",
-    "appearsOn": [
-      "Resy",
-      "Eater NY"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.867,
-    "geocoded": true,
-    "title": "Scallion Pancake BEC",
-    "description": "Bacon, egg & cheese on a scallion pancake"
-  },
-  {
-    "name": "Between the Bagel",
-    "neighborhood": "Astoria",
-    "borough": "Queens",
-    "address": "31-13 30th Ave, Queens, NY 11102",
-    "lat": 40.766875,
-    "lng": -73.921204,
-    "signatureBowl": "SMB — bulgogi, egg, and cheese with kimchi slaw on a bagel (bulgogi egg & cheese, not a BEC)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.839,
-    "geocoded": true,
-    "title": "Bulgogi Egg Cheese",
-    "description": "Bulgogi, egg, cheese, kimchi slaw on a bagel"
-  },
-  {
-    "name": "C&B Cafe",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "178 E 7th St, New York, NY 10009",
-    "lat": 40.725125,
-    "lng": -73.981487,
-    "signatureBowl": "Scrambled eggs and pork belly on a housemade roll (egg sandwich, not a BEC)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.811,
-    "geocoded": true,
-    "title": "Pork Belly Egg",
-    "description": "Scrambled eggs and pork belly on a housemade roll"
-  },
-  {
-    "name": "Cafe Mado",
-    "neighborhood": "Prospect Heights",
-    "borough": "Brooklyn",
-    "address": "791 Washington Ave, Brooklyn, NY 11238",
-    "lat": 40.672918,
-    "lng": -73.962739,
-    "signatureBowl": "Fried egg, melty caciocavallo cheese, and tomatillo sauce on a milk bun (egg & cheese, no bacon)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.783,
-    "geocoded": true,
-    "title": "Egg & Cheese",
-    "description": "Fried egg, caciocavallo, tomatillo sauce on milk bun"
-  },
-  {
-    "name": "Frankel's Delicatessen & Appetizing",
-    "neighborhood": "Greenpoint",
-    "borough": "Brooklyn",
-    "address": "631 Manhattan Ave, Brooklyn, NY 11222",
-    "lat": 40.724025,
-    "lng": -73.951018,
-    "signatureBowl": "Default pastrami egg & cheese on a challah roll; bacon offered as a substitution (not a default BEC)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.756,
-    "geocoded": true,
-    "title": "Pastrami Egg Cheese",
-    "description": "Pastrami, egg & cheese on a challah roll"
-  },
-  {
-    "name": "Sullivan Street Bakery",
-    "neighborhood": "Chelsea",
-    "borough": "Manhattan",
-    "address": "236 9th Ave, New York, NY 10001",
-    "lat": 40.747509,
-    "lng": -74.0005,
-    "signatureBowl": "Scrambled egg with fried prosciutto on a miniature brioche (egg sandwich, prosciutto in place of bacon)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.728,
-    "geocoded": true,
-    "title": "Prosciutto Egg Brioche",
-    "description": "Scrambled egg, fried prosciutto on a mini brioche"
-  },
-  {
-    "name": "Thai Diner",
-    "neighborhood": "Nolita",
-    "borough": "Manhattan",
-    "address": "186 Mott St, New York, NY 10012",
-    "lat": 40.720826,
-    "lng": -73.995701,
-    "signatureBowl": "Roti breakfast sandwich — egg, cheese, sausage, and Thai basil (sausage egg & cheese, not a BEC)",
-    "appearsOn": [
-      "Eater NY"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.7,
-    "geocoded": true,
-    "title": "Roti Breakfast Sandwich",
-    "description": "Egg, cheese, sausage, Thai basil on roti"
-  },
-  {
-    "name": "Baz Bagel and Restaurant",
-    "neighborhood": "Little Italy / Nolita",
-    "borough": "Manhattan",
-    "address": "181 Grand St, New York, NY 10013",
-    "lat": 40.7194,
-    "lng": -73.997708,
-    "signatureBowl": "Egg sandwich on a bagel stuffed with latke hash (optional bacon)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.672,
-    "geocoded": true,
-    "title": "Latke Egg Bagel",
-    "description": "Egg sandwich on a bagel stuffed with latke hash"
-  },
-  {
-    "name": "Edith's",
-    "neighborhood": "Williamsburg",
-    "borough": "Brooklyn",
-    "address": "495 Lorimer St, Brooklyn, NY 11211",
-    "lat": 40.711758,
-    "lng": -73.949067,
-    "signatureBowl": "BEC&L on a bagel with a crispy latke stuffed inside",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.644,
-    "geocoded": true,
-    "title": "Latke BEC&L Bagel",
-    "description": "BEC&L on a bagel with a crispy latke inside"
-  },
-  {
-    "name": "Greenberg's Bagels",
-    "neighborhood": "Bedford-Stuyvesant",
-    "borough": "Brooklyn",
-    "address": "1065 Bedford Ave, Brooklyn, NY 11216",
-    "lat": 40.687448,
-    "lng": -73.95465,
-    "signatureBowl": "BEC on a thin, chewy bagel",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.617,
-    "geocoded": true,
-    "title": "Bacon Egg Cheese",
-    "description": "On a thin, chewy bagel"
-  },
-  {
-    "name": "John's Deli",
-    "neighborhood": "Windsor Terrace",
-    "borough": "Brooklyn",
-    "address": "1269 Prospect Ave, Brooklyn, NY 11218",
-    "lat": 40.652092,
-    "lng": -73.975874,
-    "signatureBowl": "BEC on a hard roll",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.589,
-    "geocoded": true,
-    "title": "Bacon Egg Cheese",
-    "description": "On a hard roll"
-  },
-  {
-    "name": "Merriweather",
-    "neighborhood": "West Village",
-    "borough": "Manhattan",
-    "address": "428 Hudson St, New York, NY 10014",
-    "lat": 40.730638,
-    "lng": -74.006714,
-    "signatureBowl": "BEC on brioche",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.561,
-    "geocoded": true,
-    "title": "Bacon Egg Cheese",
-    "description": "On brioche"
-  },
-  {
-    "name": "Modern Bread & Bagel",
-    "neighborhood": "Upper West Side",
-    "borough": "Manhattan",
-    "address": "472 Columbus Ave, New York, NY 10024",
-    "lat": 40.78418,
-    "lng": -73.97394,
-    "signatureBowl": "BEC on a bagel (gluten-free available)",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.533,
-    "geocoded": true,
-    "title": "Bacon Egg Cheese",
-    "description": "On a bagel, gluten-free available"
-  },
-  {
-    "name": "Rex",
-    "neighborhood": "Hell's Kitchen",
-    "borough": "Manhattan",
-    "address": "864 10th Ave, New York, NY 10019",
-    "lat": 40.768849,
-    "lng": -73.988669,
-    "signatureBowl": "BEC on a brioche bun with melted white cheddar",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.506,
-    "geocoded": true,
-    "title": "Bacon Egg Cheese",
-    "description": "On a brioche bun with melted white cheddar"
-  },
-  {
-    "name": "Southside Coffee",
-    "neighborhood": "South Slope (Park Slope)",
-    "borough": "Brooklyn",
-    "address": "652 6th Ave, Brooklyn, NY 11215",
-    "lat": 40.661217,
-    "lng": -73.990064,
-    "signatureBowl": "BEC on a crusty seeded hero",
-    "appearsOn": [
-      "The Infatuation"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.478,
-    "geocoded": true,
-    "title": "Bacon Egg Cheese",
-    "description": "On a crusty seeded hero"
-  },
-  {
-    "name": "Montague Diner",
-    "neighborhood": "Brooklyn Heights",
-    "borough": "Brooklyn",
-    "address": "148 Montague St, Brooklyn, NY 11201",
-    "lat": 40.694465,
-    "lng": -73.993341,
-    "signatureBowl": "BEC — two scrambled eggs, thick-cut bacon, American cheese on a potato roll",
-    "appearsOn": [
-      "Resy"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Bacon Egg Cheese",
-    "description": "Two scrambled eggs, thick-cut bacon, American, potato roll"
-  }
+ {
+  "name": "Daily Provisions",
+  "neighborhood": "Flatiron / Gramercy",
+  "borough": "Manhattan",
+  "address": "103 E 19th St, New York, NY 10003",
+  "lat": 40.737701,
+  "lng": -73.987919,
+  "signatureBowl": "BEC with thick-cut Berkshire bacon and American cheese on a poppy seed-coated Portuguese roll",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY",
+   "Resy"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Bacon Egg Cheese",
+  "description": "Berkshire bacon, American cheese, poppy seed Portuguese roll"
+ },
+ {
+  "name": "Court Street Grocers",
+  "neighborhood": "Carroll Gardens",
+  "borough": "Brooklyn",
+  "address": "485 Court St, Brooklyn, NY 11231",
+  "lat": 40.676297,
+  "lng": -73.99874,
+  "signatureBowl": "The B+B — soft-scrambled eggs, bacon, cheddar, and arugula on Balthazar ciabatta",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.922,
+  "geocoded": true,
+  "title": "The B+B",
+  "description": "Soft-scrambled eggs, bacon, cheddar, arugula on ciabatta"
+ },
+ {
+  "name": "Golden Diner",
+  "neighborhood": "Two Bridges / Chinatown",
+  "borough": "Manhattan",
+  "address": "123 Madison St, New York, NY 10002",
+  "lat": 40.712379,
+  "lng": -73.994232,
+  "signatureBowl": "Egg Sando — soft scrambled eggs, American cheese, smoky bacon, and a potato hash brown on a sesame scallion milk bun",
+  "appearsOn": [
+   "The Infatuation",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.894,
+  "geocoded": true,
+  "title": "Egg Sando",
+  "description": "Scrambled egg, American, bacon, hash brown, scallion milk bun"
+ },
+ {
+  "name": "Win Son Bakery",
+  "neighborhood": "East Williamsburg",
+  "borough": "Brooklyn",
+  "address": "164 Graham Ave, Brooklyn, NY 11206",
+  "lat": 40.707284,
+  "lng": -73.943118,
+  "signatureBowl": "Scallion pancake BEC (bacon, egg & cheese on a scallion pancake)",
+  "appearsOn": [
+   "Resy",
+   "Eater NY"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.867,
+  "geocoded": true,
+  "title": "Scallion Pancake BEC",
+  "description": "Bacon, egg & cheese on a scallion pancake"
+ },
+ {
+  "name": "Between the Bagel",
+  "neighborhood": "Astoria",
+  "borough": "Queens",
+  "address": "31-13 30th Ave, Queens, NY 11102",
+  "lat": 40.766875,
+  "lng": -73.921204,
+  "signatureBowl": "SMB — bulgogi, egg, and cheese with kimchi slaw on a bagel (bulgogi egg & cheese, not a BEC)",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.839,
+  "geocoded": true,
+  "title": "Bulgogi Egg Cheese",
+  "description": "Bulgogi, egg, cheese, kimchi slaw on a bagel"
+ },
+ {
+  "name": "C&B Cafe",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "178 E 7th St, New York, NY 10009",
+  "lat": 40.725125,
+  "lng": -73.981487,
+  "signatureBowl": "Scrambled eggs and pork belly on a housemade roll (egg sandwich, not a BEC)",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.811,
+  "geocoded": true,
+  "title": "Pork Belly Egg",
+  "description": "Scrambled eggs and pork belly on a housemade roll"
+ },
+ {
+  "name": "Cafe Mado",
+  "neighborhood": "Prospect Heights",
+  "borough": "Brooklyn",
+  "address": "791 Washington Ave, Brooklyn, NY 11238",
+  "lat": 40.672918,
+  "lng": -73.962739,
+  "signatureBowl": "Fried egg, melty caciocavallo cheese, and tomatillo sauce on a milk bun (egg & cheese, no bacon)",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.783,
+  "geocoded": true,
+  "title": "Egg & Cheese",
+  "description": "Fried egg, caciocavallo, tomatillo sauce on milk bun"
+ },
+ {
+  "name": "Frankel's Delicatessen & Appetizing",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "631 Manhattan Ave, Brooklyn, NY 11222",
+  "lat": 40.724025,
+  "lng": -73.951018,
+  "signatureBowl": "Default pastrami egg & cheese on a challah roll; bacon offered as a substitution (not a default BEC)",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.756,
+  "geocoded": true,
+  "title": "Pastrami Egg Cheese",
+  "description": "Pastrami, egg & cheese on a challah roll"
+ },
+ {
+  "name": "Sullivan Street Bakery",
+  "neighborhood": "Chelsea",
+  "borough": "Manhattan",
+  "address": "236 9th Ave, New York, NY 10001",
+  "lat": 40.747509,
+  "lng": -74.0005,
+  "signatureBowl": "Scrambled egg with fried prosciutto on a miniature brioche (egg sandwich, prosciutto in place of bacon)",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.728,
+  "geocoded": true,
+  "title": "Prosciutto Egg Brioche",
+  "description": "Scrambled egg, fried prosciutto on a mini brioche"
+ },
+ {
+  "name": "Thai Diner",
+  "neighborhood": "Nolita",
+  "borough": "Manhattan",
+  "address": "186 Mott St, New York, NY 10012",
+  "lat": 40.720826,
+  "lng": -73.995701,
+  "signatureBowl": "Roti breakfast sandwich — egg, cheese, sausage, and Thai basil (sausage egg & cheese, not a BEC)",
+  "appearsOn": [
+   "Eater NY"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.7,
+  "geocoded": true,
+  "title": "Roti Breakfast Sandwich",
+  "description": "Egg, cheese, sausage, Thai basil on roti"
+ },
+ {
+  "name": "Baz Bagel and Restaurant",
+  "neighborhood": "Little Italy / Nolita",
+  "borough": "Manhattan",
+  "address": "181 Grand St, New York, NY 10013",
+  "lat": 40.7194,
+  "lng": -73.997708,
+  "signatureBowl": "Egg sandwich on a bagel stuffed with latke hash (optional bacon)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.672,
+  "geocoded": true,
+  "title": "Latke Egg Bagel",
+  "description": "Egg sandwich on a bagel stuffed with latke hash"
+ },
+ {
+  "name": "Edith's",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "495 Lorimer St, Brooklyn, NY 11211",
+  "lat": 40.711758,
+  "lng": -73.949067,
+  "signatureBowl": "BEC&L on a bagel with a crispy latke stuffed inside",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.644,
+  "geocoded": true,
+  "title": "Latke BEC&L Bagel",
+  "description": "BEC&L on a bagel with a crispy latke inside"
+ },
+ {
+  "name": "Greenberg's Bagels",
+  "neighborhood": "Bedford-Stuyvesant",
+  "borough": "Brooklyn",
+  "address": "1065 Bedford Ave, Brooklyn, NY 11216",
+  "lat": 40.687448,
+  "lng": -73.95465,
+  "signatureBowl": "BEC on a thin, chewy bagel",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.617,
+  "geocoded": true,
+  "title": "Bacon Egg Cheese",
+  "description": "On a thin, chewy bagel"
+ },
+ {
+  "name": "John's Deli",
+  "neighborhood": "Windsor Terrace",
+  "borough": "Brooklyn",
+  "address": "1269 Prospect Ave, Brooklyn, NY 11218",
+  "lat": 40.652092,
+  "lng": -73.975874,
+  "signatureBowl": "BEC on a hard roll",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.589,
+  "geocoded": true,
+  "title": "Bacon Egg Cheese",
+  "description": "On a hard roll"
+ },
+ {
+  "name": "Merriweather",
+  "neighborhood": "West Village",
+  "borough": "Manhattan",
+  "address": "428 Hudson St, New York, NY 10014",
+  "lat": 40.730638,
+  "lng": -74.006714,
+  "signatureBowl": "BEC on brioche",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.561,
+  "geocoded": true,
+  "title": "Bacon Egg Cheese",
+  "description": "On brioche"
+ },
+ {
+  "name": "Modern Bread & Bagel",
+  "neighborhood": "Upper West Side",
+  "borough": "Manhattan",
+  "address": "472 Columbus Ave, New York, NY 10024",
+  "lat": 40.78418,
+  "lng": -73.97394,
+  "signatureBowl": "BEC on a bagel (gluten-free available)",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.533,
+  "geocoded": true,
+  "title": "Bacon Egg Cheese",
+  "description": "On a bagel, gluten-free available"
+ },
+ {
+  "name": "Rex",
+  "neighborhood": "Hell's Kitchen",
+  "borough": "Manhattan",
+  "address": "864 10th Ave, New York, NY 10019",
+  "lat": 40.768849,
+  "lng": -73.988669,
+  "signatureBowl": "BEC on a brioche bun with melted white cheddar",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.506,
+  "geocoded": true,
+  "title": "Bacon Egg Cheese",
+  "description": "On a brioche bun with melted white cheddar"
+ },
+ {
+  "name": "Southside Coffee",
+  "neighborhood": "South Slope (Park Slope)",
+  "borough": "Brooklyn",
+  "address": "652 6th Ave, Brooklyn, NY 11215",
+  "lat": 40.661217,
+  "lng": -73.990064,
+  "signatureBowl": "BEC on a crusty seeded hero",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.478,
+  "geocoded": true,
+  "title": "Bacon Egg Cheese",
+  "description": "On a crusty seeded hero"
+ },
+ {
+  "name": "Montague Diner",
+  "neighborhood": "Brooklyn Heights",
+  "borough": "Brooklyn",
+  "address": "148 Montague St, Brooklyn, NY 11201",
+  "lat": 40.694465,
+  "lng": -73.993341,
+  "signatureBowl": "BEC — two scrambled eggs, thick-cut bacon, American cheese on a potato roll",
+  "appearsOn": [
+   "Resy"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Bacon Egg Cheese",
+  "description": "Two scrambled eggs, thick-cut bacon, American, potato roll"
+ },
+ {
+  "name": "Edith's Sandwich Counter",
+  "neighborhood": "West Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.73424,
+  "lng": -74.008964,
+  "signatureBowl": "Sephardi Breakfast Wrap on malawach bread with Cooper Sharp cheese, housemade alheira chicken sausage, pickled fresno peppers, and harissa mayo",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Sephardi Breakfast Wrap",
+  "description": "Malawach flatbread with Cooper Sharp cheese, alheira chicken sausage, pickled peppers, and harissa mayo"
+ },
+ {
+  "name": "Tompkins Square Bagels",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.72794,
+  "lng": -73.98126,
+  "signatureBowl": "Bacon, Egg, & Cheese on an everything bagel with American cheese, scrambled eggs, and crispy bacon",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.62,
+  "geocoded": false,
+  "title": "Bacon, Egg & Cheese on an Everything Bagel",
+  "description": "Scrambled eggs, American cheese, and crispy bacon on a toasted everything bagel"
+ },
+ {
+  "name": "Frankel's Delicatessen",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.732224,
+  "lng": -73.951824,
+  "signatureBowl": "Pastrami, Egg, & Cheese on a bagel or challah roll with shredded pastrami, three eggs, and American cheese",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Pastrami, Egg & Cheese",
+  "description": "Shredded pastrami with three eggs and American cheese on a bagel or challah roll"
+ },
+ {
+  "name": "Hani's Bakery & Café",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.72698,
+  "lng": -73.982424,
+  "signatureBowl": "Substantial wedges of fluffy egg, with baby spinach layered in, between slices of perfectly toasted milk bread",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Egg & Cheese on Milk Bread",
+  "description": "Fluffy wedges of egg layered with baby spinach between toasted milk bread"
+ },
+ {
+  "name": "Dolly's",
+  "neighborhood": "Bed-Stuyvesant",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.682628,
+  "lng": -73.939496,
+  "signatureBowl": "Cheesesteak egg sandwich on hero-shaped sesame milk bread with beef, onions, eggs, cheese, and A1 aioli",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Cheesesteak Egg Sandwich",
+  "description": "Beef, onions, eggs, and cheese with A1 aioli on hero-shaped sesame milk bread"
+ },
+ {
+  "name": "Peck's",
+  "neighborhood": "Clinton Hill",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.67916,
+  "lng": -73.943576,
+  "signatureBowl": "The Golden One with fried eggs, cheddar, green chiles, and a latke on a Portuguese bun",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "The Golden One",
+  "description": "Fried eggs, cheddar, green chiles, and a latke on a Portuguese bun"
+ },
+ {
+  "name": "Sunday In Brooklyn",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.711952,
+  "lng": -73.961384,
+  "signatureBowl": "Egg and cheese with a syrup-infused sausage patty, gochujang aioli, and fried potatoes on a seeded bun",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Egg & Cheese with Sausage Patty",
+  "description": "Syrup-infused sausage patty, egg, and cheese with gochujang aioli and fried potatoes on a seeded bun"
+ },
+ {
+  "name": "Che",
+  "neighborhood": "Bed-Stuyvesant",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.680036,
+  "lng": -73.941716,
+  "signatureBowl": "Pimento cheese with scrambled eggs and pickled green tomato on brioche with paprika mayo",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.56,
+  "geocoded": false,
+  "title": "Pimento Cheese Egg Sandwich",
+  "description": "Scrambled eggs with pimento cheese and pickled green tomato on brioche with paprika mayo"
+ },
+ {
+  "name": "Golda Kitchen",
+  "neighborhood": "Bed-Stuyvesant",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.678596,
+  "lng": -73.942064,
+  "signatureBowl": "Signature egg sandwich on a challah bun with kashkaval cheese, sumac onions, scrambled eggs, and muhammara",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.56,
+  "geocoded": false,
+  "title": "Challah Egg Sandwich",
+  "description": "Scrambled eggs with kashkaval cheese, sumac onions, and muhammara on a challah bun"
+ },
+ {
+  "name": "Cafe Nube",
+  "neighborhood": "Sunset Park",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.650424,
+  "lng": -74.007112,
+  "signatureBowl": "Egg-N-Cheese Biscuit Sandwich on a buttermilk biscuit with omelet, cheddar, and optional chorizo",
+  "appearsOn": [
+   "The Infatuation"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.56,
+  "geocoded": false,
+  "title": "Egg-N-Cheese Biscuit Sandwich",
+  "description": "Omelet and cheddar on a buttermilk biscuit, optional chorizo"
+ },
+ {
+  "name": "Vinegar Hill House",
+  "neighborhood": "Vinegar Hill",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.672752,
+  "lng": -73.948172,
+  "signatureBowl": "Egg sandwich with generous Willoughby cheese from Vermont's Jasper Hill Farm and crispy bacon",
+  "appearsOn": [
+   "Resy"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.62,
+  "geocoded": false,
+  "title": "Bacon & Egg Sandwich with Willoughby Cheese",
+  "description": "Crispy bacon and egg with gooey Willoughby cheese from Jasper Hill Farm"
+ },
+ {
+  "name": "Le Crocodile",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.705652,
+  "lng": -73.954184,
+  "signatureBowl": "PEC: pancetta, egg, and cheese sandwich on a cornmeal English muffin",
+  "appearsOn": [
+   "Resy"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "PEC: Pancetta, Egg & Cheese",
+  "description": "Pancetta, egg, and cheese on a cornmeal English muffin"
+ },
+ {
+  "name": "Kellogg's Diner",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.70534,
+  "lng": -73.96148,
+  "signatureBowl": "BQE (bacon, queso, and egg) sandwich on a potato roll",
+  "appearsOn": [
+   "Resy"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "BQE: Bacon, Queso & Egg",
+  "description": "Bacon, queso, and egg on a potato roll"
+ },
+ {
+  "name": "Winner on Franklin",
+  "neighborhood": "Crown Heights",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.672276,
+  "lng": -73.948496,
+  "signatureBowl": "Meringue-like layer of egg on brioche with homemade chile crisp and Chinese sausage",
+  "appearsOn": [
+   "Resy"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Egg Sandwich with Chinese Sausage",
+  "description": "Meringue-like layer of egg on brioche with homemade chile crisp and Chinese sausage"
+ },
+ {
+  "name": "K'Far Brooklyn",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.704284,
+  "lng": -73.960196,
+  "signatureBowl": "Soft-scrambled egg, sharp cheddar, za'atar with schug on a Jerusalem bagel",
+  "appearsOn": [
+   "Resy"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Za'atar Egg & Cheese on a Jerusalem Bagel",
+  "description": "Soft-scrambled egg, sharp cheddar, and za'atar with schug on a Jerusalem bagel"
+ },
+ {
+  "name": "Agi's Counter",
+  "neighborhood": "Crown Heights",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.666216,
+  "lng": -73.94486,
+  "signatureBowl": "Fried egg with mayo and grated alpine cheddar on a Pogácsa biscuit",
+  "appearsOn": [
+   "Resy"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.56,
+  "geocoded": false,
+  "title": "Fried Egg & Cheddar on Pogácsa",
+  "description": "Fried egg with mayo and grated alpine cheddar on a Pogácsa biscuit"
+ },
+ {
+  "name": "Good Thanks",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.706468,
+  "lng": -73.954412,
+  "signatureBowl": "Eggs, bacon, with spicy, herbaceous dill aioli",
+  "appearsOn": [
+   "Resy"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.56,
+  "geocoded": false,
+  "title": "Bacon & Egg with Dill Aioli",
+  "description": "Eggs and bacon with a spicy, herbaceous dill aioli"
+ },
+ {
+  "name": "Bar Primi Penn District",
+  "neighborhood": "Chelsea",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.741508,
+  "lng": -74.004268,
+  "signatureBowl": "Thinly sliced mortadella and smoky scamorza with egg and fresh arugula",
+  "appearsOn": [
+   "Resy"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.56,
+  "geocoded": false,
+  "title": "Mortadella Egg Sandwich",
+  "description": "Thinly sliced mortadella and smoky scamorza with egg and fresh arugula"
+ }
 ]

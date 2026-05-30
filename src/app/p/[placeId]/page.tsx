@@ -39,15 +39,18 @@ export default async function PlacePage({ params }: { params: Promise<{ placeId:
         </Link>
       </div>
 
+      {place.borough && (
+        <p className="mb-1 text-sm font-semibold uppercase tracking-wide text-[var(--color-brand)]">
+          {place.neighborhood && place.neighborhood !== place.borough
+            ? `${place.neighborhood} · ${place.borough}`
+            : place.borough}
+        </p>
+      )}
       <h1 className="text-3xl font-black tracking-tight">{place.name}</h1>
-      <p className="mt-1 text-[var(--color-ink-dim)]">
-        {place.address}
-        {place.neighborhood && place.neighborhood !== place.borough ? ` · ${place.neighborhood}` : ""}
-        {place.borough ? `, ${place.borough}` : ""}
-      </p>
+      <p className="mt-1 text-[var(--color-ink-dim)]">{place.address}</p>
 
       {place.isProposed && (
-        <p className="mt-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-3 text-sm text-[var(--color-ink-dim)]">
+        <p className="mt-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 text-sm text-[var(--color-ink-dim)]">
           This spot was suggested by a member and is awaiting curator review.
         </p>
       )}

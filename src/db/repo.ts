@@ -33,6 +33,14 @@ export interface DuelPair {
   b: ContenderView;
 }
 
+/** A user's trust standing within one food category — for the live "trust climbing" meter. */
+export interface CategoryStanding {
+  trust: number; // effective, cap-clamped 0–1
+  cap: number; // TRUST.NORMAL_CAP (0.7) or TRUST.EXPERT_CAP (1.0)
+  role: "member" | null; // curator-granted category expert
+  weight: number; // resulting Bradley-Terry vote weight
+}
+
 export interface ShowcaseEntry {
   slug: string;
   name: string;
@@ -123,6 +131,8 @@ export interface ProfileView {
   trustScore: number;
   ratedCount: number;
   pinnacle: PinnacleItem[]; // ordered, all-time favorites (cross-category)
+  /** The headline gold "#1 Picks" — one declared (or personal) #1 per showcased category. */
+  topPicks: Array<{ subSlug: string; subName: string; emoji: string; contender: ContenderView }>;
   showcase: Array<{ subSlug: string; subName: string; emoji: string; items: ContenderView[] }>;
 }
 
@@ -139,13 +149,22 @@ export interface Repository {
   getContenderDetail(id: string): ContenderDetail | null;
   getHomeShowcase(perCategory?: number): ShowcaseEntry[];
   search(query: string, limit?: number): SearchResults;
-  /** keepId = "king of the hill": keep that contender on one side and rotate in a fresh challenger. */
-  getDuelPair(subSlug?: string, keepId?: string): DuelPair | null;
+  /** keepId = "king of the hill": keep that contender on one side and rotate in a fresh challenger.
+   *  prefer = ordered list of contender IDs to prioritize as the challenger (drains naturally). */
+  getDuelPair(subSlug?: string, keepId?: string, prefer?: string[]): DuelPair | null;
   recordDuel(userId: string, winnerId: string, loserId: string): { ok: boolean; error?: string };
   recordVote(userId: string, contenderId: string, rating: number): { ok: boolean; error?: string };
   addPhoto(userId: string, contenderId: string, url: string): Photo | null;
   vouchPhoto(userId: string, photoId: string): { ok: boolean };
   getOrCreateUser(name: string): User;
+  /** Find an existing user by linked OAuth identity (provider+sub), or create one. */
+  findOrCreateOAuthUser(p: {
+    provider: string;
+    sub: string;
+    name?: string;
+    email?: string;
+    avatarUrl?: string;
+  }): User;
   getUser(id: string): User | null;
   stats(): { contenders: number; comparisons: number; votes: number; subcategories: number };
 
@@ -167,7 +186,7 @@ export interface Repository {
     subSlug: string,
     title?: string,
     description?: string,
-  ): { ok: boolean; contenderId?: string; error?: string };
+  ): { ok: boolean; contenderId?: string; placeId?: string; error?: string };
   /** Suggest a place not in the corpus — created as `proposed`, pending curator approval. */
   suggestPlace(
     userId: string,
@@ -186,6 +205,26 @@ export interface Repository {
     userId: string,
     contenderId: string,
     action: "add" | "remove" | "up" | "down",
+  ): { ok: boolean; error?: string };
+
+  // --- category onboarding ---
+  /** Returns the contenderId the user has declared as their #1 for this food type, or null. */
+  getCategoryFavorite(userId: string, subSlug: string): string | null;
+  /** Persists the user's declared favorite for a food type. */
+  setCategoryFavorite(userId: string, subSlug: string, contenderId: string): { ok: boolean; error?: string };
+  /** The user's current trust standing in a category (for the live trust meter). Null if signed out. */
+  getCategoryStanding(userId: string, subSlug: string): CategoryStanding | null;
+
+  // --- category trust & roles (curator-only write) ---
+  /**
+   * Grant or revoke a community-member role for a user in a specific food category.
+   * Curators only. Granting lifts the per-category trust cap to EXPERT_CAP (1.0).
+   */
+  setCategoryRole(
+    curatorId: string,
+    targetUserId: string,
+    subSlug: string,
+    role: "member" | null,
   ): { ok: boolean; error?: string };
 }
 

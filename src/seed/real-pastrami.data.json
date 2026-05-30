@@ -1,246 +1,277 @@
 [
-  {
-    "name": "Katz's Delicatessen",
-    "neighborhood": "Lower East Side",
-    "borough": "Manhattan",
-    "address": "205 E Houston St, New York, NY 10002",
-    "lat": 40.72244,
-    "lng": -73.987234,
-    "signatureBowl": "Hand-carved pastrami on rye",
-    "appearsOn": [
-      "6sqft",
-      "Eater NY",
-      "Robert Sietsema (Substack)"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Pastrami On Rye",
-    "description": "Hand-carved pastrami"
-  },
-  {
-    "name": "Pastrami Queen",
-    "neighborhood": "Upper East Side",
-    "borough": "Manhattan",
-    "address": "1125 Lexington Ave, New York, NY 10075",
-    "lat": 40.774298,
-    "lng": -73.95929,
-    "signatureBowl": "Pastrami sandwich (machine-sliced, on Orwasher's rye)",
-    "appearsOn": [
-      "6sqft",
-      "Robert Sietsema (Substack)",
-      "8it.world"
-    ],
-    "appearanceCount": 3,
-    "seedQuality": 0.912,
-    "geocoded": true,
-    "title": "Pastrami Sandwich",
-    "description": "Machine-sliced, on Orwasher's rye"
-  },
-  {
-    "name": "Frankel's Delicatessen & Appetizing",
-    "neighborhood": "Greenpoint",
-    "borough": "Brooklyn",
-    "address": "631 Manhattan Ave, Brooklyn, NY 11222",
-    "lat": 40.724025,
-    "lng": -73.951018,
-    "signatureBowl": "Pastrami Reuben; classic pastrami sandwich; pastrami, egg & cheese on challah",
-    "appearsOn": [
-      "6sqft",
-      "8it.world"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.873,
-    "geocoded": true,
-    "title": "Pastrami Reuben",
-    "description": "Also classic sandwich; pastrami, egg & cheese on challah"
-  },
-  {
-    "name": "Liebman's Delicatessen",
-    "neighborhood": "Riverdale",
-    "borough": "Bronx",
-    "address": "552 W 235th St, Bronx, NY 10463",
-    "lat": 40.885539,
-    "lng": -73.909661,
-    "signatureBowl": "Lean-cut pastrami on rye; the No. 7 (pastrami + corned beef with coleslaw and Russian dressing)",
-    "appearsOn": [
-      "6sqft",
-      "8it.world"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.835,
-    "geocoded": true,
-    "title": "Lean Pastrami On Rye",
-    "description": "Also No. 7: pastrami, corned beef, coleslaw, Russian dressing"
-  },
-  {
-    "name": "S&P Lunch",
-    "neighborhood": "Flatiron",
-    "borough": "Manhattan",
-    "address": "174 Fifth Ave, New York, NY 10010",
-    "lat": 40.740999,
-    "lng": -73.990067,
-    "signatureBowl": "S&P Regular - hand-sliced pastrami with cherry peppers and Russian dressing on a club roll",
-    "appearsOn": [
-      "6sqft",
-      "Robert Sietsema (Substack)"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.796,
-    "geocoded": true,
-    "title": "S&P Regular",
-    "description": "Hand-sliced pastrami, cherry peppers, Russian dressing on club roll"
-  },
-  {
-    "name": "2nd Avenue Deli",
-    "neighborhood": "Murray Hill / Midtown East",
-    "borough": "Manhattan",
-    "address": "162 E 33rd St, New York, NY 10016",
-    "lat": 40.745377,
-    "lng": -73.979513,
-    "signatureBowl": "Pastrami sandwich (thin-cut, tender)",
-    "appearsOn": [
-      "6sqft"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.758,
-    "geocoded": true,
-    "title": "Pastrami Sandwich",
-    "description": "Thin-cut, tender"
-  },
-  {
-    "name": "Butcher Block",
-    "neighborhood": "Sunnyside",
-    "borough": "Queens",
-    "address": "41-08 Queens Blvd, Sunnyside, NY 11104",
-    "lat": 40.743392,
-    "lng": -73.922593,
-    "signatureBowl": "Classic pastrami sandwich",
-    "appearsOn": [
-      "8it.world"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.719,
-    "geocoded": true,
-    "title": "Classic Pastrami Sandwich",
-    "description": ""
-  },
-  {
-    "name": "David's Brisket House",
-    "neighborhood": "Bedford-Stuyvesant",
-    "borough": "Brooklyn",
-    "address": "533 Nostrand Ave, Brooklyn, NY 11216",
-    "lat": 40.679169,
-    "lng": -73.949551,
-    "signatureBowl": "Pastrami brisket sandwich",
-    "appearsOn": [
-      "8it.world"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.681,
-    "geocoded": true,
-    "title": "Pastrami Brisket Sandwich",
-    "description": ""
-  },
-  {
-    "name": "Hometown Bar-B-Que",
-    "neighborhood": "Red Hook",
-    "borough": "Brooklyn",
-    "address": "454 Van Brunt St, Brooklyn, NY 11231",
-    "lat": 40.675048,
-    "lng": -74.015703,
-    "signatureBowl": "Barbecue-style pastrami sandwich",
-    "appearsOn": [
-      "Robert Sietsema (Substack)"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.642,
-    "geocoded": true,
-    "title": "Barbecue Pastrami Sandwich",
-    "description": ""
-  },
-  {
-    "name": "Junior's Restaurant & Bakery",
-    "neighborhood": "Downtown Brooklyn",
-    "borough": "Brooklyn",
-    "address": "386 Flatbush Ave Ext, Brooklyn, NY 11201",
-    "lat": 40.689971,
-    "lng": -73.981666,
-    "signatureBowl": "Pastrami on a house-made onion roll",
-    "appearsOn": [
-      "8it.world"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.604,
-    "geocoded": true,
-    "title": "Pastrami Onion Roll",
-    "description": "House-made onion roll"
-  },
-  {
-    "name": "Mendy's",
-    "neighborhood": "Midtown",
-    "borough": "Manhattan",
-    "address": "61 E 34th St, New York, NY 10016",
-    "lat": 40.747495,
-    "lng": -73.982105,
-    "signatureBowl": "Thick-cut pastrami on rye",
-    "appearsOn": [
-      "8it.world"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.565,
-    "geocoded": true,
-    "title": "Thick-Cut Pastrami On Rye",
-    "description": ""
-  },
-  {
-    "name": "Moe's Pastrami & Burger",
-    "neighborhood": "Prospect-Lefferts Gardens",
-    "borough": "Brooklyn",
-    "address": "Prospect-Lefferts Gardens, NYC",
-    "lat": 40.67955,
-    "lng": -73.94519,
-    "signatureBowl": "Pastrami sandwich (M/L/XL sizes)",
-    "appearsOn": [
-      "6sqft"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.527,
-    "title": "Pastrami Sandwich",
-    "description": "Available in M/L/XL sizes"
-  },
-  {
-    "name": "Morgan's Brooklyn Barbecue",
-    "neighborhood": "Prospect Heights",
-    "borough": "Brooklyn",
-    "address": "267 Flatbush Ave, Brooklyn, NY 11217",
-    "lat": 40.679856,
-    "lng": -73.974315,
-    "signatureBowl": "Pastrami beef ribs",
-    "appearsOn": [
-      "8it.world"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.488,
-    "geocoded": true,
-    "title": "Pastrami Beef Ribs",
-    "description": ""
-  },
-  {
-    "name": "USA Brooklyn Delicatessen",
-    "neighborhood": "Times Square",
-    "borough": "Manhattan",
-    "address": "1501 Broadway, New York, NY 10036",
-    "lat": 40.756655,
-    "lng": -73.986199,
-    "signatureBowl": "Pastrami on marble rye (thick spice rub, hand-sliced)",
-    "appearsOn": [
-      "Robert Sietsema (Substack)"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Pastrami On Marble Rye",
-    "description": "Thick spice rub, hand-sliced"
-  }
+ {
+  "name": "Katz's Delicatessen",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "205 E Houston St, New York, NY 10002",
+  "lat": 40.72244,
+  "lng": -73.987234,
+  "signatureBowl": "Hand-carved pastrami on rye",
+  "appearsOn": [
+   "6sqft",
+   "Eater NY",
+   "Robert Sietsema (Substack)"
+  ],
+  "appearanceCount": 3,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Pastrami On Rye",
+  "description": "Hand-carved pastrami"
+ },
+ {
+  "name": "Pastrami Queen",
+  "neighborhood": "Upper East Side",
+  "borough": "Manhattan",
+  "address": "1125 Lexington Ave, New York, NY 10075",
+  "lat": 40.774298,
+  "lng": -73.95929,
+  "signatureBowl": "Pastrami sandwich (machine-sliced, on Orwasher's rye)",
+  "appearsOn": [
+   "6sqft",
+   "Robert Sietsema (Substack)"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.82,
+  "geocoded": true,
+  "title": "Pastrami Sandwich",
+  "description": "Machine-sliced, on Orwasher's rye"
+ },
+ {
+  "name": "Frankel's Delicatessen & Appetizing",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "631 Manhattan Ave, Brooklyn, NY 11222",
+  "lat": 40.724025,
+  "lng": -73.951018,
+  "signatureBowl": "Pastrami Reuben; classic pastrami sandwich; pastrami, egg & cheese on challah",
+  "appearsOn": [
+   "6sqft"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.68,
+  "geocoded": true,
+  "title": "Pastrami Reuben",
+  "description": "Also classic sandwich; pastrami, egg & cheese on challah"
+ },
+ {
+  "name": "Liebman's Delicatessen",
+  "neighborhood": "Riverdale",
+  "borough": "Bronx",
+  "address": "552 W 235th St, Bronx, NY 10463",
+  "lat": 40.885539,
+  "lng": -73.909661,
+  "signatureBowl": "Lean-cut pastrami on rye; the No. 7 (pastrami + corned beef with coleslaw and Russian dressing)",
+  "appearsOn": [
+   "6sqft"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.68,
+  "geocoded": true,
+  "title": "Lean Pastrami On Rye",
+  "description": "Also No. 7: pastrami, corned beef, coleslaw, Russian dressing"
+ },
+ {
+  "name": "S&P Lunch",
+  "neighborhood": "Flatiron",
+  "borough": "Manhattan",
+  "address": "174 Fifth Ave, New York, NY 10010",
+  "lat": 40.740999,
+  "lng": -73.990067,
+  "signatureBowl": "S&P Regular - hand-sliced pastrami with cherry peppers and Russian dressing on a club roll",
+  "appearsOn": [
+   "6sqft",
+   "Robert Sietsema (Substack)"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.796,
+  "geocoded": true,
+  "title": "S&P Regular",
+  "description": "Hand-sliced pastrami, cherry peppers, Russian dressing on club roll"
+ },
+ {
+  "name": "2nd Avenue Deli",
+  "neighborhood": "Murray Hill / Midtown East",
+  "borough": "Manhattan",
+  "address": "162 E 33rd St, New York, NY 10016",
+  "lat": 40.745377,
+  "lng": -73.979513,
+  "signatureBowl": "Pastrami sandwich (thin-cut, tender)",
+  "appearsOn": [
+   "6sqft"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.758,
+  "geocoded": true,
+  "title": "Pastrami Sandwich",
+  "description": "Thin-cut, tender"
+ },
+ {
+  "name": "Hometown Bar-B-Que",
+  "neighborhood": "Red Hook",
+  "borough": "Brooklyn",
+  "address": "454 Van Brunt St, Brooklyn, NY 11231",
+  "lat": 40.675048,
+  "lng": -74.015703,
+  "signatureBowl": "Barbecue-style pastrami sandwich",
+  "appearsOn": [
+   "Robert Sietsema (Substack)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.642,
+  "geocoded": true,
+  "title": "Barbecue Pastrami Sandwich",
+  "description": ""
+ },
+ {
+  "name": "Moe's Pastrami & Burger",
+  "neighborhood": "Prospect-Lefferts Gardens",
+  "borough": "Brooklyn",
+  "address": "Prospect-Lefferts Gardens, NYC",
+  "lat": 40.67955,
+  "lng": -73.94519,
+  "signatureBowl": "Pastrami sandwich (M/L/XL sizes)",
+  "appearsOn": [
+   "6sqft"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.527,
+  "title": "Pastrami Sandwich",
+  "description": "Available in M/L/XL sizes"
+ },
+ {
+  "name": "USA Brooklyn Delicatessen",
+  "neighborhood": "Times Square",
+  "borough": "Manhattan",
+  "address": "1501 Broadway, New York, NY 10036",
+  "lat": 40.756655,
+  "lng": -73.986199,
+  "signatureBowl": "Pastrami on marble rye (thick spice rub, hand-sliced)",
+  "appearsOn": [
+   "Robert Sietsema (Substack)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Pastrami On Marble Rye",
+  "description": "Thick spice rub, hand-sliced"
+ },
+ {
+  "name": "2nd Ave Deli",
+  "neighborhood": "Kips Bay",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.781288,
+  "lng": -73.969736,
+  "signatureBowl": "Thinly sliced tender and smoky pastrami sandwich on rye",
+  "appearsOn": [
+   "The Infatuation – The Best Jewish Delis in NYC (Jan 16, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.61,
+  "geocoded": false,
+  "title": "Pastrami on Rye",
+  "description": "Thinly sliced, tender and smoky pastrami sandwich on rye"
+ },
+ {
+  "name": "Liebman's Kosher Delicatessen",
+  "neighborhood": "Riverdale",
+  "borough": "Bronx",
+  "address": "",
+  "lat": 40.845592,
+  "lng": -73.868736,
+  "signatureBowl": "Thin-sliced pastrami made on premises, piled high on rye with mustard",
+  "appearsOn": [
+   "The Infatuation – The Best Jewish Delis in NYC (Jan 16, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.59,
+  "geocoded": false,
+  "title": "Pastrami on Rye",
+  "description": "Bronx classic with lean, thin-sliced pastrami piled on rye"
+ },
+ {
+  "name": "Sarge's Delicatessen",
+  "neighborhood": "Murray Hill",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.746532,
+  "lng": -73.978144,
+  "signatureBowl": "Sandwich #20 — corned beef and pastrami on grilled rye with broiled swiss cheese",
+  "appearsOn": [
+   "The Infatuation – The Best Jewish Delis in NYC (Jan 16, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Pastrami Reuben on Rye",
+  "description": "Round-the-clock deli; the #20 piles corned beef and pastrami on grilled rye"
+ },
+ {
+  "name": "Essen NY Deli",
+  "neighborhood": "Midwood",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.682004,
+  "lng": -73.946276,
+  "signatureBowl": "Thinly sliced pastrami piled high between two slices of soft rye bread",
+  "appearsOn": [
+   "The Infatuation – The Best Jewish Delis in NYC (Jan 16, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Pastrami on Rye",
+  "description": "Purist Midwood deli; just pastrami between two slices of soft rye"
+ },
+ {
+  "name": "Frankel's Delicatessen",
+  "neighborhood": "Greenpoint",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.729656,
+  "lng": -73.951632,
+  "signatureBowl": "Pastrami, egg, and cheese (also a pastrami reuben on rye)",
+  "appearsOn": [
+   "The Infatuation – The Best Jewish Delis in NYC (Jan 16, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Pastrami, Egg & Cheese",
+  "description": "Greenpoint deli known for its pastrami builds, including the reuben"
+ },
+ {
+  "name": "Shalom Japan",
+  "neighborhood": "Williamsburg",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.707536,
+  "lng": -73.959236,
+  "signatureBowl": "Wagyu Pastrami Sando — thick-cut house-smoked wagyu pastrami on Japanese milk bread with mustard",
+  "appearsOn": [
+   "Resy – The Best Sandwiches in New York City (Sept 9, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.57,
+  "geocoded": false,
+  "title": "Wagyu Pastrami Sando",
+  "description": "Jewish-Japanese take: house-smoked wagyu pastrami on milk bread"
+ },
+ {
+  "name": "San Wei",
+  "neighborhood": "Elmhurst",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.733916,
+  "lng": -73.884104,
+  "signatureBowl": "Pastrami sandwich — well-rubbed, a bit fatty, half-pound of meat",
+  "appearsOn": [
+   "Grub Street / New York Magazine – San Wei (April 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": false,
+  "title": "Pastrami Sandwich",
+  "description": "Queens Center Mall noodle stall whose well-rubbed pastrami drew Grub Street praise"
+ }
 ]

@@ -54,6 +54,22 @@ export const TRUST = {
   GAMMA: 1.5,
   /** New-account starting trust (near-zero influence; earned upward). */
   NEW_USER_TRUST: 0.1,
+  /**
+   * Per-category trust cap for normal users. Keeps casual participation from dominating —
+   * a maxed-out normal user lands at weight ≈ 1.84 (vs W_MAX 3.0 reserved for category experts).
+   */
+  NORMAL_CAP: 0.7,
+  /**
+   * Per-category trust cap for curator-designated community members ("category experts").
+   * Lifts them to the full W_MAX weight — but ONLY in the category they were vouched for.
+   * Curator-assigned, never self-declared.
+   */
+  EXPERT_CAP: 1.0,
+  /**
+   * Linear per-category trust earned per comparison, until the user's cap.
+   * 0.01 ⇒ a new user (start 0.1) reaches the 0.7 normal cap after ~60 comparisons in that category.
+   */
+  GROWTH_PER_COMPARISON: 0.01,
 } as const;
 
 /**

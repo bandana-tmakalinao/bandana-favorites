@@ -1,309 +1,327 @@
 [
-  {
-    "name": "Asian Jewels Seafood Restaurant",
-    "neighborhood": "Flushing",
-    "borough": "Queens",
-    "address": "133-30 39th Ave, Flushing, NY 11354",
-    "lat": 40.759159,
-    "lng": -73.833804,
-    "signatureBowl": "Cart dim sum: pork and shrimp shumai, spareribs with black beans, chicken and ham wrapped in yuba, jellyfish",
-    "appearsOn": [
-      "The MICHELIN Guide",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Pork Shrimp Shumai",
-    "description": "Cart dim sum; spareribs in black beans, yuba-wrapped chicken, jellyfish"
-  },
-  {
-    "name": "Dim Sum Go Go",
-    "neighborhood": "Chinatown / Two Bridges",
-    "borough": "Manhattan",
-    "address": "5 East Broadway, New York, NY 10038",
-    "lat": 40.713394,
-    "lng": -73.997743,
-    "signatureBowl": "Sweet shrimp rice-paper rolls, snow pea leaf dumplings, duck dumplings, flaky roast pork pie",
-    "appearsOn": [
-      "The MICHELIN Guide",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.921,
-    "geocoded": true,
-    "title": "Sweet Shrimp Rolls",
-    "description": "Rice-paper rolls, snow pea leaf dumplings, duck dumplings, roast pork pie"
-  },
-  {
-    "name": "East Harbor Seafood Palace",
-    "neighborhood": "Dyker Heights / Sunset Park",
-    "borough": "Brooklyn",
-    "address": "714 65th St, Brooklyn, NY 11220",
-    "lat": 40.633705,
-    "lng": -74.01444,
-    "signatureBowl": "Siu mai, rice noodles wrapped around shrimp, black bean spare ribs, braised bean curd skin rolls",
-    "appearsOn": [
-      "The MICHELIN Guide",
-      "Time Out New York"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.891,
-    "geocoded": true,
-    "title": "Siu Mai",
-    "description": "Shrimp rice noodles, black bean spare ribs, braised bean curd rolls"
-  },
-  {
-    "name": "Little Alley",
-    "neighborhood": "Murray Hill / Kips Bay",
-    "borough": "Manhattan",
-    "address": "550 Third Ave, New York, NY 10016",
-    "lat": 40.747344,
-    "lng": -73.977027,
-    "signatureBowl": "Pork-and-crab soup dumplings, caramelized puffy pork buns, pig's ear with chili oil",
-    "appearsOn": [
-      "The MICHELIN Guide"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.862,
-    "geocoded": true,
-    "title": "Pork-Crab Soup Dumplings",
-    "description": "Caramelized puffy pork buns, pig's ear with chili oil"
-  },
-  {
-    "name": "Awesum Dimsum",
-    "neighborhood": "Times Square / Midtown",
-    "borough": "Manhattan",
-    "address": "Times Square / Midtown, NYC",
-    "lat": 40.78204,
-    "lng": -73.97247,
-    "signatureBowl": "Har gow, soup dumplings, pork buns, egg tarts; late-night dim sum",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.832,
-    "title": "Har Gow",
-    "description": "Soup dumplings, pork buns, egg tarts; late-night dim sum"
-  },
-  {
-    "name": "Bamboo Garden",
-    "neighborhood": "Sunset Park",
-    "borough": "Brooklyn",
-    "address": "6409 8th Ave, Brooklyn, NY 11220",
-    "lat": 40.633114,
-    "lng": -74.011939,
-    "signatureBowl": "Pig-shaped custard buns; tableside duck slicing",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.803,
-    "geocoded": true,
-    "title": "Pig Custard Buns",
-    "description": "Pig-shaped custard buns; tableside duck slicing"
-  },
-  {
-    "name": "Buddha Bodai",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "5 Mott St, New York, NY 10013",
-    "lat": 40.713697,
-    "lng": -73.998746,
-    "signatureBowl": "Vegetarian/kosher dim sum: 'meat' bun, sesame rice balls, 'shrimp' dumplings",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.774,
-    "geocoded": true,
-    "title": "Vegetarian Dim Sum",
-    "description": "Kosher 'meat' bun, sesame rice balls, 'shrimp' dumplings"
-  },
-  {
-    "name": "Dim Sum Palace",
-    "neighborhood": "Hell's Kitchen",
-    "borough": "Manhattan",
-    "address": "Hell's Kitchen, NYC",
-    "lat": 40.78401,
-    "lng": -73.97251,
-    "signatureBowl": "Pork congee, taro dumplings; dim sum happy hour",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.744,
-    "title": "Pork Congee",
-    "description": "Taro dumplings; dim sum happy hour"
-  },
-  {
-    "name": "Dim Sum Sam",
-    "neighborhood": "Flatiron",
-    "borough": "Manhattan",
-    "address": "28 E 23rd St, New York, NY 10010",
-    "lat": 40.740748,
-    "lng": -73.987836,
-    "signatureBowl": "Shrimp dumplings, BBQ pork buns, roast duck over rice",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.715,
-    "geocoded": true,
-    "title": "Shrimp Dumplings",
-    "description": "BBQ pork buns, roast duck over rice"
-  },
-  {
-    "name": "Golden Unicorn Restaurant",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "18 East Broadway, New York, NY 10002",
-    "lat": 40.713556,
-    "lng": -73.996963,
-    "signatureBowl": "Classic cart-style dim sum in a multi-floor banquet hall",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.685,
-    "geocoded": true,
-    "title": "Cart-Style Dim Sum",
-    "description": "Classic carts in a multi-floor banquet hall"
-  },
-  {
-    "name": "House of Joy",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "28 Pell St, New York, NY 10013",
-    "lat": 40.714903,
-    "lng": -73.998142,
-    "signatureBowl": "Egg custard buns, red rice noodle rolls, black sesame rolls",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.656,
-    "geocoded": true,
-    "title": "Egg Custard Buns",
-    "description": "Red rice noodle rolls, black sesame rolls"
-  },
-  {
-    "name": "Jing Fong",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "202 Centre St, New York, NY 10013",
-    "lat": 40.718935,
-    "lng": -73.999132,
-    "signatureBowl": "Shrimp shumai, pork buns, Cantonese cart classics",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.626,
-    "geocoded": true,
-    "title": "Shrimp Shumai",
-    "description": "Pork buns, Cantonese cart classics"
-  },
-  {
-    "name": "Nom Wah Tea Parlor",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "13 Doyers St, New York, NY 10013",
-    "lat": 40.714061,
-    "lng": -73.997737,
-    "signatureBowl": "Original egg roll; made-to-order dim sum; mooncakes (historic 1920 parlor)",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.597,
-    "geocoded": true,
-    "title": "Original Egg Roll",
-    "description": "Made-to-order dim sum, mooncakes; historic 1920 parlor"
-  },
-  {
-    "name": "Pacificana",
-    "neighborhood": "Sunset Park",
-    "borough": "Brooklyn",
-    "address": "813 55th St, Brooklyn, NY 11220",
-    "lat": 40.638167,
-    "lng": -74.006259,
-    "signatureBowl": "BBQ pork buns, sesame-paste fried green balls",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.568,
-    "geocoded": true,
-    "title": "BBQ Pork Buns",
-    "description": "Sesame-paste fried green balls"
-  },
-  {
-    "name": "Ping's Seafood",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "22 Mott St, New York, NY 10013",
-    "lat": 40.714364,
-    "lng": -73.998698,
-    "signatureBowl": "Pork shumai, pan-fried water-chestnut cake, chili peppers",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.538,
-    "geocoded": true,
-    "title": "Pork Shumai",
-    "description": "Pan-fried water-chestnut cake, chili peppers"
-  },
-  {
-    "name": "RedFarm",
-    "neighborhood": "West Village",
-    "borough": "Manhattan",
-    "address": "529 Hudson St, New York, NY 10014",
-    "lat": 40.734224,
-    "lng": -74.006291,
-    "signatureBowl": "Pastrami egg roll; farm-to-table dim sum",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.509,
-    "geocoded": true,
-    "title": "Pastrami Egg Roll",
-    "description": "Farm-to-table dim sum"
-  },
-  {
-    "name": "Tim Ho Wan",
-    "neighborhood": "East Village",
-    "borough": "Manhattan",
-    "address": "85 4th Ave, New York, NY 10003",
-    "lat": 40.731583,
-    "lng": -73.990239,
-    "signatureBowl": "Baked BBQ pork buns, pan-fried turnip cakes, steamed rice rolls",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.479,
-    "geocoded": true,
-    "title": "Baked BBQ Pork Buns",
-    "description": "Pan-fried turnip cakes, steamed rice rolls"
-  },
-  {
-    "name": "Yin Ji Chang Fen",
-    "neighborhood": "Chinatown",
-    "borough": "Manhattan",
-    "address": "91 Bayard St, New York, NY 10013",
-    "lat": 40.715756,
-    "lng": -73.999031,
-    "signatureBowl": "Rice noodle rolls (chang fen), ~17 flavors",
-    "appearsOn": [
-      "Time Out New York"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Rice Noodle Rolls",
-    "description": "Chang fen in roughly 17 flavors"
-  }
+ {
+  "name": "Asian Jewels Seafood Restaurant",
+  "neighborhood": "Flushing",
+  "borough": "Queens",
+  "address": "133-30 39th Ave, Flushing, NY 11354",
+  "lat": 40.759159,
+  "lng": -73.833804,
+  "signatureBowl": "Cart dim sum: pork and shrimp shumai, spareribs with black beans, chicken and ham wrapped in yuba, jellyfish",
+  "appearsOn": [
+   "The MICHELIN Guide",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Pork Shrimp Shumai",
+  "description": "Cart dim sum; spareribs in black beans, yuba-wrapped chicken, jellyfish"
+ },
+ {
+  "name": "Dim Sum Go Go",
+  "neighborhood": "Chinatown / Two Bridges",
+  "borough": "Manhattan",
+  "address": "5 East Broadway, New York, NY 10038",
+  "lat": 40.713394,
+  "lng": -73.997743,
+  "signatureBowl": "Sweet shrimp rice-paper rolls, snow pea leaf dumplings, duck dumplings, flaky roast pork pie",
+  "appearsOn": [
+   "The MICHELIN Guide",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.921,
+  "geocoded": true,
+  "title": "Sweet Shrimp Rolls",
+  "description": "Rice-paper rolls, snow pea leaf dumplings, duck dumplings, roast pork pie"
+ },
+ {
+  "name": "East Harbor Seafood Palace",
+  "neighborhood": "Dyker Heights / Sunset Park",
+  "borough": "Brooklyn",
+  "address": "714 65th St, Brooklyn, NY 11220",
+  "lat": 40.633705,
+  "lng": -74.01444,
+  "signatureBowl": "Siu mai, rice noodles wrapped around shrimp, black bean spare ribs, braised bean curd skin rolls",
+  "appearsOn": [
+   "The MICHELIN Guide",
+   "Time Out New York"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.891,
+  "geocoded": true,
+  "title": "Siu Mai",
+  "description": "Shrimp rice noodles, black bean spare ribs, braised bean curd rolls"
+ },
+ {
+  "name": "Little Alley",
+  "neighborhood": "Murray Hill / Kips Bay",
+  "borough": "Manhattan",
+  "address": "550 Third Ave, New York, NY 10016",
+  "lat": 40.747344,
+  "lng": -73.977027,
+  "signatureBowl": "Pork-and-crab soup dumplings, caramelized puffy pork buns, pig's ear with chili oil",
+  "appearsOn": [
+   "The MICHELIN Guide"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.862,
+  "geocoded": true,
+  "title": "Pork-Crab Soup Dumplings",
+  "description": "Caramelized puffy pork buns, pig's ear with chili oil"
+ },
+ {
+  "name": "Awesum Dimsum",
+  "neighborhood": "Times Square / Midtown",
+  "borough": "Manhattan",
+  "address": "Times Square / Midtown, NYC",
+  "lat": 40.78204,
+  "lng": -73.97247,
+  "signatureBowl": "Har gow, soup dumplings, pork buns, egg tarts; late-night dim sum",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.832,
+  "title": "Har Gow",
+  "description": "Soup dumplings, pork buns, egg tarts; late-night dim sum"
+ },
+ {
+  "name": "Bamboo Garden",
+  "neighborhood": "Sunset Park",
+  "borough": "Brooklyn",
+  "address": "6409 8th Ave, Brooklyn, NY 11220",
+  "lat": 40.633114,
+  "lng": -74.011939,
+  "signatureBowl": "Pig-shaped custard buns; tableside duck slicing",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.803,
+  "geocoded": true,
+  "title": "Pig Custard Buns",
+  "description": "Pig-shaped custard buns; tableside duck slicing"
+ },
+ {
+  "name": "Buddha Bodai",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "5 Mott St, New York, NY 10013",
+  "lat": 40.713697,
+  "lng": -73.998746,
+  "signatureBowl": "Vegetarian/kosher dim sum: 'meat' bun, sesame rice balls, 'shrimp' dumplings",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.774,
+  "geocoded": true,
+  "title": "Vegetarian Dim Sum",
+  "description": "Kosher 'meat' bun, sesame rice balls, 'shrimp' dumplings"
+ },
+ {
+  "name": "Dim Sum Palace",
+  "neighborhood": "Hell's Kitchen",
+  "borough": "Manhattan",
+  "address": "Hell's Kitchen, NYC",
+  "lat": 40.78401,
+  "lng": -73.97251,
+  "signatureBowl": "Pork congee, taro dumplings; dim sum happy hour",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.744,
+  "title": "Pork Congee",
+  "description": "Taro dumplings; dim sum happy hour"
+ },
+ {
+  "name": "Dim Sum Sam",
+  "neighborhood": "Flatiron",
+  "borough": "Manhattan",
+  "address": "28 E 23rd St, New York, NY 10010",
+  "lat": 40.740748,
+  "lng": -73.987836,
+  "signatureBowl": "Shrimp dumplings, BBQ pork buns, roast duck over rice",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.715,
+  "geocoded": true,
+  "title": "Shrimp Dumplings",
+  "description": "BBQ pork buns, roast duck over rice"
+ },
+ {
+  "name": "Golden Unicorn Restaurant",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "18 East Broadway, New York, NY 10002",
+  "lat": 40.713556,
+  "lng": -73.996963,
+  "signatureBowl": "Classic cart-style dim sum in a multi-floor banquet hall",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.685,
+  "geocoded": true,
+  "title": "Cart-Style Dim Sum",
+  "description": "Classic carts in a multi-floor banquet hall"
+ },
+ {
+  "name": "House of Joy",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "28 Pell St, New York, NY 10013",
+  "lat": 40.714903,
+  "lng": -73.998142,
+  "signatureBowl": "Egg custard buns, red rice noodle rolls, black sesame rolls",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.656,
+  "geocoded": true,
+  "title": "Egg Custard Buns",
+  "description": "Red rice noodle rolls, black sesame rolls"
+ },
+ {
+  "name": "Jing Fong",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "202 Centre St, New York, NY 10013",
+  "lat": 40.718935,
+  "lng": -73.999132,
+  "signatureBowl": "Shrimp shumai, pork buns, Cantonese cart classics",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.626,
+  "geocoded": true,
+  "title": "Shrimp Shumai",
+  "description": "Pork buns, Cantonese cart classics"
+ },
+ {
+  "name": "Nom Wah Tea Parlor",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "13 Doyers St, New York, NY 10013",
+  "lat": 40.714061,
+  "lng": -73.997737,
+  "signatureBowl": "Original egg roll; made-to-order dim sum; mooncakes (historic 1920 parlor)",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.597,
+  "geocoded": true,
+  "title": "Original Egg Roll",
+  "description": "Made-to-order dim sum, mooncakes; historic 1920 parlor"
+ },
+ {
+  "name": "Pacificana",
+  "neighborhood": "Sunset Park",
+  "borough": "Brooklyn",
+  "address": "813 55th St, Brooklyn, NY 11220",
+  "lat": 40.638167,
+  "lng": -74.006259,
+  "signatureBowl": "BBQ pork buns, sesame-paste fried green balls",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.568,
+  "geocoded": true,
+  "title": "BBQ Pork Buns",
+  "description": "Sesame-paste fried green balls"
+ },
+ {
+  "name": "Ping's Seafood",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "22 Mott St, New York, NY 10013",
+  "lat": 40.714364,
+  "lng": -73.998698,
+  "signatureBowl": "Pork shumai, pan-fried water-chestnut cake, chili peppers",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.538,
+  "geocoded": true,
+  "title": "Pork Shumai",
+  "description": "Pan-fried water-chestnut cake, chili peppers"
+ },
+ {
+  "name": "RedFarm",
+  "neighborhood": "West Village",
+  "borough": "Manhattan",
+  "address": "529 Hudson St, New York, NY 10014",
+  "lat": 40.734224,
+  "lng": -74.006291,
+  "signatureBowl": "Pastrami egg roll; farm-to-table dim sum",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.509,
+  "geocoded": true,
+  "title": "Pastrami Egg Roll",
+  "description": "Farm-to-table dim sum"
+ },
+ {
+  "name": "Tim Ho Wan",
+  "neighborhood": "East Village",
+  "borough": "Manhattan",
+  "address": "85 4th Ave, New York, NY 10003",
+  "lat": 40.731583,
+  "lng": -73.990239,
+  "signatureBowl": "Baked BBQ pork buns, pan-fried turnip cakes, steamed rice rolls",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.479,
+  "geocoded": true,
+  "title": "Baked BBQ Pork Buns",
+  "description": "Pan-fried turnip cakes, steamed rice rolls"
+ },
+ {
+  "name": "Yin Ji Chang Fen",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "91 Bayard St, New York, NY 10013",
+  "lat": 40.715756,
+  "lng": -73.999031,
+  "signatureBowl": "Rice noodle rolls (chang fen), ~17 flavors",
+  "appearsOn": [
+   "Time Out New York"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Rice Noodle Rolls",
+  "description": "Chang fen in roughly 17 flavors"
+ },
+ {
+  "name": "Golden Unicorn",
+  "neighborhood": "Chinatown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.715524,
+  "lng": -74.00096,
+  "signatureBowl": "Pig-shaped custard buns; roast pork buns; pork siu mai; shrimp rice rolls",
+  "appearsOn": [
+   "Time Out New York",
+   "MICHELIN Guide"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.8,
+  "geocoded": false,
+  "title": "Pig-Shaped Custard Bun",
+  "description": "Classic bi-level Chinatown dim sum parlor for special occasions"
+ }
 ]

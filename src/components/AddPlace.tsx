@@ -140,15 +140,21 @@ export default function AddPlace({
 
   if (!signedIn) {
     return (
-      <p className="mt-6 text-sm text-[var(--color-ink-dim)]">
-        <Link
-          href={`/me?returnTo=${encodeURIComponent(`/nyc/${subSlug}`)}`}
-          className="font-semibold text-[var(--color-brand)] hover:underline"
-        >
-          Sign in
-        </Link>{" "}
-        to add a {subName.toLowerCase()} you&apos;ve tried.
-      </p>
+      <Link
+        href={`/me?returnTo=${encodeURIComponent(`/nyc/${subSlug}`)}`}
+        className="mt-8 flex w-full flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-[var(--color-brand)]/40 px-6 py-8 text-center transition hover:border-[var(--color-brand)] hover:bg-[var(--color-brand)]/5"
+      >
+        <span className="text-3xl">🍜</span>
+        <span className="text-lg font-black text-[var(--color-ink)]">
+          Had an amazing {subName.toLowerCase()} in NYC?
+        </span>
+        <span className="text-sm text-[var(--color-ink-dim)]">
+          Sign in to add it — it takes a name and nothing else.
+        </span>
+        <span className="mt-1 rounded-lg bg-[var(--color-brand)] px-5 py-2 text-sm font-semibold text-white">
+          Sign in & add yours →
+        </span>
+      </Link>
     );
   }
 
@@ -156,9 +162,18 @@ export default function AddPlace({
     return (
       <button
         onClick={() => setOpen(true)}
-        className="mt-6 rounded-xl border border-dashed border-[var(--color-border)] px-4 py-2.5 text-sm font-medium text-[var(--color-ink-dim)] transition hover:border-[var(--color-brand)] hover:text-[var(--color-ink)]"
+        className="mt-8 flex w-full flex-col items-center gap-2 rounded-2xl border-2 border-dashed border-[var(--color-brand)]/50 px-6 py-8 text-center transition hover:border-[var(--color-brand)] hover:bg-[var(--color-brand)]/5"
       >
-        + Add a {subName.toLowerCase()} you&apos;ve tried
+        <span className="text-3xl">+</span>
+        <span className="text-lg font-black text-[var(--color-ink)]">
+          Had a great {subName.toLowerCase()} in NYC?
+        </span>
+        <span className="text-sm text-[var(--color-ink-dim)]">
+          Add it to the ranking — if it&apos;s good enough, the community will find it.
+        </span>
+        <span className="mt-1 rounded-lg bg-[var(--color-brand)] px-5 py-2 text-sm font-semibold text-white">
+          Add a {subName.toLowerCase()} →
+        </span>
       </button>
     );
   }

@@ -18,5 +18,5 @@ export async function POST(req: Request) {
 
   const result = getRepo().addContenderAtPlace(user.id, placeId, sub, title, description);
   if (!result.ok) return NextResponse.json({ error: result.error }, { status: 400 });
-  return NextResponse.json({ ok: true, contenderId: result.contenderId });
+  return NextResponse.json({ ok: true, contenderId: result.contenderId, placeId: result.placeId });
 }

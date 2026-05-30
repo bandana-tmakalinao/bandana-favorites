@@ -9,6 +9,14 @@ import PinButton from "@/components/PinButton";
 
 export const dynamic = "force-dynamic";
 
+// Warm per-cuisine tint, matching the category hub cards — used as the hero when there's no photo yet.
+const KIND_TINT: Record<string, string> = {
+  cuisine: "from-[#fde7dc] to-[#fbd9c6]",
+  format: "from-[#fdf0cf] to-[#f8e3a6]",
+  dessert: "from-[#fce4ec] to-[#f7cdd9]",
+  drink: "from-[#e3f0ea] to-[#c9e4d8]",
+};
+
 export default async function ContenderPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const detail = getRepo().getContenderDetail(id);
@@ -25,7 +33,15 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
         </Link>
       </div>
 
-      <PhotoThumb url={c.photoUrl} alt={c.title} className="h-64 w-full" />
+      {c.photoUrl ? (
+        <PhotoThumb url={c.photoUrl} alt={c.title} className="h-64 w-full" />
+      ) : (
+        <div
+          className={`grid h-44 w-full place-items-center rounded-2xl border border-[var(--color-border)] bg-gradient-to-br ${KIND_TINT[category.kind] ?? KIND_TINT.cuisine}`}
+        >
+          <span className="text-6xl drop-shadow-sm">{subcategory.emoji || category.emoji}</span>
+        </div>
+      )}
 
       <div className="mt-4 flex items-start gap-4">
         <ScoreBadge score={c.score} size="lg" />
@@ -112,7 +128,7 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
               <Link
                 key={n.id}
                 href={`/c/${n.id}`}
-                className="flex items-center gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 transition hover:border-[var(--color-ink-dim)]"
+                className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 transition hover:border-[var(--color-brand)] hover:shadow-[0_4px_14px_-10px_rgba(35,28,22,0.4)]"
               >
                 <span className="w-5 text-center text-sm font-bold text-[var(--color-ink-dim)]">
                   {n.rank ?? "–"}

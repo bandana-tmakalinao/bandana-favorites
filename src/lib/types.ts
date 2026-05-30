@@ -79,6 +79,22 @@ export interface User {
   avatarUrl?: string | null;
   showcase?: string[]; // subcategory slugs to feature on the profile
   pinnacle?: ID[]; // contender ids — the user's ordered, all-time favorite dishes (NYC)
+  categoryFavorites?: Record<string, ID>; // subSlug → contenderId (user's declared #1 per food type)
+  /**
+   * Per-category trust score (subSlug → 0–1). Auto-grows on each comparison in that category.
+   * Normal users are capped at TRUST.NORMAL_CAP (0.7); community members at TRUST.EXPERT_CAP (1.0).
+   * Falls back to the global trustScore if no entry exists for a category.
+   */
+  categoryTrust?: Record<string, number>;
+  /**
+   * Curator-assigned roles for specific food categories (subSlug → role).
+   * "member" = trusted community expert for that category; lifts the trust cap to EXPERT_CAP.
+   */
+  categoryRoles?: Record<string, "member">;
+  // --- auth ---
+  email?: string;
+  /** Linked external identity (e.g. Google), so the same person maps to one account across sign-ins. */
+  oauth?: { provider: string; sub: string };
 }
 
 export type ComparisonSource = "duel" | "up" | "down";
@@ -136,6 +152,7 @@ export interface StoreData {
 
 export interface ContenderView {
   id: ID;
+  placeId: ID;
   rank: number | null;
   title: string;
   description: string;
@@ -162,5 +179,12 @@ export interface RankedList {
 
 export interface CategoryWithSubs {
   category: Category;
-  subcategories: Array<Subcategory & { contenderCount: number; topPhotoUrl: string | null }>;
+  subcategories: Array<
+    Subcategory & {
+      contenderCount: number;
+      topPhotoUrl: string | null;
+      topTitle: string | null; // the current #1 dish, for the hub card preview
+      topPlaceName: string | null;
+    }
+  >;
 }

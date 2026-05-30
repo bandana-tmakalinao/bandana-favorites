@@ -1,193 +1,210 @@
 [
-  {
-    "name": "NY Dosas",
-    "neighborhood": "Greenwich Village (Washington Square Park)",
-    "borough": "Manhattan",
-    "address": "Washington Square South at Sullivan Street (50 Washington Square S area), New York, NY",
-    "lat": 40.730671,
-    "lng": -73.99884,
-    "signatureBowl": "Pondicherry-style / masala dosa (vegan)",
-    "appearsOn": [
-      "Robert Sietsema's New York (Substack) — Apr 14, 2025",
-      "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Pondicherry Masala Dosa",
-    "description": "Vegan, Pondicherry-style"
-  },
-  {
-    "name": "Pongal",
-    "neighborhood": "Curry Hill (Kips Bay)",
-    "borough": "Manhattan",
-    "address": "103 Lexington Avenue, New York, NY 10016",
-    "lat": 40.742179,
-    "lng": -73.982713,
-    "signatureBowl": "Pondicherry / butter mysore masala dosa",
-    "appearsOn": [
-      "Robert Sietsema's New York (Substack) — Apr 14, 2025",
-      "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.9,
-    "geocoded": true,
-    "title": "Butter Mysore Masala Dosa",
-    "description": "Pondicherry-style"
-  },
-  {
-    "name": "Semma",
-    "neighborhood": "Greenwich Village (West Village)",
-    "borough": "Manhattan",
-    "address": "60 Greenwich Avenue, New York, NY 10011",
-    "lat": 40.736002,
-    "lng": -74.000683,
-    "signatureBowl": "Gunpowder dosa",
-    "appearsOn": [
-      "Robert Sietsema's New York (Substack) — Apr 14, 2025",
-      "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.85,
-    "geocoded": true,
-    "title": "Gunpowder Dosa",
-    "description": ""
-  },
-  {
-    "name": "Temple Canteen (Ganesh Temple Canteen)",
-    "neighborhood": "Flushing",
-    "borough": "Queens",
-    "address": "143-09 Holly Avenue (Hindu Temple Society of North America, 45-57 Bowne St), Flushing, NY 11355",
-    "lat": 40.752355,
-    "lng": -73.816572,
-    "signatureBowl": "Butter masala dosa",
-    "appearsOn": [
-      "Robert Sietsema's New York (Substack) — Apr 14, 2025",
-      "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.8,
-    "geocoded": true,
-    "title": "Butter Masala Dosa",
-    "description": ""
-  },
-  {
-    "name": "Lore",
-    "neighborhood": "Park Slope",
-    "borough": "Brooklyn",
-    "address": "441 7th Avenue, Brooklyn, NY 11215",
-    "lat": 40.663209,
-    "lng": -73.984569,
-    "signatureBowl": "Masala (potato-stuffed) dosa with coconut chutney",
-    "appearsOn": [
-      "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.75,
-    "geocoded": true,
-    "title": "Masala Dosa",
-    "description": "Potato-stuffed, coconut chutney"
-  },
-  {
-    "name": "Lungi",
-    "neighborhood": "Upper East Side",
-    "borough": "Manhattan",
-    "address": "1136 First Avenue, New York, NY 10065",
-    "lat": 40.761686,
-    "lng": -73.960377,
-    "signatureBowl": "Masala dosa (crisp-brown)",
-    "appearsOn": [
-      "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.7,
-    "geocoded": true,
-    "title": "Masala Dosa",
-    "description": "Crisp-brown"
-  },
-  {
-    "name": "Adyar Ananda Bhavan",
-    "neighborhood": "Sutton Place",
-    "borough": "Manhattan",
-    "address": "1072 First Avenue, New York, NY 10022",
-    "lat": 40.759078,
-    "lng": -73.962276,
-    "signatureBowl": "Mysore masala dosa",
-    "appearsOn": [
-      "Robert Sietsema's New York (Substack) — Apr 14, 2025"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.65,
-    "geocoded": true,
-    "title": "Mysore Masala Dosa",
-    "description": ""
-  },
-  {
-    "name": "Ammi",
-    "neighborhood": "West Chelsea",
-    "borough": "Manhattan",
-    "address": "Pier 57, 25 Eleventh Avenue, New York, NY 10011",
-    "lat": 40.743989,
-    "lng": -74.008647,
-    "signatureBowl": "Masala dosa (mixed vegetable)",
-    "appearsOn": [
-      "Robert Sietsema's New York (Substack) — Apr 14, 2025"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.6,
-    "geocoded": true,
-    "title": "Masala Dosa",
-    "description": "Mixed vegetable"
-  },
-  {
-    "name": "Dosa Royale",
-    "neighborhood": "Fort Greene / Clinton Hill",
-    "borough": "Brooklyn",
-    "address": "65 Lafayette Avenue, Brooklyn, NY 11217 (relocated from 258 DeKalb Avenue)",
-    "lat": 40.687124,
-    "lng": -73.975758,
-    "signatureBowl": "Mysore masala dosa",
-    "appearsOn": [
-      "Robert Sietsema's New York (Substack) — Apr 14, 2025"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.55,
-    "geocoded": true,
-    "title": "Mysore Masala Dosa",
-    "description": ""
-  },
-  {
-    "name": "Hillside Dosa Hutt",
-    "neighborhood": "Glen Oaks",
-    "borough": "Queens",
-    "address": "258-15 Hillside Avenue, Glen Oaks, NY 11004",
-    "lat": 40.737038,
-    "lng": -73.709965,
-    "signatureBowl": "Pondicherry dosa",
-    "appearsOn": [
-      "Robert Sietsema's New York (Substack) — Apr 14, 2025"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.5,
-    "geocoded": true,
-    "title": "Pondicherry Dosa",
-    "description": ""
-  },
-  {
-    "name": "Saravanaa Bhavan",
-    "neighborhood": "Upper West Side",
-    "borough": "Manhattan",
-    "address": "413 Amsterdam Avenue, New York, NY 10024",
-    "lat": 40.78361,
-    "lng": -73.977902,
-    "signatureBowl": "Gunpowder dosa",
-    "appearsOn": [
-      "Robert Sietsema's New York (Substack) — Apr 14, 2025"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Gunpowder Dosa",
-    "description": ""
-  }
+ {
+  "name": "NY Dosas",
+  "neighborhood": "Greenwich Village (Washington Square Park)",
+  "borough": "Manhattan",
+  "address": "Washington Square South at Sullivan Street (50 Washington Square S area), New York, NY",
+  "lat": 40.730671,
+  "lng": -73.99884,
+  "signatureBowl": "Pondicherry-style / masala dosa (vegan)",
+  "appearsOn": [
+   "Robert Sietsema's New York (Substack) — Apr 14, 2025",
+   "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Pondicherry Masala Dosa",
+  "description": "Vegan, Pondicherry-style"
+ },
+ {
+  "name": "Pongal",
+  "neighborhood": "Curry Hill (Kips Bay)",
+  "borough": "Manhattan",
+  "address": "103 Lexington Avenue, New York, NY 10016",
+  "lat": 40.742179,
+  "lng": -73.982713,
+  "signatureBowl": "Pondicherry / butter mysore masala dosa",
+  "appearsOn": [
+   "Robert Sietsema's New York (Substack) — Apr 14, 2025",
+   "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.9,
+  "geocoded": true,
+  "title": "Butter Mysore Masala Dosa",
+  "description": "Pondicherry-style"
+ },
+ {
+  "name": "Semma",
+  "neighborhood": "Greenwich Village (West Village)",
+  "borough": "Manhattan",
+  "address": "60 Greenwich Avenue, New York, NY 10011",
+  "lat": 40.736002,
+  "lng": -74.000683,
+  "signatureBowl": "Gunpowder dosa",
+  "appearsOn": [
+   "Robert Sietsema's New York (Substack) — Apr 14, 2025",
+   "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.85,
+  "geocoded": true,
+  "title": "Gunpowder Dosa",
+  "description": ""
+ },
+ {
+  "name": "Temple Canteen (Ganesh Temple Canteen)",
+  "neighborhood": "Flushing",
+  "borough": "Queens",
+  "address": "143-09 Holly Avenue (Hindu Temple Society of North America, 45-57 Bowne St), Flushing, NY 11355",
+  "lat": 40.752355,
+  "lng": -73.816572,
+  "signatureBowl": "Butter masala dosa",
+  "appearsOn": [
+   "Robert Sietsema's New York (Substack) — Apr 14, 2025",
+   "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.8,
+  "geocoded": true,
+  "title": "Butter Masala Dosa",
+  "description": ""
+ },
+ {
+  "name": "Lore",
+  "neighborhood": "Park Slope",
+  "borough": "Brooklyn",
+  "address": "441 7th Avenue, Brooklyn, NY 11215",
+  "lat": 40.663209,
+  "lng": -73.984569,
+  "signatureBowl": "Masala (potato-stuffed) dosa with coconut chutney",
+  "appearsOn": [
+   "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.75,
+  "geocoded": true,
+  "title": "Masala Dosa",
+  "description": "Potato-stuffed, coconut chutney"
+ },
+ {
+  "name": "Lungi",
+  "neighborhood": "Upper East Side",
+  "borough": "Manhattan",
+  "address": "1136 First Avenue, New York, NY 10065",
+  "lat": 40.761686,
+  "lng": -73.960377,
+  "signatureBowl": "Masala dosa (crisp-brown)",
+  "appearsOn": [
+   "The Infatuation — Best Indian Restaurants in NYC — Apr 2, 2026"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.7,
+  "geocoded": true,
+  "title": "Masala Dosa",
+  "description": "Crisp-brown"
+ },
+ {
+  "name": "Adyar Ananda Bhavan",
+  "neighborhood": "Sutton Place",
+  "borough": "Manhattan",
+  "address": "1072 First Avenue, New York, NY 10022",
+  "lat": 40.759078,
+  "lng": -73.962276,
+  "signatureBowl": "Mysore masala dosa",
+  "appearsOn": [
+   "Robert Sietsema's New York (Substack) — Apr 14, 2025"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.65,
+  "geocoded": true,
+  "title": "Mysore Masala Dosa",
+  "description": ""
+ },
+ {
+  "name": "Ammi",
+  "neighborhood": "West Chelsea",
+  "borough": "Manhattan",
+  "address": "Pier 57, 25 Eleventh Avenue, New York, NY 10011",
+  "lat": 40.743989,
+  "lng": -74.008647,
+  "signatureBowl": "Masala dosa (mixed vegetable)",
+  "appearsOn": [
+   "Robert Sietsema's New York (Substack) — Apr 14, 2025"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": true,
+  "title": "Masala Dosa",
+  "description": "Mixed vegetable"
+ },
+ {
+  "name": "Dosa Royale",
+  "neighborhood": "Fort Greene / Clinton Hill",
+  "borough": "Brooklyn",
+  "address": "65 Lafayette Avenue, Brooklyn, NY 11217 (relocated from 258 DeKalb Avenue)",
+  "lat": 40.687124,
+  "lng": -73.975758,
+  "signatureBowl": "Mysore masala dosa",
+  "appearsOn": [
+   "Robert Sietsema's New York (Substack) — Apr 14, 2025"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": true,
+  "title": "Mysore Masala Dosa",
+  "description": ""
+ },
+ {
+  "name": "Hillside Dosa Hutt",
+  "neighborhood": "Glen Oaks",
+  "borough": "Queens",
+  "address": "258-15 Hillside Avenue, Glen Oaks, NY 11004",
+  "lat": 40.737038,
+  "lng": -73.709965,
+  "signatureBowl": "Pondicherry dosa",
+  "appearsOn": [
+   "Robert Sietsema's New York (Substack) — Apr 14, 2025"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.5,
+  "geocoded": true,
+  "title": "Pondicherry Dosa",
+  "description": ""
+ },
+ {
+  "name": "Saravanaa Bhavan",
+  "neighborhood": "Upper West Side",
+  "borough": "Manhattan",
+  "address": "413 Amsterdam Avenue, New York, NY 10024",
+  "lat": 40.78361,
+  "lng": -73.977902,
+  "signatureBowl": "Gunpowder dosa",
+  "appearsOn": [
+   "Robert Sietsema's New York (Substack) — Apr 14, 2025"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Gunpowder Dosa",
+  "description": ""
+ },
+ {
+  "name": "Ganesh Temple Canteen",
+  "neighborhood": "Flushing",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.754488,
+  "lng": -73.832892,
+  "signatureBowl": "big buttery dosas (masala and Pondicherry varieties)",
+  "appearsOn": [
+   "The Infatuation - The Best Indian Restaurants In NYC"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Buttery Masala Dosa",
+  "description": "Cafeteria beneath NYC's oldest Hindu temple serving big buttery regional dosas"
+ }
 ]

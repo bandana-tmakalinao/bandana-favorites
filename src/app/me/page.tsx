@@ -5,6 +5,7 @@ import SignInForm from "@/components/SignInForm";
 import ProfileEditor from "@/components/ProfileEditor";
 import PinnacleManager from "@/components/PinnacleManager";
 import { btn } from "@/components/bits";
+import { isGoogleEnabled } from "@/lib/oauth";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Your profile · Bandana Favorites" };
@@ -20,7 +21,7 @@ export default async function MePage() {
   return (
     <div className="mx-auto max-w-2xl space-y-6 px-4 py-8">
       <h1 className="text-2xl font-black tracking-tight">Your profile</h1>
-      <SignInForm signedInName={user?.name ?? null} />
+      <SignInForm signedInName={user?.name ?? null} googleEnabled={isGoogleEnabled()} />
 
       {user && (
         <>

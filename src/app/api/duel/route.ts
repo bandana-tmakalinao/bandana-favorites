@@ -9,7 +9,8 @@ export async function GET(req: Request) {
   const params = new URL(req.url).searchParams;
   const sub = params.get("sub") ?? undefined;
   const keep = params.get("keep") ?? undefined;
-  const pair = getRepo().getDuelPair(sub, keep);
+  const prefer = params.get("prefer")?.split(",").filter(Boolean) ?? undefined;
+  const pair = getRepo().getDuelPair(sub, keep, prefer);
   return NextResponse.json({ pair });
 }
 
@@ -21,6 +22,7 @@ export async function POST(req: Request) {
   const winnerId = body?.winnerId as string | undefined;
   const loserId = body?.loserId as string | undefined;
   const sub = (body?.sub as string | undefined) ?? undefined;
+  const prefer = Array.isArray(body?.prefer) ? (body.prefer as string[]) : undefined;
   if (!winnerId || !loserId) {
     return NextResponse.json({ error: "winnerId and loserId are required." }, { status: 400 });
   }
@@ -30,6 +32,8 @@ export async function POST(req: Request) {
   if (!result.ok) return NextResponse.json({ error: result.error }, { status: 400 });
 
   // King of the hill: the winner stays, a fresh challenger rotates in.
-  const next = repo.getDuelPair(sub, winnerId);
-  return NextResponse.json({ ok: true, next });
+  const next = repo.getDuelPair(sub, winnerId, prefer);
+  // Updated trust standing so the client can animate the meter climbing after each duel.
+  const standing = sub ? repo.getCategoryStanding(user.id, sub) : null;
+  return NextResponse.json({ ok: true, next, standing });
 }

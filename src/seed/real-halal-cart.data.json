@@ -1,188 +1,205 @@
 [
-  {
-    "name": "Adel's Famous Halal",
-    "neighborhood": "Midtown",
-    "borough": "Manhattan",
-    "address": "1221 Avenue of the Americas, New York, NY 10019",
-    "lat": 40.758773,
-    "lng": -73.981331,
-    "signatureBowl": "Chopped chicken (or chicken/lamb combo) over fragrant yellow rice with white sauce and hot sauce",
-    "appearsOn": [
-      "The Infatuation",
-      "New York Street Food"
-    ],
-    "appearanceCount": 2,
-    "seedQuality": 0.95,
-    "geocoded": true,
-    "title": "Chicken Over Rice",
-    "description": "Chopped chicken or chicken-lamb combo, yellow rice, white and hot sauce"
-  },
-  {
-    "name": "Bay Ridge Halal",
-    "neighborhood": "Bay Ridge",
-    "borough": "Brooklyn",
-    "address": "86th St & 5th Ave, Brooklyn, NY 11209",
-    "lat": 40.621492,
-    "lng": -74.026214,
-    "signatureBowl": "Chicken over rice (lamb over rice is the called-out signature)",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.9,
-    "geocoded": true,
-    "title": "Lamb Over Rice",
-    "description": ""
-  },
-  {
-    "name": "Biryani Cart",
-    "neighborhood": "Midtown",
-    "borough": "Manhattan",
-    "address": "W 46th St & 6th Ave, New York, NY 10036",
-    "lat": 40.7575,
-    "lng": -73.9831,
-    "signatureBowl": "Zach's Combo (chicken over rice)",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.85,
-    "title": "Chicken Over Rice",
-    "description": "Zach's Combo"
-  },
-  {
-    "name": "Chef G Halal & Healthy",
-    "neighborhood": "Midtown",
-    "borough": "Manhattan",
-    "address": "E 55th St & Park Ave, New York, NY 10022",
-    "lat": 40.760308,
-    "lng": -73.971696,
-    "signatureBowl": "Grilled chicken combo over brown rice",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.8,
-    "geocoded": true,
-    "title": "Grilled Chicken Combo",
-    "description": "Over brown rice"
-  },
-  {
-    "name": "Gold Street Halal",
-    "neighborhood": "Financial District",
-    "borough": "Manhattan",
-    "address": "Gold St & Maiden Ln, New York, NY 10038",
-    "lat": 40.7081,
-    "lng": -74.0058,
-    "signatureBowl": "Chicken over rice",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.75,
-    "title": "Chicken Over Rice",
-    "description": ""
-  },
-  {
-    "name": "Indian Tasty Halal Food",
-    "neighborhood": "Jackson Heights",
-    "borough": "Queens",
-    "address": "74th St & Roosevelt Ave, Jackson Heights, NY 11372",
-    "lat": 40.746844,
-    "lng": -73.89143,
-    "signatureBowl": "Sweet chili chicken over basmati rice",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.7,
-    "geocoded": true,
-    "title": "Sweet Chili Chicken",
-    "description": "Over basmati rice"
-  },
-  {
-    "name": "Royal Grill",
-    "neighborhood": "Midtown",
-    "borough": "Manhattan",
-    "address": "W 44th St & 6th Ave, New York, NY",
-    "lat": 40.647133,
-    "lng": -74.004623,
-    "signatureBowl": "Chicken tikka biryani",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.65,
-    "geocoded": true,
-    "title": "Chicken Tikka Biryani",
-    "description": ""
-  },
-  {
-    "name": "Sammy's Halal",
-    "neighborhood": "Jackson Heights",
-    "borough": "Queens",
-    "address": "73rd St & Broadway, Jackson Heights, NY 11372",
-    "lat": 40.747132,
-    "lng": -73.892411,
-    "signatureBowl": "Chicken over rice with green sauce",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.6,
-    "geocoded": true,
-    "title": "Chicken Over Rice",
-    "description": "Topped with green sauce"
-  },
-  {
-    "name": "Sammy's Halal (East Village)",
-    "neighborhood": "East Village / NoHo",
-    "borough": "Manhattan",
-    "address": "Broadway & E 4th St, New York, NY 10012",
-    "lat": 40.728412,
-    "lng": -73.99425,
-    "signatureBowl": "Chicken over rice with green sauce",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.55,
-    "geocoded": true,
-    "title": "Chicken Over Rice",
-    "description": "Topped with green sauce"
-  },
-  {
-    "name": "Tariq's #1 Halal",
-    "neighborhood": "Flatiron",
-    "borough": "Manhattan",
-    "address": "E 19th St & Park Ave South, New York, NY 10003",
-    "lat": 40.737736,
-    "lng": -73.988157,
-    "signatureBowl": "Chicken biryani with grilled eggplant",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.5,
-    "geocoded": true,
-    "title": "Chicken Biryani",
-    "description": "With grilled eggplant"
-  },
-  {
-    "name": "The Halal Guys",
-    "neighborhood": "Midtown",
-    "borough": "Manhattan",
-    "address": "W 53rd St & 6th Ave, New York, NY 10019",
-    "lat": 40.761775,
-    "lng": -73.979058,
-    "signatureBowl": "Combo (chicken + gyro) over rice with white and hot sauce",
-    "appearsOn": [
-      "New York Street Food"
-    ],
-    "appearanceCount": 1,
-    "seedQuality": 0.45,
-    "geocoded": true,
-    "title": "Chicken Gyro Combo",
-    "description": "Over rice with white and hot sauce"
-  }
+ {
+  "name": "Adel's Famous Halal",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "1221 Avenue of the Americas, New York, NY 10019",
+  "lat": 40.758773,
+  "lng": -73.981331,
+  "signatureBowl": "Chopped chicken (or chicken/lamb combo) over fragrant yellow rice with white sauce and hot sauce",
+  "appearsOn": [
+   "The Infatuation",
+   "New York Street Food"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.95,
+  "geocoded": true,
+  "title": "Chicken Over Rice",
+  "description": "Chopped chicken or chicken-lamb combo, yellow rice, white and hot sauce"
+ },
+ {
+  "name": "Bay Ridge Halal",
+  "neighborhood": "Bay Ridge",
+  "borough": "Brooklyn",
+  "address": "86th St & 5th Ave, Brooklyn, NY 11209",
+  "lat": 40.621492,
+  "lng": -74.026214,
+  "signatureBowl": "Chicken over rice (lamb over rice is the called-out signature)",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.9,
+  "geocoded": true,
+  "title": "Lamb Over Rice",
+  "description": ""
+ },
+ {
+  "name": "Biryani Cart",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "W 46th St & 6th Ave, New York, NY 10036",
+  "lat": 40.7575,
+  "lng": -73.9831,
+  "signatureBowl": "Zach's Combo (chicken over rice)",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.85,
+  "title": "Chicken Over Rice",
+  "description": "Zach's Combo"
+ },
+ {
+  "name": "Chef G Halal & Healthy",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "E 55th St & Park Ave, New York, NY 10022",
+  "lat": 40.760308,
+  "lng": -73.971696,
+  "signatureBowl": "Grilled chicken combo over brown rice",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.8,
+  "geocoded": true,
+  "title": "Grilled Chicken Combo",
+  "description": "Over brown rice"
+ },
+ {
+  "name": "Gold Street Halal",
+  "neighborhood": "Financial District",
+  "borough": "Manhattan",
+  "address": "Gold St & Maiden Ln, New York, NY 10038",
+  "lat": 40.7081,
+  "lng": -74.0058,
+  "signatureBowl": "Chicken over rice",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.75,
+  "title": "Chicken Over Rice",
+  "description": ""
+ },
+ {
+  "name": "Indian Tasty Halal Food",
+  "neighborhood": "Jackson Heights",
+  "borough": "Queens",
+  "address": "74th St & Roosevelt Ave, Jackson Heights, NY 11372",
+  "lat": 40.746844,
+  "lng": -73.89143,
+  "signatureBowl": "Sweet chili chicken over basmati rice",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.7,
+  "geocoded": true,
+  "title": "Sweet Chili Chicken",
+  "description": "Over basmati rice"
+ },
+ {
+  "name": "Royal Grill",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "W 44th St & 6th Ave, New York, NY",
+  "lat": 40.647133,
+  "lng": -74.004623,
+  "signatureBowl": "Chicken tikka biryani",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.65,
+  "geocoded": true,
+  "title": "Chicken Tikka Biryani",
+  "description": ""
+ },
+ {
+  "name": "Sammy's Halal",
+  "neighborhood": "Jackson Heights",
+  "borough": "Queens",
+  "address": "73rd St & Broadway, Jackson Heights, NY 11372",
+  "lat": 40.747132,
+  "lng": -73.892411,
+  "signatureBowl": "Chicken over rice with green sauce",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": true,
+  "title": "Chicken Over Rice",
+  "description": "Topped with green sauce"
+ },
+ {
+  "name": "Sammy's Halal (East Village)",
+  "neighborhood": "East Village / NoHo",
+  "borough": "Manhattan",
+  "address": "Broadway & E 4th St, New York, NY 10012",
+  "lat": 40.728412,
+  "lng": -73.99425,
+  "signatureBowl": "Chicken over rice with green sauce",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": true,
+  "title": "Chicken Over Rice",
+  "description": "Topped with green sauce"
+ },
+ {
+  "name": "Tariq's #1 Halal",
+  "neighborhood": "Flatiron",
+  "borough": "Manhattan",
+  "address": "E 19th St & Park Ave South, New York, NY 10003",
+  "lat": 40.737736,
+  "lng": -73.988157,
+  "signatureBowl": "Chicken biryani with grilled eggplant",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.5,
+  "geocoded": true,
+  "title": "Chicken Biryani",
+  "description": "With grilled eggplant"
+ },
+ {
+  "name": "The Halal Guys",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "W 53rd St & 6th Ave, New York, NY 10019",
+  "lat": 40.761775,
+  "lng": -73.979058,
+  "signatureBowl": "Combo (chicken + gyro) over rice with white and hot sauce",
+  "appearsOn": [
+   "New York Street Food"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.45,
+  "geocoded": true,
+  "title": "Chicken Gyro Combo",
+  "description": "Over rice with white and hot sauce"
+ },
+ {
+  "name": "Tatiana by Kwame Onwuachi",
+  "neighborhood": "Lincoln Square",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.786724,
+  "lng": -73.971068,
+  "signatureBowl": "a riff on halal cart chicken, complete with crispy, lamb-topped rice",
+  "appearsOn": [
+   "Resy (June NYC staff picks, June 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Halal Cart Chicken with Lamb-Topped Rice",
+  "description": "Kwame Onwuachi's upscale riff on classic halal cart chicken, with crispy lamb-topped rice"
+ }
 ]
