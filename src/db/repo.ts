@@ -53,6 +53,26 @@ export interface ShowcaseEntry {
 export interface SearchHitContender extends ContenderView {
   subSlug: string;
   subName: string;
+  emoji?: string;
+}
+
+/** One activity-feed event (derived from comparisons + votes by people you follow). */
+export interface FeedItem {
+  id: string;
+  kind: "duel" | "rating";
+  at: string; // ISO timestamp
+  actor: { handle: string; name: string; avatarUrl: string | null };
+  /** The dish acted on (winner for a duel, rated dish for a rating). */
+  contenderId: string;
+  dishTitle: string;
+  placeName: string;
+  subSlug: string;
+  subName: string;
+  emoji: string;
+  /** For a duel: the dish that lost. */
+  loserTitle?: string;
+  /** For a rating: the 0–100 score given. */
+  rating?: number;
 }
 
 export interface SearchResults {
@@ -236,6 +256,12 @@ export interface Repository {
   getFollowing(handle: string, viewerId?: string): UserCard[];
   /** Suggested people to follow (most-followed / most-active), excluding the viewer + who they follow. */
   suggestedFollows(viewerId: string | undefined, limit?: number): UserCard[];
+  /** Activity from the people a user follows (recent duels + ratings), newest first. */
+  getFollowingFeed(userId: string, limit?: number): FeedItem[];
+  /** Top tasters by follower count (discovery leaderboard). */
+  topTasters(viewerId: string | undefined, limit?: number): UserCard[];
+  /** Up-and-coming dishes across all categories (highest recent velocity). */
+  trendingRisers(limit?: number): SearchHitContender[];
 
   // --- profiles + pinnacle ---
   getProfile(handle: string, viewerId?: string): ProfileView | null;

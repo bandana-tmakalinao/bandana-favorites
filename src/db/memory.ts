@@ -26,6 +26,7 @@ import type {
   ProposedItem,
   RankedList,
   Repository,
+  FeedItem,
   SearchHitContender,
   SearchResults,
   ShowcaseEntry,
@@ -918,6 +919,79 @@ export class MemoryRepository implements Repository {
       .filter((u) => ids.has(u.id))
       .map((u) => this.toUserCard(u, viewerId))
       .sort((a, b) => b.followerCount - a.followerCount);
+  }
+
+  getFollowingFeed(userId: string, limit = 40): FeedItem[] {
+    const me = this.getUser(userId);
+    if (!me) return [];
+    const following = new Set(me.following ?? []);
+    if (following.size === 0) return [];
+    const actorOf = (id: string) => this.store.users.find((u) => u.id === id);
+    const conTitle = (id: string) => this.store.contenders.find((c) => c.id === id);
+    const items: FeedItem[] = [];
+
+    for (const cmp of this.store.comparisons) {
+      if (!following.has(cmp.userId) || cmp.source !== "duel") continue;
+      const actor = actorOf(cmp.userId);
+      const win = conTitle(cmp.winnerId);
+      const lose = conTitle(cmp.loserId);
+      if (!actor || !win) continue;
+      const sub = this.subById(win.subcategoryId);
+      items.push({
+        id: cmp.id,
+        kind: "duel",
+        at: cmp.createdAt,
+        actor: { handle: actor.handle, name: actor.name, avatarUrl: actor.avatarUrl ?? null },
+        contenderId: win.id,
+        dishTitle: win.title,
+        placeName: this.place(win.placeId)?.name ?? "",
+        subSlug: sub?.slug ?? "",
+        subName: sub?.name ?? "",
+        emoji: sub?.emoji ?? "",
+        loserTitle: lose?.title,
+      });
+    }
+    for (const v of this.store.votes) {
+      if (!following.has(v.userId)) continue;
+      const actor = actorOf(v.userId);
+      const con = conTitle(v.contenderId);
+      if (!actor || !con) continue;
+      const sub = this.subById(con.subcategoryId);
+      items.push({
+        id: v.id,
+        kind: "rating",
+        at: v.createdAt,
+        actor: { handle: actor.handle, name: actor.name, avatarUrl: actor.avatarUrl ?? null },
+        contenderId: con.id,
+        dishTitle: con.title,
+        placeName: this.place(con.placeId)?.name ?? "",
+        subSlug: sub?.slug ?? "",
+        subName: sub?.name ?? "",
+        emoji: sub?.emoji ?? "",
+        rating: v.rating,
+      });
+    }
+    items.sort((a, b) => (a.at < b.at ? 1 : a.at > b.at ? -1 : 0));
+    return items.slice(0, limit);
+  }
+
+  topTasters(viewerId: string | undefined, limit = 10): UserCard[] {
+    return this.store.users
+      .map((u) => this.toUserCard(u, viewerId))
+      .filter((c) => c.followerCount > 0 || c.isCurator)
+      .sort((a, b) => b.followerCount - a.followerCount)
+      .slice(0, limit);
+  }
+
+  trendingRisers(limit = 12): SearchHitContender[] {
+    return this.store.contenders
+      .filter((c) => c.status !== "proposed" && c.status !== "hidden" && (c.riserScore ?? 0) > 0)
+      .sort((a, b) => (b.riserScore ?? 0) - (a.riserScore ?? 0))
+      .slice(0, limit)
+      .map((c) => {
+        const sub = this.subById(c.subcategoryId);
+        return { ...this.toView(c, null), subSlug: sub?.slug ?? "", subName: sub?.name ?? "", emoji: sub?.emoji ?? "" };
+      });
   }
 
   suggestedFollows(viewerId: string | undefined, limit = 8): UserCard[] {

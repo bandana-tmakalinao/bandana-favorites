@@ -34,6 +34,14 @@ export default async function SiteHeader() {
           <Link href="/explore" className="-my-2 py-2 font-medium text-[var(--color-ink)] hover:text-[var(--color-brand)]">
             Explore
           </Link>
+          {user && (
+            <Link href="/feed" className="hidden hover:text-[var(--color-ink)] sm:inline">
+              Feed
+            </Link>
+          )}
+          <Link href="/discover" className="hidden hover:text-[var(--color-ink)] sm:inline">
+            Discover
+          </Link>
           <Link href="/map" className="hidden hover:text-[var(--color-ink)] sm:inline">
             Map
           </Link>
