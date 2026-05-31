@@ -7,8 +7,8 @@
  * docs/data-sourcing-research.md and replaces all of this. Generated with a seeded RNG so the
  * placeholder ranking is stable across runs.
  */
-import { rankSubcategory, trustToWeight } from "../lib/ranking";
-import { NYC } from "../lib/config";
+import { rankSubcategory, trustToWeight, type EvidenceClass } from "../lib/ranking";
+import { NYC, SOURCE, publicationWeight } from "../lib/config";
 import { normalizeName } from "../lib/match";
 // Real, consensus-seeded datasets keyed by subcategory slug (the rest are fictional placeholders).
 import { REAL_DATA } from "./real-data";
@@ -42,8 +42,17 @@ const rand = (lo: number, hi: number) => lo + rng() * (hi - lo);
 const randInt = (lo: number, hi: number) => Math.floor(rand(lo, hi + 1));
 const pick = <T>(arr: T[]): T => arr[Math.floor(rng() * arr.length)];
 const sigmoid = (x: number) => 1 / (1 + Math.exp(-x));
+const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 
 const GENERATED_AT = "2026-05-29T00:00:00.000Z";
+// Synthetic seed evidence is dated well in the past so it never counts as "recent" for the risers
+// shelf — only real, post-launch user activity should register as up-and-coming.
+const SEED_EVIDENCE_AT = "2026-01-15T00:00:00.000Z";
+
+/** Σ publication weights backing a contender (the publication-class volume). */
+function pubVolumeOf(seedSources: string[]): number {
+  return (seedSources ?? []).reduce((sum, s) => sum + publicationWeight(s), 0);
+}
 
 // --- taxonomy -----------------------------------------------------------------
 interface CatDef {
@@ -255,6 +264,7 @@ export function generateSeed(): StoreData {
         description: opts.description ?? "",
         dishVariantId: null,
         seedSources: opts.seedSources,
+        seedScore: Math.round(clamp01(opts.q) * 1000) / 10, // 0–100 publication-class quality
         createdBy: null,
         createdAt: GENERATED_AT,
         theta: 0,
@@ -262,9 +272,11 @@ export function generateSeed(): StoreData {
         weightedVotes: 0,
         comparisonCount: 0,
         distinctOpponents: 0,
-        score: 50,
+        score: 0, // v2: starts at 0 / "new"; recompute sets the real blended score + standing
         sortKey: 0,
         status: "provisional",
+        standing: "new",
+        riserScore: 0,
       };
       contenders.push(con);
       subContenders.push(con);
@@ -340,7 +352,7 @@ export function generateSeed(): StoreData {
         loserId: loser.id,
         source: "duel",
         weight: +weightOf(rater).toFixed(3),
-        createdAt: GENERATED_AT,
+        createdAt: SEED_EVIDENCE_AT,
       });
     }
 
@@ -357,7 +369,7 @@ export function generateSeed(): StoreData {
           userId: u.id,
           rating,
           weight: +weightOf(u).toFixed(3),
-          createdAt: GENERATED_AT,
+          createdAt: SEED_EVIDENCE_AT,
         });
       });
     }
@@ -390,19 +402,55 @@ export function computeAllRankings(store: StoreData): void {
 
 /** Recompute one subcategory's ranking state in place. Called after every duel/vote mutation. */
 export function recomputeSubcategory(store: StoreData, subcategoryId: string): void {
+  const sub = store.subcategories.find((s) => s.id === subcategoryId);
+  const subSlug = sub?.slug ?? "";
   // Only rank live contenders; proposed (awaiting approval) / hidden ones stay out until approved.
   const rankable = store.contenders.filter(
     (c) => c.subcategoryId === subcategoryId && c.status !== "proposed" && c.status !== "hidden",
   );
-  const ids = rankable.map((c) => c.id);
-  const idSet = new Set(ids);
+  const idSet = new Set(rankable.map((c) => c.id));
+
+  // Classify each rater into a source class (power = curator or category trust ≥ threshold).
+  const userById = new Map(store.users.map((u) => [u.id, u]));
+  const classOf = (userId: string): EvidenceClass => {
+    const u = userById.get(userId);
+    if (!u) return "user";
+    if (u.isCurator) return "power";
+    const t = u.categoryTrust?.[subSlug] ?? u.trustScore;
+    return t >= SOURCE.POWER_USER_TRUST ? "power" : "user";
+  };
+  const at = (iso: string): number | undefined => {
+    const t = Date.parse(iso);
+    return Number.isFinite(t) ? t : undefined;
+  };
+
+  const contenders = rankable.map((c) => ({
+    id: c.id,
+    seedScore: c.seedScore ?? 0,
+    pubVolume: pubVolumeOf(c.seedSources),
+  }));
   const duels = store.comparisons
     .filter((c) => c.subcategoryId === subcategoryId && c.source === "duel")
-    .map((c) => ({ winnerId: c.winnerId, loserId: c.loserId, weight: c.weight }));
+    .filter((c) => idSet.has(c.winnerId) && idSet.has(c.loserId))
+    .map((c) => ({
+      winnerId: c.winnerId,
+      loserId: c.loserId,
+      weight: c.weight,
+      cls: classOf(c.userId),
+      at: at(c.createdAt),
+    }));
   const votes = store.votes
     .filter((v) => idSet.has(v.contenderId))
-    .map((v) => ({ contenderId: v.contenderId, rating: v.rating, weight: v.weight }));
-  const results = rankSubcategory(ids, duels, votes);
+    .map((v) => ({
+      contenderId: v.contenderId,
+      rating: v.rating,
+      weight: v.weight,
+      cls: classOf(v.userId),
+      at: at(v.createdAt),
+    }));
+
+  const now = typeof Date.now === "function" ? Date.now() : 0;
+  const results = rankSubcategory(contenders, duels, votes, now);
   for (const con of rankable) {
     const r = results.get(con.id);
     if (!r) continue;
@@ -414,5 +462,7 @@ export function recomputeSubcategory(store: StoreData, subcategoryId: string): v
     con.score = r.score;
     con.sortKey = r.sortKey;
     con.status = r.status;
+    con.standing = r.standing;
+    con.riserScore = r.riserScore;
   }
 }

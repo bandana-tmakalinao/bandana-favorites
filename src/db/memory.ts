@@ -87,11 +87,33 @@ export class MemoryRepository implements Repository {
       lng: pl?.lng ?? 0,
       score: con.score,
       tier: this.tierFor(con),
+      standing: con.standing ?? (con.status === "active" ? "ranked" : "new"),
+      riserScore: con.riserScore ?? 0,
       weightedVotes: Math.round(con.weightedVotes * 10) / 10,
       comparisonCount: con.comparisonCount,
       photoUrl: this.photoUrlFor(con.id),
       seedSources: con.seedSources ?? [],
     };
+  }
+
+  /** Up-and-coming: highest recent-velocity contenders in a food type (incl. unranked ones). */
+  getRisers(subSlug: string, limit = 6): ContenderView[] {
+    const sub = this.subBySlug(subSlug);
+    if (!sub) return [];
+    const ranked = this.getRankedList(subSlug);
+    const rankByCon = new Map<string, number | null>();
+    for (const v of ranked?.ranked ?? []) rankByCon.set(v.id, v.rank);
+    return this.store.contenders
+      .filter(
+        (c) =>
+          c.subcategoryId === sub.id &&
+          c.status !== "proposed" &&
+          c.status !== "hidden" &&
+          (c.riserScore ?? 0) > 0,
+      )
+      .sort((a, b) => (b.riserScore ?? 0) - (a.riserScore ?? 0))
+      .slice(0, limit)
+      .map((c) => this.toView(c, rankByCon.get(c.id) ?? null));
   }
 
   getRegion(slug: string): Region | null {
@@ -172,7 +194,9 @@ export class MemoryRepository implements Repository {
     return scored.map((s, i) => ({
       ...this.toView(s.con, i + 1),
       score: s.score,
-      tier: s.rated ? "established" : "rising",
+      tier: s.rated ? ("established" as const) : ("rising" as const),
+      // Everything in your personal list is "ranked" for you, regardless of global standing.
+      standing: "ranked" as const,
     }));
   }
 
@@ -762,8 +786,9 @@ export class MemoryRepository implements Repository {
     const con: Contender = {
       id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
       title: resolvedTitle, description: description?.trim() ?? "", dishVariantId: null,
-      seedSources: [], createdBy: userId, createdAt: new Date().toISOString(), theta: 0, rd: 350,
-      weightedVotes: 0, comparisonCount: 0, distinctOpponents: 0, score: 50, sortKey: 0, status: "provisional",
+      seedSources: [], seedScore: 0, createdBy: userId, createdAt: new Date().toISOString(), theta: 0, rd: 350,
+      weightedVotes: 0, comparisonCount: 0, distinctOpponents: 0, score: 0, sortKey: 0, status: "provisional",
+      standing: "new", riserScore: 0,
     };
     this.store.contenders.push(con);
     recomputeSubcategory(this.store, sub.id);
@@ -785,9 +810,10 @@ export class MemoryRepository implements Repository {
     this.store.places.push(place);
     this.store.contenders.push({
       id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
-      title: sub.name, description: "", dishVariantId: null, seedSources: [], createdBy: userId,
+      title: sub.name, description: "", dishVariantId: null, seedSources: [], seedScore: 0, createdBy: userId,
       createdAt: new Date().toISOString(), theta: 0, rd: 350, weightedVotes: 0,
-      comparisonCount: 0, distinctOpponents: 0, score: 50, sortKey: 0, status: "proposed",
+      comparisonCount: 0, distinctOpponents: 0, score: 0, sortKey: 0, status: "proposed",
+      standing: "new", riserScore: 0,
     });
     this.persist();
     return { ok: true };

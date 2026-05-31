@@ -1,4 +1,4 @@
-import type { ConfidenceTier } from "./config";
+import type { ConfidenceTier, Standing } from "./config";
 
 export type ID = string;
 export type ISODate = string;
@@ -52,6 +52,8 @@ export interface Contender {
   description: string; // short detail shown under the title (the verbose specifics)
   dishVariantId: ID | null; // reserved for future per-named-dish granularity
   seedSources: string[]; // publications this seed entry was informed by (curator seed only)
+  /** Ranking v2: publication-class quality 0–100 (editorial seed consensus); 0 for user-created. */
+  seedScore?: number;
   createdBy: ID | null;
   createdAt: ISODate;
 
@@ -61,9 +63,13 @@ export interface Contender {
   weightedVotes: number; // v — trust-weighted evidence volume
   comparisonCount: number; // raw duels involving this contender
   distinctOpponents: number;
-  score: number; // displayed 0–100 (shrunk toward the category prior)
+  score: number; // displayed 0–100 (blended source-weighted score; 0 when "new")
   sortKey: number; // score − LCB penalty; what the list sorts by
   status: "provisional" | "active" | "hidden" | "proposed"; // proposed = awaiting curator approval
+  /** Ranking v2: where it sits — ranked (top 100) / unranked / new (no evidence yet). */
+  standing?: Standing;
+  /** Ranking v2: weighted evidence in the recent window — drives the "up & coming" shelf. */
+  riserScore?: number;
 }
 
 export interface User {
@@ -165,6 +171,8 @@ export interface ContenderView {
   lng: number;
   score: number;
   tier: ConfidenceTier;
+  standing: Standing;
+  riserScore: number;
   weightedVotes: number;
   comparisonCount: number;
   photoUrl: string | null;

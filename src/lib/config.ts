@@ -47,6 +47,66 @@ export const RANKING = {
   MIN_DISTINCT_OPPONENTS: 2,
 } as const;
 
+/**
+ * Ranking v2 — source-weighted blend, start-at-zero, top-100 cap, risers. See
+ * docs/architecture/ranking-v2.md. The public score is a weighted blend of three source classes,
+ * each of which only exerts its share once it has real volume; an item with no evidence scores 0.
+ */
+export const SOURCE = {
+  /** Target share of the blended score per class. Renormalized over whichever classes are active. */
+  TARGET: { publication: 0.5, user: 0.25, power: 0.25 },
+  /** Per-class activation half-volume: a_c = vol_c/(vol_c + M_c). Higher = slower to earn the share. */
+  M: { publication: 1.5, user: 6, power: 3 },
+  /** A user is "power" in a category at/above this category trust (curators always count as power). */
+  POWER_USER_TRUST: 0.8,
+  /** Only the top N per category are "ranked"; the rest are "unranked". */
+  RANKED_CAP: 100,
+  /** Min real (user+power) weighted evidence to leave "new" when there's no publication backing.
+   *  ~one rating or one duel clears it → the item becomes "unranked" with a real blended score;
+   *  zero evidence stays "new" at score 0. */
+  MIN_EVIDENCE: 0.5,
+  /** Riser window: weighted evidence in the last N days drives the "up & coming" shelf. */
+  RISER_WINDOW_DAYS: 14,
+} as const;
+
+export type SourceClass = "publication" | "user" | "power";
+export type Standing = "ranked" | "unranked" | "new";
+
+/**
+ * Publication quality registry — the editorial sources we trust, and how much. Drives the
+ * publication-class volume (a contender backed by MICHELIN + Infatuation outweighs one on a single
+ * lesser list) and is surfaced on the /admin publications panel. Match is case-insensitive substring,
+ * so "MICHELIN Guide" and "The Infatuation NYC" resolve. Unlisted sources get DEFAULT_PUBLICATION_WEIGHT.
+ */
+export const PUBLICATIONS: ReadonlyArray<{ key: string; name: string; weight: number }> = [
+  { key: "michelin", name: "MICHELIN", weight: 1.0 },
+  { key: "infatuation", name: "The Infatuation", weight: 0.9 },
+  { key: "eater", name: "Eater", weight: 0.85 },
+  { key: "new york times", name: "New York Times", weight: 0.85 },
+  { key: "nyt", name: "New York Times", weight: 0.85 },
+  { key: "time out", name: "Time Out", weight: 0.75 },
+  { key: "grub street", name: "Grub Street", weight: 0.7 },
+  { key: "new york magazine", name: "New York Magazine", weight: 0.7 },
+  { key: "one bite", name: "One Bite (Barstool)", weight: 0.65 },
+  { key: "bon appetit", name: "Bon Appétit", weight: 0.7 },
+  { key: "thrillist", name: "Thrillist", weight: 0.6 },
+];
+export const DEFAULT_PUBLICATION_WEIGHT = 0.5;
+
+/** Resolve a free-text seed source to its publication weight (case-insensitive substring match). */
+export function publicationWeight(source: string): number {
+  const s = source.toLowerCase();
+  for (const p of PUBLICATIONS) if (s.includes(p.key)) return p.weight;
+  return DEFAULT_PUBLICATION_WEIGHT;
+}
+
+/** Resolve a free-text seed source to its canonical publication name (or the source itself). */
+export function publicationName(source: string): string {
+  const s = source.toLowerCase();
+  for (const p of PUBLICATIONS) if (s.includes(p.key)) return p.name;
+  return source;
+}
+
 export const TRUST = {
   /** Vote weight = W_MIN + (W_MAX − W_MIN)·trust^GAMMA. New users start near W_MIN. */
   W_MIN: 0.2,

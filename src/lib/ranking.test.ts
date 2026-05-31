@@ -1,77 +1,112 @@
-import { test } from "node:test";
+import { describe, it } from "node:test";
 import assert from "node:assert/strict";
 import { rankSubcategory, trustToWeight, type RankInputDuel, type RankInputVote } from "./ranking";
-import { RANKING, TRUST } from "./config";
+import { RANKING, SOURCE, TRUST } from "./config";
 
-const duel = (winnerId: string, loserId: string, weight = 1): RankInputDuel => ({ winnerId, loserId, weight });
-const vote = (contenderId: string, rating: number, weight = 1): RankInputVote => ({ contenderId, rating, weight });
-
-test("recovers a consistent total order A > B > C", () => {
-  const ids = ["A", "B", "C"];
-  const duels = [
-    ...Array(3).fill(0).map(() => duel("A", "B")),
-    ...Array(3).fill(0).map(() => duel("A", "C")),
-    ...Array(3).fill(0).map(() => duel("B", "C")),
-  ];
-  const r = rankSubcategory(ids, duels, []);
-  const A = r.get("A")!, B = r.get("B")!, C = r.get("C")!;
-  assert.ok(A.theta > B.theta, "A stronger than B");
-  assert.ok(B.theta > C.theta, "B stronger than C");
-  assert.equal(A.rank, 1);
-  assert.equal(B.rank, 2);
-  assert.equal(C.rank, 3);
-  assert.equal(A.status, "active");
+const W = trustToWeight(0.8);
+const con = (id: string, extra: { seedScore?: number; pubVolume?: number } = {}) => ({ id, ...extra });
+const duel = (winnerId: string, loserId: string, cls: "user" | "power" = "user"): RankInputDuel => ({
+  winnerId,
+  loserId,
+  weight: W,
+  cls,
+});
+const vote = (contenderId: string, rating: number, cls: "user" | "power" = "user"): RankInputVote => ({
+  contenderId,
+  rating,
+  weight: W,
+  cls,
 });
 
-test("Bayesian shrinkage relaxes toward the item's own score as volume grows (the ~200 knee)", () => {
-  // Identical win/loss STRUCTURE, just replayed at far higher volume.
-  const ids = ["A", "B", "C"];
-  const structure = [duel("A", "B"), duel("B", "C"), duel("A", "C")];
-  const low = rankSubcategory(ids, structure, []);
-  const high = rankSubcategory(ids, structure.flatMap((d) => Array(50).fill(d)), []);
-  const lowA = low.get("A")!, highA = high.get("A")!;
-  assert.ok(lowA.score > RANKING.CATEGORY_PRIOR_C, "the winner scores above the prior even at low volume");
-  assert.ok(
-    highA.score > lowA.score + 5,
-    `more volume ⇒ score moves further from the prior toward its own merit (${highA.score} vs ${lowA.score})`,
-  );
-  assert.ok(highA.rd < lowA.rd, "more evidence ⇒ lower rating deviation (more confident)");
+describe("trustToWeight", () => {
+  it("maps trust 0→W_MIN and 1→W_MAX, monotonically", () => {
+    assert.equal(trustToWeight(0), TRUST.W_MIN);
+    assert.equal(trustToWeight(1), TRUST.W_MAX);
+    assert.ok(trustToWeight(0.5) > trustToWeight(0.2));
+  });
 });
 
-test("eligibility gate: an unproven item stays provisional with no rank", () => {
-  const ids = ["A", "B", "C", "Lonely"];
-  // A, B, C form a triangle → each has 2 distinct opponents and enough evidence to be eligible.
-  const duels = [duel("A", "B"), duel("B", "C"), duel("C", "A"), duel("A", "B"), duel("B", "C")];
-  const votes = [vote("Lonely", 100)]; // one rating, no duels → 0 opponents
-  const r = rankSubcategory(ids, duels, votes);
-  assert.equal(r.get("Lonely")!.status, "provisional");
-  assert.equal(r.get("Lonely")!.rank, null);
-  assert.equal(r.get("A")!.status, "active");
-});
+describe("rankSubcategory (v2 source-weighted blend)", () => {
+  it("orders a clear winner above a clear loser", () => {
+    const res = rankSubcategory(
+      [con("a"), con("b"), con("c")],
+      [duel("a", "b"), duel("a", "c"), duel("b", "c")],
+      [],
+    );
+    assert.ok(res.get("a")!.score > res.get("b")!.score, "a outranks b");
+    assert.ok(res.get("b")!.score > res.get("c")!.score, "b outranks c");
+  });
 
-test("up/down votes feed the same model in the right direction", () => {
-  const ids = ["U", "D"];
-  const baseDuels = [duel("U", "D")];
-  const before = rankSubcategory(ids, baseDuels, []);
-  const after = rankSubcategory(ids, baseDuels, [
-    ...Array(10).fill(0).map(() => vote("D", 100)), // strong positive ratings on D
-    ...Array(10).fill(0).map(() => vote("U", 0)), // strong negative ratings on U
-  ]);
-  assert.ok(after.get("D")!.score > before.get("D")!.score, "high ratings raise D");
-  assert.ok(after.get("U")!.score < before.get("U")!.score, "low ratings lower U");
-  assert.ok(after.get("D")!.theta > after.get("D")!.theta - 1); // sanity: finite
-});
+  it("higher rating ⇒ higher score", () => {
+    const res = rankSubcategory([con("x"), con("y")], [], [vote("x", 95), vote("y", 20)]);
+    assert.ok(res.get("x")!.score > res.get("y")!.score, "x outscores y");
+  });
 
-test("trustToWeight is bounded and monotonic", () => {
-  assert.equal(Math.round(trustToWeight(0) * 1000) / 1000, TRUST.W_MIN);
-  assert.equal(Math.round(trustToWeight(1) * 1000) / 1000, TRUST.W_MAX);
-  assert.ok(trustToWeight(0.3) < trustToWeight(0.6));
-  assert.ok(trustToWeight(0.6) < trustToWeight(0.9));
-});
+  it("an item with NO evidence is 'new' at score 0 (not 50)", () => {
+    const res = rankSubcategory([con("lonely")], [], []);
+    const r = res.get("lonely")!;
+    assert.equal(r.standing, "new");
+    assert.equal(r.score, 0);
+    assert.equal(r.rank, null);
+  });
 
-test("no NaN/Infinity escapes the solver on degenerate input", () => {
-  const r = rankSubcategory(["solo"], [], []); // a single contender, no signal
-  const s = r.get("solo")!;
-  assert.ok(Number.isFinite(s.theta) && Number.isFinite(s.score) && Number.isFinite(s.rd));
-  assert.ok(s.score >= 0 && s.score <= 100);
+  it("a publication-backed item is eligible & scored from its seed even with no user activity", () => {
+    const res = rankSubcategory([con("seeded", { seedScore: 88, pubVolume: 1.9 }), con("bare")], [], []);
+    const seeded = res.get("seeded")!;
+    assert.notEqual(seeded.standing, "new");
+    assert.ok(seeded.score > 0, "seeded scores from its publication backing");
+    assert.equal(res.get("bare")!.standing, "new");
+  });
+
+  it("publications dominate the blend at 50% but users move it", () => {
+    // Same strong seed; one gets panned by users, the other praised. The praised one ends higher,
+    // but neither swings all the way (publications hold half the weight).
+    const base = { seedScore: 80, pubVolume: 1.5 };
+    const res = rankSubcategory(
+      [con("praised", base), con("panned", base)],
+      [],
+      [vote("praised", 100), vote("praised", 95), vote("panned", 5), vote("panned", 10)],
+    );
+    assert.ok(res.get("praised")!.score > res.get("panned")!.score, "user sentiment moves the blend");
+  });
+
+  it("more evidence ⇒ lower rating deviation", () => {
+    const duels = Array.from({ length: 20 }, () => duel("p", "q"));
+    const res = rankSubcategory([con("p"), con("q")], duels, []);
+    assert.ok(res.get("p")!.rd < RANKING.RD_BASE, "p accumulated evidence");
+  });
+
+  it("caps the ranked set at RANKED_CAP; the rest are unranked", () => {
+    const n = SOURCE.RANKED_CAP + 5;
+    const contenders = Array.from({ length: n }, (_, i) => con(`c${i}`, { seedScore: 100 - i, pubVolume: 1.5 }));
+    const res = rankSubcategory(contenders, [], []);
+    const ranked = [...res.values()].filter((r) => r.standing === "ranked");
+    const unranked = [...res.values()].filter((r) => r.standing === "unranked");
+    assert.equal(ranked.length, SOURCE.RANKED_CAP, "exactly RANKED_CAP are ranked");
+    assert.equal(unranked.length, 5, "the overflow is unranked");
+    assert.ok(ranked.every((r) => r.rank != null), "ranked items carry a rank");
+    assert.ok(unranked.every((r) => r.rank == null), "unranked items have no rank");
+  });
+
+  it("riserScore counts only recent evidence within the window", () => {
+    const now = 1_000_000_000_000;
+    const old = now - (SOURCE.RISER_WINDOW_DAYS + 5) * 86400_000;
+    // Separate opponents so the recent activity is asymmetric: fresh duels recently, stale long ago.
+    const res = rankSubcategory(
+      [con("fresh"), con("stale"), con("other")],
+      [
+        { winnerId: "fresh", loserId: "other", weight: W, cls: "user", at: now },
+        { winnerId: "stale", loserId: "other", weight: W, cls: "user", at: old },
+      ],
+      [],
+      now,
+    );
+    assert.ok(res.get("fresh")!.riserScore > 0, "recent evidence registers");
+    assert.equal(res.get("stale")!.riserScore, 0, "old evidence does not count as a riser");
+    assert.ok(res.get("fresh")!.riserScore > res.get("stale")!.riserScore, "fresh out-rises stale");
+  });
+
+  it("does not crash on an empty pool", () => {
+    assert.equal(rankSubcategory([], [], []).size, 0);
+  });
 });

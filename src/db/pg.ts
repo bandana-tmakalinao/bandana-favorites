@@ -29,7 +29,7 @@ import type {
   Vote,
   Photo,
 } from "@/lib/types";
-import { generateSeed } from "@/seed/placeholder";
+import { generateSeed, computeAllRankings } from "@/seed/placeholder";
 import { MemoryRepository } from "./memory";
 import { loadCorpus, type CorpusPlace } from "./store";
 
@@ -67,7 +67,10 @@ CREATE TABLE IF NOT EXISTS app_users (id text PRIMARY KEY, handle text, name tex
 ALTER TABLE app_users ADD COLUMN IF NOT EXISTS password_hash text;
 ALTER TABLE app_users ADD COLUMN IF NOT EXISTS email_verified boolean;
 CREATE INDEX IF NOT EXISTS idx_users_email ON app_users (lower(email));
-CREATE TABLE IF NOT EXISTS contenders (id text PRIMARY KEY, place_id text, subcategory_id text, region_id text, title text, description text, dish_variant_id text, seed_sources text, created_by text, created_at text, theta double precision, rd double precision, weighted_votes double precision, comparison_count integer, distinct_opponents integer, score double precision, sort_key double precision, status text);
+CREATE TABLE IF NOT EXISTS contenders (id text PRIMARY KEY, place_id text, subcategory_id text, region_id text, title text, description text, dish_variant_id text, seed_sources text, created_by text, created_at text, theta double precision, rd double precision, weighted_votes double precision, comparison_count integer, distinct_opponents integer, score double precision, sort_key double precision, status text, seed_score double precision, standing text, riser_score double precision);
+ALTER TABLE contenders ADD COLUMN IF NOT EXISTS seed_score double precision;
+ALTER TABLE contenders ADD COLUMN IF NOT EXISTS standing text;
+ALTER TABLE contenders ADD COLUMN IF NOT EXISTS riser_score double precision;
 CREATE TABLE IF NOT EXISTS comparisons (id text PRIMARY KEY, subcategory_id text, region_id text, user_id text, winner_id text, loser_id text, source text, weight double precision, created_at text);
 CREATE TABLE IF NOT EXISTS votes (id text PRIMARY KEY, contender_id text, user_id text, rating integer, weight double precision, created_at text);
 CREATE TABLE IF NOT EXISTS photos (id text PRIMARY KEY, contender_id text, uploader_id text, url text, status text, vouch_count integer, placeholder boolean, created_at text);
@@ -164,13 +167,14 @@ const TABLES: Spec<any>[] = [
   },
   {
     name: "contenders",
-    cols: ["id", "place_id", "subcategory_id", "region_id", "title", "description", "dish_variant_id", "seed_sources", "created_by", "created_at", "theta", "rd", "weighted_votes", "comparison_count", "distinct_opponents", "score", "sort_key", "status"],
+    cols: ["id", "place_id", "subcategory_id", "region_id", "title", "description", "dish_variant_id", "seed_sources", "created_by", "created_at", "theta", "rd", "weighted_votes", "comparison_count", "distinct_opponents", "score", "sort_key", "status", "seed_score", "standing", "riser_score"],
     rows: (s) => s.contenders,
     toRow: (e: Contender) => ({
       id: e.id, place_id: e.placeId, subcategory_id: e.subcategoryId, region_id: e.regionId, title: e.title,
       description: e.description, dish_variant_id: u(e.dishVariantId), seed_sources: J(e.seedSources), created_by: u(e.createdBy),
       created_at: e.createdAt, theta: e.theta, rd: e.rd, weighted_votes: e.weightedVotes, comparison_count: e.comparisonCount,
       distinct_opponents: e.distinctOpponents, score: e.score, sort_key: e.sortKey, status: e.status,
+      seed_score: u(e.seedScore), standing: u(e.standing), riser_score: u(e.riserScore),
     }),
     fromRow: (r): Contender => ({
       id: r.id as string, placeId: r.place_id as string, subcategoryId: r.subcategory_id as string, regionId: r.region_id as string,
@@ -178,6 +182,8 @@ const TABLES: Spec<any>[] = [
       seedSources: P(r.seed_sources, [] as string[]), createdBy: (r.created_by as string) ?? null, createdAt: r.created_at as string,
       theta: r.theta as number, rd: r.rd as number, weightedVotes: r.weighted_votes as number, comparisonCount: r.comparison_count as number,
       distinctOpponents: r.distinct_opponents as number, score: r.score as number, sortKey: r.sort_key as number, status: r.status as Contender["status"],
+      seedScore: (r.seed_score as number) ?? undefined, standing: (r.standing as Contender["standing"]) ?? undefined,
+      riserScore: (r.riser_score as number) ?? undefined,
     }),
     assign: (s, items) => (s.contenders = items),
   },
@@ -314,6 +320,7 @@ export async function initPgStore(): Promise<void> {
   const [{ count }] = (await sql.unsafe(`SELECT count(*)::int AS count FROM regions`)) as unknown as [{ count: number }];
   let store: StoreData;
   let seeded = false;
+  let migrated = 0;
   if (count > 0) {
     store = emptyStore();
     for (const spec of TABLES) {
@@ -321,6 +328,22 @@ export async function initPgStore(): Promise<void> {
       spec.assign(store, rows.map(spec.fromRow));
     }
     console.log(`[pg] loaded store: ${store.contenders.length} contenders, ${store.users.length} users`);
+
+    // Ranking v2 migration: contenders persisted before v2 have no seedScore/standing/riserScore.
+    // Backfill the publication-class quality from the existing consensus score (which WAS the v1
+    // seeded order) for publication-backed items, then recompute every category so the blended v2
+    // score + standing take effect on this deploy. Idempotent — once columns are set this is a
+    // cheap no-op on the backfill and a deterministic recompute.
+    for (const c of store.contenders) {
+      if (c.seedScore == null) {
+        c.seedScore = c.seedSources && c.seedSources.length > 0 ? c.score : 0;
+        migrated++;
+      }
+    }
+    if (migrated > 0) {
+      computeAllRankings(store);
+      console.log(`[pg] ranking v2 migration: backfilled ${migrated} contenders + recomputed`);
+    }
   } else {
     store = generateSeed();
     seeded = true;
@@ -328,7 +351,8 @@ export async function initPgStore(): Promise<void> {
   }
 
   const controller = new PgController(sql, store);
-  if (seeded) await controller.flush(); // initial full write (snapshot empty → everything inserted)
+  // Full write on first seed; also persist the one-time v2 migration so it isn't recomputed forever.
+  if (seeded || migrated > 0) await controller.flush();
   g.__bfPgController = controller;
   g.__bfPgCorpus = loadCorpus();
 

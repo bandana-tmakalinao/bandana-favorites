@@ -146,6 +146,8 @@ export interface Repository {
   getRegion(slug: string): Region | null;
   listCategories(): CategoryWithSubs[];
   getRankedList(subSlug: string): RankedList | null;
+  /** Up-and-coming: highest recent-velocity contenders in a food type (incl. unranked ones). */
+  getRisers(subSlug: string, limit?: number): ContenderView[];
   /** A single user's own ranking for a food type, from their ratings + duels (score = their score). */
   getPersonalRankedList(userId: string, subSlug: string): ContenderView[];
   getContenderDetail(id: string): ContenderDetail | null;
