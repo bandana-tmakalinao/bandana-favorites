@@ -1,4 +1,4 @@
-import { RANKING, MATCH, TRUST, type ConfidenceTier } from "@/lib/config";
+import { RANKING, MATCH, TRUST, HIDDEN_SUBCATEGORIES, type ConfidenceTier } from "@/lib/config";
 import { trustToWeight } from "@/lib/ranking";
 import { normalizeName, resolveDishName, similarity, type DishResolution } from "@/lib/match";
 import { recomputeSubcategory } from "@/seed/placeholder";
@@ -102,7 +102,7 @@ export class MemoryRepository implements Repository {
     const cats = [...this.store.categories].sort((a, b) => a.sort - b.sort);
     return cats.map((category) => {
       const subs = this.store.subcategories
-        .filter((s) => s.categoryId === category.id)
+        .filter((s) => s.categoryId === category.id && !HIDDEN_SUBCATEGORIES.has(s.slug))
         .map((s) => {
           const cons = this.store.contenders.filter((c) => c.subcategoryId === s.id);
           const top = [...cons].sort((a, b) => b.sortKey - a.sortKey)[0];
@@ -204,6 +204,7 @@ export class MemoryRepository implements Repository {
   getHomeShowcase(perCategory = 10): ShowcaseEntry[] {
     const out: ShowcaseEntry[] = [];
     for (const sub of this.store.subcategories) {
+      if (HIDDEN_SUBCATEGORIES.has(sub.slug)) continue;
       const list = this.getRankedList(sub.slug);
       if (!list || list.ranked.length === 0) continue;
       const category = this.catById(sub.categoryId);
@@ -224,7 +225,11 @@ export class MemoryRepository implements Repository {
     if (!q) return { query, subcategories: [], contenders: [] };
 
     const subcategories = this.store.subcategories
-      .filter((s) => s.name.toLowerCase().includes(q) || s.slug.replace(/-/g, " ").includes(q))
+      .filter(
+        (s) =>
+          !HIDDEN_SUBCATEGORIES.has(s.slug) &&
+          (s.name.toLowerCase().includes(q) || s.slug.replace(/-/g, " ").includes(q)),
+      )
       .slice(0, 6)
       .map((s) => ({
         slug: s.slug,
@@ -261,7 +266,9 @@ export class MemoryRepository implements Repository {
     if (!subcategory && subSlug) subcategory = this.store.subcategories.find((s) => s.slug === subSlug);
     if (!subcategory) {
       const eligible = this.store.subcategories.filter(
-        (s) => this.store.contenders.filter((c) => c.subcategoryId === s.id).length >= 2,
+        (s) =>
+          !HIDDEN_SUBCATEGORIES.has(s.slug) &&
+          this.store.contenders.filter((c) => c.subcategoryId === s.id).length >= 2,
       );
       subcategory = eligible[Math.floor(Math.random() * eligible.length)];
     }

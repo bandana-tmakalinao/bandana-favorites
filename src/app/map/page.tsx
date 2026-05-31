@@ -1,5 +1,6 @@
 import { getRepo } from "@/db/repo";
 import CityMap, { type CityGroup } from "@/components/CityMap";
+import { HIDDEN_SUBCATEGORIES } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Map · Bandana Faves" };
@@ -31,7 +32,7 @@ const LAYERS = [
 
 export default function MapPage() {
   const repo = getRepo();
-  const groups: CityGroup[] = LAYERS.flatMap(({ slug, color }) => {
+  const groups: CityGroup[] = LAYERS.filter(({ slug }) => !HIDDEN_SUBCATEGORIES.has(slug)).flatMap(({ slug, color }) => {
     const list = repo.getRankedList(slug);
     if (!list || list.ranked.length === 0) return [];
     return [

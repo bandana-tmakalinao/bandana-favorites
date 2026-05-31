@@ -84,6 +84,13 @@ export const MATCH = {
   PLACE_DUP: 0.8,
 } as const;
 
+/**
+ * Food types hidden from discovery (home widget, /nyc hub, search, map, random duels) while we build
+ * confidence in their ranking. Direct /nyc/<slug> links still resolve — this only removes them from
+ * being surfaced. Add or remove slugs here to toggle a category's visibility.
+ */
+export const HIDDEN_SUBCATEGORIES: ReadonlySet<string> = new Set<string>(["dim-sum"]);
+
 export type ConfidenceTier = "provisional" | "rising" | "established";
 
 /** Keyless OSM raster style for local dev. Production: set NEXT_PUBLIC_MAP_STYLE to a PMTiles/MapTiler URL. */

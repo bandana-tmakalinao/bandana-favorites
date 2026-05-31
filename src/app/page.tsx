@@ -39,13 +39,13 @@ export default function Home() {
               href="/nyc"
               className="rounded-lg bg-[var(--color-brand)] px-5 py-3 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
             >
-              Explore all 21 rankings
+              Explore all Categories
             </Link>
             <Link
               href="/duel"
               className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 font-semibold transition hover:border-[var(--color-ink-dim)]"
             >
-              Settle a duel →
+              Rank Food →
             </Link>
           </div>
         </div>
