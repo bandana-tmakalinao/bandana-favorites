@@ -36,10 +36,16 @@ export default function Home() {
           </div>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link
-              href="/nyc"
+              href="/explore"
               className="rounded-lg bg-[var(--color-brand)] px-5 py-3 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
             >
-              Rank Food →
+              Explore Rankings →
+            </Link>
+            <Link
+              href="/nyc"
+              className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 font-semibold transition hover:border-[var(--color-ink-dim)]"
+            >
+              Browse by food
             </Link>
           </div>
         </div>

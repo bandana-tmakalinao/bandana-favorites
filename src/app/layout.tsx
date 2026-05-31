@@ -26,29 +26,34 @@ export default function RootLayout({
                   Bandana <span className="text-[var(--color-brand)]">Faves</span>
                 </span>
               </Link>
-              <span className="ml-1 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs text-[var(--color-ink-dim)]">
+              <span className="ml-1 hidden rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs text-[var(--color-ink-dim)] sm:inline-block">
                 NYC
               </span>
               <div className="mx-2 hidden flex-1 justify-center sm:flex">
                 <SearchBar variant="header" />
               </div>
-              <div className="ml-auto flex items-center gap-4 text-sm text-[var(--color-ink-dim)] sm:ml-0">
-                <Link
-                  href="/nyc"
-                  className="rounded-lg bg-[var(--color-brand)] px-3 py-1.5 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
-                >
-                  ＋ Rank Food
+              <nav className="ml-auto flex items-center gap-3 text-sm text-[var(--color-ink-dim)] sm:ml-0 sm:gap-4">
+                <Link href="/explore" className="-my-2 py-2 font-medium text-[var(--color-ink)] hover:text-[var(--color-brand)]">
+                  Explore
                 </Link>
-                <Link href="/map" className="hover:text-[var(--color-ink)]">
+                <Link href="/map" className="hidden hover:text-[var(--color-ink)] sm:inline">
                   Map
                 </Link>
                 <Link href="/review" className="hidden hover:text-[var(--color-ink)] sm:inline">
                   Review
                 </Link>
-                <Link href="/me" className="hover:text-[var(--color-ink)]">
+                <Link href="/me" className="-my-2 py-2 hover:text-[var(--color-ink)]">
                   Sign in
                 </Link>
-              </div>
+                <Link
+                  href="/nyc"
+                  aria-label="Rank food"
+                  className="rounded-lg bg-[var(--color-brand)] px-3 py-1.5 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
+                >
+                  <span className="sm:hidden">＋</span>
+                  <span className="hidden sm:inline">＋ Rank Food</span>
+                </Link>
+              </nav>
             </div>
           </header>
           <div className="border-b border-[var(--color-border)] bg-[var(--color-banner)] px-4 py-1.5 text-center text-xs font-medium text-[var(--color-ink)]">

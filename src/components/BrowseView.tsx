@@ -3,7 +3,7 @@
 import { useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { ConfidenceDot, PhotoThumb, ScoreBadge } from "./bits";
+import { ConfidenceDot, PhotoThumb, RankBadge, ScoreBadge } from "./bits";
 import type { ContenderView } from "@/lib/types";
 
 const MapView = dynamic(() => import("./MapView"), {
@@ -14,36 +14,6 @@ const MapView = dynamic(() => import("./MapView"), {
     </div>
   ),
 });
-
-// Gold / silver / bronze medallions for the podium; clean numerals below.
-const MEDAL: Record<number, string> = {
-  1: "bg-gradient-to-br from-[#f6d36b] to-[#e0a93c] text-white shadow-[0_2px_8px_-2px_rgba(224,169,60,0.6)]",
-  2: "bg-gradient-to-br from-[#dcd9cf] to-[#b3ad9d] text-white",
-  3: "bg-gradient-to-br from-[#e2b483] to-[#c2895a] text-white",
-};
-
-function RankBadge({ rank }: { rank: number | null }) {
-  if (rank == null) {
-    return (
-      <span className="grid h-9 w-9 shrink-0 place-items-center text-sm font-black tabular-nums text-[var(--color-ink-dim)]">
-        –
-      </span>
-    );
-  }
-  const medal = MEDAL[rank];
-  if (medal) {
-    return (
-      <span className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-black tabular-nums ${medal}`}>
-        {rank}
-      </span>
-    );
-  }
-  return (
-    <span className="grid h-9 w-9 shrink-0 place-items-center text-base font-black tabular-nums text-[var(--color-ink-dim)]">
-      {rank}
-    </span>
-  );
-}
 
 function Row({ v }: { v: ContenderView }) {
   return (
