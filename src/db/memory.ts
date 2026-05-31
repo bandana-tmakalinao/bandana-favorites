@@ -141,7 +141,7 @@ export class MemoryRepository implements Repository {
         .filter((s) => s.categoryId === category.id && !HIDDEN_SUBCATEGORIES.has(s.slug))
         .map((s) => {
           const cons = this.store.contenders.filter((c) => c.subcategoryId === s.id);
-          const top = [...cons].sort((a, b) => b.sortKey - a.sortKey)[0];
+          const top = [...cons].sort((a, b) => b.score - a.score || b.sortKey - a.sortKey)[0];
           return {
             ...s,
             contenderCount: cons.length,
@@ -162,7 +162,7 @@ export class MemoryRepository implements Repository {
     if (!category || !region) return null;
 
     const cons = this.store.contenders.filter((c) => c.subcategoryId === subcategory.id);
-    const active = cons.filter((c) => c.status === "active").sort((a, b) => b.sortKey - a.sortKey);
+    const active = cons.filter((c) => c.status === "active").sort((a, b) => b.score - a.score || b.sortKey - a.sortKey);
     const provisional = cons.filter((c) => c.status === "provisional").sort((a, b) => b.score - a.score);
 
     return {
@@ -653,7 +653,7 @@ export class MemoryRepository implements Repository {
     if (con.status !== "active") return null;
     const peers = this.store.contenders
       .filter((c) => c.subcategoryId === con.subcategoryId && c.status === "active")
-      .sort((a, b) => b.sortKey - a.sortKey);
+      .sort((a, b) => b.score - a.score || b.sortKey - a.sortKey);
     const idx = peers.findIndex((c) => c.id === con.id);
     return idx >= 0 ? idx + 1 : null;
   }

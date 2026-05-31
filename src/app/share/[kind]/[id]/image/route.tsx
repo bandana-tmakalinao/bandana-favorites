@@ -89,7 +89,7 @@ function rowEl(r: Row) {
         alignItems: "center",
         gap: 26,
         width: 944,
-        height: 138,
+        height: 126,
         padding: "0 26px",
         borderRadius: 30,
         backgroundColor: "#ffffff",
@@ -189,7 +189,7 @@ function poster(opts: {
       <div style={{ display: "flex", position: "absolute", bottom: 120, left: -150, width: 380, height: 380, borderRadius: 190, backgroundColor: "rgba(255,255,255,0.07)" }} />
 
       {/* header */}
-      <div style={{ display: "flex", flexDirection: "column", padding: "70px 68px 30px" }}>
+      <div style={{ display: "flex", flexDirection: "column", padding: "56px 68px 24px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <div
             style={{
@@ -208,9 +208,9 @@ function poster(opts: {
           </div>
         </div>
 
-        <div style={{ display: "flex", alignItems: "flex-end", gap: 20, marginTop: 36 }}>
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 20, marginTop: 24 }}>
           {"emoji" in opts.glyph ? (
-            <div style={{ display: "flex", fontSize: 132, lineHeight: 1 }}>{opts.glyph.emoji}</div>
+            <div style={{ display: "flex", fontSize: 110, lineHeight: 1 }}>{opts.glyph.emoji}</div>
           ) : (
             <div
               style={{
@@ -267,7 +267,7 @@ function poster(opts: {
       </div>
 
       {/* the 5 cards */}
-      <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: "center", justifyContent: "center", gap: 18 }}>
+      <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: "center", justifyContent: "center", gap: 16 }}>
         {opts.rows.map(rowEl)}
       </div>
 
