@@ -1,4 +1,13 @@
-import { RANKING, MATCH, TRUST, HIDDEN_SUBCATEGORIES, type ConfidenceTier } from "@/lib/config";
+import {
+  RANKING,
+  MATCH,
+  TRUST,
+  HIDDEN_SUBCATEGORIES,
+  DEFAULT_PUBLICATION_WEIGHT,
+  publicationName,
+  publicationWeight,
+  type ConfidenceTier,
+} from "@/lib/config";
 import { trustToWeight } from "@/lib/ranking";
 import { normalizeName, resolveDishName, similarity, type DishResolution } from "@/lib/match";
 import { recomputeSubcategory } from "@/seed/placeholder";
@@ -23,6 +32,7 @@ import type {
   PlaceHit,
   PlaceSearchHit,
   ProfileView,
+  PublicationStat,
   ProposedItem,
   RankedList,
   Repository,
@@ -541,6 +551,33 @@ export class MemoryRepository implements Repository {
       votes: this.store.votes.length,
       subcategories: this.store.subcategories.length,
     };
+  }
+
+  publicationStats(): PublicationStat[] {
+    // Aggregate every seedSource across live contenders → canonical publication, weight, dish count.
+    const agg = new Map<
+      string,
+      { weight: number; recognized: boolean; examples: PublicationStat["examples"]; count: number }
+    >();
+    for (const c of this.store.contenders) {
+      if (c.status === "hidden" || c.status === "proposed") continue;
+      for (const raw of c.seedSources ?? []) {
+        const name = publicationName(raw);
+        const recognized = name !== raw || publicationWeight(raw) !== DEFAULT_PUBLICATION_WEIGHT;
+        let e = agg.get(name);
+        if (!e) {
+          e = { weight: publicationWeight(raw), recognized, examples: [], count: 0 };
+          agg.set(name, e);
+        }
+        e.count++;
+        if (e.examples.length < 4) {
+          e.examples.push({ title: c.title, placeName: this.place(c.placeId)?.name ?? "", contenderId: c.id });
+        }
+      }
+    }
+    return [...agg.entries()]
+      .map(([name, e]) => ({ name, weight: e.weight, dishCount: e.count, recognized: e.recognized, examples: e.examples }))
+      .sort((a, b) => b.weight - a.weight || b.dishCount - a.dishCount);
   }
 
   // --- add-a-place flow ----------------------------------------------------------

@@ -30,6 +30,7 @@ export default async function AdminPage() {
   const repo = getRepo();
   const stats = repo.stats();
   const pending = repo.listProposed().length;
+  const pubs = repo.publicationStats();
 
   const cards: { label: string; value: number | string }[] = [
     { label: "Pending review", value: pending },
@@ -78,6 +79,24 @@ export default async function AdminPage() {
                 {pending}
               </span>
             )}
+            <span className="text-[var(--color-ink-dim)]">→</span>
+          </span>
+        </Link>
+
+        <Link
+          href="/admin/publications"
+          className="flex items-center justify-between rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition hover:border-[var(--color-brand)]"
+        >
+          <span>
+            <span className="block font-bold">Publications</span>
+            <span className="block text-sm text-[var(--color-ink-dim)]">
+              The editorial sources backing the rankings (50% of every score).
+            </span>
+          </span>
+          <span className="flex shrink-0 items-center gap-3">
+            <span className="rounded-full bg-[var(--color-surface-2)] px-2.5 py-1 text-xs font-bold text-[var(--color-ink-dim)]">
+              {pubs.length}
+            </span>
             <span className="text-[var(--color-ink-dim)]">→</span>
           </span>
         </Link>

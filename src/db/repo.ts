@@ -145,6 +145,16 @@ export interface PinnacleItem extends ContenderView {
   emoji: string;
 }
 
+/** Aggregated publication backing for the admin panel. */
+export interface PublicationStat {
+  name: string; // canonical publication name (or the raw source if unrecognized)
+  weight: number; // publication-class weight (drives the 50% editorial share)
+  dishCount: number; // how many ranked dishes cite it
+  recognized: boolean; // true if it matched the PUBLICATIONS registry
+  /** A few example dishes it backs (title · place). */
+  examples: { title: string; placeName: string; contenderId: string }[];
+}
+
 /** A compact user card for follower/following lists + discovery. */
 export interface UserCard {
   handle: string;
@@ -218,6 +228,8 @@ export interface Repository {
   }): User;
   getUser(id: string): User | null;
   stats(): { contenders: number; comparisons: number; votes: number; subcategories: number };
+  /** Publications backing the rankings, aggregated for the admin panel (weight + how many dishes cite each). */
+  publicationStats(): PublicationStat[];
 
   // --- add-a-place flow ---
   /** Autocomplete real NYC places (corpus + existing) for adding under a food type. */
