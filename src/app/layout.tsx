@@ -4,7 +4,7 @@ import "./globals.css";
 import SearchBar from "@/components/SearchBar";
 
 export const metadata: Metadata = {
-  title: "Bandana Faves — the best food in NYC, ranked by the food",
+  title: "Bandana Faves · the best food in NYC, ranked by the food",
   description:
     "Crowd-ranked best-of lists by food type. Best ramen in NYC. Best slice. Best dumpling. The food is the headline; the place is the subtitle.",
 };
@@ -34,16 +34,13 @@ export default function RootLayout({
               </div>
               <div className="ml-auto flex items-center gap-4 text-sm text-[var(--color-ink-dim)] sm:ml-0">
                 <Link
-                  href="/add"
+                  href="/nyc"
                   className="rounded-lg bg-[var(--color-brand)] px-3 py-1.5 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
                 >
-                  ＋ Add
+                  ＋ Rank Food
                 </Link>
                 <Link href="/map" className="hover:text-[var(--color-ink)]">
                   Map
-                </Link>
-                <Link href="/duel" className="hover:text-[var(--color-ink)]">
-                  Duel
                 </Link>
                 <Link href="/review" className="hidden hover:text-[var(--color-ink)] sm:inline">
                   Review
@@ -55,7 +52,7 @@ export default function RootLayout({
             </div>
           </header>
           <div className="border-b border-[var(--color-border)] bg-[var(--color-banner)] px-4 py-1.5 text-center text-xs font-medium text-[var(--color-ink)]">
-            ⭐ Every list is seeded from NYC&apos;s 2025+ best-of guides — rankings move as people duel &amp; rate. Photos are coming (user-uploaded).
+            ⭐ Every list is seeded from NYC&apos;s 2025+ best-of guides. Rankings move as people duel &amp; rate. Photos are coming (user-uploaded).
           </div>
           <main className="flex-1">{children}</main>
           <footer className="border-t border-[var(--color-border)] px-4 py-6 text-center text-xs text-[var(--color-ink-dim)]">

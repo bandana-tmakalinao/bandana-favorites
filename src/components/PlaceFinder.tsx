@@ -13,7 +13,7 @@ interface Hit {
   dishCount: number;
 }
 
-export default function PlaceFinder() {
+export default function PlaceFinder({ sub }: { sub?: string }) {
   const router = useRouter();
   const [q, setQ] = useState("");
   const [hits, setHits] = useState<Hit[]>([]);
@@ -53,7 +53,7 @@ export default function PlaceFinder() {
         {hits.map((h) => (
           <button
             key={h.id}
-            onClick={() => router.push(`/p/${encodeURIComponent(h.id)}`)}
+            onClick={() => router.push(`/p/${encodeURIComponent(h.id)}${sub ? `?sub=${encodeURIComponent(sub)}` : ""}`)}
             className="flex w-full items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 text-left transition hover:border-[var(--color-brand)]"
           >
             <span className="min-w-0 flex-1">

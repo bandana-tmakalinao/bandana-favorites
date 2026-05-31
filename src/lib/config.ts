@@ -89,7 +89,11 @@ export const MATCH = {
  * confidence in their ranking. Direct /nyc/<slug> links still resolve — this only removes them from
  * being surfaced. Add or remove slugs here to toggle a category's visibility.
  */
-export const HIDDEN_SUBCATEGORIES: ReadonlySet<string> = new Set<string>(["dim-sum"]);
+export const HIDDEN_SUBCATEGORIES: ReadonlySet<string> = new Set<string>([
+  "dim-sum",
+  "chopped-cheese",
+  "black-and-white-cookie",
+]);
 
 export type ConfidenceTier = "provisional" | "rising" | "established";
 

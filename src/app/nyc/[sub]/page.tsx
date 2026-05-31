@@ -6,6 +6,7 @@ import BrowseView from "@/components/BrowseView";
 import AddPlace from "@/components/AddPlace";
 import CategoryFavoriteBanner from "@/components/CategoryFavoriteBanner";
 import CategoryOnboarding from "@/components/CategoryOnboarding";
+import CategoryAlsoTried from "@/components/CategoryAlsoTried";
 
 export const dynamic = "force-dynamic";
 
@@ -16,8 +17,15 @@ export async function generateMetadata({ params }: { params: Promise<{ sub: stri
   return { title: `Best ${list.subcategory.name} in NYC · Bandana Faves` };
 }
 
-export default async function SubcategoryPage({ params }: { params: Promise<{ sub: string }> }) {
+export default async function SubcategoryPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ sub: string }>;
+  searchParams: Promise<{ welcome?: string }>;
+}) {
   const { sub } = await params;
+  const { welcome } = await searchParams;
   const list = getRepo().getRankedList(sub);
   if (!list) notFound();
 
@@ -63,8 +71,35 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
       </div>
 
       <div className="mt-6">
+        {!user && (
+          <div className="mb-4 flex items-center gap-4 rounded-xl border border-[var(--color-brand)]/30 bg-[var(--color-brand)]/5 p-4">
+            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[var(--color-brand)]/15 text-2xl">
+              🍴
+            </div>
+            <div className="min-w-0 flex-1">
+              <p className="font-semibold">Rank your favorite {subcategory.name.toLowerCase()}</p>
+              <p className="text-sm text-[var(--color-ink-dim)]">
+                Sign in or create an account to set your favorite and add the spots you&apos;ve tried.
+              </p>
+            </div>
+            <Link
+              href={`/me?returnTo=${encodeURIComponent(`/nyc/${subcategory.slug}`)}`}
+              className="shrink-0 rounded-lg bg-[var(--color-brand)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
+            >
+              Sign in →
+            </Link>
+          </div>
+        )}
         {favoriteView && (
           <CategoryFavoriteBanner sub={subcategory.slug} subName={subcategory.name} favorite={favoriteView} />
+        )}
+        {user && favoriteId && welcome && (
+          <CategoryAlsoTried
+            sub={subcategory.slug}
+            subName={subcategory.name}
+            favoriteId={favoriteId}
+            others={ranked.filter((v) => v.id !== favoriteId).slice(0, 20)}
+          />
         )}
         {user && !favoriteId && (
           <CategoryOnboarding sub={subcategory.slug} subName={subcategory.name} top20={ranked.slice(0, 20)} />

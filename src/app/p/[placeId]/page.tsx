@@ -13,8 +13,15 @@ export async function generateMetadata({ params }: { params: Promise<{ placeId: 
   return { title: d ? `${d.place.name} · Bandana Faves` : "Not found · Bandana Faves" };
 }
 
-export default async function PlacePage({ params }: { params: Promise<{ placeId: string }> }) {
+export default async function PlacePage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ placeId: string }>;
+  searchParams: Promise<{ sub?: string }>;
+}) {
   const { placeId } = await params;
+  const { sub } = await searchParams;
   const detail = getRepo().getPlaceDetail(decodeURIComponent(placeId));
   if (!detail) notFound();
 
@@ -94,7 +101,7 @@ export default async function PlacePage({ params }: { params: Promise<{ placeId:
           </div>
         )}
 
-        <AddDishHere placeId={place.id} groups={groups} signedIn={!!user} existing={existing} />
+        <AddDishHere placeId={place.id} groups={groups} signedIn={!!user} existing={existing} initialSub={sub} />
       </div>
     </div>
   );

@@ -24,15 +24,17 @@ export default function AddDishHere({
   groups,
   signedIn,
   existing = {},
+  initialSub,
 }: {
   placeId: string;
   groups: CatGroup[];
   signedIn: boolean;
   existing?: Record<string, { id: string; title: string }[]>; // dishes already logged here, per food type
+  initialSub?: string;
 }) {
   const router = useRouter();
-  const [open, setOpen] = useState(false);
-  const [sub, setSub] = useState("");
+  const [open, setOpen] = useState(!!initialSub);
+  const [sub, setSub] = useState(initialSub ?? "");
   const [dish, setDish] = useState("");
   const [note, setNote] = useState("");
   const [names, setNames] = useState<string[]>([]);

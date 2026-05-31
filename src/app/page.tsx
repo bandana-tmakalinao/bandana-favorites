@@ -21,14 +21,14 @@ export default function Home() {
         <div>
           <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-xs text-[var(--color-ink-dim)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-good)]" />
-            Now ranking — New York City
+            Now ranking · New York City
           </p>
           <h1 className="text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">
             The best food in NYC, ranked by the <span className="text-[var(--color-brand)]">food</span>.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-[var(--color-ink-dim)]">
             Not &ldquo;best restaurants.&rdquo; Best <em>ramen</em>. Best <em>pizza</em>. The dish is the
-            headline; the place is the subtitle. Ranked by head-to-head comparisons and earned trust —
+            headline; the place is the subtitle. Ranked by head-to-head comparisons and earned trust,
             never mass voting.
           </p>
           <div className="mt-6 max-w-xl">
@@ -38,12 +38,6 @@ export default function Home() {
             <Link
               href="/nyc"
               className="rounded-lg bg-[var(--color-brand)] px-5 py-3 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
-            >
-              Explore all Categories
-            </Link>
-            <Link
-              href="/duel"
-              className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-3 font-semibold transition hover:border-[var(--color-ink-dim)]"
             >
               Rank Food →
             </Link>

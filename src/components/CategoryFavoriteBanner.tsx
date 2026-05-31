@@ -27,6 +27,12 @@ export default function CategoryFavoriteBanner({
       <div className="flex shrink-0 items-center gap-3">
         <ScoreBadge score={favorite.score} size="sm" />
         <Link
+          href={`/add?sub=${sub}`}
+          className="rounded-lg bg-[var(--color-brand)] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
+        >
+          Add a {subName.toLowerCase()} you tried →
+        </Link>
+        <Link
           href={`/duel?sub=${sub}&keep=${favorite.id}`}
           className="text-sm font-semibold text-[var(--color-brand)] hover:underline"
         >
