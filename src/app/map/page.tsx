@@ -2,7 +2,7 @@ import { getRepo } from "@/db/repo";
 import CityMap, { type CityGroup } from "@/components/CityMap";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Map · Bandana Favorites" };
+export const metadata = { title: "Map · Bandana Faves" };
 
 // Every real, geocoded food type — each a colored, toggleable layer on the citywide map.
 const LAYERS = [

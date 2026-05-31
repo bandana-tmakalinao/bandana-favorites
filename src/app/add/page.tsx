@@ -3,7 +3,7 @@ import { getCurrentUser } from "@/lib/auth";
 import PlaceFinder from "@/components/PlaceFinder";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Add a favorite · Bandana Favorites" };
+export const metadata = { title: "Add a favorite · Bandana Faves" };
 
 export default async function AddPage() {
   const user = await getCurrentUser();

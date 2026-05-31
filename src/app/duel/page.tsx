@@ -4,7 +4,7 @@ import DuelBoard from "@/components/DuelBoard";
 import type { ContenderView } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Duel · Bandana Favorites" };
+export const metadata = { title: "Duel · Bandana Faves" };
 
 export default async function DuelPage({
   searchParams,

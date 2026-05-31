@@ -8,7 +8,7 @@ import { btn } from "@/components/bits";
 import { isGoogleEnabled } from "@/lib/oauth";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Your profile · Bandana Favorites" };
+export const metadata = { title: "Your profile · Bandana Faves" };
 
 export default async function MePage() {
   const user = await getCurrentUser();

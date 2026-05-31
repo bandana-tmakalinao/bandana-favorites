@@ -1,4 +1,4 @@
-# Bandana Favorites — Project Overview
+# Bandana Faves — Project Overview
 
 *A walkthrough of what this is, why it's built the way it is, and where it stands. Last updated 2026-05-29.*
 
@@ -6,7 +6,7 @@
 
 ## 1. The one-sentence pitch
 
-**Bandana Favorites ranks food, not restaurants.** You don't browse "restaurants near me" — you browse a
+**Bandana Faves ranks food, not restaurants.** You don't browse "restaurants near me" — you browse a
 *dish*: "best ramen in NYC" returns an absolute, community-built ranked list of ramens, where the **food
 is the headline and the place is the subtitle**. The order is earned through trust-weighted head-to-head
 comparisons, not star averages or mass voting.

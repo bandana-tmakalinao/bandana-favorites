@@ -12,8 +12,8 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ sub: string }> }) {
   const { sub } = await params;
   const list = getRepo().getRankedList(sub);
-  if (!list) return { title: "Not found · Bandana Favorites" };
-  return { title: `Best ${list.subcategory.name} in NYC · Bandana Favorites` };
+  if (!list) return { title: "Not found · Bandana Faves" };
+  return { title: `Best ${list.subcategory.name} in NYC · Bandana Faves` };
 }
 
 export default async function SubcategoryPage({ params }: { params: Promise<{ sub: string }> }) {

@@ -4,7 +4,7 @@ import "./globals.css";
 import SearchBar from "@/components/SearchBar";
 
 export const metadata: Metadata = {
-  title: "Bandana Favorites — the best food in NYC, ranked by the food",
+  title: "Bandana Faves — the best food in NYC, ranked by the food",
   description:
     "Crowd-ranked best-of lists by food type. Best ramen in NYC. Best slice. Best dumpling. The food is the headline; the place is the subtitle.",
 };
@@ -23,7 +23,7 @@ export default function RootLayout({
                   B
                 </span>
                 <span className="tracking-tight">
-                  Bandana <span className="text-[var(--color-brand)]">Favorites</span>
+                  Bandana <span className="text-[var(--color-brand)]">Faves</span>
                 </span>
               </Link>
               <span className="ml-1 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs text-[var(--color-ink-dim)]">
@@ -59,7 +59,7 @@ export default function RootLayout({
           </div>
           <main className="flex-1">{children}</main>
           <footer className="border-t border-[var(--color-border)] px-4 py-6 text-center text-xs text-[var(--color-ink-dim)]">
-            Bandana Favorites · ranked by comparisons & earned trust, not mass voting · NYC
+            Bandana Faves · ranked by comparisons & earned trust, not mass voting · NYC
           </footer>
         </div>
       </body>

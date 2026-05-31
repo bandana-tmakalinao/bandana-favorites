@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ placeId: string }> }) {
   const { placeId } = await params;
   const d = getRepo().getPlaceDetail(decodeURIComponent(placeId));
-  return { title: d ? `${d.place.name} · Bandana Favorites` : "Not found · Bandana Favorites" };
+  return { title: d ? `${d.place.name} · Bandana Faves` : "Not found · Bandana Faves" };
 }
 
 export default async function PlacePage({ params }: { params: Promise<{ placeId: string }> }) {

@@ -3,7 +3,7 @@ import { getCurrentUser } from "@/lib/auth";
 import ReviewQueue from "@/components/ReviewQueue";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Curator review · Bandana Favorites" };
+export const metadata = { title: "Curator review · Bandana Faves" };
 
 export default async function ReviewPage() {
   const user = await getCurrentUser();

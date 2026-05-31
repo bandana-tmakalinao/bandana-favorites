@@ -2,7 +2,7 @@
   "name": "bandana-favorites",
   "version": "0.1.0",
   "private": true,
-  "description": "Bandana Favorites \u2014 crowd-ranked best-of-NYC by food type (the food is the title, the place is the subtitle).",
+  "description": "Bandana Faves \u2014 crowd-ranked best-of-NYC by food type (the food is the title, the place is the subtitle).",
   "engines": {
     "node": ">=20"
   },

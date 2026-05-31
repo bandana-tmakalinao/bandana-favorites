@@ -4,7 +4,7 @@ import { PhotoThumb, ScoreBadge } from "@/components/bits";
 import SearchBar from "@/components/SearchBar";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Search · Bandana Favorites" };
+export const metadata = { title: "Search · Bandana Faves" };
 
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const { q = "" } = await searchParams;

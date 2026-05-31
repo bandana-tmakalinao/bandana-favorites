@@ -1,4 +1,4 @@
-# Build log & decisions — Bandana Favorites
+# Build log & decisions — Bandana Faves
 
 Autonomous overnight build (started 2026-05-29). This file logs the decisions I made without you and
 the questions for you to answer in the morning. Nothing here is irreversible.
@@ -190,7 +190,7 @@ in `config.ts`.
    billable / outward-facing and were left for your sign-off. The Drizzle schema, migrations config,
    and Postgres repository are written and ready — provisioning is a morning step.
 
-3. **Folder location:** `~/Library/Mobile Documents/com~apple~CloudDocs/Bandana Favorites` (per the
+3. **Folder location:** `~/Library/Mobile Documents/com~apple~CloudDocs/Bandana Faves` (per the
    approved plan; matches your other Bandana projects). ⚠️ See open question #1 about iCloud +
    `node_modules`.
 

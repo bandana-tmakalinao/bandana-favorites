@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
-  return { title: `@${handle} · Bandana Favorites` };
+  return { title: `@${handle} · Bandana Faves` };
 }
 
 export default async function ProfilePage({ params }: { params: Promise<{ handle: string }> }) {

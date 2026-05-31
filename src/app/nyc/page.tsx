@@ -3,7 +3,7 @@ import { getRepo } from "@/db/repo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "NYC — browse by food · Bandana Favorites" };
+export const metadata = { title: "NYC — browse by food · Bandana Faves" };
 
 // A warm tint per category kind, so the grid reads as a vibrant menu even before photos exist.
 const KIND_TINT: Record<string, string> = {

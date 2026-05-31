@@ -1,4 +1,4 @@
-# Bandana Favorites
+# Bandana Faves
 
 Crowd-ranked **best-of-NYC by food type**. You browse a _food_ — "best ramen in NYC" — and get an
 absolute, community-built ranked list of ramens, where the **food is the title** and the **place is the
