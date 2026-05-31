@@ -239,6 +239,15 @@ DECISIONS.md           # autonomous build log + open questions for the founder
 
 ---
 
-*See also: `README.md` (quick start), `DECISIONS.md` (build log + open questions),
-`docs/data-sourcing-research.md` (the legal sourcing analysis), and the original build plan at
-`~/.claude/plans/i-want-to-build-ancient-hamming.md`.*
+## 13. Deep-dive docs
+
+Per-subsystem reference lives in **`docs/architecture/`** (index: `docs/architecture/README.md`) —
+one `.md` each for: domain-model, data-layer, ranking-engine, match-and-dedupe, auth-and-trust,
+add-and-curation, showcase-ui, share-images, pages-and-flows, deployment-and-ops. This file is the
+big picture; those are how each part actually works.
+
+---
+
+*See also: `docs/architecture/` (subsystem deep-dives), `README.md` (quick start), `DECISIONS.md`
+(build log + open questions), `docs/data-sourcing-research.md` (the legal sourcing analysis), and the
+original build plan at `~/.claude/plans/i-want-to-build-ancient-hamming.md`.*
