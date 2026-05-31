@@ -1,23 +1,28 @@
 import { NextResponse } from "next/server";
 import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
+import { isModerator } from "@/lib/moderation";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-// In production this is gated on user.isCurator; in the scaffold any signed-in user can review.
-async function requireReviewer() {
+async function requireModerator() {
   const user = await getCurrentUser();
-  return user;
+  if (!user) return { error: "auth" as const, status: 401 };
+  if (!isModerator(user)) return { error: "forbidden" as const, status: 403 };
+  return { user };
 }
 
 export async function GET() {
-  if (!(await requireReviewer())) return NextResponse.json({ error: "Sign in." }, { status: 401 });
+  const gate = await requireModerator();
+  if ("error" in gate) return NextResponse.json({ error: gate.error }, { status: gate.status });
   return NextResponse.json({ proposed: getRepo().listProposed() });
 }
 
 export async function POST(req: Request) {
-  if (!(await requireReviewer())) return NextResponse.json({ error: "Sign in." }, { status: 401 });
+  const gate = await requireModerator();
+  if ("error" in gate) return NextResponse.json({ error: gate.error }, { status: gate.status });
+
   const body = await req.json().catch(() => null);
   const contenderId = body?.contenderId as string | undefined;
   const approve = !!body?.approve;

@@ -1,34 +1,30 @@
 import { NextResponse } from "next/server";
-import fs from "node:fs/promises";
-import path from "node:path";
-import crypto from "node:crypto";
-import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
+import { getRepo } from "@/db/repo";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const ALLOWED: Record<string, string> = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp" };
-const MAX_BYTES = 6 * 1024 * 1024;
+// Avatars are stored inline as a small JPEG data URL on the user record. The client resizes to
+// 256×256 before upload, so the payload is tiny and persists in the DB — no disk writes (ephemeral
+// on Render) and no object storage needed. Cap defends against oversized / non-image payloads.
+const MAX_LEN = 400_000; // ~300KB image after base64 overhead
+const DATA_URL_RE = /^data:image\/(png|jpe?g|webp);base64,[A-Za-z0-9+/=]+$/;
 
-// Dev path: store on local disk under public/uploads (same as dish photos). R2 in production.
 export async function POST(req: Request) {
   const user = await getCurrentUser();
-  if (!user) return NextResponse.json({ error: "Sign in." }, { status: 401 });
+  if (!user) return NextResponse.json({ ok: false, error: "Sign in to set a photo." }, { status: 401 });
 
-  const form = await req.formData().catch(() => null);
-  const file = form?.get("file");
-  if (!(file instanceof File)) return NextResponse.json({ error: "No file." }, { status: 400 });
-  const ext = ALLOWED[file.type];
-  if (!ext) return NextResponse.json({ error: "Use a JPEG, PNG, or WebP image." }, { status: 400 });
-  if (file.size > MAX_BYTES) return NextResponse.json({ error: "Image must be under 6 MB." }, { status: 400 });
+  const body = await req.json().catch(() => null);
+  const dataUrl: unknown = body?.dataUrl;
 
-  const buf = Buffer.from(await file.arrayBuffer());
-  const dir = path.join(process.cwd(), "public", "uploads");
-  await fs.mkdir(dir, { recursive: true });
-  const filename = `avatar-${crypto.randomUUID()}.${ext}`;
-  await fs.writeFile(path.join(dir, filename), buf);
+  if (typeof dataUrl !== "string" || !DATA_URL_RE.test(dataUrl)) {
+    return NextResponse.json({ ok: false, error: "That doesn't look like an image." }, { status: 400 });
+  }
+  if (dataUrl.length > MAX_LEN) {
+    return NextResponse.json({ ok: false, error: "Image is too large." }, { status: 413 });
+  }
 
-  getRepo().setAvatar(user.id, `/uploads/${filename}`);
-  return NextResponse.json({ ok: true, url: `/uploads/${filename}` });
+  const result = getRepo().setAvatar(user.id, dataUrl);
+  return NextResponse.json({ ...result, url: dataUrl });
 }

@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { getRepo } from "@/db/repo";
 
 // getRepo() touches the node-only fs/db layer, so this OG route runs on the Node runtime.
@@ -7,6 +9,7 @@ export const dynamic = "force-dynamic";
 
 const W = 1080;
 const H = 1350;
+const N = 5; // Top 5 — cleaner + more breathing room than a packed Top 10.
 
 // Brand palette (hex only — Satori has no CSS vars).
 const INK = "#231c16";
@@ -28,39 +31,57 @@ function scoreColor(score: number): string {
   return "#7a7264";
 }
 
+// Embed the logo once as a data URI. We use a sips-re-encoded copy (logo-share.png) because
+// resvg (Satori's image decoder) rejects some PNG color-profile/metadata variants with
+// "Unsupported image type: unknown"; the re-encode strips that. Falls back to the coral "B"
+// tile (brandTile) if the file is missing or unreadable, so the poster always renders.
+let LOGO: string | null | undefined;
+function logo(): string | null {
+  if (LOGO === undefined) {
+    try {
+      const buf = readFileSync(join(process.cwd(), "public", "logo-share.png"));
+      LOGO = `data:image/png;base64,${buf.toString("base64")}`;
+    } catch {
+      LOGO = null;
+    }
+  }
+  return LOGO;
+}
+
 type Row = { rank: number; dish: string; place: string; score: number };
 
 function rowEl(r: Row, isTop: boolean) {
   const sc = scoreColor(r.score);
+  const medal = MEDAL[r.rank];
   return (
     <div
       key={r.rank}
       style={{
         display: "flex",
         alignItems: "center",
-        gap: 24,
+        gap: 28,
         width: 952,
-        height: isTop ? 96 : 84,
-        padding: isTop ? "0 20px" : "0 4px",
+        padding: "20px 24px",
+        borderRadius: 28,
         backgroundColor: isTop ? "#ffffff" : "transparent",
-        border: isTop ? `1px solid ${BORDER}` : "none",
-        borderRadius: isTop ? 20 : 0,
+        border: isTop ? `2px solid ${CORAL}` : `1px solid ${BORDER}`,
+        boxShadow: isTop ? "0 8px 22px rgba(224,128,84,0.20)" : "none",
       }}
     >
-      {/* medal / numeral — Satori rejects backgroundImage:"none", so only set it when a medal exists */}
+      {/* rank medal / numeral */}
       <div
         style={{
           display: "flex",
-          width: 68,
-          height: 68,
-          borderRadius: 34,
+          width: 86,
+          height: 86,
+          borderRadius: 43,
           alignItems: "center",
           justifyContent: "center",
           flexShrink: 0,
-          fontSize: 34,
-          fontWeight: 700,
-          ...(MEDAL[r.rank]
-            ? { backgroundImage: MEDAL[r.rank], color: "#ffffff" }
+          fontSize: 44,
+          fontWeight: 800,
+          ...(medal
+            ? { backgroundImage: medal, color: "#ffffff" }
             : { backgroundColor: CREAM2, color: DIM }),
         }}
       >
@@ -72,7 +93,7 @@ function rowEl(r: Row, isTop: boolean) {
         <div
           style={{
             display: "flex",
-            fontSize: isTop ? 44 : 38,
+            fontSize: isTop ? 52 : 46,
             fontWeight: 700,
             color: INK,
             whiteSpace: "nowrap",
@@ -85,37 +106,63 @@ function rowEl(r: Row, isTop: boolean) {
         <div
           style={{
             display: "flex",
-            fontSize: 26,
+            fontSize: 30,
             color: DIM,
-            marginTop: 4,
+            marginTop: 6,
             whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
           }}
         >
-          {r.place}
+          📍 {r.place}
         </div>
       </div>
 
-      {/* score badge (bordered box, matches the site's ScoreBadge) */}
+      {/* score */}
       <div
         style={{
           display: "flex",
-          width: isTop ? 104 : 92,
-          height: isTop ? 104 : 92,
-          borderRadius: 22,
+          width: 118,
+          height: 118,
+          borderRadius: 28,
           alignItems: "center",
           justifyContent: "center",
           flexShrink: 0,
-          fontSize: isTop ? 50 : 44,
+          fontSize: 58,
           fontWeight: 800,
-          border: `3px solid ${sc}`,
+          border: `4px solid ${sc}`,
           color: sc,
           backgroundColor: "#ffffff",
         }}
       >
         {r.score}
       </div>
+    </div>
+  );
+}
+
+function brandTile() {
+  const l = logo();
+  if (l) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={l} width={70} height={70} style={{ borderRadius: 16 }} alt="" />;
+  }
+  return (
+    <div
+      style={{
+        display: "flex",
+        width: 70,
+        height: 70,
+        borderRadius: 16,
+        backgroundColor: CORAL,
+        alignItems: "center",
+        justifyContent: "center",
+        color: "#ffffff",
+        fontSize: 40,
+        fontWeight: 800,
+      }}
+    >
+      B
     </div>
   );
 }
@@ -131,7 +178,7 @@ function poster(opts: {
   url: string;
   rows: Row[];
 }) {
-  const titleSize = opts.title.length > 16 ? 64 : 84;
+  const titleSize = opts.title.length > 16 ? 72 : 96;
   return (
     <div
       style={{
@@ -143,32 +190,32 @@ function poster(opts: {
         fontFamily: "sans-serif",
       }}
     >
-      {/* header band — gradient via backgroundImage (Satori supports linear-gradient strings) */}
+      {/* header band */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
-          padding: "60px 64px 40px",
+          padding: "66px 64px 46px",
           backgroundColor: opts.bandFrom,
           backgroundImage: `linear-gradient(135deg, ${opts.bandFrom} 0%, ${opts.bandTo} 100%)`,
           flexShrink: 0,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
           {opts.emoji ? (
-            <div style={{ display: "flex", fontSize: 100, lineHeight: 1 }}>{opts.emoji}</div>
+            <div style={{ display: "flex", fontSize: 124, lineHeight: 1 }}>{opts.emoji}</div>
           ) : (
             <div
               style={{
                 display: "flex",
-                width: 108,
-                height: 108,
-                borderRadius: 54,
+                width: 124,
+                height: 124,
+                borderRadius: 62,
                 alignItems: "center",
                 justifyContent: "center",
                 backgroundColor: CORAL,
                 color: "#ffffff",
-                fontSize: 54,
+                fontSize: 62,
                 fontWeight: 800,
                 flexShrink: 0,
               }}
@@ -180,9 +227,9 @@ function poster(opts: {
             <div
               style={{
                 display: "flex",
-                fontSize: 26,
+                fontSize: 31,
                 fontWeight: 700,
-                letterSpacing: 4,
+                letterSpacing: 7,
                 color: DIM,
                 textTransform: "uppercase",
               }}
@@ -195,8 +242,8 @@ function poster(opts: {
                 fontSize: titleSize,
                 fontWeight: 800,
                 color: INK,
-                lineHeight: 1.02,
-                marginTop: 4,
+                lineHeight: 1.0,
+                marginTop: 8,
                 whiteSpace: "nowrap",
                 overflow: "hidden",
                 textOverflow: "ellipsis",
@@ -206,30 +253,18 @@ function poster(opts: {
             </div>
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            fontSize: 30,
-            color: DIM,
-            marginTop: 18,
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {opts.tagline}
-        </div>
+        <div style={{ display: "flex", fontSize: 33, color: DIM, marginTop: 24 }}>{opts.tagline}</div>
       </div>
 
-      {/* list */}
+      {/* the 5 rows — even gaps fill the canvas (Satori has no space-evenly; use a gap + center) */}
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           flex: 1,
-          padding: "12px 48px",
-          gap: opts.rows.length >= 9 ? 0 : 4,
-          justifyContent: opts.rows.length >= 9 ? "flex-start" : "space-between",
+          padding: "34px 44px",
+          justifyContent: "center",
+          gap: 22,
         }}
       >
         {opts.rows.map((r, i) => rowEl(r, i === 0))}
@@ -241,36 +276,21 @@ function poster(opts: {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "28px 64px 52px",
+          padding: "26px 56px 52px",
           borderTop: `2px solid ${BORDER}`,
           flexShrink: 0,
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
-          <div
-            style={{
-              display: "flex",
-              width: 56,
-              height: 56,
-              borderRadius: 14,
-              backgroundColor: CORAL,
-              alignItems: "center",
-              justifyContent: "center",
-              color: "#ffffff",
-              fontSize: 34,
-              fontWeight: 800,
-            }}
-          >
-            B
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+          {brandTile()}
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", fontSize: 30, fontWeight: 800, color: INK }}>
+            <div style={{ display: "flex", fontSize: 33, fontWeight: 800, color: INK }}>
               Bandana Faves
             </div>
-            <div style={{ display: "flex", fontSize: 23, color: DIM }}>Ranked by duels, not stars</div>
+            <div style={{ display: "flex", fontSize: 25, color: DIM }}>Ranked by duels, not stars</div>
           </div>
         </div>
-        <div style={{ display: "flex", fontSize: 27, fontWeight: 700, color: CORAL }}>{opts.url}</div>
+        <div style={{ display: "flex", fontSize: 29, fontWeight: 700, color: CORAL }}>{opts.url}</div>
       </div>
     </div>
   );
@@ -310,7 +330,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
   if (kind === "category") {
     const list = repo.getRankedList(id);
     if (!list) return new Response("Not found", { status: 404 });
-    const rows: Row[] = list.ranked.slice(0, 10).map((v, i) => ({
+    const rows: Row[] = list.ranked.slice(0, N).map((v, i) => ({
       rank: v.rank ?? i + 1,
       dish: v.title,
       place: [v.placeName, v.neighborhood || v.borough].filter(Boolean).join(" · "),
@@ -324,7 +344,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
             bandTo: "#fbd9c6",
             emoji: list.subcategory.emoji,
             monogram: null,
-            kicker: `Top ${rows.length} in NYC`,
+            kicker: `Top ${Math.min(N, rows.length)} in NYC`,
             title: list.subcategory.name,
             tagline: "Ranked by head-to-head duels, not stars.",
             url: `faves.bandana.com/nyc/${id}`,
@@ -338,7 +358,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
     if (!profile) return new Response("Not found", { status: 404 });
     const first = (profile.name || "?").trim().charAt(0).toUpperCase() || "?";
     const firstName = profile.name.split(" ")[0] || profile.name;
-    const rows: Row[] = profile.pinnacle.slice(0, 10).map((p, i) => ({
+    const rows: Row[] = profile.pinnacle.slice(0, N).map((p, i) => ({
       rank: i + 1,
       dish: p.title,
       place: [p.placeName, p.subName].filter(Boolean).join(" · "),
@@ -352,7 +372,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
             bandTo: "#f8e3a6",
             emoji: null,
             monogram: first,
-            kicker: "NYC Dishes · Bandana Faves",
+            kicker: "Top NYC dishes",
             title: `${firstName}'s Top ${rows.length}`,
             tagline: `${firstName}'s all-time NYC favorites.`,
             url: `faves.bandana.com/u/${id}`,

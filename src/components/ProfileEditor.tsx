@@ -4,6 +4,26 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Avatar, btn } from "./bits";
 
+/**
+ * Resize + center-crop an image File to a square JPEG data URL, entirely in the browser. Keeps the
+ * upload tiny (~20–40KB) so the avatar can be stored inline in the DB — no disk writes (which don't
+ * persist on Render's ephemeral filesystem) and no object storage needed.
+ */
+async function resizeToDataUrl(file: File, size = 256): Promise<string> {
+  const bitmap = await createImageBitmap(file);
+  const s = Math.min(bitmap.width, bitmap.height);
+  const sx = (bitmap.width - s) / 2;
+  const sy = (bitmap.height - s) / 2;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("canvas");
+  ctx.drawImage(bitmap, sx, sy, s, s, 0, 0, size, size);
+  bitmap.close?.();
+  return canvas.toDataURL("image/jpeg", 0.85);
+}
+
 export default function ProfileEditor({
   name: initName,
   bio: initBio,
@@ -55,14 +75,21 @@ export default function ProfileEditor({
     setBusy(true);
     setMsg(null);
     try {
-      const fd = new FormData();
-      fd.append("file", f);
-      const r = await fetch("/api/profile/avatar", { method: "POST", body: fd });
-      const d = await r.json();
-      if (r.ok) {
+      const dataUrl = await resizeToDataUrl(f, 256);
+      const r = await fetch("/api/profile/avatar", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ dataUrl }),
+      });
+      const d = await r.json().catch(() => null);
+      if (r.ok && d?.url) {
         setAvatar(d.url);
         router.refresh();
-      } else setMsg(d.error ?? "Upload failed.");
+      } else {
+        setMsg(d?.error ?? "Upload failed — try a smaller image.");
+      }
+    } catch {
+      setMsg("Couldn't read that image. Try a JPG or PNG.");
     } finally {
       setBusy(false);
       if (fileRef.current) fileRef.current.value = "";
@@ -74,9 +101,9 @@ export default function ProfileEditor({
       <div className="flex items-center gap-4">
         <Avatar url={avatar} name={name} size={64} />
         <button onClick={() => fileRef.current?.click()} disabled={busy} className={btn("secondary")}>
-          Change photo
+          {busy ? "Working…" : avatar ? "Change photo" : "Add photo"}
         </button>
-        <input ref={fileRef} type="file" accept="image/jpeg,image/png,image/webp" className="hidden" onChange={onAvatar} />
+        <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={onAvatar} />
       </div>
 
       <div>
