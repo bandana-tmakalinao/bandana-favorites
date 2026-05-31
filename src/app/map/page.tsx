@@ -57,7 +57,7 @@ export default function MapPage() {
     <div className="mx-auto max-w-5xl px-4 py-8">
       <h1 className="text-3xl font-black tracking-tight">NYC&apos;s best, mapped</h1>
       <p className="mt-1 text-[var(--color-ink-dim)]">
-        Top spots across food types on one map. Tap a color to toggle a food; tap a pin for the dish.
+        Top spots across food types on one map. Tap a food to filter — add more, or show all. Hover a pin for the dish &amp; place.
       </p>
       <div className="mt-6">
         <CityMap groups={groups} />

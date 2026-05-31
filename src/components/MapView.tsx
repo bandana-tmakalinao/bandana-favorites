@@ -46,27 +46,40 @@ export default function MapView({ points, center }: { points: MapPoint[]; center
       const bounds = new maplibregl.LngLatBounds();
       for (const p of points) {
         const color = pinColor(p.rank);
-        // Teardrop pin (rotated rounded square) with the rank counter-rotated to read upright.
-        const el = document.createElement("a");
-        el.href = `/c/${p.id}`;
-        el.style.cssText = `display:grid;place-items:center;width:30px;height:30px;
-          border-radius:50% 50% 50% 0;transform:rotate(-45deg);
+        // Outer element = MapLibre's positioning target (it owns its transform). The teardrop visual
+        // lives on an INNER element so hover-scaling never fights MapLibre's translate (no jitter).
+        const el = document.createElement("div");
+        el.style.cursor = "pointer";
+        const pin = document.createElement("a");
+        pin.href = `/c/${p.id}`;
+        pin.style.cssText = `display:grid;place-items:center;width:30px;height:30px;
+          border-radius:50% 50% 50% 0;transform:rotate(-45deg);transform-origin:center;
           background:${color};box-shadow:0 2px 6px rgba(35,28,22,.35);
-          border:2px solid #fff;cursor:pointer;text-decoration:none;transition:transform .12s ease;`;
+          border:2px solid #fff;text-decoration:none;transition:transform .12s ease;`;
         const label = document.createElement("span");
         label.textContent = p.rank ? String(p.rank) : "•";
         label.style.cssText = `transform:rotate(45deg);color:#fff;font-weight:800;font-size:12px;line-height:1;`;
-        el.appendChild(label);
-        el.onmouseenter = () => (el.style.transform = "rotate(-45deg) scale(1.12)");
-        el.onmouseleave = () => (el.style.transform = "rotate(-45deg)");
-        const popup = new maplibregl.Popup({ offset: 22, closeButton: false }).setHTML(
-          `<div style="font-family:'Helvetica Neue',Helvetica,system-ui;min-width:160px">
-             <div style="font-weight:700;color:#231c16">${escapeHtml(p.title)}</div>
-             <div style="color:#7a7264;font-size:12px">${escapeHtml(p.placeName)}</div>
-             <div style="margin-top:4px;font-size:12px;color:#231c16">Score <b>${Math.round(p.score)}</b>${p.rank ? ` · #${p.rank}` : ""}</div>
-           </div>`,
-        );
-        new maplibregl.Marker({ element: el, anchor: "bottom" }).setLngLat([p.lng, p.lat]).setPopup(popup).addTo(map);
+        pin.appendChild(label);
+        el.appendChild(pin);
+
+        const popup = new maplibregl.Popup({ offset: 24, closeButton: false, closeOnClick: false })
+          .setLngLat([p.lng, p.lat])
+          .setHTML(
+            `<div style="font-family:'Helvetica Neue',Helvetica,system-ui;min-width:160px">
+               <div style="font-weight:700;color:#231c16">${escapeHtml(p.title)}</div>
+               <div style="color:#7a7264;font-size:12px">${escapeHtml(p.placeName)}</div>
+               <div style="margin-top:4px;font-size:12px;color:#231c16">Score <b>${Math.round(p.score)}</b>${p.rank ? ` · #${p.rank}` : ""}</div>
+             </div>`,
+          );
+        el.addEventListener("mouseenter", () => {
+          pin.style.transform = "rotate(-45deg) scale(1.15)";
+          popup.addTo(map!);
+        });
+        el.addEventListener("mouseleave", () => {
+          pin.style.transform = "rotate(-45deg)";
+          popup.remove();
+        });
+        new maplibregl.Marker({ element: el, anchor: "bottom" }).setLngLat([p.lng, p.lat]).addTo(map);
         bounds.extend([p.lng, p.lat]);
       }
       if (points.length) map.fitBounds(bounds, { padding: 64, maxZoom: 14, duration: 0 });
