@@ -29,6 +29,7 @@ import type {
   SearchHitContender,
   SearchResults,
   ShowcaseEntry,
+  UserCard,
 } from "./repo";
 import { type CorpusPlace, saveStore } from "./store";
 
@@ -862,8 +863,77 @@ export class MemoryRepository implements Repository {
     return { ok: true };
   }
 
+  // --- social graph --------------------------------------------------------------
+  /** Count of users who follow the given user id. */
+  private followerCountOf(userId: string): number {
+    let n = 0;
+    for (const u of this.store.users) if ((u.following ?? []).includes(userId)) n++;
+    return n;
+  }
+  private viewerFollows(viewerId: string | undefined, targetId: string): boolean {
+    if (!viewerId) return false;
+    const v = this.getUser(viewerId);
+    return !!v && (v.following ?? []).includes(targetId);
+  }
+  private toUserCard(u: User, viewerId?: string): UserCard {
+    return {
+      handle: u.handle,
+      name: u.name,
+      avatarUrl: u.avatarUrl ?? null,
+      bio: u.bio ?? "",
+      isCurator: u.isCurator,
+      followerCount: this.followerCountOf(u.id),
+      followedByViewer: this.viewerFollows(viewerId, u.id),
+    };
+  }
+
+  setFollow(userId: string, targetHandle: string, follow: boolean): { ok: boolean; error?: string } {
+    const me = this.getUser(userId);
+    if (!me) return { ok: false, error: "Sign in to follow." };
+    const target = this.store.users.find((u) => u.handle === targetHandle);
+    if (!target) return { ok: false, error: "User not found." };
+    if (target.id === me.id) return { ok: false, error: "You can't follow yourself." };
+    const list = new Set(me.following ?? []);
+    if (follow) list.add(target.id);
+    else list.delete(target.id);
+    me.following = [...list];
+    this.persist();
+    return { ok: true };
+  }
+
+  getFollowers(handle: string, viewerId?: string): UserCard[] {
+    const target = this.store.users.find((u) => u.handle === handle);
+    if (!target) return [];
+    return this.store.users
+      .filter((u) => (u.following ?? []).includes(target.id))
+      .map((u) => this.toUserCard(u, viewerId))
+      .sort((a, b) => b.followerCount - a.followerCount);
+  }
+
+  getFollowing(handle: string, viewerId?: string): UserCard[] {
+    const target = this.store.users.find((u) => u.handle === handle);
+    if (!target) return [];
+    const ids = new Set(target.following ?? []);
+    return this.store.users
+      .filter((u) => ids.has(u.id))
+      .map((u) => this.toUserCard(u, viewerId))
+      .sort((a, b) => b.followerCount - a.followerCount);
+  }
+
+  suggestedFollows(viewerId: string | undefined, limit = 8): UserCard[] {
+    const viewer = viewerId ? this.getUser(viewerId) : null;
+    const already = new Set(viewer?.following ?? []);
+    return this.store.users
+      .filter((u) => u.id !== viewerId && !already.has(u.id))
+      .map((u) => ({ card: this.toUserCard(u, viewerId), activity: u.ratedCount }))
+      // Surface trusted, active, well-followed tasters first.
+      .sort((a, b) => b.card.followerCount - a.card.followerCount || b.activity - a.activity)
+      .slice(0, limit)
+      .map((x) => x.card);
+  }
+
   // --- profiles + pinnacle -------------------------------------------------------
-  getProfile(handle: string): ProfileView | null {
+  getProfile(handle: string, viewerId?: string): ProfileView | null {
     const user = this.store.users.find((u) => u.handle === handle);
     if (!user) return null;
 
@@ -907,6 +977,11 @@ export class MemoryRepository implements Repository {
       avatarUrl: user.avatarUrl ?? null,
       trustScore: user.trustScore,
       ratedCount: user.ratedCount,
+      isCurator: user.isCurator,
+      followerCount: this.followerCountOf(user.id),
+      followingCount: (user.following ?? []).length,
+      followedByViewer: this.viewerFollows(viewerId, user.id),
+      isSelf: !!viewerId && viewerId === user.id,
       pinnacle,
       topPicks,
       showcase,

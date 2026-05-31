@@ -4,6 +4,7 @@ import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
 import { Avatar, ScoreBadge, btn } from "@/components/bits";
 import ShareButton from "@/components/ShareButton";
+import FollowButton from "@/components/FollowButton";
 
 export const dynamic = "force-dynamic";
 
@@ -14,27 +15,60 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
 
 export default async function ProfilePage({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
-  const profile = getRepo().getProfile(handle);
-  if (!profile) notFound();
   const me = await getCurrentUser();
-  const isYou = me?.handle === handle;
+  const profile = getRepo().getProfile(handle, me?.id);
+  if (!profile) notFound();
+  const isYou = profile.isSelf;
 
   return (
-    <div className="mx-auto max-w-3xl px-4 py-8">
-      <div className="flex items-start gap-4">
-        <Avatar url={profile.avatarUrl} name={profile.name} size={72} />
-        <div className="min-w-0 flex-1">
-          <h1 className="text-2xl font-black tracking-tight">{profile.name}</h1>
-          <p className="text-sm text-[var(--color-ink-dim)]">
-            @{profile.handle} · trust {profile.trustScore.toFixed(2)} · {profile.ratedCount} rated
-          </p>
-          {profile.bio && <p className="mt-2 text-[var(--color-ink)]">{profile.bio}</p>}
+    <div className="mx-auto max-w-3xl px-4 pb-10">
+      {/* Hero — gradient cover band with the avatar overlapping it */}
+      <div className="-mx-4 h-28 bg-gradient-to-br from-[#fde7dc] to-[#fbd9c6] sm:h-32" />
+      <div className="-mt-12 flex items-end gap-4 sm:-mt-14">
+        <span className="rounded-full ring-4 ring-[var(--color-bg)]">
+          <Avatar url={profile.avatarUrl} name={profile.name} size={96} />
+        </span>
+        <div className="flex-1 pb-1">
+          {isYou ? (
+            <Link href="/me" className={`${btn("secondary")} float-right`}>
+              Edit profile
+            </Link>
+          ) : (
+            <span className="float-right">
+              <FollowButton handle={profile.handle} initialFollowing={profile.followedByViewer} signedIn={!!me} />
+            </span>
+          )}
         </div>
-        {isYou && (
-          <Link href="/me" className={btn("secondary")}>
-            Edit
+      </div>
+
+      <div className="mt-3">
+        <h1 className="flex items-center gap-2 text-2xl font-black tracking-tight">
+          {profile.name}
+          {profile.isCurator && (
+            <span className="rounded-full bg-[var(--color-good)]/15 px-2 py-0.5 text-xs font-bold text-[var(--color-good)]">
+              ✓ Curator
+            </span>
+          )}
+        </h1>
+        <p className="text-sm text-[var(--color-ink-dim)]">@{profile.handle}</p>
+        {profile.bio && <p className="mt-2 max-w-xl text-[var(--color-ink)]">{profile.bio}</p>}
+
+        {/* Stat row — followers / following / rated / trust */}
+        <div className="mt-3 flex flex-wrap items-center gap-x-5 gap-y-1 text-sm">
+          <Link href={`/u/${profile.handle}/followers`} className="hover:text-[var(--color-brand)]">
+            <span className="font-black tabular-nums">{profile.followerCount}</span>{" "}
+            <span className="text-[var(--color-ink-dim)]">followers</span>
           </Link>
-        )}
+          <Link href={`/u/${profile.handle}/following`} className="hover:text-[var(--color-brand)]">
+            <span className="font-black tabular-nums">{profile.followingCount}</span>{" "}
+            <span className="text-[var(--color-ink-dim)]">following</span>
+          </Link>
+          <span>
+            <span className="font-black tabular-nums">{profile.ratedCount}</span>{" "}
+            <span className="text-[var(--color-ink-dim)]">rated</span>
+          </span>
+          <span className="text-[var(--color-ink-dim)]">trust {profile.trustScore.toFixed(2)}</span>
+        </div>
       </div>
 
       {/* 🥇 #1 Picks — the gold headline: your declared #1 in each showcased category */}

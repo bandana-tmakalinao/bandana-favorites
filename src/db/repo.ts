@@ -125,6 +125,18 @@ export interface PinnacleItem extends ContenderView {
   emoji: string;
 }
 
+/** A compact user card for follower/following lists + discovery. */
+export interface UserCard {
+  handle: string;
+  name: string;
+  avatarUrl: string | null;
+  bio: string;
+  isCurator: boolean;
+  followerCount: number;
+  /** Whether the current viewer follows this user (false when signed out). */
+  followedByViewer: boolean;
+}
+
 export interface ProfileView {
   handle: string;
   name: string;
@@ -132,6 +144,13 @@ export interface ProfileView {
   avatarUrl: string | null;
   trustScore: number;
   ratedCount: number;
+  isCurator: boolean;
+  followerCount: number;
+  followingCount: number;
+  /** Whether the viewer (if any) follows this profile. */
+  followedByViewer: boolean;
+  /** True when the profile being viewed is the viewer's own. */
+  isSelf: boolean;
   pinnacle: PinnacleItem[]; // ordered, all-time favorites (cross-category)
   /** The headline gold "#1 Picks" — one declared (or personal) #1 per showcased category. */
   topPicks: Array<{ subSlug: string; subName: string; emoji: string; contender: ContenderView }>;
@@ -208,8 +227,18 @@ export interface Repository {
   listProposed(): ProposedItem[];
   reviewProposed(contenderId: string, approve: boolean): { ok: boolean };
 
+  // --- social graph ---
+  /** Follow / unfollow by handle. Idempotent; can't follow yourself. */
+  setFollow(userId: string, targetHandle: string, follow: boolean): { ok: boolean; error?: string };
+  /** Users who follow `handle`. */
+  getFollowers(handle: string, viewerId?: string): UserCard[];
+  /** Users `handle` follows. */
+  getFollowing(handle: string, viewerId?: string): UserCard[];
+  /** Suggested people to follow (most-followed / most-active), excluding the viewer + who they follow. */
+  suggestedFollows(viewerId: string | undefined, limit?: number): UserCard[];
+
   // --- profiles + pinnacle ---
-  getProfile(handle: string): ProfileView | null;
+  getProfile(handle: string, viewerId?: string): ProfileView | null;
   updateProfile(userId: string, patch: { name?: string; bio?: string; showcase?: string[] }): { ok: boolean };
   setAvatar(userId: string, url: string): { ok: boolean };
   /** Manage the user's all-time-favorites list (add/remove/reorder). */

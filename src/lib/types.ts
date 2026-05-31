@@ -85,6 +85,8 @@ export interface User {
   avatarUrl?: string | null;
   showcase?: string[]; // subcategory slugs to feature on the profile
   pinnacle?: ID[]; // contender ids — the user's ordered, all-time favorite dishes (NYC)
+  /** User IDs this user follows (social graph). Followers are computed as the inverse. */
+  following?: ID[];
   categoryFavorites?: Record<string, ID>; // subSlug → contenderId (user's declared #1 per food type)
   /**
    * Per-category trust score (subSlug → 0–1). Auto-grows on each comparison in that category.
