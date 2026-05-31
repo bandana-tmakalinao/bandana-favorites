@@ -32,6 +32,7 @@ import type {
 import { generateSeed, computeAllRankings } from "@/seed/placeholder";
 import { MemoryRepository } from "./memory";
 import { loadCorpus, type CorpusPlace } from "./store";
+import { normalizeName } from "@/lib/match";
 
 type Sql = ReturnType<typeof postgres>;
 
@@ -315,6 +316,65 @@ function emptyStore(): StoreData {
 }
 
 /** Boot hook (called from instrumentation.register): create schema, load the store, or seed if empty. */
+/**
+ * Idempotent curated-seed top-up. The DB is only seeded when it's empty, so curated entries added to
+ * the seed files AFTER first launch (e.g. more pizzas at the top places) would otherwise never reach a
+ * live DB. This merges in any curated seed contender missing from the loaded store — matched by
+ * (place name × subcategory × dish title) so it never duplicates an existing or user-added dish, and
+ * it never deletes anything. New places are created from the seed fields when the place doesn't exist
+ * yet. Returns the number of contenders added; the caller recomputes rankings + flushes when > 0.
+ */
+function topUpSeed(store: StoreData): number {
+  const seed = generateSeed();
+  const region = store.regions[0];
+
+  const subSlugById = new Map(store.subcategories.map((s) => [s.id, s.slug]));
+  const liveSubBySlug = new Map(store.subcategories.map((s) => [s.slug, s]));
+  const placeById = new Map(store.places.map((p) => [p.id, p]));
+  const livePlaceByName = new Map<string, Place>();
+  for (const p of store.places) {
+    if (p.status !== "proposed") livePlaceByName.set(normalizeName(p.name), p);
+  }
+  const existingKey = new Set<string>();
+  for (const c of store.contenders) {
+    const place = placeById.get(c.placeId);
+    const slug = subSlugById.get(c.subcategoryId);
+    if (!place || !slug) continue;
+    existingKey.add(`${normalizeName(place.name)}|${slug}|${normalizeName(c.title)}`);
+  }
+
+  const seedSubSlugById = new Map(seed.subcategories.map((s) => [s.id, s.slug]));
+  const seedPlaceById = new Map(seed.places.map((p) => [p.id, p]));
+
+  let added = 0;
+  for (const sc of seed.contenders) {
+    const slug = seedSubSlugById.get(sc.subcategoryId);
+    const seedPlace = seedPlaceById.get(sc.placeId);
+    const liveSub = slug ? liveSubBySlug.get(slug) : undefined;
+    if (!slug || !seedPlace || !liveSub) continue;
+    const key = `${normalizeName(seedPlace.name)}|${slug}|${normalizeName(sc.title)}`;
+    if (existingKey.has(key)) continue;
+
+    let place = livePlaceByName.get(normalizeName(seedPlace.name));
+    if (!place) {
+      place = { ...seedPlace, id: crypto.randomUUID(), status: "active" };
+      store.places.push(place);
+      livePlaceByName.set(normalizeName(place.name), place);
+    }
+
+    store.contenders.push({
+      ...sc,
+      id: crypto.randomUUID(),
+      placeId: place.id,
+      subcategoryId: liveSub.id,
+      regionId: region.id,
+    });
+    existingKey.add(key);
+    added++;
+  }
+  return added;
+}
+
 export async function initPgStore(): Promise<void> {
   if (g.__bfPgController) return; // already initialized this process
   const sql = getSql();
@@ -326,6 +386,7 @@ export async function initPgStore(): Promise<void> {
   let store: StoreData;
   let seeded = false;
   let migrated = 0;
+  let toppedUp = 0;
   if (count > 0) {
     store = emptyStore();
     for (const spec of TABLES) {
@@ -345,9 +406,11 @@ export async function initPgStore(): Promise<void> {
         migrated++;
       }
     }
-    if (migrated > 0) {
+    // Merge in any curated seed entries added since first launch (idempotent — adds only what's missing).
+    toppedUp = topUpSeed(store);
+    if (migrated > 0 || toppedUp > 0) {
       computeAllRankings(store);
-      console.log(`[pg] ranking v2 migration: backfilled ${migrated} contenders + recomputed`);
+      console.log(`[pg] migration backfilled ${migrated}; seed top-up added ${toppedUp} — recomputed all rankings`);
     }
   } else {
     store = generateSeed();
@@ -356,8 +419,8 @@ export async function initPgStore(): Promise<void> {
   }
 
   const controller = new PgController(sql, store);
-  // Full write on first seed; also persist the one-time v2 migration so it isn't recomputed forever.
-  if (seeded || migrated > 0) await controller.flush();
+  // Full write on first seed; also persist the one-time v2 migration + any curated seed top-up.
+  if (seeded || migrated > 0 || toppedUp > 0) await controller.flush();
   g.__bfPgController = controller;
   g.__bfPgCorpus = loadCorpus();
 
