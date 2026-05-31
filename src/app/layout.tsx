@@ -19,9 +19,14 @@ export default function RootLayout({
           <header className="sticky top-0 z-30 border-b border-[var(--color-border)] bg-[var(--color-bg)]/85 backdrop-blur">
             <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
               <Link href="/" className="flex items-center gap-2 font-semibold">
-                <span className="grid h-7 w-7 place-items-center rounded-md bg-[var(--color-brand)] text-sm font-black text-white">
-                  B
-                </span>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/logo.png"
+                  alt="Bandana Faves"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 rounded-md"
+                />
                 <span className="tracking-tight">
                   Bandana <span className="text-[var(--color-brand)]">Faves</span>
                 </span>

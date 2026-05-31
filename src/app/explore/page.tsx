@@ -104,6 +104,7 @@ export default function ExplorePage() {
               entry={e}
               variant="cover"
               rows={10}
+              kicker="Featured · Top 10 in NYC"
               tint={FEATURED_TINTS[i % FEATURED_TINTS.length]}
               hook={HOOKS[e.slug] ?? `The best ${e.name.toLowerCase()} in NYC, ranked.`}
             />

@@ -22,16 +22,21 @@ export default function RankingCard({
   rows = 6,
   variant = "feed",
   hook,
+  kicker,
 }: {
   entry: ShowcaseEntry;
   tint: string;
   rows?: number;
   variant?: "feed" | "cover";
   hook?: string;
+  kicker?: string;
 }) {
   const cover = variant === "cover";
   const shown = entry.items.slice(0, rows);
   const total = entry.items.length;
+  // Count-honest label: never claim "Top 10" above fewer rows. Callers (e.g. /explore featured)
+  // can override with an explicit kicker.
+  const label = kicker ?? `Top ${Math.min(rows, total)} in NYC`;
 
   return (
     <div
@@ -56,7 +61,7 @@ export default function RankingCard({
                 cover ? "text-[11px]" : "text-[10px]"
               }`}
             >
-              {cover ? "Featured · Top 10 in NYC" : `Top ${Math.min(10, total)} in NYC`}
+              {label}
             </div>
             <h3
               className={`truncate font-black tracking-tight group-hover:text-[var(--color-brand-soft)] ${
