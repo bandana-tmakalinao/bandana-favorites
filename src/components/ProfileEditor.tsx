@@ -29,12 +29,14 @@ export default function ProfileEditor({
   bio: initBio,
   avatarUrl,
   showcase: initShowcase,
+  expertCategories: initExpert,
   cats,
 }: {
   name: string;
   bio: string;
   avatarUrl: string | null;
   showcase: string[];
+  expertCategories: string[];
   cats: { slug: string; name: string; emoji: string }[];
 }) {
   const router = useRouter();
@@ -42,6 +44,7 @@ export default function ProfileEditor({
   const [bio, setBio] = useState(initBio);
   const [avatar, setAvatar] = useState(avatarUrl);
   const [showcase, setShowcase] = useState<string[]>(initShowcase);
+  const [expert, setExpert] = useState<string[]>(initExpert);
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
@@ -50,7 +53,17 @@ export default function ProfileEditor({
     "w-full rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] px-3 py-2 outline-none focus:border-[var(--color-brand)]";
 
   function toggleCat(slug: string) {
-    setShowcase((s) => (s.includes(slug) ? s.filter((x) => x !== slug) : s.length >= 8 ? s : [...s, slug]));
+    setShowcase((s) => {
+      const next = s.includes(slug) ? s.filter((x) => x !== slug) : s.length >= 8 ? s : [...s, slug];
+      // Dropping a category from showcase also drops it from expert (expert ⊆ showcase).
+      if (!next.includes(slug)) setExpert((e) => e.filter((x) => x !== slug));
+      return next;
+    });
+  }
+  function toggleExpert(slug: string) {
+    setExpert((e) =>
+      e.includes(slug) ? e.filter((x) => x !== slug) : e.length >= 3 || !showcase.includes(slug) ? e : [...e, slug],
+    );
   }
 
   async function save() {
@@ -60,7 +73,7 @@ export default function ProfileEditor({
       const r = await fetch("/api/profile", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ name, bio, showcase }),
+        body: JSON.stringify({ name, bio, showcase, expertCategories: expert }),
       });
       setMsg(r.ok ? "Saved." : "Couldn't save.");
       if (r.ok) router.refresh();
@@ -118,18 +131,19 @@ export default function ProfileEditor({
           onChange={(e) => setBio(e.target.value)}
           maxLength={280}
           rows={3}
-          placeholder="Your taste in a sentence — what you live for, what you skip."
+          placeholder="Your taste in a sentence — what you live for, what you skip. (Shown when people find you.)"
           className={`${input} resize-none`}
         />
         <div className="mt-0.5 text-right text-[10px] text-[var(--color-ink-dim)]">{bio.length}/280</div>
       </div>
 
+      {/* Showcase — the categories you rank (≤8) */}
       <div>
         <label className="mb-1 block text-sm font-medium">
-          🥇 #1 Picks to showcase <span className="text-[var(--color-ink-dim)]">({showcase.length}/8)</span>
+          🍽️ Categories you rank <span className="text-[var(--color-ink-dim)]">({showcase.length}/8)</span>
         </label>
         <p className="mb-2 text-xs text-[var(--color-ink-dim)]">
-          Pick the categories you want to flex — your declared #1 in each shows in gold at the top of your profile.
+          Categories you feature — your personal ranking and #1 pick show on your profile.
         </p>
         <div className="flex flex-wrap gap-2">
           {cats.map((c) => {
@@ -145,6 +159,43 @@ export default function ProfileEditor({
                 }`}
               >
                 {c.emoji} {c.name}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Expert — star up to 3 of the above; these headline your follow card */}
+      <div>
+        <label className="mb-1 block text-sm font-medium">
+          ⭐ Show off as expert <span className="text-[var(--color-ink-dim)]">({expert.length}/3)</span>
+        </label>
+        <p className="mb-2 text-xs text-[var(--color-ink-dim)]">
+          Star up to 3 of the above — these become badges on your follow card so people know what to follow you for.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {showcase.length === 0 && (
+            <span className="text-xs text-[var(--color-ink-dim)]">Pick a category above first.</span>
+          )}
+          {showcase.map((slug) => {
+            const c = cats.find((x) => x.slug === slug);
+            if (!c) return null;
+            const on = expert.includes(slug);
+            const full = expert.length >= 3 && !on;
+            return (
+              <button
+                key={slug}
+                onClick={() => toggleExpert(slug)}
+                disabled={full}
+                className={`inline-flex items-center gap-1 rounded-full border px-3 py-1 text-sm transition ${
+                  on
+                    ? "border-[var(--color-brand)] bg-[var(--color-brand)]/10 font-semibold text-[var(--color-brand-soft)]"
+                    : full
+                      ? "cursor-not-allowed border-[var(--color-border)] text-[var(--color-ink-dim)]/50"
+                      : "border-[var(--color-border)] text-[var(--color-ink-dim)] hover:border-[var(--color-ink-dim)]"
+                }`}
+              >
+                <span aria-hidden>{on ? "⭐" : "☆"}</span> {c.emoji} {c.name}
               </button>
             );
           })}

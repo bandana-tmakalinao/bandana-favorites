@@ -84,6 +84,8 @@ export interface User {
   bio?: string;
   avatarUrl?: string | null;
   showcase?: string[]; // subcategory slugs to feature on the profile
+  /** Subcategory slugs the user wants to be known as an expert in (≤3, always a subset of showcase). */
+  expertCategories?: string[];
   pinnacle?: ID[]; // contender ids — the user's ordered, all-time favorite dishes (NYC)
   /** User IDs this user follows (social graph). Followers are computed as the inverse. */
   following?: ID[];

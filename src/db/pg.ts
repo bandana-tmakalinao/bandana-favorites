@@ -67,6 +67,7 @@ CREATE TABLE IF NOT EXISTS app_users (id text PRIMARY KEY, handle text, name tex
 ALTER TABLE app_users ADD COLUMN IF NOT EXISTS password_hash text;
 ALTER TABLE app_users ADD COLUMN IF NOT EXISTS email_verified boolean;
 ALTER TABLE app_users ADD COLUMN IF NOT EXISTS following text;
+ALTER TABLE app_users ADD COLUMN IF NOT EXISTS expert_categories text;
 CREATE INDEX IF NOT EXISTS idx_users_email ON app_users (lower(email));
 CREATE TABLE IF NOT EXISTS contenders (id text PRIMARY KEY, place_id text, subcategory_id text, region_id text, title text, description text, dish_variant_id text, seed_sources text, created_by text, created_at text, theta double precision, rd double precision, weighted_votes double precision, comparison_count integer, distinct_opponents integer, score double precision, sort_key double precision, status text, seed_score double precision, standing text, riser_score double precision);
 ALTER TABLE contenders ADD COLUMN IF NOT EXISTS seed_score double precision;
@@ -144,7 +145,7 @@ const TABLES: Spec<any>[] = [
   },
   {
     name: "app_users",
-    cols: ["id", "handle", "name", "trust_score", "rated_count", "is_curator", "created_at", "bio", "avatar_url", "email", "password_hash", "email_verified", "showcase", "pinnacle", "category_favorites", "category_trust", "category_roles", "oauth", "following"],
+    cols: ["id", "handle", "name", "trust_score", "rated_count", "is_curator", "created_at", "bio", "avatar_url", "email", "password_hash", "email_verified", "showcase", "pinnacle", "category_favorites", "category_trust", "category_roles", "oauth", "following", "expert_categories"],
     rows: (s) => s.users,
     toRow: (e: User) => ({
       id: e.id, handle: e.handle, name: e.name, trust_score: e.trustScore, rated_count: e.ratedCount,
@@ -152,6 +153,7 @@ const TABLES: Spec<any>[] = [
       password_hash: u(e.passwordHash), email_verified: u(e.emailVerified),
       showcase: J(e.showcase), pinnacle: J(e.pinnacle), category_favorites: J(e.categoryFavorites),
       category_trust: J(e.categoryTrust), category_roles: J(e.categoryRoles), oauth: J(e.oauth), following: J(e.following),
+      expert_categories: J(e.expertCategories),
     }),
     fromRow: (r): User => ({
       id: r.id as string, handle: r.handle as string, name: r.name as string, trustScore: r.trust_score as number,
@@ -164,6 +166,7 @@ const TABLES: Spec<any>[] = [
       categoryRoles: P(r.category_roles, undefined as Record<string, "member"> | undefined),
       oauth: P(r.oauth, undefined as User["oauth"]),
       following: P(r.following, undefined as string[] | undefined),
+      expertCategories: P(r.expert_categories, undefined as string[] | undefined),
     }),
     assign: (s, items) => (s.users = items),
   },

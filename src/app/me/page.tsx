@@ -36,6 +36,7 @@ export default async function MePage() {
               bio={user.bio ?? ""}
               avatarUrl={user.avatarUrl ?? null}
               showcase={user.showcase ?? []}
+              expertCategories={user.expertCategories ?? []}
               cats={cats}
             />
           </section>

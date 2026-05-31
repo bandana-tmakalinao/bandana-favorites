@@ -53,7 +53,7 @@ export default async function DiscoverPage() {
       {/* Top tasters */}
       <section className="mt-10">
         <h2 className="mb-1 text-xl font-black tracking-tight">⭐ Top tasters</h2>
-        <p className="mb-4 text-sm text-[var(--color-ink-dim)]">The most-followed palates on Bandana Faves.</p>
+        <p className="mb-4 text-sm text-[var(--color-ink-dim)]">The palates worth following — what they&apos;re known for, and their boldest calls.</p>
         <UserList users={tasters} signedIn={!!me} emptyText="No tasters to show yet." />
       </section>
     </div>

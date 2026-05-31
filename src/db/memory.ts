@@ -1002,6 +1002,7 @@ export class MemoryRepository implements Repository {
     return !!v && (v.following ?? []).includes(targetId);
   }
   private toUserCard(u: User, viewerId?: string): UserCard {
+    const expertSlugs = u.expertCategories ?? [];
     return {
       handle: u.handle,
       name: u.name,
@@ -1010,7 +1011,47 @@ export class MemoryRepository implements Repository {
       isCurator: u.isCurator,
       followerCount: this.followerCountOf(u.id),
       followedByViewer: this.viewerFollows(viewerId, u.id),
+      expertIn: this.expertBadges(u, expertSlugs),
+      goTos: this.favePicks(u, expertSlugs)
+        .slice(0, 2)
+        .map((p) => ({ subSlug: p.subSlug, emoji: p.emoji, title: p.contender.title, placeName: p.contender.placeName })),
     };
+  }
+
+  /** Resolve the user's self-declared expertise slugs into badge data (★ = curator-recognized). */
+  private expertBadges(u: User, slugs: string[]): UserCard["expertIn"] {
+    const out: UserCard["expertIn"] = [];
+    for (const slug of slugs) {
+      const sub = this.subBySlug(slug);
+      if (!sub) continue;
+      out.push({ subSlug: slug, subName: sub.name, emoji: sub.emoji, verified: u.categoryRoles?.[slug] === "member" });
+    }
+    return out;
+  }
+
+  /**
+   * The "go-to" #1 favorites for a set of categories (in slug order = the user's priority): their
+   * declared #1 (categoryFavorites) per category, falling back to their personal #1 from ratings/duels.
+   * Shared by the follow card (top 2) and the profile gold rail.
+   */
+  private favePicks(
+    user: User,
+    slugs: string[],
+  ): Array<{ subSlug: string; subName: string; emoji: string; contender: ContenderView }> {
+    const out: Array<{ subSlug: string; subName: string; emoji: string; contender: ContenderView }> = [];
+    for (const slug of slugs) {
+      const sub = this.subBySlug(slug);
+      if (!sub) continue;
+      const favId = user.categoryFavorites?.[slug];
+      let pick: ContenderView | undefined;
+      if (favId) {
+        const con = this.store.contenders.find((c) => c.id === favId && c.status !== "hidden");
+        if (con) pick = this.toView(con, null);
+      }
+      if (!pick) pick = this.getPersonalRankedList(user.id, slug)[0];
+      if (pick) out.push({ subSlug: slug, subName: sub.name, emoji: sub.emoji, contender: pick });
+    }
+    return out;
   }
 
   setFollow(userId: string, targetHandle: string, follow: boolean): { ok: boolean; error?: string } {
@@ -1177,6 +1218,7 @@ export class MemoryRepository implements Repository {
       trustScore: user.trustScore,
       ratedCount: user.ratedCount,
       isCurator: user.isCurator,
+      expertIn: this.expertBadges(user, user.expertCategories ?? []),
       followerCount: this.followerCountOf(user.id),
       followingCount: (user.following ?? []).length,
       followedByViewer: this.viewerFollows(viewerId, user.id),
@@ -1187,14 +1229,24 @@ export class MemoryRepository implements Repository {
     };
   }
 
-  updateProfile(userId: string, patch: { name?: string; bio?: string; showcase?: string[] }): { ok: boolean } {
+  updateProfile(userId: string, patch: { name?: string; bio?: string; showcase?: string[]; expertCategories?: string[] }): { ok: boolean } {
     const user = this.getUser(userId);
     if (!user) return { ok: false };
     if (typeof patch.name === "string" && patch.name.trim()) user.name = patch.name.trim().slice(0, 60);
     if (typeof patch.bio === "string") user.bio = patch.bio.slice(0, 280);
+    const valid = new Set(this.store.subcategories.map((s) => s.slug));
     if (Array.isArray(patch.showcase)) {
-      const valid = new Set(this.store.subcategories.map((s) => s.slug));
       user.showcase = patch.showcase.filter((s) => valid.has(s)).slice(0, 8);
+    }
+    // Expert categories: ≤3, always a SUBSET of showcase. Run after showcase so dropping a category
+    // from showcase auto-drops it from expert.
+    if (Array.isArray(patch.expertCategories)) {
+      const show = new Set(user.showcase ?? []);
+      user.expertCategories = patch.expertCategories.filter((s) => valid.has(s) && show.has(s)).slice(0, 3);
+    } else if (user.expertCategories) {
+      // Showcase changed without an explicit expert update → prune any now-invalid expert slugs.
+      const show = new Set(user.showcase ?? []);
+      user.expertCategories = user.expertCategories.filter((s) => show.has(s));
     }
     this.persist();
     return { ok: true };

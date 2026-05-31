@@ -71,6 +71,32 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
         </div>
       </div>
 
+      {/* Expert in — the ≤3 categories this person headlines (★ = curator-recognized) */}
+      {profile.expertIn.length > 0 && (
+        <div className="mt-4">
+          <p className="mb-1.5 text-[11px] font-bold uppercase tracking-[0.14em] text-[var(--color-ink-dim)]">
+            Expert in
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {profile.expertIn.map((e) => (
+              <Link
+                key={e.subSlug}
+                href={`/nyc/${e.subSlug}`}
+                className="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-brand)]/40 bg-[var(--color-brand)]/10 px-3 py-1 text-sm font-semibold text-[var(--color-brand-soft)] transition hover:border-[var(--color-brand)]"
+              >
+                <span aria-hidden>{e.emoji}</span>
+                {e.subName}
+                {e.verified && (
+                  <span aria-hidden className="text-[var(--color-gold)]" title="Curator-recognized expert">
+                    ★
+                  </span>
+                )}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* 🥇 #1 Picks — the gold headline: your declared #1 in each showcased category */}
       {profile.topPicks.length > 0 ? (
         <section className="mt-7">

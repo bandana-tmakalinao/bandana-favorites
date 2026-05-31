@@ -186,6 +186,10 @@ export interface UserCard {
   followerCount: number;
   /** Whether the current viewer follows this user (false when signed out). */
   followedByViewer: boolean;
+  /** Up to 3 self-declared expertise categories (★ verified = curator-recognized). The follow-card badges. */
+  expertIn: { subSlug: string; subName: string; emoji: string; verified: boolean }[];
+  /** Up to 2 "go-to" #1 favorites (dish + place) — the boldest calls that sell the follow. */
+  goTos: { subSlug: string; emoji: string; title: string; placeName: string }[];
 }
 
 export interface ProfileView {
@@ -203,6 +207,8 @@ export interface ProfileView {
   /** True when the profile being viewed is the viewer's own. */
   isSelf: boolean;
   pinnacle: PinnacleItem[]; // ordered, all-time favorites (cross-category)
+  /** Up to 3 self-declared expertise categories (★ = curator-recognized) — the "Expert in" badge row. */
+  expertIn: { subSlug: string; subName: string; emoji: string; verified: boolean }[];
   /** The headline gold "#1 Picks" — one declared (or personal) #1 per showcased category. */
   topPicks: Array<{ subSlug: string; subName: string; emoji: string; contender: ContenderView }>;
   showcase: Array<{ subSlug: string; subName: string; emoji: string; items: ContenderView[] }>;
@@ -305,7 +311,7 @@ export interface Repository {
 
   // --- profiles + pinnacle ---
   getProfile(handle: string, viewerId?: string): ProfileView | null;
-  updateProfile(userId: string, patch: { name?: string; bio?: string; showcase?: string[] }): { ok: boolean };
+  updateProfile(userId: string, patch: { name?: string; bio?: string; showcase?: string[]; expertCategories?: string[] }): { ok: boolean };
   setAvatar(userId: string, url: string): { ok: boolean };
   /** Manage the user's all-time-favorites list (add/remove/reorder). */
   pinnacleAction(
