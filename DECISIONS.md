@@ -3,6 +3,14 @@
 Autonomous overnight build (started 2026-05-29). This file logs the decisions I made without you and
 the questions for you to answer in the morning. Nothing here is irreversible.
 
+## Backlog — noted, not yet built
+
+- **Group map pins by restaurant.** When a place has more than one ranked dish (several dishes in one
+  category, or dishes across multiple categories), render a **single pin per restaurant** whose hover
+  popup **lists all its dishes** (food · place · score) instead of overlapping separate pins.
+  Implementation sketch: group points by `placeId`, one marker per place, popup renders the list.
+  (Tim noted 2026-05-31.)
+
 ## Update — password/email security hardening (2026-05-30)
 
 Treated the user-credential surface like a security review. **Passwords** (`src/lib/password.ts`):
