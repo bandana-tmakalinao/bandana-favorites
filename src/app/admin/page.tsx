@@ -84,6 +84,19 @@ export default async function AdminPage() {
         </Link>
 
         <Link
+          href="/admin/import"
+          className="flex items-center justify-between rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition hover:border-[var(--color-brand)]"
+        >
+          <span>
+            <span className="block font-bold">Import a menu</span>
+            <span className="block text-sm text-[var(--color-ink-dim)]">
+              Bulk-add a restaurant&apos;s dishes (they start unranked).
+            </span>
+          </span>
+          <span className="text-[var(--color-ink-dim)]">→</span>
+        </Link>
+
+        <Link
           href="/admin/publications"
           className="flex items-center justify-between rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5 transition hover:border-[var(--color-brand)]"
         >

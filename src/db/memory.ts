@@ -26,6 +26,8 @@ import type {
   CategoryWithSubs,
   ContenderDetail,
   DuelPair,
+  MenuImportInput,
+  MenuImportResult,
   PinnacleItem,
   PlaceDetail,
   PlaceDishView,
@@ -833,6 +835,92 @@ export class MemoryRepository implements Repository {
     recomputeSubcategory(this.store, sub.id);
     this.persist();
     return { ok: true, contenderId: con.id, placeId: place.id };
+  }
+
+  importMenu(input: MenuImportInput): MenuImportResult {
+    const region = this.store.regions[0];
+    const added: MenuImportResult["added"] = [];
+    const skipped: MenuImportResult["skipped"] = [];
+
+    // Resolve / create the place once for the whole menu.
+    let place: Place | undefined;
+    if (input.placeId) {
+      place = this.place(input.placeId);
+      if (!place && input.placeId.startsWith("corpus_")) {
+        const cp = this.corpus.find((c) => c.id === input.placeId);
+        if (cp) {
+          place = this.storePlaceForCorpus(cp);
+          if (!place) {
+            place = {
+              id: crypto.randomUUID(), name: cp.name, neighborhood: cp.borough, borough: cp.borough,
+              address: cp.address, lat: cp.lat, lng: cp.lng, corpusId: cp.id, status: "active",
+            };
+            this.store.places.push(place);
+          }
+        }
+      }
+    }
+    if (!place) {
+      // Match an existing place by name + proximity (if coords given), else create one.
+      const nn = normalizeName(input.placeName);
+      place = this.store.places.find(
+        (p) =>
+          p.status !== "proposed" &&
+          normalizeName(p.name) === nn &&
+          (input.lat == null || input.lng == null ||
+            (Math.abs(p.lat - input.lat) <= 0.003 && Math.abs(p.lng - input.lng) <= 0.003)),
+      );
+      if (!place) {
+        if (!input.placeName.trim()) return { ok: false, error: "Place name required.", added, skipped };
+        place = {
+          id: crypto.randomUUID(), name: input.placeName.trim(), neighborhood: input.borough ?? "",
+          borough: input.borough ?? "", address: input.address ?? "",
+          lat: input.lat ?? region.center.lat, lng: input.lng ?? region.center.lng,
+          corpusId: null, status: "active",
+        };
+        this.store.places.push(place);
+      }
+    }
+
+    const touchedSubs = new Set<string>();
+    for (const item of input.items) {
+      const sub = this.subBySlug(item.subSlug);
+      if (!sub) {
+        skipped.push({ subSlug: item.subSlug, dish: item.dish, reason: "unknown food type" });
+        continue;
+      }
+      if (!item.dish?.trim()) {
+        skipped.push({ subSlug: item.subSlug, dish: item.dish, reason: "empty dish name" });
+        continue;
+      }
+      const resolvedTitle = resolveDishName(item.dish, this.dishTitlesIn(sub.id), sub.name).name;
+      const existing = this.store.contenders.find(
+        (c) =>
+          c.placeId === place!.id &&
+          c.subcategoryId === sub.id &&
+          c.status !== "hidden" &&
+          normalizeName(c.title) === normalizeName(resolvedTitle),
+      );
+      if (existing) {
+        skipped.push({ subSlug: item.subSlug, dish: resolvedTitle, reason: "already on this place" });
+        continue;
+      }
+      // Lands UNRANKED at score 0 — earns its way up via duels/ratings, just like a user add.
+      const con: Contender = {
+        id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
+        title: resolvedTitle, description: item.description?.trim() ?? "", dishVariantId: null,
+        seedSources: [], seedScore: 0, createdBy: null, createdAt: new Date().toISOString(), theta: 0,
+        rd: 350, weightedVotes: 0, comparisonCount: 0, distinctOpponents: 0, score: 0, sortKey: 0,
+        status: "provisional", standing: "new", riserScore: 0,
+      };
+      this.store.contenders.push(con);
+      added.push({ subSlug: item.subSlug, dish: resolvedTitle, contenderId: con.id });
+      touchedSubs.add(sub.id);
+    }
+
+    for (const subId of touchedSubs) recomputeSubcategory(this.store, subId);
+    this.persist();
+    return { ok: true, placeId: place.id, added, skipped };
   }
 
   suggestPlace(userId: string, input: { name: string; address: string; borough?: string; subSlug: string }) {

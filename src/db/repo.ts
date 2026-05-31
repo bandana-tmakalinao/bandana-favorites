@@ -145,6 +145,27 @@ export interface PinnacleItem extends ContenderView {
   emoji: string;
 }
 
+/** A moderator menu-import request: a restaurant + its dishes, each tagged with a food type. */
+export interface MenuImportInput {
+  /** Existing place id, a corpus_* id, or null to create from name+address. */
+  placeId?: string | null;
+  placeName: string;
+  address?: string;
+  borough?: string;
+  lat?: number;
+  lng?: number;
+  /** Where the menu came from (admin note, e.g. the restaurant URL). Not shown publicly. */
+  source?: string;
+  items: { subSlug: string; dish: string; description?: string }[];
+}
+export interface MenuImportResult {
+  ok: boolean;
+  error?: string;
+  placeId?: string;
+  added: { subSlug: string; dish: string; contenderId: string }[];
+  skipped: { subSlug: string; dish: string; reason: string }[];
+}
+
 /** Aggregated publication backing for the admin panel. */
 export interface PublicationStat {
   name: string; // canonical publication name (or the raw source if unrecognized)
@@ -242,6 +263,13 @@ export interface Repository {
   matchDish(subSlug: string, query: string): DishResolution;
   /** The distinct existing dish names in a food type (the controlled vocabulary, for autocomplete). */
   listDishNames(subSlug: string): string[];
+  /**
+   * Moderator menu import: add many (place × food type × dish) rows at once from a parsed menu.
+   * Each item lands UNRANKED (score 0, standing "new") — exactly like a user-added dish — and climbs
+   * only as it earns duels/ratings. Dedupes by place+sub+dish (via the match engine). Returns a
+   * per-item result so the admin can see what was added vs. skipped.
+   */
+  importMenu(input: MenuImportInput): MenuImportResult;
   /** Add (or find) the contender for a real place × food type; returns its id to go rate/duel. */
   addContenderAtPlace(
     userId: string,
