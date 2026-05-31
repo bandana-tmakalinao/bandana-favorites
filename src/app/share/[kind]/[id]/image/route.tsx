@@ -9,48 +9,76 @@ export const dynamic = "force-dynamic";
 
 const W = 1080;
 const H = 1350;
-const N = 5; // Top 5 — cleaner + more breathing room than a packed Top 10.
+const N = 5; // Top 5 — Spotify-Wrapped-style: few items, huge type, lots of impact.
 
 // Brand palette (hex only — Satori has no CSS vars).
 const INK = "#231c16";
 const DIM = "#7a7264";
-const CREAM = "#f7f5ef";
-const CREAM2 = "#f0ede4";
-const BORDER = "#e6e1d6";
-const CORAL = "#ed7f54";
+const CREAM = "#fff8f1";
+const GOLD = "#efb745";
 
+// Gradient backdrops (the "story" color field — bold + saturated, Wrapped energy).
+const CORAL_BG = "linear-gradient(150deg, #f59568 0%, #ed7f54 45%, #d9551f 100%)";
+const GREEN_BG = "linear-gradient(150deg, #18a98c 0%, #009275 50%, #00715b 100%)";
+
+// Rank-medal fills (gold / silver / bronze) for the top 3; plain numeral below.
 const MEDAL: Record<number, string> = {
   1: "linear-gradient(135deg,#f6d36b,#e0a93c)",
-  2: "linear-gradient(135deg,#dcd9cf,#b3ad9d)",
-  3: "linear-gradient(135deg,#e2b483,#c2895a)",
+  2: "linear-gradient(135deg,#e6e3da,#b8b1a1)",
+  3: "linear-gradient(135deg,#e6b98a,#c2895a)",
 };
 
 function scoreColor(score: number): string {
   if (score >= 75) return "#009275"; // bandana green
-  if (score >= 60) return "#c79a2e"; // darkened gold (raw gold is invisible on cream)
-  return "#7a7264";
+  if (score >= 60) return "#c79a2e"; // darkened gold (raw gold is invisible on white)
+  return "#8a8276";
 }
 
-// Embed the logo once as a data URI. We use a sips-re-encoded copy (logo-share.png) because
-// resvg (Satori's image decoder) rejects some PNG color-profile/metadata variants with
-// "Unsupported image type: unknown"; the re-encode strips that. Falls back to the coral "B"
-// tile (brandTile) if the file is missing or unreadable, so the poster always renders.
+// --- assets: embed the logo + real display fonts (cached after first read) -------------------
+function tryRead(...p: string[]): Buffer | null {
+  try {
+    return readFileSync(join(process.cwd(), ...p));
+  } catch {
+    return null;
+  }
+}
 let LOGO: string | null | undefined;
 function logo(): string | null {
   if (LOGO === undefined) {
-    try {
-      const buf = readFileSync(join(process.cwd(), "public", "logo-share.png"));
-      LOGO = `data:image/png;base64,${buf.toString("base64")}`;
-    } catch {
-      LOGO = null;
-    }
+    const buf = tryRead("public", "logo-share.png");
+    LOGO = buf ? `data:image/png;base64,${buf.toString("base64")}` : null;
   }
   return LOGO;
 }
+/** Archivo Black (display) + Inter (body). If a file is missing, return [] → Satori uses its default. */
+let FONTS: { name: string; data: Buffer; weight: 400 | 600 | 700 | 800; style: "normal" }[] | undefined;
+function fonts() {
+  if (FONTS === undefined) {
+    const f = (file: string) => tryRead("public", "fonts", file);
+    const archivo = f("ArchivoBlack-400.woff");
+    const i4 = f("Inter-400.woff");
+    const i6 = f("Inter-600.woff");
+    const i7 = f("Inter-700.woff");
+    const i8 = f("Inter-800.woff");
+    FONTS =
+      archivo && i4 && i6 && i7 && i8
+        ? [
+            { name: "Archivo Black", data: archivo, weight: 400 as const, style: "normal" as const },
+            { name: "Inter", data: i4, weight: 400 as const, style: "normal" as const },
+            { name: "Inter", data: i6, weight: 600 as const, style: "normal" as const },
+            { name: "Inter", data: i7, weight: 700 as const, style: "normal" as const },
+            { name: "Inter", data: i8, weight: 800 as const, style: "normal" as const },
+          ]
+        : [];
+  }
+  return FONTS;
+}
+const DISPLAY = "Archivo Black";
+const BODY = "Inter";
 
 type Row = { rank: number; dish: string; place: string; score: number };
 
-function rowEl(r: Row, isTop: boolean) {
+function rowEl(r: Row) {
   const sc = scoreColor(r.score);
   const medal = MEDAL[r.rank];
   return (
@@ -59,30 +87,29 @@ function rowEl(r: Row, isTop: boolean) {
       style={{
         display: "flex",
         alignItems: "center",
-        gap: 28,
-        width: 952,
-        padding: "20px 24px",
-        borderRadius: 28,
-        backgroundColor: isTop ? "#ffffff" : "transparent",
-        border: isTop ? `2px solid ${CORAL}` : `1px solid ${BORDER}`,
-        boxShadow: isTop ? "0 8px 22px rgba(224,128,84,0.20)" : "none",
+        gap: 26,
+        width: 944,
+        height: 138,
+        padding: "0 26px",
+        borderRadius: 30,
+        backgroundColor: "#ffffff",
+        boxShadow: "0 10px 26px rgba(60,20,0,0.16)",
       }}
     >
-      {/* rank medal / numeral */}
+      {/* rank — gradient coin for 1-3, big numeral otherwise */}
       <div
         style={{
           display: "flex",
-          width: 86,
-          height: 86,
-          borderRadius: 43,
+          width: 84,
+          height: 84,
+          borderRadius: 42,
           alignItems: "center",
           justifyContent: "center",
           flexShrink: 0,
-          fontSize: 44,
-          fontWeight: 800,
-          ...(medal
-            ? { backgroundImage: medal, color: "#ffffff" }
-            : { backgroundColor: CREAM2, color: DIM }),
+          fontFamily: DISPLAY,
+          fontSize: 42,
+          color: medal ? "#3a2a12" : "#bdb4a6",
+          ...(medal ? { backgroundImage: medal } : { backgroundColor: "#f3efe7" }),
         }}
       >
         {r.rank}
@@ -93,9 +120,10 @@ function rowEl(r: Row, isTop: boolean) {
         <div
           style={{
             display: "flex",
-            fontSize: isTop ? 52 : 46,
-            fontWeight: 700,
+            fontFamily: DISPLAY,
+            fontSize: 44,
             color: INK,
+            lineHeight: 1.05,
             whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
@@ -106,79 +134,44 @@ function rowEl(r: Row, isTop: boolean) {
         <div
           style={{
             display: "flex",
-            fontSize: 30,
+            fontFamily: BODY,
+            fontSize: 27,
+            fontWeight: 500,
             color: DIM,
-            marginTop: 6,
+            marginTop: 8,
             whiteSpace: "nowrap",
             overflow: "hidden",
             textOverflow: "ellipsis",
           }}
         >
-          📍 {r.place}
+          {r.place}
         </div>
       </div>
 
       {/* score */}
-      <div
-        style={{
-          display: "flex",
-          width: 118,
-          height: 118,
-          borderRadius: 28,
-          alignItems: "center",
-          justifyContent: "center",
-          flexShrink: 0,
-          fontSize: 58,
-          fontWeight: 800,
-          border: `4px solid ${sc}`,
-          color: sc,
-          backgroundColor: "#ffffff",
-        }}
-      >
-        {r.score}
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0, width: 110 }}>
+        <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: 58, color: sc, lineHeight: 1 }}>
+          {r.score}
+        </div>
+        <div style={{ display: "flex", fontFamily: BODY, fontSize: 18, fontWeight: 700, letterSpacing: 2, color: "#b7af9f" }}>
+          / 100
+        </div>
       </div>
-    </div>
-  );
-}
-
-function brandTile() {
-  const l = logo();
-  if (l) {
-    // eslint-disable-next-line @next/next/no-img-element
-    return <img src={l} width={70} height={70} style={{ borderRadius: 16 }} alt="" />;
-  }
-  return (
-    <div
-      style={{
-        display: "flex",
-        width: 70,
-        height: 70,
-        borderRadius: 16,
-        backgroundColor: CORAL,
-        alignItems: "center",
-        justifyContent: "center",
-        color: "#ffffff",
-        fontSize: 40,
-        fontWeight: 800,
-      }}
-    >
-      B
     </div>
   );
 }
 
 function poster(opts: {
-  bandFrom: string;
-  bandTo: string;
-  emoji: string | null;
-  monogram: string | null;
+  bg: string;
+  glyph: { emoji: string } | { monogram: string };
   kicker: string;
   title: string;
   tagline: string;
   url: string;
   rows: Row[];
 }) {
-  const titleSize = opts.title.length > 16 ? 72 : 96;
+  const tlen = opts.title.length;
+  const titleSize = tlen > 18 ? 88 : tlen > 12 ? 110 : 132;
   return (
     <div
       style={{
@@ -186,88 +179,96 @@ function poster(opts: {
         flexDirection: "column",
         width: W,
         height: H,
-        backgroundColor: CREAM,
-        fontFamily: "sans-serif",
+        backgroundColor: "#ed7f54",
+        backgroundImage: opts.bg,
+        fontFamily: BODY,
       }}
     >
-      {/* header band */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          padding: "66px 64px 46px",
-          backgroundColor: opts.bandFrom,
-          backgroundImage: `linear-gradient(135deg, ${opts.bandFrom} 0%, ${opts.bandTo} 100%)`,
-          flexShrink: 0,
-        }}
-      >
-        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
-          {opts.emoji ? (
-            <div style={{ display: "flex", fontSize: 124, lineHeight: 1 }}>{opts.emoji}</div>
+      {/* decorative soft circles — Wrapped-style graphic depth */}
+      <div style={{ display: "flex", position: "absolute", top: -160, right: -120, width: 460, height: 460, borderRadius: 230, backgroundColor: "rgba(255,255,255,0.10)" }} />
+      <div style={{ display: "flex", position: "absolute", bottom: 120, left: -150, width: 380, height: 380, borderRadius: 190, backgroundColor: "rgba(255,255,255,0.07)" }} />
+
+      {/* header */}
+      <div style={{ display: "flex", flexDirection: "column", padding: "70px 68px 30px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              padding: "10px 20px",
+              borderRadius: 999,
+              backgroundColor: "rgba(255,255,255,0.22)",
+            }}
+          >
+            {logoTile(40)}
+            <span style={{ fontFamily: BODY, fontSize: 24, fontWeight: 800, letterSpacing: 1, color: "#ffffff" }}>
+              BANDANA FAVES
+            </span>
+          </div>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "flex-end", gap: 20, marginTop: 36 }}>
+          {"emoji" in opts.glyph ? (
+            <div style={{ display: "flex", fontSize: 132, lineHeight: 1 }}>{opts.glyph.emoji}</div>
           ) : (
             <div
               style={{
                 display: "flex",
-                width: 124,
-                height: 124,
-                borderRadius: 62,
+                width: 128,
+                height: 128,
+                borderRadius: 64,
                 alignItems: "center",
                 justifyContent: "center",
-                backgroundColor: CORAL,
-                color: "#ffffff",
+                backgroundColor: "#ffffff",
+                fontFamily: DISPLAY,
                 fontSize: 62,
-                fontWeight: 800,
+                color: INK,
                 flexShrink: 0,
               }}
             >
-              {opts.monogram}
+              {opts.glyph.monogram}
             </div>
           )}
-          <div style={{ display: "flex", flexDirection: "column", flex: 1, minWidth: 0 }}>
-            <div
-              style={{
-                display: "flex",
-                fontSize: 31,
-                fontWeight: 700,
-                letterSpacing: 7,
-                color: DIM,
-                textTransform: "uppercase",
-              }}
-            >
-              {opts.kicker}
-            </div>
-            <div
-              style={{
-                display: "flex",
-                fontSize: titleSize,
-                fontWeight: 800,
-                color: INK,
-                lineHeight: 1.0,
-                marginTop: 8,
-                whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-              }}
-            >
-              {opts.title}
-            </div>
-          </div>
         </div>
-        <div style={{ display: "flex", fontSize: 33, color: DIM, marginTop: 24 }}>{opts.tagline}</div>
+
+        <div
+          style={{
+            display: "flex",
+            fontFamily: BODY,
+            fontSize: 26,
+            fontWeight: 800,
+            letterSpacing: 8,
+            color: "rgba(255,255,255,0.85)",
+            marginTop: 26,
+          }}
+        >
+          {opts.kicker}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            fontFamily: DISPLAY,
+            fontSize: titleSize,
+            color: "#ffffff",
+            lineHeight: 0.98,
+            marginTop: 4,
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            maxWidth: W - 136,
+          }}
+        >
+          {opts.title}
+        </div>
+        <div style={{ display: "flex", fontFamily: BODY, fontSize: 28, fontWeight: 500, color: "rgba(255,255,255,0.82)", marginTop: 18 }}>
+          {opts.tagline}
+        </div>
       </div>
 
-      {/* the 5 rows — even gaps fill the canvas (Satori has no space-evenly; use a gap + center) */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          flex: 1,
-          padding: "34px 44px",
-          justifyContent: "center",
-          gap: 22,
-        }}
-      >
-        {opts.rows.map((r, i) => rowEl(r, i === 0))}
+      {/* the 5 cards */}
+      <div style={{ display: "flex", flexDirection: "column", flex: 1, alignItems: "center", justifyContent: "center", gap: 18 }}>
+        {opts.rows.map(rowEl)}
       </div>
 
       {/* footer */}
@@ -276,22 +277,42 @@ function poster(opts: {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          padding: "26px 56px 52px",
-          borderTop: `2px solid ${BORDER}`,
-          flexShrink: 0,
+          padding: "0 68px 60px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
-          {brandTile()}
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", fontSize: 33, fontWeight: 800, color: INK }}>
-              Bandana Faves
-            </div>
-            <div style={{ display: "flex", fontSize: 25, color: DIM }}>Ranked by duels, not stars</div>
-          </div>
+        <div style={{ display: "flex", fontFamily: BODY, fontSize: 27, fontWeight: 800, color: "#ffffff" }}>
+          {opts.url}
         </div>
-        <div style={{ display: "flex", fontSize: 29, fontWeight: 700, color: CORAL }}>{opts.url}</div>
+        <div style={{ display: "flex", fontFamily: BODY, fontSize: 24, fontWeight: 600, color: "rgba(255,255,255,0.8)" }}>
+          ranked by duels, not stars
+        </div>
       </div>
+    </div>
+  );
+}
+
+function logoTile(size: number) {
+  const l = logo();
+  if (l) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={l} width={size} height={size} style={{ borderRadius: 9 }} alt="" />;
+  }
+  return (
+    <div
+      style={{
+        display: "flex",
+        width: size,
+        height: size,
+        borderRadius: 9,
+        backgroundColor: GOLD,
+        alignItems: "center",
+        justifyContent: "center",
+        fontFamily: DISPLAY,
+        fontSize: size * 0.55,
+        color: INK,
+      }}
+    >
+      B
     </div>
   );
 }
@@ -304,23 +325,34 @@ function notFoundPoster(title: string, message: string) {
         flexDirection: "column",
         width: W,
         height: H,
-        backgroundColor: CREAM,
+        backgroundColor: "#ed7f54",
+        backgroundImage: CORAL_BG,
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "sans-serif",
+        fontFamily: BODY,
         padding: 80,
       }}
     >
-      <div style={{ display: "flex", fontSize: 120 }}>🍴</div>
-      <div style={{ display: "flex", fontSize: 60, fontWeight: 800, color: INK, marginTop: 24 }}>
+      <div style={{ display: "flex", fontSize: 130 }}>🍴</div>
+      <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: 64, color: "#ffffff", marginTop: 28, textAlign: "center" }}>
         {title}
       </div>
-      <div style={{ display: "flex", fontSize: 32, color: DIM, marginTop: 12 }}>{message}</div>
-      <div style={{ display: "flex", fontSize: 30, fontWeight: 700, color: CORAL, marginTop: 48 }}>
+      <div style={{ display: "flex", fontSize: 32, color: "rgba(255,255,255,0.85)", marginTop: 14 }}>{message}</div>
+      <div style={{ display: "flex", fontFamily: BODY, fontSize: 28, fontWeight: 800, color: "#ffffff", marginTop: 50 }}>
         faves.bandana.com
       </div>
     </div>
   );
+}
+
+function respond(tree: React.ReactElement) {
+  return new ImageResponse(tree, {
+    width: W,
+    height: H,
+    fonts: fonts(),
+    // Never let a stale (old Top-10) image linger in a browser/IG cache.
+    headers: { "Cache-Control": "no-store, max-age=0, must-revalidate" },
+  });
 }
 
 export async function GET(_req: Request, { params }: { params: Promise<{ kind: string; id: string }> }) {
@@ -336,21 +368,18 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
       place: [v.placeName, v.neighborhood || v.borough].filter(Boolean).join(" · "),
       score: Math.round(v.score),
     }));
-    const tree =
-      rows.length === 0
-        ? notFoundPoster(`Best ${list.subcategory.name} in NYC`, "Be the first to rank it.")
-        : poster({
-            bandFrom: "#fde7dc",
-            bandTo: "#fbd9c6",
-            emoji: list.subcategory.emoji,
-            monogram: null,
-            kicker: `Top ${Math.min(N, rows.length)} in NYC`,
-            title: list.subcategory.name,
-            tagline: "Ranked by head-to-head duels, not stars.",
-            url: `faves.bandana.com/nyc/${id}`,
-            rows,
-          });
-    return new ImageResponse(tree, { width: W, height: H });
+    if (rows.length === 0) return respond(notFoundPoster(`Best ${list.subcategory.name} in NYC`, "Be the first to rank it."));
+    return respond(
+      poster({
+        bg: CORAL_BG,
+        glyph: { emoji: list.subcategory.emoji },
+        kicker: `TOP ${Math.min(N, rows.length)} IN NYC`,
+        title: list.subcategory.name,
+        tagline: "The best in the city, ranked head-to-head.",
+        url: `faves.bandana.com/nyc/${id}`,
+        rows,
+      }),
+    );
   }
 
   if (kind === "pinnacle") {
@@ -364,21 +393,18 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
       place: [p.placeName, p.subName].filter(Boolean).join(" · "),
       score: Math.round(p.score),
     }));
-    const tree =
-      rows.length === 0
-        ? notFoundPoster(`${firstName}'s Pinnacle`, "No favorites pinned yet.")
-        : poster({
-            bandFrom: "#fdf0cf",
-            bandTo: "#f8e3a6",
-            emoji: null,
-            monogram: first,
-            kicker: "Top NYC dishes",
-            title: `${firstName}'s Top ${rows.length}`,
-            tagline: `${firstName}'s all-time NYC favorites.`,
-            url: `faves.bandana.com/u/${id}`,
-            rows,
-          });
-    return new ImageResponse(tree, { width: W, height: H });
+    if (rows.length === 0) return respond(notFoundPoster(`${firstName}'s Pinnacle`, "No favorites pinned yet."));
+    return respond(
+      poster({
+        bg: GREEN_BG,
+        glyph: { monogram: first },
+        kicker: "MY TOP NYC DISHES",
+        title: `${firstName}'s Top ${rows.length}`,
+        tagline: "My all-time NYC favorites.",
+        url: `faves.bandana.com/u/${id}`,
+        rows,
+      }),
+    );
   }
 
   return new Response("Not found", { status: 404 });
