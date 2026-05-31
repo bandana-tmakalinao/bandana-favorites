@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
 import { Avatar, ScoreBadge, btn } from "@/components/bits";
+import ShareButton from "@/components/ShareButton";
 
 export const dynamic = "force-dynamic";
 
@@ -80,10 +81,21 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
       )}
 
       <section className="mt-8">
-        <h2 className="mb-3 text-lg font-black">
-          🏔️ The Pinnacle{" "}
-          <span className="text-sm font-medium text-[var(--color-ink-dim)]">· all-time NYC favorites</span>
-        </h2>
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <h2 className="text-lg font-black">
+            🏔️ The Pinnacle{" "}
+            <span className="text-sm font-medium text-[var(--color-ink-dim)]">· all-time NYC favorites</span>
+          </h2>
+          {profile.pinnacle.length > 0 && (
+            <ShareButton
+              kind="pinnacle"
+              id={profile.handle}
+              title={`${profile.name.split(" ")[0]}'s top NYC dishes`}
+              pageHref={`/u/${profile.handle}`}
+              variant="ghost"
+            />
+          )}
+        </div>
         {profile.pinnacle.length > 0 ? (
           <ol className="space-y-2">
             {profile.pinnacle.map((p, i) => (

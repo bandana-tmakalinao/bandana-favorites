@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
 import BrowseView from "@/components/BrowseView";
+import ShareButton from "@/components/ShareButton";
 import AddPlace from "@/components/AddPlace";
 import CategoryFavoriteBanner from "@/components/CategoryFavoriteBanner";
 import CategoryOnboarding from "@/components/CategoryOnboarding";
@@ -62,12 +63,23 @@ export default async function SubcategoryPage({
             updated live from duels
           </p>
         </div>
-        <Link
-          href={`/duel?sub=${subcategory.slug}`}
-          className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
-        >
-          ⚔️ Rank these
-        </Link>
+        <div className="flex items-center gap-2">
+          {ranked.length > 0 && (
+            <ShareButton
+              kind="category"
+              id={subcategory.slug}
+              title={`Best ${subcategory.name} in NYC`}
+              pageHref={`/nyc/${subcategory.slug}`}
+              variant="ghost"
+            />
+          )}
+          <Link
+            href={`/duel?sub=${subcategory.slug}`}
+            className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
+          >
+            ⚔️ Rank these
+          </Link>
+        </div>
       </div>
 
       <div className="mt-6">

@@ -34,9 +34,11 @@ export default function RankingCard({
   const cover = variant === "cover";
   const shown = entry.items.slice(0, rows);
   const total = entry.items.length;
-  // Count-honest label: never claim "Top 10" above fewer rows. Callers (e.g. /explore featured)
-  // can override with an explicit kicker.
-  const label = kicker ?? `Top ${Math.min(rows, total)} in NYC`;
+  // Label reflects the LIST's headline size (capped at 10), not how many rows this card previews —
+  // so a 5-row home preview of a 10-deep list still reads "Top 10 in NYC" (and the footer's
+  // "See all 10 →" agrees), while a thin list with only 7 ranked dishes honestly reads "Top 7".
+  // Callers (e.g. /explore featured) can override with an explicit kicker.
+  const label = kicker ?? `Top ${Math.min(10, total)} in NYC`;
 
   return (
     <div
