@@ -231,7 +231,7 @@ DECISIONS.md           # autonomous build log + open questions for the founder
 
 ## 12. Operating constraints (how this project is run)
 
-- **Local git only, no remote.** **Never push or send anything without explicit approval.**
+- **Git: has a GitHub remote** (`bandana-tmakalinao/bandana-favorites`, `origin/main`) as of 2026-05-30. **Never push or send anything without explicit approval** ("git approved" = stage-all + commit + push main).
 - **No billable cloud infra** (Render/R2/etc.) without an explicit go-ahead — local-first is intentional.
 - **2025+ sources only** for any seed ranking data; never copy a single publication's order; never seed
   order from Google/Yelp/scraped ratings.
