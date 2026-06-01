@@ -69,6 +69,15 @@ maybe-great one.
 > diverse, aged evidence before a rank locks), and **velocity-anomaly freezes** — the trust formula earns
 > its keep later. The hooks exist; enforcement is intentionally light in the scaffold.
 
+**How duels are gathered — you only rank what you've tried.** The default duel flow is *tried-gated
+placement*: a dish you add (or pick to rank) is binary-inserted into your own personal order — your past
+duels, every one a dish you've actually eaten — then you check which community top picks you've tried and
+those slot into the *same* ladder, one continuous flow (place → "have you tried?" grid → recap). We never
+ask you to compare two dishes you haven't had; an inline "Haven't tried this" drops an opponent if one
+slips through. The old free king-of-the-hill survives as a secondary "open duel" for power users. The
+placement state machine is `src/lib/placement.ts` (pure, unit-tested); the screen is
+`src/components/DuelBoard.tsx`; the session is assembled by `repo.getRankSession()`.
+
 ## 4. The data story (the genuinely hard part)
 
 The central question was *"where do we get this data, legally and storably?"* The full research lives in
@@ -181,6 +190,7 @@ npm test         # ranking + match engine unit tests (14)
 
 ```
 src/lib/ranking.ts     # the ranking math — Bradley-Terry + shrinkage + harsh score (unit-tested)
+src/lib/placement.ts   # tried-gated binary-insert placement engine — duel "place" mode (unit-tested)
 src/lib/match.ts       # fuzzy-match/dedupe engine — normalize, similarity, resolveDishName (unit-tested)
 src/lib/config.ts      # ALL tuning constants (RANKING, TRUST, MATCH) — one place
 src/lib/types.ts       # core domain types (Contender, Place, Vote, User, …)
@@ -200,8 +210,9 @@ DECISIONS.md           # autonomous build log + open questions for the founder
 ## 10. Status — built vs. deferred
 
 **Built and working (on the local seed):**
-- The full loop: browse a food type → ranked list + map → duel (king-of-the-hill, winner stays) → score
-  moves → 0–100 rate (gated by an "I've tried this" tap) → add photos → light sign-in.
+- The full loop: browse a food type → ranked list + map → **tried-gated placement** (binary-insert a dish
+  you've tried into your personal order, then a "have you tried?" grid for community top picks; no untried
+  randoms — free king-of-the-hill survives as "open duel") → ranks move → add photos → light sign-in.
 - Real 2025+ seed for all 21 food types; rotating Top-10 home widget; instant search.
 - Clean dish names + the fuzzy dedupe engine, wired into both add flows.
 - Restaurant-first add + restaurant pages, backed by the 13.6k corpus; curator review queue.

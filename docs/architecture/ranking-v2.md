@@ -61,6 +61,27 @@ your own list ranks everything you've tried, even items that are globally `new`.
 - `src/seed/placeholder.ts` — sets `seedScore` from seed quality; classifies seeded raters.
 - `src/db/memory.ts` — classifies raters into user/power at recompute; new ranked/unranked/risers views.
 - `src/db/pg.ts` — `contenders` gains `seed_score`, `standing`, `riser_score` (ALTER ADD COLUMN IF NOT EXISTS).
+- `src/lib/placement.ts` — pure tried-gated binary-insert engine (duel "place" mode), unit-tested;
+  `src/components/DuelBoard.tsx` drives it; `repo.getRankSession()` assembles each session.
+
+## Gathering the duels — tried-gated placement (2026-06-01)
+Comparison-only ranking is only as honest as its comparisons, so the duel flow refuses to ask you about
+dishes you haven't eaten. The default "Rank these" flow is **placement**, a continuous phase machine:
+
+1. **Place** — a dish you add or pick to rank is **binary-inserted** (~log₂n comparisons) into your
+   *personal* order (`getPersonalRankedList`, built from your own past duels — so every rung is a dish
+   you've tried). With no history yet, the ladder is anchored on your declared #1 (`categoryFavorites`).
+2. **Grid** — a one-time "Which {dish} have you tried?" checkbox of the community top ~20 you haven't
+   placed; the ones you check slot into the *same* ladder.
+3. **Recap** — your ranking vs the crowd. No untried randoms — a hard stop.
+
+An inline **"Haven't tried this"** drops an opponent that slips through (`removePivot`). Every comparison
+is still a real `Comparison` row → it feeds the global per-class Bradley-Terry exactly as before; this only
+changes *which* pairs get asked. The free king-of-the-hill is preserved as `?mode=open`.
+
+- Engine: `src/lib/placement.ts` (pure, `placement.test.ts`) — `initPlacement / advancePlace / resolveTie / removePivot`.
+- Session: `repo.getRankSession(userId, sub, targetIds)` → `{ placed, candidates, targets, favoriteId }`.
+- Entry points: `/nyc/[sub]` "Rank these", the add-dish redirect (`AddPlace` / `AddDishHere`), and `CategoryAlsoTried`.
 
 ## Related
 - [ranking-engine](./ranking-engine.md) (the underlying BT math, still used per class)

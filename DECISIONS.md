@@ -11,6 +11,21 @@ the questions for you to answer in the morning. Nothing here is irreversible.
   Implementation sketch: group points by `placeId`, one marker per place, popup renders the list.
   (Tim noted 2026-05-31.)
 
+## Update — tried-gated placement: only duel dishes you've tried (2026-06-01)
+
+Reworked the duel flow so people never rank dishes they haven't eaten (Tim: "ranking is a little wrong …
+rank a new pizza against what they've ranked before, then the top ~20, and make 'haven't tried' explicit").
+The default "Rank these" flow is now **tried-gated placement**, one continuous phase machine: **place** a
+dish (binary-insert into your personal order — your own past duels, all tried; anchored on your declared #1
+when you have no history) → **grid** ("Which {dish} have you tried?" over the community top ~20) → **recap**
+(your ranking vs the crowd; hard stop, no untried randoms). Inline "Haven't tried this" drops a stray
+opponent. Adding a dish now routes straight into placing it; the free king-of-the-hill is kept as the
+secondary `?mode=open`. **No ranking *math* changed** — comparisons still feed the same per-class
+Bradley-Terry; only *which pairs get asked* changed. New pure engine `src/lib/placement.ts` (+7 unit tests),
+`repo.getRankSession()`, `DuelBoard` rewritten. tsc clean; 27/27 tests; smoke-tested live. Shipped to
+`main` (4d61522). Decisions confirmed with Tim: grid + inline "haven't tried" (both), hard stop on recap,
+binary insert, continuous flow, free duel demoted to "open duel".
+
 ## Update — password/email security hardening (2026-05-30)
 
 Treated the user-credential surface like a security review. **Passwords** (`src/lib/password.ts`):
