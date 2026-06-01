@@ -73,12 +73,20 @@ export default async function SubcategoryPage({
               variant="ghost"
             />
           )}
-          <Link
-            href={`/duel?sub=${subcategory.slug}`}
-            className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
-          >
-            ⚔️ Rank these
-          </Link>
+          <div className="flex flex-col items-end gap-0.5">
+            <Link
+              href={`/duel?sub=${subcategory.slug}`}
+              className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
+            >
+              ⚔️ Rank these
+            </Link>
+            <Link
+              href={`/duel?sub=${subcategory.slug}&mode=open`}
+              className="text-[11px] text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]"
+            >
+              or open duel →
+            </Link>
+          </div>
         </div>
       </div>
 

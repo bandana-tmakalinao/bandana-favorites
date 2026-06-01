@@ -44,7 +44,8 @@ export default function CategoryAlsoTried({
       skip();
       return;
     }
-    const qs = new URLSearchParams({ sub, keep: favoriteId, tried: ids.join(",") });
+    // Place these tried picks into the user's ladder (anchored on their declared #1 server-side).
+    const qs = new URLSearchParams({ sub, target: ids.join(",") });
     router.push(`/duel?${qs.toString()}`);
   }
 

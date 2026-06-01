@@ -23,9 +23,11 @@ import type {
   User,
 } from "@/lib/types";
 import type {
+  CategoryStanding,
   CategoryWithSubs,
   ContenderDetail,
   DuelPair,
+  RankSession,
   MenuImportInput,
   MenuImportResult,
   PinnacleItem,
@@ -418,6 +420,57 @@ export class MemoryRepository implements Repository {
     const close = [...rest].sort((x, y) => Math.abs(x.sortKey - a.sortKey) - Math.abs(y.sortKey - a.sortKey));
     const top = close.slice(0, Math.min(4, close.length));
     return top[Math.floor(Math.random() * top.length)];
+  }
+
+  /**
+   * Assemble a tried-gated placement session. The ladder (`placed`) is the user's own duel history —
+   * everything in it is a dish they've tried — seeded with their declared #1 when they've no history
+   * yet. `candidates` are the community top picks they haven't placed (the "have you tried?" grid);
+   * `targets` are dishes to place right away (e.g. one just added). See src/lib/placement.ts.
+   */
+  getRankSession(userId: string, subSlug: string, targetIds: string[] = []): RankSession | null {
+    const list = this.getRankedList(subSlug);
+    if (!list) return null;
+    const { category, subcategory, ranked, contenders } = list;
+    const all = [...ranked, ...contenders];
+    const byId = (id: string): ContenderView | undefined =>
+      all.find((v) => v.id === id) ?? this.getContenderDetail(id)?.contender;
+
+    let placed = this.getPersonalRankedList(userId, subSlug);
+    const favoriteId = this.getCategoryFavorite(userId, subSlug);
+    // With no duel history, anchor the ladder on the declared #1 so there's something to compare to.
+    if (placed.length === 0 && favoriteId) {
+      const fav = byId(favoriteId);
+      if (fav) placed = [fav];
+    }
+    const placedIds = new Set(placed.map((v) => v.id));
+
+    const seen = new Set(placedIds);
+    const targets: ContenderView[] = [];
+    for (const id of targetIds) {
+      if (seen.has(id)) continue;
+      const v = byId(id);
+      if (v) {
+        seen.add(id);
+        targets.push(v);
+      }
+    }
+
+    // The grid: top community picks the user hasn't placed or queued. ~20 is plenty to recognize.
+    const RANK_GRID_N = 20;
+    const candidates = ranked
+      .filter((v) => !placedIds.has(v.id) && !seen.has(v.id))
+      .slice(0, RANK_GRID_N);
+
+    return {
+      category,
+      subcategory,
+      placed,
+      candidates,
+      targets,
+      favoriteId,
+      standing: this.getCategoryStanding(userId, subSlug),
+    };
   }
 
   recordDuel(userId: string, winnerId: string, loserId: string): { ok: boolean; error?: string } {

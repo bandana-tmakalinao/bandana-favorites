@@ -42,6 +42,26 @@ export interface CategoryStanding {
   weight: number; // resulting Bradley-Terry vote weight
 }
 
+/**
+ * Everything a tried-gated placement run needs (the duel board's "place" mode). You only ever duel
+ * dishes you've tried, so a session is: your existing tried ladder (`placed`), the community top picks
+ * you haven't tried yet to ask about (`candidates`), and any dishes to place right away (`targets`,
+ * e.g. one you just added). See src/lib/placement.ts.
+ */
+export interface RankSession {
+  category: Category;
+  subcategory: Subcategory;
+  /** Your personal ranked ladder (your prior duels), best-first. Seeded with your declared #1 when empty. */
+  placed: ContenderView[];
+  /** Community top-N dishes you haven't placed yet — the "have you tried?" grid. */
+  candidates: ContenderView[];
+  /** Dishes to place immediately, skipping the grid (e.g. a just-added dish). */
+  targets: ContenderView[];
+  /** Your declared #1 in this category, if any. */
+  favoriteId: string | null;
+  standing: CategoryStanding | null;
+}
+
 export interface ShowcaseEntry {
   slug: string;
   name: string;
@@ -243,6 +263,8 @@ export interface Repository {
   /** keepId = "king of the hill": keep that contender on one side and rotate in a fresh challenger.
    *  prefer = ordered list of contender IDs to prioritize as the challenger (drains naturally). */
   getDuelPair(subSlug?: string, keepId?: string, prefer?: string[]): DuelPair | null;
+  /** Assemble a tried-gated placement session (duel "place" mode). targetIds = dishes to place now. */
+  getRankSession(userId: string, subSlug: string, targetIds?: string[]): RankSession | null;
   recordDuel(userId: string, winnerId: string, loserId: string): { ok: boolean; error?: string };
   recordVote(userId: string, contenderId: string, rating: number): { ok: boolean; error?: string };
   addPhoto(userId: string, contenderId: string, url: string): Photo | null;

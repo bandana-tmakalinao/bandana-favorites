@@ -2,8 +2,16 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { PhotoThumb, ScoreBadge } from "./bits";
+import { PhotoThumb, ScoreBadge, btn } from "./bits";
 import { TRUST } from "@/lib/config";
+import {
+  initPlacement,
+  advancePlace,
+  resolveTie,
+  removePivot,
+  pivotIndex,
+  type PlaceState,
+} from "@/lib/placement";
 import type { ContenderView } from "@/lib/types";
 import type { CategoryStanding } from "@/db/repo";
 
@@ -14,81 +22,17 @@ interface Pair {
   b: ContenderView;
 }
 
-// ---------------------------------------------------------------------------
-// Adaptive binary-search ranking
-// ---------------------------------------------------------------------------
+type Template = { category: { emoji: string; name: string }; subcategory: { slug: string; name: string } };
+type Mode = "open" | "place";
+type Phase = "duel" | "grid" | "recap";
 
-interface AdaptiveState {
-  /** User's personal ranking so far, best first (index 0 = #1). */
-  sortedPlaced: ContenderView[];
-  /** Items still to be ranked — in community rank order. */
-  toPlace: ContenderView[];
-  /** Binary search bounds into sortedPlaced for the current target. */
-  lo: number;
-  hi: number;
-  done: boolean;
-  /** Original count of items to place — for progress display. */
-  totalToPlace: number;
-}
-
-function initAdaptive(king: ContenderView, tried: ContenderView[]): AdaptiveState {
-  const toPlace = tried.filter((v) => v.id !== king.id);
-  return {
-    sortedPlaced: [king],
-    toPlace,
-    lo: 0,
-    hi: 1,
-    done: toPlace.length === 0,
-    totalToPlace: toPlace.length,
-  };
-}
-
-/** Compute the next matchup pair from the adaptive state (null when done). */
-function nextAdaptivePair(state: AdaptiveState, template: Pair): Pair | null {
+/** Build the current matchup from a placement state: a = the dish being placed, b = the pivot. */
+function buildPlacePair(state: PlaceState<ContenderView>, tmpl: Template): Pair | null {
   if (state.done || state.toPlace.length === 0) return null;
   const target = state.toPlace[0];
-  const mid = Math.floor((state.lo + state.hi) / 2);
-  const pivot = state.sortedPlaced[mid];
-  return { ...template, a: target, b: pivot };
-}
-
-/** Insert the current target into sortedPlaced at `pos`, then advance to the next item. */
-function placeTarget(state: AdaptiveState, pos: number): AdaptiveState {
-  const target = state.toPlace[0];
-  const sp = [...state.sortedPlaced.slice(0, pos), target, ...state.sortedPlaced.slice(pos)];
-  const tp = state.toPlace.slice(1);
-  return {
-    sortedPlaced: sp,
-    toPlace: tp,
-    lo: 0,
-    hi: sp.length,
-    done: tp.length === 0,
-    totalToPlace: state.totalToPlace,
-  };
-}
-
-/**
- * Advance the binary-search state after a comparison.
- * If target won → it belongs in the better (upper) half → shrink hi.
- * If target lost → it belongs in the worse (lower) half → grow lo.
- * When lo >= hi, insert target at lo and start the next item.
- */
-function advanceAdaptive(winner: ContenderView, state: AdaptiveState): AdaptiveState {
-  if (state.done || state.toPlace.length === 0) return state;
-  const target = state.toPlace[0];
-  const mid = Math.floor((state.lo + state.hi) / 2);
-  const targetWon = winner.id === target.id;
-  const newLo = targetWon ? state.lo : mid + 1;
-  const newHi = targetWon ? mid : state.hi;
-  if (newLo >= newHi) return placeTarget(state, newLo);
-  return { ...state, lo: newLo, hi: newHi };
-}
-
-/** "Too close to call" — settle the current item right below the pivot, recording nothing. */
-function resolveTie(state: AdaptiveState): AdaptiveState {
-  if (state.done || state.toPlace.length === 0) return state;
-  const mid = Math.floor((state.lo + state.hi) / 2);
-  return placeTarget(state, Math.min(mid + 1, state.sortedPlaced.length));
+  const pivot = state.sortedPlaced[pivotIndex(state)];
+  if (!pivot) return null;
+  return { category: tmpl.category, subcategory: tmpl.subcategory, a: target, b: pivot };
 }
 
 // ---------------------------------------------------------------------------
@@ -139,37 +83,64 @@ function TrustMeter({ standing, subName }: { standing: CategoryStanding; subName
 // ---------------------------------------------------------------------------
 
 export default function DuelBoard({
+  mode,
   initialPair,
   sub,
   signedIn,
   initialKeepId,
   initialPrefer,
-  adaptiveItems,
-  kingView,
+  template,
+  placed,
+  candidates,
+  targets,
   placeId,
   placeName,
   initialStanding,
 }: {
-  initialPair: Pair | null;
+  mode: Mode;
+  initialPair?: Pair | null;
   sub?: string;
   signedIn: boolean;
   initialKeepId?: string;
   initialPrefer?: string[];
-  adaptiveItems?: ContenderView[];
-  kingView?: ContenderView;
+  // place mode:
+  template?: Template;
+  placed?: ContenderView[];
+  candidates?: ContenderView[];
+  targets?: ContenderView[];
   placeId?: string;
   placeName?: string;
   initialStanding?: CategoryStanding | null;
 }) {
-  const isAdaptive = Boolean(kingView && adaptiveItems && adaptiveItems.length > 0);
+  const isPlace = mode === "place";
+  const hasCandidates = (candidates?.length ?? 0) > 0;
 
-  const [adaptiveState, setAdaptiveState] = useState<AdaptiveState | null>(() =>
-    isAdaptive ? initAdaptive(kingView!, adaptiveItems!) : null,
-  );
+  // Place mode runs ONE continuous flow: place whatever's queued (e.g. a new dish vs your history) →
+  // ask which community top picks you've tried (grid) → place those into the same ladder → recap.
+  // No untried randoms; the grid is shown exactly once per session.
+  const initialPlaceState = isPlace ? initPlacement(placed ?? [], targets ?? []) : null;
+  const initialPhase: Phase = !isPlace
+    ? "duel"
+    : initialPlaceState && !initialPlaceState.done
+      ? "duel"
+      : hasCandidates
+        ? "grid"
+        : "recap";
+
+  const [phase, setPhase] = useState<Phase>(initialPhase);
+  const [tried, setTried] = useState<Set<string>>(new Set());
+  const [gridShown, setGridShown] = useState(false);
+  const [placeState, setPlaceState] = useState<PlaceState<ContenderView> | null>(initialPlaceState);
+  // The accumulated personal order across runs — the ladder the next run inserts into, and what the recap shows.
+  const [ladder, setLadder] = useState<ContenderView[]>(initialPlaceState?.sortedPlaced ?? placed ?? []);
 
   const [pair, setPair] = useState<Pair | null>(() => {
-    if (adaptiveState && initialPair) return nextAdaptivePair(adaptiveState, initialPair) ?? initialPair;
-    return initialPair;
+    if (isPlace) {
+      return initialPhase === "duel" && initialPlaceState && template
+        ? buildPlacePair(initialPlaceState, template)
+        : null;
+    }
+    return initialPair ?? null;
   });
 
   const [kingId, setKingId] = useState<string | null>(initialKeepId ?? null);
@@ -181,9 +152,9 @@ export default function DuelBoard({
   const [standing, setStanding] = useState<CategoryStanding | null>(initialStanding ?? null);
   const [justGrew, setJustGrew] = useState(false);
 
-  const pairTemplate = initialPair;
-  const subSlug = () => pair?.subcategory.slug ?? sub;
-  const subName = initialPair?.subcategory.name ?? pair?.subcategory.name ?? "dish";
+  const subSlug = () => pair?.subcategory.slug ?? template?.subcategory.slug ?? sub;
+  const subName =
+    template?.subcategory.name ?? initialPair?.subcategory.name ?? pair?.subcategory.name ?? "dish";
 
   // Pulse the trust meter briefly whenever the trust value ticks up.
   useEffect(() => {
@@ -192,6 +163,7 @@ export default function DuelBoard({
     return () => clearTimeout(t);
   }, [justGrew]);
 
+  // --- open / king-of-the-hill helpers ---
   async function load(keep?: string, preferList?: string[]) {
     const qs = new URLSearchParams();
     if (subSlug()) qs.set("sub", subSlug()!);
@@ -215,12 +187,51 @@ export default function DuelBoard({
     await load();
   }
 
-  // Adaptive "too close to call" — settle without recording a noisy coin-flip.
+  // --- place-mode transitions ---
+  function startFromGrid() {
+    const chosen = (candidates ?? []).filter((c) => tried.has(c.id));
+    // Insert into the CURRENT ladder (which already holds your history + anything placed so far).
+    // initPlacement dedupes, so a target already placed in the first run is skipped here.
+    const st = initPlacement(ladder, [...(targets ?? []), ...chosen]);
+    setGridShown(true);
+    setPlaceState(st);
+    setLadder(st.sortedPlaced);
+    if (!st.done && template) {
+      setPair(buildPlacePair(st, template));
+      setPhase("duel");
+    } else {
+      setPair(null);
+      setPhase("recap");
+    }
+  }
+
+  function skipGrid() {
+    setGridShown(true);
+    setPhase("recap");
+  }
+
+  function recordPlaceResult(next: PlaceState<ContenderView>) {
+    setPlaceState(next);
+    if (!next.done) {
+      setPair(template ? buildPlacePair(next, template) : null);
+      return;
+    }
+    // A placement run finished — continue the flow: show the "have you tried?" grid once, then recap.
+    setLadder(next.sortedPlaced);
+    setPair(null);
+    setPhase(hasCandidates && !gridShown ? "grid" : "recap");
+  }
+
+  // "Too close to call" — settle without recording a noisy coin-flip.
   function tooClose() {
-    if (!adaptiveState || adaptiveState.done) return;
-    const newState = resolveTie(adaptiveState);
-    setAdaptiveState(newState);
-    setPair(newState.done || !pairTemplate ? null : nextAdaptivePair(newState, pairTemplate));
+    if (!placeState || placeState.done) return;
+    recordPlaceResult(resolveTie(placeState));
+  }
+
+  // "Haven't tried this" — the opponent isn't something you've eaten; drop it and re-pick. No record.
+  function notTried() {
+    if (!placeState || placeState.done) return;
+    recordPlaceResult(removePivot(placeState));
   }
 
   async function choose(winner: ContenderView, loser: ContenderView) {
@@ -238,7 +249,7 @@ export default function DuelBoard({
           winnerId: winner.id,
           loserId: loser.id,
           sub: subSlug(),
-          ...(isAdaptive ? {} : { prefer: prefer.filter((id) => id !== loser.id) }),
+          ...(isPlace ? {} : { prefer: prefer.filter((id) => id !== loser.id) }),
         }),
       });
       const data = await res.json();
@@ -253,10 +264,8 @@ export default function DuelBoard({
         setStanding(data.standing);
       }
 
-      if (adaptiveState && !adaptiveState.done) {
-        const newState = advanceAdaptive(winner, adaptiveState);
-        setAdaptiveState(newState);
-        setPair(newState.done || !pairTemplate ? null : nextAdaptivePair(newState, pairTemplate));
+      if (isPlace && placeState && !placeState.done) {
+        recordPlaceResult(advancePlace(winner.id === placeState.toPlace[0].id, placeState));
       } else {
         const nextPrefer = prefer.filter((id) => id !== loser.id);
         setPrefer(nextPrefer);
@@ -272,11 +281,98 @@ export default function DuelBoard({
   }
 
   // ---------------------------------------------------------------------------
-  // Adaptive done: the payoff — personal ranking vs the crowd
+  // Place mode: the "have you tried?" grid
   // ---------------------------------------------------------------------------
-  if (adaptiveState?.done) {
-    const ranked = adaptiveState.sortedPlaced;
-    // How contrarian is this taste? Average |personal rank − community rank| over items the crowd has ranked.
+  if (isPlace && phase === "grid") {
+    const target = targets?.[0];
+    const targetPending = target ? !ladder.some((v) => v.id === target.id) : false;
+    function toggle(id: string) {
+      setTried((prev) => {
+        const next = new Set(prev);
+        if (next.has(id)) next.delete(id);
+        else next.add(id);
+        return next;
+      });
+    }
+    const pendingCount = tried.size + (targetPending ? 1 : 0);
+    const nothing = pendingCount === 0;
+    return (
+      <div className="bf-fade">
+        <h1 className="text-xl font-black sm:text-2xl">Which {subName.toLowerCase()} have you tried?</h1>
+        <p className="mt-1 text-sm text-[var(--color-ink-dim)]">
+          We only rank dishes you&apos;ve actually had. Pick the ones you&apos;ve tried and we&apos;ll slot them into
+          {ladder.length > 0 ? <> your ranking.</> : <> a ranking.</>}
+        </p>
+
+        {target && targetPending && (
+          <div className="mt-4 flex items-center gap-3 rounded-2xl border border-[var(--color-brand)]/40 bg-[var(--color-brand)]/5 px-4 py-3">
+            <PhotoThumb url={target.photoUrl} alt={target.title} className="h-12 w-12 rounded-lg" />
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold">{target.title}</p>
+              <p className="truncate text-xs text-[var(--color-ink-dim)]">Your new pick — we&apos;ll place this one</p>
+            </div>
+          </div>
+        )}
+
+        <div className="mt-4 max-h-[55vh] overflow-y-auto rounded-2xl border border-[var(--color-border)]">
+          {(candidates ?? []).map((v) => {
+            const checked = tried.has(v.id);
+            return (
+              <button
+                key={v.id}
+                onClick={() => toggle(v.id)}
+                className={`flex w-full items-center gap-3 border-b border-[var(--color-border)] px-4 py-3 text-left transition last:border-b-0 hover:bg-[var(--color-surface)] ${checked ? "bg-[var(--color-brand)]/5" : ""}`}
+              >
+                <span
+                  className={`flex h-5 w-5 shrink-0 items-center justify-center rounded border-2 transition ${checked ? "border-[var(--color-brand)] bg-[var(--color-brand)]" : "border-[var(--color-border)]"}`}
+                  aria-hidden
+                >
+                  {checked && (
+                    <svg viewBox="0 0 12 10" fill="none" className="h-3 w-3">
+                      <path d="M1 5l3.5 3.5L11 1" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  )}
+                </span>
+                <div className="min-w-0 flex-1">
+                  <div className="truncate font-semibold">{v.title}</div>
+                  <div className="truncate text-sm text-[var(--color-ink-dim)]">
+                    {v.placeName} · {v.neighborhood}
+                  </div>
+                </div>
+                <ScoreBadge score={v.score} size="sm" standing={v.standing} />
+              </button>
+            );
+          })}
+        </div>
+
+        <button onClick={startFromGrid} disabled={nothing} className={`${btn("primary")} mt-4 w-full`}>
+          {nothing ? "Pick the ones you've tried →" : `Rank my ${pendingCount} pick${pendingCount === 1 ? "" : "s"} →`}
+        </button>
+        {ladder.length > 0 ? (
+          <button
+            onClick={skipGrid}
+            className="mt-2 block w-full text-center text-sm text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]"
+          >
+            Skip — see my ranking
+          </button>
+        ) : (
+          <Link
+            href={`/nyc/${sub ?? ""}`}
+            className="mt-2 block text-center text-sm text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]"
+          >
+            Skip for now
+          </Link>
+        )}
+      </div>
+    );
+  }
+
+  // ---------------------------------------------------------------------------
+  // Place mode done: the payoff — personal ranking vs the crowd
+  // ---------------------------------------------------------------------------
+  if (isPlace && phase === "recap") {
+    const ranked = ladder;
+    // How contrarian is this taste? Average |personal rank − community rank| over crowd-ranked items.
     const deltas = ranked
       .map((v, i) => (v.rank != null ? Math.abs(v.rank - (i + 1)) : null))
       .filter((d): d is number => d != null);
@@ -294,7 +390,8 @@ export default function DuelBoard({
       <div className="bf-fade">
         <h1 className="mb-1 text-2xl font-black sm:text-3xl">Your {subName} ranking</h1>
         <p className="mb-5 text-sm text-[var(--color-ink-dim)]">
-          {summary} <span className="text-[var(--color-ink-dim)]">· {count} comparison{count !== 1 ? "s" : ""}</span>
+          {summary}{" "}
+          <span className="text-[var(--color-ink-dim)]">· {count} comparison{count !== 1 ? "s" : ""}</span>
         </p>
 
         {standing && (
@@ -343,6 +440,19 @@ export default function DuelBoard({
         </ol>
 
         <div className="flex flex-col gap-4">
+          {hasCandidates && (
+            <Link
+              href={`/duel?sub=${sub ?? ""}&mode=place`}
+              className="flex flex-col items-center gap-1.5 rounded-2xl border-2 border-dashed border-[var(--color-brand)]/30 px-6 py-6 text-center transition hover:border-[var(--color-brand)]/60 hover:bg-[var(--color-surface)]"
+            >
+              <span className="text-lg font-bold text-[var(--color-ink)]">
+                Rank more {subName.toLowerCase()} you&apos;ve tried →
+              </span>
+              <span className="text-sm text-[var(--color-ink-dim)]">
+                Add more of the spots you&apos;ve been to and we&apos;ll slot them in.
+              </span>
+            </Link>
+          )}
           {placeId && placeName && (
             <Link
               href={`/p/${placeId}`}
@@ -393,20 +503,20 @@ export default function DuelBoard({
   // ---------------------------------------------------------------------------
   const isKing = (c: ContenderView) => c.id === kingId && streak >= 1;
 
-  const adaptiveProgress =
-    adaptiveState && !adaptiveState.done
+  const placeProgress =
+    isPlace && placeState && !placeState.done
       ? {
-          itemsDone: adaptiveState.totalToPlace - adaptiveState.toPlace.length,
-          itemsTotal: adaptiveState.totalToPlace,
-          target: adaptiveState.toPlace[0],
-          pivotRank: Math.floor((adaptiveState.lo + adaptiveState.hi) / 2) + 1, // 1-indexed
-          lo: adaptiveState.lo,
-          hi: adaptiveState.hi,
-          placed: adaptiveState.sortedPlaced,
+          itemsDone: placeState.totalToPlace - placeState.toPlace.length,
+          itemsTotal: placeState.totalToPlace,
+          target: placeState.toPlace[0],
+          pivotRank: pivotIndex(placeState) + 1, // 1-indexed
+          lo: placeState.lo,
+          hi: placeState.hi,
+          placed: placeState.sortedPlaced,
         }
       : null;
 
-  // In adaptive mode card `a` is always the new dish being placed; `b` is one of your ranked picks.
+  // In place mode card `a` is always the new dish being placed; `b` is one of your ranked picks.
   const Card = ({ c, other, ribbon }: { c: ContenderView; other: ContenderView; ribbon?: string }) => {
     const badge = isKing(c) ? `👑 ${streak} in a row` : ribbon;
     return (
@@ -451,14 +561,14 @@ export default function DuelBoard({
 
       <div className="mb-4 flex items-start justify-between gap-3">
         <div>
-          {adaptiveProgress ? (
+          {placeProgress ? (
             <>
               <h1 className="text-xl font-black sm:text-2xl">
-                Is it better than your #{adaptiveProgress.pivotRank}?
+                Is it better than your #{placeProgress.pivotRank}?
               </h1>
               <p className="mt-0.5 text-sm text-[var(--color-ink-dim)]">
-                Placing <span className="font-semibold text-[var(--color-ink)]">{adaptiveProgress.target.title}</span> ·
-                dish {adaptiveProgress.itemsDone + 1} of {adaptiveProgress.itemsTotal}
+                Placing <span className="font-semibold text-[var(--color-ink)]">{placeProgress.target.title}</span> ·
+                dish {placeProgress.itemsDone + 1} of {placeProgress.itemsTotal}
               </p>
             </>
           ) : (
@@ -476,22 +586,31 @@ export default function DuelBoard({
       </div>
 
       <div key={pair.a.id + pair.b.id} className="bf-fade flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-        <Card c={pair.a} other={pair.b} ribbon={isAdaptive ? "New pick" : undefined} />
+        <Card c={pair.a} other={pair.b} ribbon={isPlace ? "New pick" : undefined} />
         <div className="grid shrink-0 place-items-center py-1 text-sm font-black text-[var(--color-ink-dim)] sm:py-0">
           VS
         </div>
-        <Card c={pair.b} other={pair.a} ribbon={adaptiveProgress ? `Your #${adaptiveProgress.pivotRank}` : undefined} />
+        <Card c={pair.b} other={pair.a} ribbon={placeProgress ? `Your #${placeProgress.pivotRank}` : undefined} />
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-[var(--color-ink-dim)]">
-        {isAdaptive ? (
-          <button
-            onClick={tooClose}
-            disabled={busy}
-            className="rounded-lg border border-[var(--color-border)] px-3 py-1.5 font-medium transition hover:border-[var(--color-ink-dim)] hover:text-[var(--color-ink)] disabled:opacity-50"
-          >
-            Too close to call
-          </button>
+        {isPlace ? (
+          <div className="flex flex-wrap gap-4">
+            <button
+              onClick={tooClose}
+              disabled={busy}
+              className="rounded-lg border border-[var(--color-border)] px-3 py-1.5 font-medium transition hover:border-[var(--color-ink-dim)] hover:text-[var(--color-ink)] disabled:opacity-50"
+            >
+              Too close to call
+            </button>
+            <button
+              onClick={notTried}
+              disabled={busy}
+              className="rounded-lg border border-[var(--color-border)] px-3 py-1.5 font-medium transition hover:border-[var(--color-ink-dim)] hover:text-[var(--color-ink)] disabled:opacity-50"
+            >
+              Haven&apos;t tried {pair.b.title.length > 22 ? "this one" : `“${pair.b.title}”`}
+            </button>
+          </div>
         ) : (
           <div className="flex flex-wrap gap-4">
             <button onClick={swapChallenger} disabled={busy} className="hover:text-[var(--color-ink)] disabled:opacity-50">
@@ -503,23 +622,23 @@ export default function DuelBoard({
           </div>
         )}
         <span>
-          {count > 0 ? `${count} duel${count === 1 ? "" : "s"} this session` : "Pick the better one — winner stays"}
+          {count > 0 ? `${count} duel${count === 1 ? "" : "s"} this session` : "Pick the one you liked better"}
         </span>
       </div>
 
       {/* Live "it's learning" ranking — watch your list build as you duel */}
-      {adaptiveProgress && adaptiveProgress.placed.length > 0 && (
+      {placeProgress && placeProgress.placed.length > 0 && (
         <div className="mt-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[var(--color-ink-dim)]">
-            Your ranking so far · narrowing {adaptiveProgress.target.title} to{" "}
-            {adaptiveProgress.lo + 1 === adaptiveProgress.hi
-              ? `#${adaptiveProgress.lo + 1}`
-              : `#${adaptiveProgress.lo + 1}–#${adaptiveProgress.hi}`}
+            Your ranking so far · narrowing {placeProgress.target.title} to{" "}
+            {placeProgress.lo + 1 === placeProgress.hi
+              ? `#${placeProgress.lo + 1}`
+              : `#${placeProgress.lo + 1}–#${placeProgress.hi}`}
           </p>
           <ol className="space-y-0.5">
-            {adaptiveProgress.placed.map((v, i) => {
-              const inBand = i >= adaptiveProgress.lo && i < adaptiveProgress.hi;
-              const isPivot = i + 1 === adaptiveProgress.pivotRank;
+            {placeProgress.placed.map((v, i) => {
+              const inBand = i >= placeProgress.lo && i < placeProgress.hi;
+              const isPivot = i + 1 === placeProgress.pivotRank;
               return (
                 <li
                   key={v.id}

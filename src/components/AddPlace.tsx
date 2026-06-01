@@ -105,7 +105,8 @@ export default function AddPlace({
         setMsg(d.error ?? "Couldn't add.");
         return;
       }
-      router.push(`/c/${d.contenderId}`);
+      // Straight into placing the new dish against what you've already ranked (tried-gated).
+      router.push(`/duel?sub=${subSlug}&target=${d.contenderId}`);
     } catch {
       setMsg("Network error.");
     } finally {
