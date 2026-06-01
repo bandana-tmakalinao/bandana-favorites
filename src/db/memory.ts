@@ -1355,6 +1355,15 @@ export class MemoryRepository implements Repository {
     return { ok: true, handle };
   }
 
+  hideContender(contenderId: string): { ok: boolean; error?: string } {
+    const con = this.store.contenders.find((c) => c.id === contenderId);
+    if (!con) return { ok: false, error: "Contender not found." };
+    con.status = "hidden";
+    recomputeSubcategory(this.store, con.subcategoryId);
+    this.persist();
+    return { ok: true };
+  }
+
   setAvatar(userId: string, url: string): { ok: boolean } {
     const user = this.getUser(userId);
     if (!user) return { ok: false };

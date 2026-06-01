@@ -349,6 +349,8 @@ export interface Repository {
   updateProfile(userId: string, patch: { name?: string; bio?: string; showcase?: string[]; expertCategories?: string[] }): { ok: boolean };
   /** Change a user's @username (unique). Validates format + collision; returns the canonical handle. */
   setHandle(userId: string, handle: string): { ok: boolean; error?: string; handle?: string };
+  /** Moderator: hide a contender (drops it from every list + search). Recomputes its category. */
+  hideContender(contenderId: string): { ok: boolean; error?: string };
   setAvatar(userId: string, url: string): { ok: boolean };
   /** Manage the user's all-time-favorites list (add/remove/reorder). */
   pinnacleAction(

@@ -135,6 +135,42 @@ items appear in the browsable shelf.
 
 ---
 
+## Ramen + burger run (2026-06-01)
+
+Re-ran the pipeline for **ramen** and **cheeseburger** (Method A, Uber Eats). The tooling is now
+**category-parameterized and versioned in `scripts/menu-ingestion/`**:
+- `ue_cat.py` — per-category cleaner configs (`CATS["ramen"]`, `CATS["burger"]`): cuisine-match regex,
+  `strong`/`hard_exclude`/`item_sec`/`nonitem_sec`, dedup + variant-collapse. Add a new category by adding
+  a `CATS` entry. Has unit tests (`python3 scripts/menu-ingestion/ue_cat.py`).
+- `ue_run.py` — the resumable scrape→clean→(optional import) driver. `UE_CAT=ramen|burger UE_N=<n>
+  UE_IMPORT=0|1 UE_PACE=<s> browser-harness < ue_run.py`. Reads `/tmp/ue_<cat>_places.json`, writes
+  `/tmp/ue_<cat>_results.json`.
+- `ue_import_cat.py` — imports already-scraped results, **re-cleaning from saved `raw_rows`** so filter
+  tweaks apply retroactively. `UE_CAT=… UE_N=<max>`.
+
+**Results (live on prod):**
+- **Ramen: 33 → 156** (33 editorial + **123** menu-unranked). 20 of 33 places via UE (Method A) + 5
+  marquee dine-in spots (Tonchin, Gogyo, Okiboru, E.A.K., Momofuku Noodle Bar) via website (Method B).
+- **Cheeseburger: 56 → 116** (56 editorial + **60** menu-unranked). 16 of 56 places via UE; the rest are
+  dine-in institutions (each with one seeded burger). 4 wrong-store rows hidden via the new hide endpoint.
+
+### Lessons / deltas from this run
+- **Wait for the results grid to populate before scraping.** Sampling `a[href*="/store/"]` too early
+  catches a transient `/store/apps/…` promo link and returns a false "no_match" (Tabetomo, etc. recovered
+  once we waited for ≥3 store links). Fixed in `ue_run.py` (initial 3s + poll-until-≥3).
+- **Burger seed skews dine-in.** 40 of 56 burger places (Minetta, Peter Luger, J.G. Melon, Keens, 4
+  Charles, Raoul's, L'Artusi, Union Square Cafe…) aren't on UE delivery — but each has **one** iconic
+  burger already captured by the editorial seed, so they're low-value to chase. Ramen had 13 dine-in
+  misses (Tonchin, Momofuku Noodle Bar, Okiboru, E.A.K., Gogyo, Rockmeisha…) — better Method-B candidates.
+- **Ghost-kitchen / name-collision false matches.** Generic burger names cross-matched wrong stores
+  (The Golden Swan→"Golden Diner", Cozy Royale→"Cozy Corner", Red Hook Tavern→"Red Hook Lobster Pound";
+  "Gogyo"→a sushi virtual brand). The cuisine+0.45-score gate is too loose for short/common names — a
+  handful of mislabeled **unranked** rows slipped in (4 burger). Cleaned via the new curator endpoint
+  **`POST /api/admin/hide-contender`** (added this run; `{contenderId}` or `{contenderIds:[…]}` → sets
+  `status="hidden"`, recomputes). Tighten the matcher (require ≥0.6 unless a distinctive token) next time.
+- Not throttled this run (paced ~2.5s; ~97 searches total). Genuine misses returned *full* pages of
+  *other* nearby stores, not empty pages — distinguishable from the throttle's app-download-only page.
+
 ## Pizza run results (2026-05, baseline reference)
 
 - **Editorial seed**: 83 ranked pies (incl. the +29 signature-pies top-up at the marquee places).
