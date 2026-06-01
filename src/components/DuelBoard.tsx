@@ -535,7 +535,7 @@ export default function DuelBoard({
                     {i + 1}
                   </span>
                   <span className="min-w-0 flex-1 truncate font-medium">{v.title}</span>
-                  <span className="shrink-0 truncate text-xs text-[var(--color-ink-dim)]">{v.placeName}</span>
+                  <span className="min-w-0 max-w-[42%] shrink truncate text-xs text-[var(--color-ink-dim)]">{v.placeName}</span>
                 </li>
               );
             })}
