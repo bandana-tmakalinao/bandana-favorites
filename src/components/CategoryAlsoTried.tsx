@@ -92,7 +92,7 @@ export default function CategoryAlsoTried({
                   {v.placeName} · {v.neighborhood}
                 </div>
               </div>
-              <ScoreBadge score={v.score} size="sm" />
+              <ScoreBadge score={v.score} size="sm" standing={v.standing} />
             </button>
           );
         })}

@@ -59,19 +59,13 @@ export const SOURCE = {
   /** Only the top N per category are "ranked"; the rest are "unranked". */
   RANKED_CAP: 100,
   /**
-   * Distinct real voters required for a user-created item (no publication backing) to be eligible
-   * for the ranked board. One person's enthusiasm — even a curator dueling a new dish to the top —
-   * is NOT a community ranking; it needs corroboration. Publication-backed (editorial) items bypass
-   * this (their editorial consensus is the corroboration).
+   * Distinct real voters required for a user-created item (no publication backing) to be RANKED at all.
+   * Below the bar it shows "Unranked" (no number). A ranking needs real corroboration — one person's
+   * enthusiasm, even a curator dueling a new dish to the top, is not a community ranking. An item earns
+   * a rank with EITHER ≥ `user` distinct voters OR ≥ `power` distinct power-users of that category
+   * (power users count for more). Publication-backed (editorial) items bypass this entirely.
    */
-  MIN_VOTERS: 2,
-  /**
-   * Voter-confidence half-saturation. For an item with no publication backing, the displayed score is
-   * shrunk toward 0 by confidence = nVoters/(nVoters + VOTER_CONF_M): 1 voter ⇒ 0.33, 2 ⇒ 0.5, 4 ⇒ 0.67.
-   * This is what stops a single user rating/dueling a new dish to a 100 — it shows a fraction until
-   * more distinct people corroborate it. Publication-backed items are full-confidence (not shrunk).
-   */
-  VOTER_CONF_M: 2,
+  MIN_VOTERS: { user: 5, power: 2 },
   /** Min real (user+power) weighted evidence to leave "new" when there's no publication backing.
    *  ~one rating or one duel clears it → the item becomes "unranked" with a real blended score;
    *  zero evidence stays "new" at score 0. */

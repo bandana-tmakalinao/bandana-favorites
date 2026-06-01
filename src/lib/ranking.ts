@@ -157,13 +157,15 @@ export function rankSubcategory(
   const distinct = new Map<ID, Set<ID>>();
   const rawDuels = new Map<ID, number>();
   const recent = new Map<ID, number>();
-  const voters = new Map<ID, Set<ID>>(); // distinct users who cast a comparison involving this item
+  const userVoters = new Map<ID, Set<ID>>(); // distinct normal-class users who dueled this item
+  const powerVoters = new Map<ID, Set<ID>>(); // distinct power-class users (curators / category experts)
   for (const id of ids) {
     realVol.set(id, 0);
     distinct.set(id, new Set());
     rawDuels.set(id, 0);
     recent.set(id, 0);
-    voters.set(id, new Set());
+    userVoters.set(id, new Set());
+    powerVoters.set(id, new Set());
   }
   const windowMs = SOURCE.RISER_WINDOW_DAYS * 86400_000;
   const isRecent = (at?: number) => now > 0 && at != null && now - at <= windowMs;
@@ -175,8 +177,9 @@ export function rankSubcategory(
     distinct.get(d.loserId)!.add(d.winnerId);
     rawDuels.set(d.winnerId, rawDuels.get(d.winnerId)! + 1);
     rawDuels.set(d.loserId, rawDuels.get(d.loserId)! + 1);
-    voters.get(d.winnerId)!.add(d.by);
-    voters.get(d.loserId)!.add(d.by);
+    const vset = d.cls === "power" ? powerVoters : userVoters;
+    vset.get(d.winnerId)!.add(d.by);
+    vset.get(d.loserId)!.add(d.by);
     if (isRecent(d.at)) {
       recent.set(d.winnerId, recent.get(d.winnerId)! + d.weight);
       recent.set(d.loserId, recent.get(d.loserId)! + d.weight);
@@ -204,19 +207,18 @@ export function rankSubcategory(
     const blended = wSum > 0 ? (wPub * pubScore + wUser * u.q + wPower * p.q) / wSum : 0;
 
     const realEvidence = realVol.get(id)!;
-    const nVoters = voters.get(id)!.size;
+    const nUser = userVoters.get(id)!.size;
+    const nPower = powerVoters.get(id)!.size;
     const rd = RANKING.RD_BASE / Math.sqrt(1 + realEvidence / RANKING.RD_Q);
-    const hasEvidence = pubVol > 0 || realEvidence >= SOURCE.MIN_EVIDENCE;
 
-    // Voter-confidence shrink: editorial (publication-backed) items are full-confidence; a purely
-    // user-created item earns confidence only as DISTINCT people corroborate it. This is what keeps a
-    // single enthusiast (even a curator) from rocketing a brand-new dish to a 100 — it shows a fraction
-    // of its blended quality until more voters weigh in. confidence = nVoters/(nVoters + VOTER_CONF_M).
-    const confidence = pubVol > 0 ? 1 : nVoters / (nVoters + SOURCE.VOTER_CONF_M);
-    const score = hasEvidence ? Math.round(blended * confidence * 10) / 10 : 0;
-
-    // Board eligibility: a user-created item must have ≥ MIN_VOTERS distinct voters to be community-ranked.
-    boardEligible.set(id, hasEvidence && (pubVol > 0 || nVoters >= SOURCE.MIN_VOTERS));
+    // A ranking needs real corroboration. An item earns a NUMBER only when it's publication-backed, OR
+    // ≥ MIN_VOTERS.power distinct power-users, OR ≥ MIN_VOTERS.user distinct voters (a user counts once
+    // per category, so user + power sets are disjoint). Below the bar it's "new" → the UI shows
+    // "Unranked" instead of a score. This is what keeps one enthusiast from crowning a brand-new dish.
+    const eligible =
+      pubVol > 0 || nPower >= SOURCE.MIN_VOTERS.power || nUser + nPower >= SOURCE.MIN_VOTERS.user;
+    boardEligible.set(id, eligible);
+    const score = Math.round(blended * 10) / 10; // computed for all; only DISPLAYED when eligible
 
     results.set(id, {
       theta: 0,
@@ -225,19 +227,18 @@ export function rankSubcategory(
       comparisonCount: rawDuels.get(id)!,
       distinctOpponents: distinct.get(id)!.size,
       score,
-      sortKey: score, // display order == the shown score (confidence is already baked into score)
+      sortKey: score, // display order == the shown score
       status: "provisional",
       rank: null,
-      standing: hasEvidence ? "unranked" : "new",
+      standing: eligible ? "unranked" : "new", // "new" ⇒ rendered as "Unranked" (no number)
       riserScore: recent.get(id)!,
     });
   }
 
   // Rank board-eligible contenders by descending score (RD breaks ties — more confident wins); top
-  // RANKED_CAP are "ranked" (status active). Items with evidence but too few distinct voters stay
-  // "unranked" (the "earning their rank" shelf) regardless of score.
+  // RANKED_CAP are "ranked" (status active). Everything else is "new" (shown as "Unranked").
   const eligible = [...results.entries()]
-    .filter(([id, r]) => r.standing !== "new" && boardEligible.get(id))
+    .filter(([id]) => boardEligible.get(id))
     .sort((a, b) => b[1].score - a[1].score || a[1].rd - b[1].rd || b[1].weightedVotes - a[1].weightedVotes);
   eligible.forEach(([, r], i) => {
     if (i < SOURCE.RANKED_CAP) {

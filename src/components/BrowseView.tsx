@@ -33,7 +33,7 @@ function Row({ v }: { v: ContenderView }) {
           {v.comparisonCount > 0 && <span>· {v.comparisonCount} duels</span>}
         </span>
       </span>
-      <ScoreBadge score={v.score} />
+      <ScoreBadge score={v.score} standing={v.standing} />
     </Link>
   );
 }

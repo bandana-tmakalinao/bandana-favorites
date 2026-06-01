@@ -39,7 +39,7 @@ export default async function DiscoverPage() {
                     {r.standing === "unranked" ? " · unranked" : r.rank ? ` · #${r.rank}` : ""}
                   </span>
                 </span>
-                {r.score > 0 && <ScoreBadge score={r.score} size="sm" />}
+                <ScoreBadge score={r.score} size="sm" standing={r.standing} />
               </Link>
             ))}
           </div>

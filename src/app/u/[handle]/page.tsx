@@ -174,7 +174,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
                       {p.placeName} · {p.subName}
                     </span>
                   </span>
-                  <ScoreBadge score={p.score} size="sm" />
+                  <ScoreBadge score={p.score} size="sm" standing={p.standing} />
                 </Link>
               </li>
             ))}
@@ -209,7 +209,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
                     <span className="font-medium">{v.title}</span>{" "}
                     <span className="text-[var(--color-ink-dim)]">· {v.placeName}</span>
                   </span>
-                  <ScoreBadge score={v.score} size="sm" />
+                  <ScoreBadge score={v.score} size="sm" standing={v.standing} />
                 </Link>
               ))}
             </div>

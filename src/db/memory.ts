@@ -37,6 +37,7 @@ import type {
   PublicationStat,
   ProposedItem,
   RankedList,
+  Recommendation,
   Repository,
   FeedItem,
   SearchHitContender,
@@ -128,6 +129,56 @@ export class MemoryRepository implements Repository {
       .sort((a, b) => (b.riserScore ?? 0) - (a.riserScore ?? 0))
       .slice(0, limit)
       .map((c) => this.toView(c, rankByCon.get(c.id) ?? null));
+  }
+
+  /**
+   * "Worth a try" for the feed: dishes the crowd is building momentum on but that aren't ranked yet
+   * ("getting rankings but still unranked"), then strong editorial picks the user hasn't tried. Skips
+   * anything the user created, pinned, or already dueled, so it always surfaces something fresh.
+   */
+  getTryThese(userId: string, limit = 6): Recommendation[] {
+    const user = this.getUser(userId);
+    const pinned = new Set(user?.pinnacle ?? []);
+    const dueled = new Set<string>();
+    for (const cmp of this.store.comparisons) {
+      if (cmp.userId === userId) {
+        dueled.add(cmp.winnerId);
+        dueled.add(cmp.loserId);
+      }
+    }
+    const seen = new Set<string>();
+    const recs: Recommendation[] = [];
+    const consider = (c: Contender, reason: "rising" | "editor"): boolean => {
+      if (recs.length >= limit || seen.has(c.id)) return false;
+      if (c.status === "proposed" || c.status === "hidden") return false;
+      if (c.createdBy === userId || pinned.has(c.id) || dueled.has(c.id)) return false;
+      const sub = this.subById(c.subcategoryId);
+      if (!sub || HIDDEN_SUBCATEGORIES.has(sub.slug)) return false;
+      seen.add(c.id);
+      recs.push({
+        ...this.toView(c, this.rankOf(c)),
+        subSlug: sub.slug,
+        subName: sub.name,
+        emoji: sub.emoji,
+        reason,
+      });
+      return true;
+    };
+
+    // 1) Rising but not yet ranked — real duel momentum the crowd (incl. people you follow) is building.
+    const risers = this.store.contenders
+      .filter((c) => (c.riserScore ?? 0) > 0 && (c.standing ?? "new") !== "ranked")
+      .sort((a, b) => (b.riserScore ?? 0) - (a.riserScore ?? 0));
+    for (const c of risers) consider(c, "rising");
+
+    // 2) Fill with strong editorial picks (high seed consensus) the user hasn't engaged with yet.
+    if (recs.length < limit) {
+      const gems = this.store.contenders
+        .filter((c) => (c.seedScore ?? 0) >= 70)
+        .sort((a, b) => (b.seedScore ?? 0) - (a.seedScore ?? 0));
+      for (const c of gems) consider(c, "editor");
+    }
+    return recs;
   }
 
   getRegion(slug: string): Region | null {

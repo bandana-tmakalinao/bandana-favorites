@@ -29,22 +29,18 @@ duels drive a brand-new dish to a clean **100** because:
 The 0–100 standing rating (`Vote`) is **removed from the whole flow**. Ranking evidence is now **only
 head-to-head duels**.
 
-### 2. Single-voter can't crown a dish
-- **Voter-confidence shrink:** `score = blended × confidence`, where
-  `confidence = pubVol > 0 ? 1 : nVoters / (nVoters + VOTER_CONF_M)` (`VOTER_CONF_M = 2`).
-  - Publication-backed (editorial) items are **full confidence → scores unchanged**.
-  - A user-created item earns its score only as **distinct people** corroborate it: 1 voter ⇒ ×0.33,
-    2 ⇒ ×0.5, 4 ⇒ ×0.67. So your fig pizza's 100 becomes **~33**.
-- **Distinct-voter board gate:** an item reaches the **ranked board** only with publication backing
-  **or ≥ `MIN_VOTERS` distinct voters** (`MIN_VOTERS = 2`). One voter ⇒ it sits in the
-  "earning their rank" shelf, **not** on the board. Editorial items bypass this (editorial consensus
-  *is* the corroboration).
-- Sorting stays by the **displayed score** (your earlier ask) — confidence is now baked into the
-  score, so the number you see is the number it's ranked by; RD breaks ties (more-confident wins).
+### 2. A dish ranks only with real corroboration — else it reads "Unranked"
+- **Corroboration gate** (`SOURCE.MIN_VOTERS = { user: 5, power: 2 }`): an item earns a **numeric
+  score + a rank** only when it is **publication-backed**, OR has **≥5 distinct voters**, OR **≥2
+  distinct power users** of that category (a user counts once per category, so the user/power sets are
+  disjoint). Editorial items bypass the gate (editorial consensus *is* the corroboration).
+- **Below the bar it shows "Unranked"** — no number, no 0. In the engine the item is `standing: "new"`;
+  `ScoreBadge` renders a dashed "Unranked" pill instead of a score. (So the ~446 menu-imported pizzas
+  that used to read "0" now read "Unranked" until people rank them.)
+- Ranked items sort by the **displayed score** (your earlier ask); RD breaks ties (more-confident wins).
 
-**Net effect on your fig pizza:** `seed_score 0`, 1 dueler → **unranked** (off the board) and score
-shrunk from 100 to ~33. As soon as a 2nd person duels it, it becomes board-eligible and climbs with
-corroboration.
+**Net effect on your fig pizza:** `seed_score 0`, 1 dueler → **Unranked**, off the board. It earns a
+rank once 2 power users (or 5 people) duel it.
 
 ---
 
@@ -52,8 +48,10 @@ corroboration.
 
 | File | Change |
 |---|---|
-| `src/lib/ranking.ts` | Comparison-only (removed `RankInputVote` + vote folding); added `by` (voter id) to duels; distinct-voter tracking; **confidence shrink + `MIN_VOTERS` board gate**; sort by score. |
-| `src/lib/config.ts` | Added `SOURCE.MIN_VOTERS` (2) + `SOURCE.VOTER_CONF_M` (2); removed unused `RANKING.THUMB_WEIGHT`. |
+| `src/lib/ranking.ts` | Comparison-only (removed `RankInputVote` + vote folding); added `by` (voter id) to duels; distinct voter tracking by class; **corroboration gate** (pub / ≥5 users / ≥2 power) → below it `standing: "new"`; sort by score. |
+| `src/lib/config.ts` | `SOURCE.MIN_VOTERS = { user: 5, power: 2 }`; removed unused `RANKING.THUMB_WEIGHT`. |
+| `src/components/bits.tsx` | `ScoreBadge` renders an **"Unranked"** pill when `standing === "new"`; threaded `standing` through the ~14 call sites. |
+| `src/db/repo.ts`, `src/db/memory.ts`, `src/app/feed/page.tsx` | **Feed "Worth a try"** shelf — `getTryThese()` surfaces rising-but-unranked dishes ("On the rise") + editorial picks ("Editors' pick") the user hasn't tried. |
 | `src/seed/placeholder.ts` | Recompute passes duels with `by`, no votes; seed no longer synthesizes 0–100 ratings (duels only). |
 | `src/db/pg.ts` | **Boot now always recomputes** every category, so this ranking change activates on deploy (delta-flush no-ops if nothing changed). |
 | `src/db/memory.ts` | Personal ("Mine") ranking is duel-only (dropped the vote branch); feed no longer emits "rating" items. |
@@ -69,14 +67,14 @@ or reads them for ranking) — see follow-ups.
 
 ## Behavior you should know
 
-- **During the solo phase (basically just you):** no user-created dish can be community-ranked until a
-  2nd person duels it — by design. The ranked board is the editorial set; anything you add sits in
-  "earning their rank" until others weigh in. This is exactly "one person isn't a community ranking."
+- **During the solo phase (basically just you):** no user-created dish gets a rank until it's
+  corroborated (you're a curator → power user, so it takes **2 power users**, i.e. one more curator;
+  or 5 normal voters). Until then it reads **"Unranked."** The ranked board stays the editorial set.
 - Editorial scores may shift **slightly** (the synthetic 0–100 votes no longer nudge the blend), but
-  their order is preserved (seedScore + duels). The big visible change is single-voter user items
-  leaving the board.
-- Tune in `config.ts`: raise `MIN_VOTERS` to demand more corroboration; raise `VOTER_CONF_M` to shrink
-  thin items harder.
+  their order is preserved (seedScore + duels). The big visible change: user-created items without
+  corroboration now read "Unranked" instead of a number, and drop off the board.
+- Tune in `config.ts`: `SOURCE.MIN_VOTERS.user` / `.power` are the bars. Lower them to rank user dishes
+  sooner during early growth; raise them to demand more corroboration.
 
 ## Verify
 

@@ -1,4 +1,4 @@
-import type { ConfidenceTier } from "@/lib/config";
+import type { ConfidenceTier, Standing } from "@/lib/config";
 
 /** Consistent button classes for both <button> and <Link>. */
 export function btn(variant: "primary" | "secondary" | "ghost" = "primary"): string {
@@ -36,12 +36,32 @@ function scoreColor(score: number): string {
   return "text-[var(--color-ink-dim)] border-[var(--color-border)]";
 }
 
-export function ScoreBadge({ score, size = "md" }: { score: number; size?: "sm" | "md" | "lg" }) {
+export function ScoreBadge({
+  score,
+  size = "md",
+  standing,
+}: {
+  score: number;
+  size?: "sm" | "md" | "lg";
+  standing?: Standing;
+}) {
+  // Not yet ranked (no publication backing and too few distinct voters) → show "Unranked", not a number.
+  if (standing === "new") {
+    const txt = size === "sm" ? "text-[10px]" : "text-xs";
+    return (
+      <span
+        className={`grid shrink-0 place-items-center rounded-xl border border-dashed border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 font-semibold uppercase tracking-wide text-[var(--color-ink-dim)] ${txt}`}
+        title="Not ranked yet — needs a publication or enough distinct voters"
+      >
+        Unranked
+      </span>
+    );
+  }
   const pad = size === "lg" ? "h-14 w-14 text-2xl" : size === "sm" ? "h-9 w-9 text-sm" : "h-11 w-11 text-lg";
   return (
     <span
       className={`grid ${pad} shrink-0 place-items-center rounded-xl border bg-[var(--color-surface)] font-black tabular-nums ${scoreColor(score)}`}
-      title="Trust-weighted, shrinkage-adjusted score (0–100)"
+      title="Trust-weighted comparison score (0–100)"
     >
       {Math.round(score)}
     </span>

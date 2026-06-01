@@ -43,7 +43,7 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
       )}
 
       <div className="mt-4 flex items-start gap-4">
-        <ScoreBadge score={c.score} size="lg" />
+        <ScoreBadge score={c.score} size="lg" standing={c.standing} />
         <div className="min-w-0 flex-1">
           <h1 className="text-2xl font-black tracking-tight">{c.title}</h1>
           <p className="text-[var(--color-ink-dim)]">
@@ -136,7 +136,7 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
                   <span className="font-medium">{n.title}</span>{" "}
                   <span className="text-[var(--color-ink-dim)]">· {n.placeName}</span>
                 </span>
-                <ScoreBadge score={n.score} size="sm" />
+                <ScoreBadge score={n.score} size="sm" standing={n.standing} />
               </Link>
             ))}
           </div>

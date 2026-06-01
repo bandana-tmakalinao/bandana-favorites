@@ -336,7 +336,7 @@ export default function DuelBoard({
                     )}
                   </span>
                 )}
-                <ScoreBadge score={v.score} size="sm" />
+                <ScoreBadge score={v.score} size="sm" standing={v.standing} />
               </li>
             );
           })}
@@ -433,7 +433,7 @@ export default function DuelBoard({
                 {c.placeName} · {c.neighborhood}
               </div>
             </div>
-            <ScoreBadge score={c.score} size="sm" />
+            <ScoreBadge score={c.score} size="sm" standing={c.standing} />
           </div>
         </div>
       </button>

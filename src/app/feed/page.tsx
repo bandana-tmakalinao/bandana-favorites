@@ -32,11 +32,48 @@ export default async function FeedPage() {
   const repo = getRepo();
   const feed = repo.getFollowingFeed(me.id, 50);
   const suggestions = repo.suggestedFollows(me.id, 5);
+  const tryThese = repo.getTryThese(me.id, 6);
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-8">
       <h1 className="text-2xl font-black tracking-tight">Your feed</h1>
       <p className="mt-1 text-sm text-[var(--color-ink-dim)]">What the people you follow are ranking.</p>
+
+      {tryThese.length > 0 && (
+        <section className="mt-6">
+          <h2 className="mb-1 text-sm font-bold uppercase tracking-wide text-[var(--color-brand)]">Worth a try</h2>
+          <p className="mb-3 text-xs text-[var(--color-ink-dim)]">
+            Dishes on the rise — and a few editors&apos; picks — you haven&apos;t ranked yet.
+          </p>
+          <ul className="space-y-2">
+            {tryThese.map((r) => (
+              <li key={r.id}>
+                <Link
+                  href={`/c/${r.id}`}
+                  className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-brand)]"
+                >
+                  <ScoreBadge score={r.score} size="sm" standing={r.standing} />
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate font-semibold">{r.title}</span>
+                    <span className="block truncate text-xs text-[var(--color-ink-dim)]">
+                      {r.placeName} · {r.emoji} {r.subName}
+                    </span>
+                  </span>
+                  <span
+                    className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide ${
+                      r.reason === "rising"
+                        ? "bg-[var(--color-brand)]/10 text-[var(--color-brand)]"
+                        : "bg-[var(--color-surface-2)] text-[var(--color-ink-dim)]"
+                    }`}
+                  >
+                    {r.reason === "rising" ? "On the rise" : "Editors' pick"}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       {feed.length === 0 ? (
         <div className="mt-6 space-y-5">

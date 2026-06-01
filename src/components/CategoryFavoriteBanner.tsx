@@ -25,7 +25,7 @@ export default function CategoryFavoriteBanner({
         </p>
       </div>
       <div className="flex shrink-0 items-center gap-3">
-        <ScoreBadge score={favorite.score} size="sm" />
+        <ScoreBadge score={favorite.score} size="sm" standing={favorite.standing} />
         <Link
           href={`/add?sub=${sub}`}
           className="rounded-lg bg-[var(--color-brand)] px-3 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"

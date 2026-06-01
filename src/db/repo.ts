@@ -218,12 +218,23 @@ export interface ProfileView {
  * The data-access seam. `MemoryRepository` (in-memory + .data/store.json) is the local-dev default;
  * a Postgres/Drizzle implementation slots in here when DATABASE_URL is configured.
  */
+/** A "worth a try" suggestion for the feed: a promising dish + why we're surfacing it. */
+export interface Recommendation extends ContenderView {
+  subSlug: string;
+  subName: string;
+  emoji: string;
+  /** "rising" = gaining duels but not yet ranked; "editor" = a strong editorial pick to try. */
+  reason: "rising" | "editor";
+}
+
 export interface Repository {
   getRegion(slug: string): Region | null;
   listCategories(): CategoryWithSubs[];
   getRankedList(subSlug: string): RankedList | null;
   /** Up-and-coming: highest recent-velocity contenders in a food type (incl. unranked ones). */
   getRisers(subSlug: string, limit?: number): ContenderView[];
+  /** "Worth a try" for the feed: rising-but-unranked dishes + editorial picks the user hasn't tried. */
+  getTryThese(userId: string, limit?: number): Recommendation[];
   /** A single user's own ranking for a food type, from their ratings + duels (score = their score). */
   getPersonalRankedList(userId: string, subSlug: string): ContenderView[];
   getContenderDetail(id: string): ContenderDetail | null;

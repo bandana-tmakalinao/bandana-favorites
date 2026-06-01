@@ -102,7 +102,7 @@ export default function RankingCard({
                     </span>
                   )}
                 </span>
-                <ScoreBadge score={v.score} size={champ ? "md" : "sm"} />
+                <ScoreBadge score={v.score} size={champ ? "md" : "sm"} standing={v.standing} />
               </Link>
             </li>
           );

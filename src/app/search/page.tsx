@@ -70,7 +70,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
                     {c.placeName} · {c.neighborhood} · {c.subName}
                   </span>
                 </span>
-                <ScoreBadge score={c.score} size="sm" />
+                <ScoreBadge score={c.score} size="sm" standing={c.standing} />
               </Link>
             ))}
           </div>

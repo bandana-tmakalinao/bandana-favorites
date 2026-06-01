@@ -49,10 +49,10 @@ describe("rankSubcategory (v2 source-weighted blend, comparison-only)", () => {
     assert.equal(res.get("bare")!.standing, "new");
   });
 
-  // --- the fig-pizza fix: a single enthusiast can't crown a brand-new dish -----------------------
+  // --- the fig-pizza fix: the corroboration gate (publication, ≥5 users, or ≥2 power users) -------
 
-  it("a single voter CANNOT put a user-created item on the ranked board", () => {
-    // 'fig' has no publication backing; one (curator/power) voter duels it above two editorial pies.
+  it("a single voter CANNOT rank a user-created dish (shows as Unranked)", () => {
+    // 'fig' has no publication backing; one curator/power voter duels it above two editorial pies.
     const res = rankSubcategory(
       [
         con("fig"),
@@ -62,37 +62,31 @@ describe("rankSubcategory (v2 source-weighted blend, comparison-only)", () => {
       [duel("fig", "ed1", "u1", "power"), duel("fig", "ed2", "u1", "power")],
     );
     const fig = res.get("fig")!;
-    assert.equal(fig.standing, "unranked", "one voter is not a community ranking");
+    assert.equal(fig.standing, "new", "one voter is not a ranking ⇒ rendered Unranked");
     assert.equal(fig.rank, null, "fig is not on the board");
     assert.ok(res.get("ed1")!.rank != null, "editorial items stay ranked");
-    // ...and its score is shrunk by lack of corroboration — nowhere near a pristine 100.
-    assert.ok(fig.score < 50, `single-voter score is shrunk (got ${fig.score})`);
-    assert.ok(fig.score < res.get("ed1")!.score, "fig does not outscore the editorial #1");
   });
 
-  it("a SECOND distinct voter lets a user-created item earn the board", () => {
-    const res = rankSubcategory(
-      [con("fig"), con("rival", { seedScore: 50, pubVolume: 1.9 })],
-      [duel("fig", "rival", "u1", "power"), duel("fig", "rival", "u2", "power")],
-    );
-    const fig = res.get("fig")!;
-    assert.notEqual(fig.standing, "new");
-    assert.ok(fig.rank != null, "≥ MIN_VOTERS distinct voters ⇒ board-eligible");
-    assert.ok(fig.score > res.get("rival")!.score, "having won, it now ranks above its rival");
+  it("TWO distinct power users clear the gate; one does not", () => {
+    const figWith = (voters: string[]) =>
+      rankSubcategory(
+        [con("fig"), con("rival", { seedScore: 50, pubVolume: 1.9 })],
+        voters.map((u) => duel("fig", "rival", u, "power")),
+      ).get("fig")!;
+    assert.equal(figWith(["u1"]).standing, "new", "1 power user ⇒ Unranked");
+    const two = figWith(["u1", "u2"]);
+    assert.notEqual(two.standing, "new", "2 power users clear MIN_VOTERS.power");
+    assert.ok(two.rank != null && two.score > 0, "now ranked with a real score");
   });
 
-  it("more distinct voters ⇒ higher (more confident) score", () => {
-    // 'many' is corroborated by three people; 'few' by one. Both win every duel vs a foil.
-    const res = rankSubcategory(
-      [con("few"), con("many"), con("foilA"), con("foilB")],
-      [
-        duel("few", "foilA", "u1"),
-        duel("many", "foilB", "u1"),
-        duel("many", "foilB", "u2"),
-        duel("many", "foilB", "u3"),
-      ],
-    );
-    assert.ok(res.get("many")!.score > res.get("few")!.score, "corroboration lifts the score");
+  it("normal users need MIN_VOTERS.user distinct people to rank a dish", () => {
+    const figWith = (n: number) =>
+      rankSubcategory(
+        [con("fig"), con("rival", { seedScore: 50, pubVolume: 1.9 })],
+        Array.from({ length: n }, (_, i) => duel("fig", "rival", `u${i}`, "user")),
+      ).get("fig")!;
+    assert.equal(figWith(SOURCE.MIN_VOTERS.user - 1).standing, "new", "below the bar ⇒ Unranked");
+    assert.notEqual(figWith(SOURCE.MIN_VOTERS.user).standing, "new", "at the bar ⇒ ranked");
   });
 
   it("publications anchor the blend; duels move it but don't swing it wildly", () => {

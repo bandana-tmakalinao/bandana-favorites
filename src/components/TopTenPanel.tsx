@@ -32,7 +32,7 @@ export default function TopTenPanel({ entry }: { entry: ShowcaseEntry }) {
                   {v.placeName} · {v.neighborhood}
                 </span>
               </span>
-              <ScoreBadge score={v.score} size="sm" />
+              <ScoreBadge score={v.score} size="sm" standing={v.standing} />
             </Link>
           </li>
         ))}

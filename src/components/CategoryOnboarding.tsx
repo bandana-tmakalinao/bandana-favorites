@@ -198,7 +198,7 @@ export default function CategoryOnboarding({
                           {v.placeName} · {v.neighborhood}
                         </div>
                       </div>
-                      <ScoreBadge score={v.score} size="sm" />
+                      <ScoreBadge score={v.score} size="sm" standing={v.standing} />
                     </button>
                   ))}
                 </div>
