@@ -41,13 +41,14 @@ export default function MapPage() {
         label: list.subcategory.name,
         emoji: list.subcategory.emoji,
         color,
-        points: list.ranked.slice(0, 6).map((v) => ({
+        points: list.ranked.slice(0, 10).map((v, i) => ({
           id: v.id,
           lat: v.lat,
           lng: v.lng,
           score: v.score,
           title: v.title,
           placeName: v.placeName,
+          rank: i + 1,
         })),
       },
     ];
@@ -57,7 +58,7 @@ export default function MapPage() {
     <div className="mx-auto max-w-5xl px-4 py-8">
       <h1 className="text-3xl font-black tracking-tight">NYC&apos;s best, mapped</h1>
       <p className="mt-1 text-[var(--color-ink-dim)]">
-        Top spots across food types on one map. Tap a food to filter — add more, or show all. Hover a pin for the dish &amp; place.
+        The <strong>top 10 of every food type</strong> on one map. Tap a food to see its podium — 🥇 #1, 🥈 #2 &amp; 🥉 #3 pop up automatically. Hover any pin for the dish &amp; place.
       </p>
       <div className="mt-6">
         <CityMap groups={groups} />
