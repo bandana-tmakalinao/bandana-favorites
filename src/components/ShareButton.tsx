@@ -13,13 +13,15 @@ export default function ShareButton({
   id,
   title,
   pageHref,
+  query,
   label = "Share",
   variant = "solid",
 }: {
-  kind: "category" | "pinnacle";
+  kind: "category" | "pinnacle" | "personal";
   id: string;
   title: string; // e.g. "Best Pizza in NYC" — used as the native-share text
   pageHref: string; // e.g. /nyc/pizza — the "see the full ranking" link
+  query?: string; // extra image query, e.g. "sub=pizza" for a personal per-category share
   label?: string;
   variant?: "solid" | "ghost";
 }) {
@@ -31,7 +33,7 @@ export default function ShareButton({
   const closeRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
-  const imgSrc = `/share/${kind}/${id}/image`;
+  const imgSrc = `/share/${kind}/${id}/image${query ? `?${query}` : ""}`;
   const fileName = `${id}-bandana-faves.png`;
 
   // While the sheet is open: lock body scroll, close on Escape, move focus into the dialog;

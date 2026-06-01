@@ -517,16 +517,28 @@ export default function DuelBoard({
       : null;
 
   // In place mode card `a` is always the new dish being placed; `b` is one of your ranked picks.
-  const Card = ({ c, other, ribbon }: { c: ContenderView; other: ContenderView; ribbon?: string }) => {
-    const badge = isKing(c) ? `👑 ${streak} in a row` : ribbon;
+  const Card = ({
+    c,
+    other,
+    ribbon,
+    highlight,
+  }: {
+    c: ContenderView;
+    other: ContenderView;
+    ribbon?: string;
+    highlight?: boolean;
+  }) => {
+    const badge = isKing(c) ? `👑 ${streak} in a row` : highlight ? `★ ${ribbon ?? "Ranking this"}` : ribbon;
     return (
       <button
         onClick={() => choose(c, other)}
         disabled={busy}
-        className="group relative flex-1 overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] text-left transition hover:border-[var(--color-brand)] hover:shadow-[0_0_0_3px_var(--color-brand)] disabled:opacity-60"
+        className={`group relative flex-1 overflow-hidden rounded-2xl border bg-[var(--color-surface)] text-left transition hover:border-[var(--color-brand)] hover:shadow-[0_0_0_3px_var(--color-brand)] disabled:opacity-60 ${
+          highlight ? "border-[var(--color-brand)] ring-2 ring-[var(--color-brand)]/55" : "border-[var(--color-border)]"
+        }`}
       >
-        <PhotoThumb url={c.photoUrl} alt={c.title} className="h-40 w-full sm:h-52" />
-        <div className="p-3">
+        <PhotoThumb url={c.photoUrl} alt={c.title} className="h-44 w-full sm:h-56 lg:h-72" />
+        <div className="p-3 sm:p-4">
           {badge && (
             <span
               className={`mb-1.5 inline-block rounded-full px-2 py-0.5 text-xs font-semibold text-white ${
@@ -538,7 +550,7 @@ export default function DuelBoard({
           )}
           <div className="flex items-start gap-2">
             <div className="min-w-0 flex-1">
-              <div className="truncate font-bold">{c.title}</div>
+              <div className="truncate font-bold sm:text-lg">{c.title}</div>
               <div className="truncate text-sm text-[var(--color-ink-dim)]">
                 {c.placeName} · {c.neighborhood}
               </div>
@@ -586,7 +598,7 @@ export default function DuelBoard({
       </div>
 
       <div key={pair.a.id + pair.b.id} className="bf-fade flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-        <Card c={pair.a} other={pair.b} ribbon={isPlace ? "New pick" : undefined} />
+        <Card c={pair.a} other={pair.b} ribbon={isPlace ? "Ranking this" : undefined} highlight={isPlace} />
         <div className="grid shrink-0 place-items-center py-1 text-sm font-black text-[var(--color-ink-dim)] sm:py-0">
           VS
         </div>

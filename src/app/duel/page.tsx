@@ -37,7 +37,7 @@ export default async function DuelPage({
         subcategory: { slug: session.subcategory.slug, name: session.subcategory.name },
       };
       return (
-        <div className="mx-auto max-w-2xl px-4 py-8">
+        <div className="mx-auto max-w-2xl px-4 py-8 lg:max-w-3xl">
           <DuelBoard
             mode="place"
             sub={sub}
@@ -61,7 +61,7 @@ export default async function DuelPage({
   const initialStanding = user && sub ? getRepo().getCategoryStanding(user.id, sub) : null;
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-8">
+    <div className="mx-auto max-w-2xl px-4 py-8 lg:max-w-3xl">
       <DuelBoard
         mode="open"
         initialPair={pair}

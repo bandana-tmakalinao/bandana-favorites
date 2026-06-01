@@ -131,6 +131,9 @@ export default async function SubcategoryPage({
           personal={personal}
           signedIn={!!user}
           subName={subcategory.name}
+          sub={subcategory.slug}
+          meHandle={user?.handle}
+          meName={user?.name}
         />
       </div>
 

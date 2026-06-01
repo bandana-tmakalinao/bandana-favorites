@@ -23,6 +23,9 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
 
   const user = await getCurrentUser();
   const { contender: c, category, subcategory, place, photos, neighbors } = detail;
+  const alreadyRanked = user
+    ? getRepo().getPersonalRankedList(user.id, subcategory.slug).some((v) => v.id === c.id)
+    : false;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -88,14 +91,25 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
       <div className="mt-6 space-y-4 border-t border-[var(--color-border)] pt-6">
         <div className="flex flex-wrap items-center gap-3">
           <Link
-            href={`/duel?sub=${subcategory.slug}&keep=${c.id}`}
+            href={`/duel?sub=${subcategory.slug}&target=${c.id}`}
             className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
           >
-            ⚔️ Duel this vs others
+            {alreadyRanked ? "↻ Re-rank this for me" : "⚔️ Rank this for me"}
           </Link>
           <PinButton contenderId={c.id} signedIn={!!user} initialPinned={(user?.pinnacle ?? []).includes(c.id)} />
           <PhotoUpload contenderId={c.id} signedIn={!!user} />
+          <Link
+            href={`/duel?sub=${subcategory.slug}&keep=${c.id}&mode=open`}
+            className="text-sm text-[var(--color-ink-dim)] transition hover:text-[var(--color-ink)]"
+          >
+            or open-duel it →
+          </Link>
         </div>
+        {alreadyRanked && (
+          <p className="mt-2 text-xs text-[var(--color-ink-dim)]">
+            You&apos;ve ranked this — re-ranking pulls it out and places it fresh against your other picks.
+          </p>
+        )}
       </div>
 
       {photos.length > 0 && (

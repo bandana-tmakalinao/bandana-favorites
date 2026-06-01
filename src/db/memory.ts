@@ -262,6 +262,11 @@ export class MemoryRepository implements Repository {
     }));
   }
 
+  getPersonalRankedListByHandle(handle: string, subSlug: string): ContenderView[] {
+    const user = this.store.users.find((u) => u.handle === handle);
+    return user ? this.getPersonalRankedList(user.id, subSlug) : [];
+  }
+
   getContenderDetail(id: string): ContenderDetail | null {
     const con = this.store.contenders.find((c) => c.id === id);
     if (!con) return null;
@@ -436,10 +441,13 @@ export class MemoryRepository implements Repository {
     const byId = (id: string): ContenderView | undefined =>
       all.find((v) => v.id === id) ?? this.getContenderDetail(id)?.contender;
 
-    let placed = this.getPersonalRankedList(userId, subSlug);
+    // Re-rank: an explicit target already in your ladder is PULLED OUT here so it gets re-inserted
+    // from scratch via fresh duels (rather than deduped away — which is what blocks re-ranking).
+    const targetIdSet = new Set(targetIds);
+    let placed = this.getPersonalRankedList(userId, subSlug).filter((v) => !targetIdSet.has(v.id));
     const favoriteId = this.getCategoryFavorite(userId, subSlug);
-    // With no duel history, anchor the ladder on the declared #1 so there's something to compare to.
-    if (placed.length === 0 && favoriteId) {
+    // With no duel history, anchor the ladder on the declared #1 (unless it's itself being re-ranked).
+    if (placed.length === 0 && favoriteId && !targetIdSet.has(favoriteId)) {
       const fav = byId(favoriteId);
       if (fav) placed = [fav];
     }
@@ -1330,6 +1338,21 @@ export class MemoryRepository implements Repository {
     }
     this.persist();
     return { ok: true };
+  }
+
+  setHandle(userId: string, raw: string): { ok: boolean; error?: string; handle?: string } {
+    const user = this.getUser(userId);
+    if (!user) return { ok: false, error: "Sign in first." };
+    const handle = slugify(raw);
+    if (!handle || handle === "taster") return { ok: false, error: "Pick a username (letters and numbers)." };
+    if (handle.length < 2 || handle.length > 30) return { ok: false, error: "Username must be 2–30 characters." };
+    if (handle === user.handle) return { ok: true, handle }; // no-op
+    if (this.store.users.some((u) => u.id !== userId && u.handle === handle)) {
+      return { ok: false, error: "That username is taken." };
+    }
+    user.handle = handle;
+    this.persist();
+    return { ok: true, handle };
   }
 
   setAvatar(userId: string, url: string): { ok: boolean } {

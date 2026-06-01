@@ -26,6 +26,7 @@ async function resizeToDataUrl(file: File, size = 256): Promise<string> {
 
 export default function ProfileEditor({
   name: initName,
+  handle: initHandle,
   bio: initBio,
   avatarUrl,
   showcase: initShowcase,
@@ -33,6 +34,7 @@ export default function ProfileEditor({
   cats,
 }: {
   name: string;
+  handle: string;
   bio: string;
   avatarUrl: string | null;
   showcase: string[];
@@ -41,6 +43,7 @@ export default function ProfileEditor({
 }) {
   const router = useRouter();
   const [name, setName] = useState(initName);
+  const [handle, setHandle] = useState(initHandle);
   const [bio, setBio] = useState(initBio);
   const [avatar, setAvatar] = useState(avatarUrl);
   const [showcase, setShowcase] = useState<string[]>(initShowcase);
@@ -73,9 +76,10 @@ export default function ProfileEditor({
       const r = await fetch("/api/profile", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ name, bio, showcase, expertCategories: expert }),
+        body: JSON.stringify({ name, handle, bio, showcase, expertCategories: expert }),
       });
-      setMsg(r.ok ? "Saved." : "Couldn't save.");
+      const d = await r.json().catch(() => null);
+      setMsg(r.ok ? "Saved." : d?.error ?? "Couldn't save.");
       if (r.ok) router.refresh();
     } finally {
       setBusy(false);
@@ -122,6 +126,23 @@ export default function ProfileEditor({
       <div>
         <label className="mb-1 block text-sm font-medium">Display name</label>
         <input value={name} onChange={(e) => setName(e.target.value)} maxLength={60} className={input} />
+        <p className="mt-0.5 text-[11px] text-[var(--color-ink-dim)]">Shown on your profile and activity. Doesn&apos;t have to be unique.</p>
+      </div>
+
+      <div>
+        <label className="mb-1 block text-sm font-medium">Username</label>
+        <div className="flex items-center rounded-lg border border-[var(--color-border)] bg-[var(--color-bg)] focus-within:border-[var(--color-brand)]">
+          <span className="pl-3 text-[var(--color-ink-dim)]">@</span>
+          <input
+            value={handle}
+            onChange={(e) => setHandle(e.target.value)}
+            maxLength={30}
+            className="w-full bg-transparent px-1.5 py-2 outline-none"
+            spellCheck={false}
+            autoCapitalize="none"
+          />
+        </div>
+        <p className="mt-0.5 text-[11px] text-[var(--color-ink-dim)]">Unique handle for your profile link (lowercased). Letters, numbers and dashes.</p>
       </div>
 
       <div>

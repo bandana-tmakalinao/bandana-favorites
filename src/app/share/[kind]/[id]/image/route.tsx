@@ -2,6 +2,7 @@ import { ImageResponse } from "next/og";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { getRepo } from "@/db/repo";
+import { shareGradient, SHARE_CORAL, SHARE_GREEN } from "@/lib/shareTheme";
 
 // getRepo() touches the node-only fs/db layer, so this OG route runs on the Node runtime.
 export const runtime = "nodejs";
@@ -17,9 +18,10 @@ const DIM = "#7a7264";
 const CREAM = "#fff8f1";
 const GOLD = "#efb745";
 
-// Gradient backdrops (the "story" color field — bold + saturated, Wrapped energy).
-const CORAL_BG = "linear-gradient(150deg, #f59568 0%, #ed7f54 45%, #d9551f 100%)";
-const GREEN_BG = "linear-gradient(150deg, #18a98c 0%, #009275 50%, #00715b 100%)";
+// Gradient backdrops (the "story" color field — bold + saturated, Wrapped energy). Category posters
+// use a per-category gradient (src/lib/shareTheme.ts); coral/green are the fallbacks + pinnacle field.
+const CORAL_BG = SHARE_CORAL;
+const GREEN_BG = SHARE_GREEN;
 
 // Rank-medal fills (gold / silver / bronze) for the top 3; plain numeral below.
 const MEDAL: Record<number, string> = {
@@ -76,10 +78,10 @@ function fonts() {
 const DISPLAY = "Archivo Black";
 const BODY = "Inter";
 
-type Row = { rank: number; dish: string; place: string; score: number };
+type Row = { rank: number; dish: string; place: string; score?: number };
 
 function rowEl(r: Row) {
-  const sc = scoreColor(r.score);
+  const sc = scoreColor(r.score ?? 0);
   const medal = MEDAL[r.rank];
   return (
     <div
@@ -148,15 +150,17 @@ function rowEl(r: Row) {
         </div>
       </div>
 
-      {/* score */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0, width: 110 }}>
-        <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: 58, color: sc, lineHeight: 1 }}>
-          {r.score}
+      {/* score (omitted for an unranked dish so a personal list never shows an ugly 0) */}
+      {r.score != null && (
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", flexShrink: 0, width: 110 }}>
+          <div style={{ display: "flex", fontFamily: DISPLAY, fontSize: 58, color: sc, lineHeight: 1 }}>
+            {r.score}
+          </div>
+          <div style={{ display: "flex", fontFamily: BODY, fontSize: 18, fontWeight: 700, letterSpacing: 2, color: "#b7af9f" }}>
+            / 100
+          </div>
         </div>
-        <div style={{ display: "flex", fontFamily: BODY, fontSize: 18, fontWeight: 700, letterSpacing: 2, color: "#b7af9f" }}>
-          / 100
-        </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -359,6 +363,41 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
   const { kind, id } = await params;
   const repo = getRepo();
 
+  // Personal per-category "my top 5" — id = @handle, ?sub=<slug>. Labeled with the display name.
+  if (kind === "personal") {
+    const sub = new URL(_req.url).searchParams.get("sub") ?? "";
+    const profile = sub ? repo.getProfile(id) : null;
+    const rl = sub ? repo.getRankedList(sub) : null;
+    if (!profile || !rl) return new Response("Not found", { status: 404 });
+    const firstName = (profile.name || "?").split(" ")[0] || profile.name;
+    const personal = repo.getPersonalRankedListByHandle(id, sub);
+    // Order is the user's own; the number shown is each dish's COMMUNITY score (more meaningful than a
+    // sparse personal win-rate), omitted when the dish isn't ranked yet so we never print a stark 0.
+    const gScore = new Map([...rl.ranked, ...rl.contenders].map((v) => [v.id, v.score]));
+    const rows: Row[] = personal.slice(0, N).map((v, i) => {
+      const g = Math.round(gScore.get(v.id) ?? 0);
+      return {
+        rank: i + 1,
+        dish: v.title,
+        place: [v.placeName, v.neighborhood || v.borough].filter(Boolean).join(" · "),
+        score: g > 0 ? g : undefined,
+      };
+    });
+    if (rows.length === 0)
+      return respond(notFoundPoster(`${firstName}'s ${rl.subcategory.name}`, "Rank a few to fill this out."));
+    return respond(
+      poster({
+        bg: shareGradient(sub),
+        glyph: { emoji: rl.subcategory.emoji },
+        kicker: `${firstName.toUpperCase()}'S TOP ${rows.length}`,
+        title: rl.subcategory.name,
+        tagline: `${firstName}'s personal ${rl.subcategory.name.toLowerCase()} ranking.`,
+        url: `faves.bandana.com/u/${id}`,
+        rows,
+      }),
+    );
+  }
+
   if (kind === "category") {
     const list = repo.getRankedList(id);
     if (!list) return new Response("Not found", { status: 404 });
@@ -371,7 +410,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
     if (rows.length === 0) return respond(notFoundPoster(`Best ${list.subcategory.name} in NYC`, "Be the first to rank it."));
     return respond(
       poster({
-        bg: CORAL_BG,
+        bg: shareGradient(id),
         glyph: { emoji: list.subcategory.emoji },
         kicker: `TOP ${Math.min(N, rows.length)} IN NYC`,
         title: list.subcategory.name,

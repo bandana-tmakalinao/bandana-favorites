@@ -257,6 +257,8 @@ export interface Repository {
   getTryThese(userId: string, limit?: number): Recommendation[];
   /** A single user's own ranking for a food type, from their ratings + duels (score = their score). */
   getPersonalRankedList(userId: string, subSlug: string): ContenderView[];
+  /** Same, resolved by @handle — for the personal "my top 5" share image. */
+  getPersonalRankedListByHandle(handle: string, subSlug: string): ContenderView[];
   getContenderDetail(id: string): ContenderDetail | null;
   getHomeShowcase(perCategory?: number): ShowcaseEntry[];
   search(query: string, limit?: number): SearchResults;
@@ -345,6 +347,8 @@ export interface Repository {
   // --- profiles + pinnacle ---
   getProfile(handle: string, viewerId?: string): ProfileView | null;
   updateProfile(userId: string, patch: { name?: string; bio?: string; showcase?: string[]; expertCategories?: string[] }): { ok: boolean };
+  /** Change a user's @username (unique). Validates format + collision; returns the canonical handle. */
+  setHandle(userId: string, handle: string): { ok: boolean; error?: string; handle?: string };
   setAvatar(userId: string, url: string): { ok: boolean };
   /** Manage the user's all-time-favorites list (add/remove/reorder). */
   pinnacleAction(

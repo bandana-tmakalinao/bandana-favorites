@@ -33,6 +33,7 @@ export default async function MePage() {
             <h2 className="mb-2 font-bold">Profile</h2>
             <ProfileEditor
               name={user.name}
+              handle={user.handle}
               bio={user.bio ?? ""}
               avatarUrl={user.avatarUrl ?? null}
               showcase={user.showcase ?? []}
