@@ -44,7 +44,7 @@ export default async function FeedPage() {
             <p className="text-2xl">👀</p>
             <p className="mt-1 font-bold">Quiet in here</p>
             <p className="mt-0.5 text-sm text-[var(--color-ink-dim)]">
-              Follow a few tasters and their duels &amp; ratings show up here.
+              Follow a few tasters and their duels show up here.
             </p>
           </div>
           {suggestions.length > 0 && (

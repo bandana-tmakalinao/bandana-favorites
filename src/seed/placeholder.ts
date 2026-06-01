@@ -356,23 +356,8 @@ export function generateSeed(): StoreData {
       });
     }
 
-    // a few standing 0–100 ratings per contender, centered on its hidden quality
-    for (const con of subContenders) {
-      const q = quality.get(con.id)!;
-      const nRaters = Math.round(q * 4) + Math.round((1 - q) * 2);
-      const raters = [...users].sort(() => r() - 0.5).slice(0, nRaters);
-      raters.forEach((u) => {
-        const rating = Math.max(0, Math.min(100, Math.round(q * 100 + (r() - 0.5) * 30)));
-        votes.push({
-          id: `vote_${voteN++}`,
-          contenderId: con.id,
-          userId: u.id,
-          rating,
-          weight: +weightOf(u).toFixed(3),
-          createdAt: SEED_EVIDENCE_AT,
-        });
-      });
-    }
+    // Comparison-only: no synthetic 0–100 ratings. Editorial order comes from seedScore + the
+    // synthetic duels above; user evidence is duels only.
   }
 
   const store: StoreData = {
@@ -437,20 +422,14 @@ export function recomputeSubcategory(store: StoreData, subcategoryId: string): v
       loserId: c.loserId,
       weight: c.weight,
       cls: classOf(c.userId),
+      by: c.userId,
       at: at(c.createdAt),
     }));
-  const votes = store.votes
-    .filter((v) => idSet.has(v.contenderId))
-    .map((v) => ({
-      contenderId: v.contenderId,
-      rating: v.rating,
-      weight: v.weight,
-      cls: classOf(v.userId),
-      at: at(v.createdAt),
-    }));
 
+  // Comparison-only: 0–100 standing ratings (votes) no longer feed the ranking. Any legacy vote rows
+  // in the store are intentionally ignored.
   const now = typeof Date.now === "function" ? Date.now() : 0;
-  const results = rankSubcategory(contenders, duels, votes, now);
+  const results = rankSubcategory(contenders, duels, now);
   for (const con of rankable) {
     const r = results.get(con.id);
     if (!r) continue;

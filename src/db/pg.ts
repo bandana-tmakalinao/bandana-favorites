@@ -408,10 +408,11 @@ export async function initPgStore(): Promise<void> {
     }
     // Merge in any curated seed entries added since first launch (idempotent — adds only what's missing).
     toppedUp = topUpSeed(store);
-    if (migrated > 0 || toppedUp > 0) {
-      computeAllRankings(store);
-      console.log(`[pg] migration backfilled ${migrated}; seed top-up added ${toppedUp} — recomputed all rankings`);
-    }
+    // Always recompute every category on boot so a deployed RANKING-ALGORITHM change (not just a data
+    // migration) takes effect immediately. Deterministic + cheap; the delta-flush below writes only the
+    // rows whose score/standing actually changed, so a no-op deploy costs nothing.
+    computeAllRankings(store);
+    console.log(`[pg] boot recompute (migrated ${migrated}, topped-up ${toppedUp}) — all rankings refreshed`);
   } else {
     store = generateSeed();
     seeded = true;
@@ -419,8 +420,8 @@ export async function initPgStore(): Promise<void> {
   }
 
   const controller = new PgController(sql, store);
-  // Full write on first seed; also persist the one-time v2 migration + any curated seed top-up.
-  if (seeded || migrated > 0 || toppedUp > 0) await controller.flush();
+  // Persist first seed, plus any score/standing deltas from the boot recompute (delta-flush no-ops if none).
+  if (seeded || count > 0) await controller.flush();
   g.__bfPgController = controller;
   g.__bfPgCorpus = loadCorpus();
 

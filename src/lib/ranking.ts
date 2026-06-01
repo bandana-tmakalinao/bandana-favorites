@@ -8,9 +8,12 @@
  * duels/votes blend in their shares as they accrue.
  *
  * Per class, quality is a trust-weighted Bradley-Terry latent strength (MM solver against a FIXED
- * baseline anchor, with up/down ratings folded in as low-weight baseline comparisons), pushed
- * through a harsh category-z logistic. Standing (ranked / unranked / new) and risers are derived on
- * top. See docs/architecture/ranking-v2.md. Pure functions, no I/O — unit-tested in ranking.test.ts.
+ * baseline anchor), pushed through a harsh category-z logistic. Ranking is COMPARISON-ONLY: the sole
+ * evidence is head-to-head duels — there are no 0–100 standing ratings. A user-created item's score is
+ * shrunk by how many DISTINCT people corroborate it (confidence), and it only reaches the ranked board
+ * with publication backing or ≥ MIN_VOTERS distinct voters — so one enthusiast can't crown a new dish.
+ * Standing (ranked / unranked / new) and risers are derived on top. See docs/architecture/ranking-v2.md.
+ * Pure functions, no I/O — unit-tested in ranking.test.ts.
  */
 import { RANKING, SOURCE, TRUST, type Standing } from "./config";
 import type { ID } from "./types";
@@ -33,14 +36,8 @@ export interface RankInputDuel {
   loserId: ID;
   weight: number;
   cls: EvidenceClass;
+  by: ID; // the user who cast this comparison — drives the distinct-voter confidence + ranked gate
   at?: number; // epoch ms — for riser velocity
-}
-export interface RankInputVote {
-  contenderId: ID;
-  rating: number; // 0–100 (50 = neutral)
-  weight: number;
-  cls: EvidenceClass;
-  at?: number;
 }
 export interface RankResult {
   theta: number;
@@ -65,14 +62,14 @@ export function trustToWeight(trustScore: number): number {
 const clamp = (x: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, x));
 
 /**
- * One BT quality pass over a single class's evidence. Returns, per contender, a 0–100 quality
- * (harsh category-z logistic, NO shrinkage — the blend's activation + the eligibility gate handle
- * confidence) and the weighted real evidence volume in this class.
+ * One BT quality pass over a single class's duel evidence. Returns, per contender, a 0–100 quality
+ * (harsh category-z logistic, NO shrinkage — the blend's activation + the voter-confidence shrink in
+ * rankSubcategory handle confidence) and the weighted real evidence volume in this class. Ranking is
+ * comparison-only: head-to-head duels are the sole evidence (no 0–100 standing ratings).
  */
 function classPass(
   contenderIds: ID[],
   duels: RankInputDuel[],
-  votes: RankInputVote[],
 ): Map<ID, { q: number; vol: number }> {
   const ids = new Set(contenderIds);
   const wins = new Map<ID, number>();
@@ -101,15 +98,6 @@ function classPass(
     addComparison(d.winnerId, d.loserId, d.weight);
     bump(vol, d.winnerId, d.weight);
     bump(vol, d.loserId, d.weight);
-  }
-  for (const v of votes) {
-    if (!ids.has(v.contenderId)) continue;
-    const signed = (v.rating - 50) / 50;
-    const w = Math.abs(signed) * v.weight * RANKING.THUMB_WEIGHT;
-    if (w <= 0) continue;
-    if (signed > 0) addComparison(v.contenderId, BASELINE, w);
-    else addComparison(BASELINE, v.contenderId, w);
-    bump(vol, v.contenderId, w);
   }
   // Regularizing tie vs baseline keeps θ finite.
   const reg = RANKING.PRIOR_TIE_WEIGHT;
@@ -152,7 +140,6 @@ function classPass(
 export function rankSubcategory(
   contenders: RankInputContender[],
   duels: RankInputDuel[],
-  votes: RankInputVote[],
   now: number = 0,
 ): Map<ID, RankResult> {
   const ids = contenders.map((c) => c.id);
@@ -161,22 +148,22 @@ export function rankSubcategory(
 
   const userDuels = duels.filter((d) => d.cls === "user");
   const powerDuels = duels.filter((d) => d.cls === "power");
-  const userVotes = votes.filter((v) => v.cls === "user");
-  const powerVotes = votes.filter((v) => v.cls === "power");
 
-  const userPass = classPass(ids, userDuels, userVotes);
-  const powerPass = classPass(ids, powerDuels, powerVotes);
+  const userPass = classPass(ids, userDuels);
+  const powerPass = classPass(ids, powerDuels);
 
-  // Combined real-evidence stats (RD, distinct opponents, raw duel count, riser velocity).
+  // Combined real-evidence stats (RD, distinct opponents, raw duel count, riser velocity, voters).
   const realVol = new Map<ID, number>();
   const distinct = new Map<ID, Set<ID>>();
   const rawDuels = new Map<ID, number>();
   const recent = new Map<ID, number>();
+  const voters = new Map<ID, Set<ID>>(); // distinct users who cast a comparison involving this item
   for (const id of ids) {
     realVol.set(id, 0);
     distinct.set(id, new Set());
     rawDuels.set(id, 0);
     recent.set(id, 0);
+    voters.set(id, new Set());
   }
   const windowMs = SOURCE.RISER_WINDOW_DAYS * 86400_000;
   const isRecent = (at?: number) => now > 0 && at != null && now - at <= windowMs;
@@ -188,20 +175,16 @@ export function rankSubcategory(
     distinct.get(d.loserId)!.add(d.winnerId);
     rawDuels.set(d.winnerId, rawDuels.get(d.winnerId)! + 1);
     rawDuels.set(d.loserId, rawDuels.get(d.loserId)! + 1);
+    voters.get(d.winnerId)!.add(d.by);
+    voters.get(d.loserId)!.add(d.by);
     if (isRecent(d.at)) {
       recent.set(d.winnerId, recent.get(d.winnerId)! + d.weight);
       recent.set(d.loserId, recent.get(d.loserId)! + d.weight);
     }
   }
-  for (const v of votes) {
-    if (!idSet.has(v.contenderId)) continue;
-    const signed = Math.abs((v.rating - 50) / 50);
-    const w = signed * v.weight * RANKING.THUMB_WEIGHT;
-    realVol.set(v.contenderId, realVol.get(v.contenderId)! + w);
-    if (isRecent(v.at)) recent.set(v.contenderId, recent.get(v.contenderId)! + w);
-  }
 
   const results = new Map<ID, RankResult>();
+  const boardEligible = new Map<ID, boolean>(); // pub-backed OR ≥ MIN_VOTERS distinct voters
   for (const id of ids) {
     const s = seed.get(id)!;
     const u = userPass.get(id)!;
@@ -221,10 +204,19 @@ export function rankSubcategory(
     const blended = wSum > 0 ? (wPub * pubScore + wUser * u.q + wPower * p.q) / wSum : 0;
 
     const realEvidence = realVol.get(id)!;
+    const nVoters = voters.get(id)!.size;
     const rd = RANKING.RD_BASE / Math.sqrt(1 + realEvidence / RANKING.RD_Q);
-    const eligible = pubVol > 0 || realEvidence >= SOURCE.MIN_EVIDENCE;
-    const score = eligible ? Math.round(blended * 10) / 10 : 0;
-    const sortKey = eligible ? score - RANKING.LCB_LAMBDA * (rd / RANKING.RD_BASE) * 100 : -1e9;
+    const hasEvidence = pubVol > 0 || realEvidence >= SOURCE.MIN_EVIDENCE;
+
+    // Voter-confidence shrink: editorial (publication-backed) items are full-confidence; a purely
+    // user-created item earns confidence only as DISTINCT people corroborate it. This is what keeps a
+    // single enthusiast (even a curator) from rocketing a brand-new dish to a 100 — it shows a fraction
+    // of its blended quality until more voters weigh in. confidence = nVoters/(nVoters + VOTER_CONF_M).
+    const confidence = pubVol > 0 ? 1 : nVoters / (nVoters + SOURCE.VOTER_CONF_M);
+    const score = hasEvidence ? Math.round(blended * confidence * 10) / 10 : 0;
+
+    // Board eligibility: a user-created item must have ≥ MIN_VOTERS distinct voters to be community-ranked.
+    boardEligible.set(id, hasEvidence && (pubVol > 0 || nVoters >= SOURCE.MIN_VOTERS));
 
     results.set(id, {
       theta: 0,
@@ -233,18 +225,20 @@ export function rankSubcategory(
       comparisonCount: rawDuels.get(id)!,
       distinctOpponents: distinct.get(id)!.size,
       score,
-      sortKey,
+      sortKey: score, // display order == the shown score (confidence is already baked into score)
       status: "provisional",
       rank: null,
-      standing: eligible ? "unranked" : "new",
+      standing: hasEvidence ? "unranked" : "new",
       riserScore: recent.get(id)!,
     });
   }
 
-  // Rank eligible contenders by descending sort key; top RANKED_CAP are "ranked" (status active).
+  // Rank board-eligible contenders by descending score (RD breaks ties — more confident wins); top
+  // RANKED_CAP are "ranked" (status active). Items with evidence but too few distinct voters stay
+  // "unranked" (the "earning their rank" shelf) regardless of score.
   const eligible = [...results.entries()]
-    .filter(([, r]) => r.standing !== "new")
-    .sort((a, b) => b[1].sortKey - a[1].sortKey);
+    .filter(([id, r]) => r.standing !== "new" && boardEligible.get(id))
+    .sort((a, b) => b[1].score - a[1].score || a[1].rd - b[1].rd || b[1].weightedVotes - a[1].weightedVotes);
   eligible.forEach(([, r], i) => {
     if (i < SOURCE.RANKED_CAP) {
       r.rank = i + 1;

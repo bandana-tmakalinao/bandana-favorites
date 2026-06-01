@@ -182,10 +182,8 @@ export class MemoryRepository implements Repository {
     );
     const ids = new Set(subCons.map((c) => c.id));
 
-    const myRating = new Map<string, number>();
-    for (const v of this.store.votes) {
-      if (v.userId === userId && ids.has(v.contenderId)) myRating.set(v.contenderId, v.rating);
-    }
+    // Comparison-only: your personal list is built purely from YOUR duels (win rate vs the things
+    // you've pitted it against) — no 0–100 standing ratings.
     const wins = new Map<string, number>();
     const losses = new Map<string, number>();
     for (const cmp of this.store.comparisons) {
@@ -194,21 +192,18 @@ export class MemoryRepository implements Repository {
       losses.set(cmp.loserId, (losses.get(cmp.loserId) ?? 0) + 1);
     }
 
-    const scored: Array<{ con: Contender; score: number; rated: boolean }> = [];
+    const scored: Array<{ con: Contender; score: number; n: number }> = [];
     for (const con of subCons) {
       const w = wins.get(con.id) ?? 0;
       const l = losses.get(con.id) ?? 0;
-      if (myRating.has(con.id)) {
-        scored.push({ con, score: myRating.get(con.id)!, rated: true });
-      } else if (w + l > 0) {
-        scored.push({ con, score: Math.round((w / (w + l)) * 100), rated: false });
-      }
+      if (w + l > 0) scored.push({ con, score: Math.round((w / (w + l)) * 100), n: w + l });
     }
-    scored.sort((a, b) => b.score - a.score);
+    scored.sort((a, b) => b.score - a.score || b.n - a.n);
     return scored.map((s, i) => ({
       ...this.toView(s.con, i + 1),
       score: s.score,
-      tier: s.rated ? ("established" as const) : ("rising" as const),
+      // More duels involving the item ⇒ more settled in your personal list.
+      tier: s.n >= 3 ? ("established" as const) : ("rising" as const),
       // Everything in your personal list is "ranked" for you, regardless of global standing.
       standing: "ranked" as const,
     }));
@@ -1117,26 +1112,7 @@ export class MemoryRepository implements Repository {
         loserTitle: lose?.title,
       });
     }
-    for (const v of this.store.votes) {
-      if (!following.has(v.userId)) continue;
-      const actor = actorOf(v.userId);
-      const con = conTitle(v.contenderId);
-      if (!actor || !con) continue;
-      const sub = this.subById(con.subcategoryId);
-      items.push({
-        id: v.id,
-        kind: "rating",
-        at: v.createdAt,
-        actor: { handle: actor.handle, name: actor.name, avatarUrl: actor.avatarUrl ?? null },
-        contenderId: con.id,
-        dishTitle: con.title,
-        placeName: this.place(con.placeId)?.name ?? "",
-        subSlug: sub?.slug ?? "",
-        subName: sub?.name ?? "",
-        emoji: sub?.emoji ?? "",
-        rating: v.rating,
-      });
-    }
+    // Comparison-only: the feed surfaces duels, not 0–100 ratings.
     items.sort((a, b) => (a.at < b.at ? 1 : a.at > b.at ? -1 : 0));
     return items.slice(0, limit);
   }

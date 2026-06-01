@@ -37,7 +37,7 @@ export default async function ImportPage() {
       <h1 className="text-3xl font-black tracking-tight">Import a menu</h1>
       <p className="mt-1 text-sm text-[var(--color-ink-dim)]">
         Bulk-add a restaurant&apos;s dishes. Everything lands <strong>unranked</strong> (score 0) and
-        earns its way up through duels &amp; ratings — there&apos;s no imported rating. Dishes dedupe
+        earns its way up through duels — there&apos;s no imported score. Dishes dedupe
         against what&apos;s already on the place.
       </p>
 
