@@ -138,5 +138,56 @@
   "geocoded": false,
   "title": "Soy Garlic Chicken Wings",
   "description": "Retro vinyl-themed chimaek gastropub; classic wings with a crunchy, saucy crust"
+ },
+ {
+  "name": "Turntable Chicken Jazz",
+  "neighborhood": "Koreatown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.742412,
+  "lng": -73.984824,
+  "signatureBowl": "Korean fried wings — soy garlic, spicy gochujang, or half-half — crunchy saucy crust, juicy meat, served with pickled radish cubes and beer",
+  "appearsOn": [
+   "Resy — Where to Find Every Kind of Korean Food in New York (updated Sept 3, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.62,
+  "geocoded": false,
+  "title": "Soy-Garlic & Gochujang Wings",
+  "description": "Vinyl-lined K-town chimaek spot for saucy Korean wings and beer"
+ },
+ {
+  "name": "Kisa",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.719788,
+  "lng": -73.981984,
+  "signatureBowl": "Spicy fried chicken at this kisa sikdang (Korean taxi-driver diner) homage",
+  "appearsOn": [
+   "The Infatuation — The 22 Best Korean Restaurants In NYC (updated Dec 24, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Spicy Fried Chicken",
+  "description": "Korean diner-style spot whose spicy fried chicken is a must-order"
+ },
+ {
+  "name": "KJUN",
+  "neighborhood": "Midtown",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.75598,
+  "lng": -73.983868,
+  "signatureBowl": "Crisp Korean-Cajun fried chicken, served alongside punchy stews and honey-butter chips",
+  "appearsOn": [
+   "Time Out New York — The Best Restaurants in NYC's Midtown Manhattan (updated Sept 11, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": false,
+  "title": "Korean-Cajun Fried Chicken",
+  "description": "Chef Jae Jung's Korean-Cajun mashup with crisp fried chicken"
  }
 ]

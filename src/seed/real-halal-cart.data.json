@@ -201,5 +201,57 @@
   "geocoded": false,
   "title": "Halal Cart Chicken with Lamb-Topped Rice",
   "description": "Kwame Onwuachi's upscale riff on classic halal cart chicken, with crispy lamb-topped rice"
+ },
+ {
+  "name": "Adel's Famous Halal Food",
+  "neighborhood": "Midtown (across from Radio City, 1221 Sixth Ave)",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.780208,
+  "lng": -73.975196,
+  "signatureBowl": "Mixed chicken-and-lamb combo over fragrant yellow rice with a deluge of tangy white sauce and a squirt of ruby red hot sauce",
+  "appearsOn": [
+   "The Infatuation — The Best Halal Restaurants In NYC (updated Oct 23, 2025)",
+   "The Infatuation — In a city full of halal carts, Adel's is still worth the wait (Feb 21, 2025)"
+  ],
+  "appearanceCount": 2,
+  "seedQuality": 0.78,
+  "geocoded": false,
+  "title": "Chicken & Lamb Combo Platter",
+  "description": "Hour-long-line cart with scarlet, cumin-scented chicken over yellow rice"
+ },
+ {
+  "name": "Naz's Halal Food",
+  "neighborhood": "Corona (by Citi Field)",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.729892,
+  "lng": -73.79574,
+  "signatureBowl": "Chicken and lamb over fluffy rice with your choice of hot sauce or white sauce — always get both",
+  "appearsOn": [
+   "The Infatuation — Naz's Halal Food review (Apr 3, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Chicken & Lamb Over Rice",
+  "description": "Iconic Queens halal platters — always get both sauces"
+ },
+ {
+  "name": "Duzan",
+  "neighborhood": "Astoria",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.762648,
+  "lng": -73.927604,
+  "signatureBowl": "Chicken shawarma — in pitas or bowls — with creamy hummus and very spicy harissa",
+  "appearsOn": [
+   "The Infatuation — The Best Halal Restaurants In NYC (updated Oct 23, 2025)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.56,
+  "geocoded": false,
+  "title": "Chicken Shawarma Platter",
+  "description": "Palestinian counter spot whose shawarma outclasses the neighborhood"
  }
 ]

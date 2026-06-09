@@ -206,5 +206,73 @@
   "geocoded": false,
   "title": "Buttery Masala Dosa",
   "description": "Cafeteria beneath NYC's oldest Hindu temple serving big buttery regional dosas"
+ },
+ {
+  "name": "Dosa Delight",
+  "neighborhood": "Jackson Heights",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.7599,
+  "lng": -73.881396,
+  "signatureBowl": "Buttery masala dosa balancing spicy potatoes inside a crisp crepe",
+  "appearsOn": [
+   "The Infatuation: Where To Get A Dosa In NYC (upd. 2025-12)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.62,
+  "geocoded": false,
+  "title": "Masala Dosa",
+  "description": "Jackson Heights South Indian spot with 20-plus dosa varieties"
+ },
+ {
+  "name": "Dosa Hutt",
+  "neighborhood": "Flushing",
+  "borough": "Queens",
+  "address": "",
+  "lat": 40.763704,
+  "lng": -73.825548,
+  "signatureBowl": "Lentil dosa and rava dosa, including a paneer bhurji-filled version",
+  "appearsOn": [
+   "The Infatuation: Where To Get A Dosa In NYC (upd. 2025-12)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.62,
+  "geocoded": false,
+  "title": "Masala Dosa",
+  "description": "No-frills dosa counter near the Flushing Ganesh temple"
+ },
+ {
+  "name": "Hampton Chutney Co.",
+  "neighborhood": "SoHo",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.728808,
+  "lng": -73.999676,
+  "signatureBowl": "Curry chicken dosa and egg-and-potato dosa with fresh chutneys",
+  "appearsOn": [
+   "The Infatuation: Where To Get A Dosa In NYC (upd. 2025-12)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.58,
+  "geocoded": false,
+  "title": "Curry Chicken Dosa",
+  "description": "Long-running counter known for nontraditional dosa fillings"
+ },
+ {
+  "name": "Deep Indian Kitchen",
+  "neighborhood": "Columbus Circle",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.780676,
+  "lng": -73.965668,
+  "signatureBowl": "Build-your-own dosa with fillings like lamb kofta and pulled pork",
+  "appearsOn": [
+   "The Infatuation: Where To Get A Dosa In NYC (upd. 2025-12)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": false,
+  "title": "Build-Your-Own Dosa",
+  "description": "Fast-casual spot with unconventional dosa fillings"
  }
 ]

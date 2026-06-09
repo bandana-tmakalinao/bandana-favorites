@@ -100,5 +100,22 @@
   "geocoded": false,
   "title": "Black & White Cookie",
   "description": "Classic Jewish appetizing shop; its black & white has a shell-like icing over a spongy cookie."
+ },
+ {
+  "name": "Russ & Daughters Café",
+  "neighborhood": "Lower East Side",
+  "borough": "Manhattan",
+  "address": "",
+  "lat": 40.7138,
+  "lng": -73.988788,
+  "signatureBowl": "Famous New York black and white cookie at the 110-year-old family-run Lower East Side café",
+  "appearsOn": [
+   "MICHELIN Guide — The Best Brunch Restaurants in New York City (May 2026)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.55,
+  "geocoded": false,
+  "title": "Black & White Cookie",
+  "description": "Four-generation appetizing institution serving a famous New York black and white"
  }
 ]

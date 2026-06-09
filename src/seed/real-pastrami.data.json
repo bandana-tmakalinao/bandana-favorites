@@ -273,5 +273,39 @@
   "geocoded": false,
   "title": "Pastrami Sandwich",
   "description": "Queens Center Mall noodle stall whose well-rubbed pastrami drew Grub Street praise"
+ },
+ {
+  "name": "Liebman's Kosher Deli",
+  "neighborhood": "Riverdale",
+  "borough": "Bronx",
+  "address": "",
+  "lat": 40.840072,
+  "lng": -73.86714,
+  "signatureBowl": "Pastrami sandwich on rye with mustard, plus matzo ball soup",
+  "appearsOn": [
+   "The Infatuation: The Best Jewish Delis In NYC (2025-01, upd. 2025-12)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.62,
+  "geocoded": false,
+  "title": "Pastrami on Rye",
+  "description": "The Bronx's last kosher deli, slicing pastrami since 1953"
+ },
+ {
+  "name": "Mirage Diner",
+  "neighborhood": "Midwood",
+  "borough": "Brooklyn",
+  "address": "",
+  "lat": 40.680804,
+  "lng": -73.939556,
+  "signatureBowl": "Pastrami reuben on buttery toasted rye with perfect ratios of cheese, sauerkraut, and dressing",
+  "appearsOn": [
+   "The Infatuation: The Best Pastrami Sandwiches In NYC (upd. 2025-12)"
+  ],
+  "appearanceCount": 1,
+  "seedQuality": 0.6,
+  "geocoded": false,
+  "title": "Pastrami Reuben",
+  "description": "Old-school south Brooklyn diner with an outstanding pastrami reuben"
  }
 ]

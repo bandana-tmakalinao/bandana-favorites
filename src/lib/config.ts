@@ -155,8 +155,9 @@ export const MATCH = {
  * being surfaced. Add or remove slugs here to toggle a category's visibility.
  */
 export const HIDDEN_SUBCATEGORIES: ReadonlySet<string> = new Set<string>([
-  "dim-sum",
-  "chopped-cheese",
+  // dim-sum (19 contenders) and chopped-cheese (6, all multi-source 2025+ verified on 2026-06-09)
+  // graduated out of hiding. B&W cookie stays hidden: only 3 of its 7 entries are well-sourced —
+  // nearly all dedicated B&W lists predate 2025.
   "black-and-white-cookie",
 ]);
 
