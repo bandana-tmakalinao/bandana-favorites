@@ -21,7 +21,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${archivo.variable} ${inter.variable}`}>
+    // suppressHydrationWarning: browser extensions inject attributes onto <html> (seen live:
+    // style="--ro-scrollbar-height") before React hydrates, tripping a false mismatch warning.
+    // Scope: this one element's attributes only — child-tree mismatches still surface.
+    <html lang="en" className={`${archivo.variable} ${inter.variable}`} suppressHydrationWarning>
       <body>
         <div className="min-h-screen flex flex-col">
           <SiteHeader />
