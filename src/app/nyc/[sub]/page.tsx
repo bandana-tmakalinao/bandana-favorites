@@ -16,7 +16,21 @@ export async function generateMetadata({ params }: { params: Promise<{ sub: stri
   const { sub } = await params;
   const list = getRepo().getRankedList(sub);
   if (!list) return { title: "Not found · Bandana Faves" };
-  return { title: `Best ${list.subcategory.name} in NYC · Bandana Faves` };
+  const title = `Best ${list.subcategory.name} in NYC · Bandana Faves`;
+  const top = list.ranked[0];
+  const description = top
+    ? `${list.ranked.length} ${list.subcategory.name.toLowerCase()} ranked head-to-head. #1 right now: ${top.title} at ${top.placeName}.`
+    : `The best ${list.subcategory.name.toLowerCase()} in NYC, ranked head-to-head.`;
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: `/share/category/${sub}/image?og=1`, width: 1200, height: 630 }],
+    },
+    twitter: { card: "summary_large_image" as const },
+  };
 }
 
 export default async function SubcategoryPage({

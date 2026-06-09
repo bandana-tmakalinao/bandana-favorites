@@ -10,7 +10,22 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
-  return { title: `@${handle} · Bandana Faves` };
+  const profile = getRepo().getProfile(handle);
+  const title = profile ? `${profile.name} (@${handle}) · Bandana Faves` : `@${handle} · Bandana Faves`;
+  const description =
+    profile && profile.pinnacle.length > 0
+      ? `${profile.name.split(" ")[0]}'s all-time NYC favorites — #1: ${profile.pinnacle[0].title} at ${profile.pinnacle[0].placeName}.`
+      : `${profile?.name ?? handle} on Bandana Faves — NYC food, ranked by duels.`;
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: `/share/pinnacle/${handle}/image?og=1`, width: 1200, height: 630 }],
+    },
+    twitter: { card: "summary_large_image" as const },
+  };
 }
 
 export default async function ProfilePage({ params }: { params: Promise<{ handle: string }> }) {

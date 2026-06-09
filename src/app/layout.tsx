@@ -4,9 +4,17 @@ import SiteHeader from "@/components/SiteHeader";
 import { archivo, inter } from "./fonts";
 
 export const metadata: Metadata = {
+  // Absolute URLs for OG images & canonical links; falls back to localhost in dev.
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: "Bandana Faves · the best food in NYC, ranked by the food",
   description:
     "Crowd-ranked best-of lists by food type. Best ramen in NYC. Best slice. Best dumpling. The food is the headline; the place is the subtitle.",
+  openGraph: {
+    siteName: "Bandana Faves",
+    type: "website",
+    images: [{ url: "/share/site/og/image?og=1", width: 1200, height: 630 }],
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({

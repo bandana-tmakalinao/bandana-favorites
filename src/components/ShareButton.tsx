@@ -17,7 +17,7 @@ export default function ShareButton({
   label = "Share",
   variant = "solid",
 }: {
-  kind: "category" | "pinnacle" | "personal";
+  kind: "category" | "pinnacle" | "personal" | "dish";
   id: string;
   title: string; // e.g. "Best Pizza in NYC" — used as the native-share text
   pageHref: string; // e.g. /nyc/pizza — the "see the full ranking" link

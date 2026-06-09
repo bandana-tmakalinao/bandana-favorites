@@ -6,8 +6,32 @@ import { ConfidenceDot, PhotoThumb, ScoreBadge, tierLabel } from "@/components/b
 import PhotoUpload from "@/components/PhotoUpload";
 import PinButton from "@/components/PinButton";
 import { categoryGradient } from "@/lib/categoryTheme";
+import ShareButton from "@/components/ShareButton";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const detail = getRepo().getContenderDetail(id);
+  if (!detail) return { title: "Not found · Bandana Faves" };
+  const { contender: c, subcategory, place } = detail;
+  const title = c.rank
+    ? `${c.title} at ${place.name} — #${c.rank} best ${subcategory.name.toLowerCase()} in NYC`
+    : `${c.title} at ${place.name} · Bandana Faves`;
+  const description =
+    c.description ||
+    `${c.title} at ${place.name}, ${place.neighborhood} — ranked head-to-head on Bandana Faves.`;
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: [{ url: `/share/dish/${id}/image?og=1`, width: 1200, height: 630 }],
+    },
+    twitter: { card: "summary_large_image" as const },
+  };
+}
 
 export default async function ContenderPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -105,6 +129,13 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
             {alreadyRanked ? "↻ Re-rank this for me" : "⚔️ Rank this for me"}
           </Link>
           <PinButton contenderId={c.id} signedIn={!!user} initialPinned={(user?.pinnacle ?? []).includes(c.id)} />
+          <ShareButton
+            kind="dish"
+            id={c.id}
+            title={c.rank ? `${c.title} at ${place.name} — #${c.rank} best ${subcategory.name.toLowerCase()} in NYC` : `${c.title} at ${place.name}`}
+            pageHref={`/c/${c.id}`}
+            variant="ghost"
+          />
           <PhotoUpload contenderId={c.id} signedIn={!!user} />
           <Link
             href={`/duel?sub=${subcategory.slug}&keep=${c.id}&mode=open`}
