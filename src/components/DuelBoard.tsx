@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { PhotoThumb, ScoreBadge, btn } from "./bits";
+import { categoryGradient } from "@/lib/categoryTheme";
 import { TRUST } from "@/lib/config";
 import {
   initPlacement,
@@ -147,6 +148,8 @@ export default function DuelBoard({
   const [streak, setStreak] = useState(0);
   const [count, setCount] = useState(0);
   const [busy, setBusy] = useState(false);
+  // The card just clicked — pulses while the next pair loads, so a pick feels like a hit.
+  const [pickedId, setPickedId] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [prefer, setPrefer] = useState<string[]>(initialPrefer ?? []);
   const [standing, setStanding] = useState<CategoryStanding | null>(initialStanding ?? null);
@@ -241,6 +244,7 @@ export default function DuelBoard({
     }
     setBusy(true);
     setError(null);
+    setPickedId(winner.id);
     try {
       const res = await fetch("/api/duel", {
         method: "POST",
@@ -277,8 +281,27 @@ export default function DuelBoard({
       setError("Network error.");
     } finally {
       setBusy(false);
+      setPickedId(null);
     }
   }
+
+  // Desktop power flow: ← picks the left dish, → picks the right. Active only mid-duel.
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (busy || !pair) return;
+      const t = e.target as HTMLElement | null;
+      if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+      if (e.key === "ArrowLeft") {
+        e.preventDefault();
+        choose(pair.a, pair.b);
+      } else if (e.key === "ArrowRight") {
+        e.preventDefault();
+        choose(pair.b, pair.a);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  });
 
   // ---------------------------------------------------------------------------
   // Place mode: the "have you tried?" grid
@@ -517,27 +540,53 @@ export default function DuelBoard({
       : null;
 
   // In place mode card `a` is always the new dish being placed; `b` is one of your ranked picks.
+  const duelGradient = categoryGradient(subSlug());
   const Card = ({
     c,
     other,
     ribbon,
     highlight,
+    keyHint,
   }: {
     c: ContenderView;
     other: ContenderView;
     ribbon?: string;
     highlight?: boolean;
+    keyHint?: string;
   }) => {
     const badge = isKing(c) ? `👑 ${streak} in a row` : highlight ? `★ ${ribbon ?? "Ranking this"}` : ribbon;
     return (
       <button
         onClick={() => choose(c, other)}
         disabled={busy}
-        className={`group relative flex-1 overflow-hidden rounded-2xl border bg-[var(--color-surface)] text-left transition hover:border-[var(--color-brand)] hover:shadow-[0_0_0_3px_var(--color-brand)] disabled:opacity-60 ${
+        className={`group relative flex-1 overflow-hidden rounded-2xl border bg-[var(--color-surface)] text-left transition hover:-translate-y-0.5 hover:border-[var(--color-brand)] hover:shadow-[0_12px_32px_-14px_rgba(35,28,22,0.45)] disabled:opacity-60 ${
           highlight ? "border-[var(--color-brand)] ring-2 ring-[var(--color-brand)]/55" : "border-[var(--color-border)]"
-        }`}
+        } ${pickedId === c.id ? "bf-pick" : ""}`}
       >
-        <PhotoThumb url={c.photoUrl} alt={c.title} className="h-44 w-full sm:h-56 lg:h-72" />
+        {c.photoUrl ? (
+          <PhotoThumb url={c.photoUrl} alt={c.title} className="h-44 w-full sm:h-56 lg:h-64" />
+        ) : (
+          // No photo yet → the category's poster gradient carries the card.
+          <div
+            className="relative grid h-28 w-full place-items-center overflow-hidden sm:h-36"
+            style={{ backgroundImage: duelGradient }}
+          >
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -bottom-7 -right-2 select-none text-[6.5rem] opacity-20"
+            >
+              {pair?.category.emoji}
+            </span>
+            <span className="text-5xl drop-shadow-md transition-transform duration-200 group-hover:scale-110">
+              {pair?.category.emoji}
+            </span>
+          </div>
+        )}
+        {keyHint && (
+          <kbd className="absolute left-2.5 top-2.5 hidden rounded-md bg-black/30 px-2 py-0.5 font-mono text-xs font-bold text-white backdrop-blur-sm sm:block">
+            {keyHint}
+          </kbd>
+        )}
         <div className="p-3 sm:p-4">
           {badge && (
             <span
@@ -550,7 +599,7 @@ export default function DuelBoard({
           )}
           <div className="flex items-start gap-2">
             <div className="min-w-0 flex-1">
-              <div className="truncate font-bold sm:text-lg">{c.title}</div>
+              <div className="line-clamp-2 font-bold leading-snug sm:text-lg">{c.title}</div>
               <div className="truncate text-sm text-[var(--color-ink-dim)]">
                 {c.placeName} · {c.neighborhood}
               </div>
@@ -575,7 +624,7 @@ export default function DuelBoard({
         <div>
           {placeProgress ? (
             <>
-              <h1 className="text-xl font-black sm:text-2xl">
+              <h1 className="font-display text-xl sm:text-2xl">
                 Is it better than your #{placeProgress.pivotRank}?
               </h1>
               <p className="mt-0.5 text-sm text-[var(--color-ink-dim)]">
@@ -584,7 +633,7 @@ export default function DuelBoard({
               </p>
             </>
           ) : (
-            <h1 className="text-xl font-black sm:text-2xl">
+            <h1 className="font-display text-xl sm:text-2xl">
               Which {pair.subcategory.name.toLowerCase()} is better?
             </h1>
           )}
@@ -598,11 +647,16 @@ export default function DuelBoard({
       </div>
 
       <div key={pair.a.id + pair.b.id} className="bf-fade flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
-        <Card c={pair.a} other={pair.b} ribbon={isPlace ? "Ranking this" : undefined} highlight={isPlace} />
-        <div className="grid shrink-0 place-items-center py-1 text-sm font-black text-[var(--color-ink-dim)] sm:py-0">
-          VS
+        <Card c={pair.a} other={pair.b} ribbon={isPlace ? "Ranking this" : undefined} highlight={isPlace} keyHint="←" />
+        <div className="grid shrink-0 place-items-center py-1 sm:py-0">
+          <span
+            className="grid h-11 w-11 place-items-center rounded-full font-display text-sm text-white shadow-[0_6px_18px_-6px_rgba(35,28,22,0.5)]"
+            style={{ backgroundImage: duelGradient }}
+          >
+            VS
+          </span>
         </div>
-        <Card c={pair.b} other={pair.a} ribbon={placeProgress ? `Your #${placeProgress.pivotRank}` : undefined} />
+        <Card c={pair.b} other={pair.a} ribbon={placeProgress ? `Your #${placeProgress.pivotRank}` : undefined} keyHint="→" />
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-sm text-[var(--color-ink-dim)]">
@@ -635,6 +689,7 @@ export default function DuelBoard({
         )}
         <span>
           {count > 0 ? `${count} duel${count === 1 ? "" : "s"} this session` : "Pick the one you liked better"}
+          <span className="hidden sm:inline"> · or press ←/→</span>
         </span>
       </div>
 
