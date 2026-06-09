@@ -1,17 +1,10 @@
 import Link from "next/link";
 import { getRepo } from "@/db/repo";
+import { categoryGradient } from "@/lib/categoryTheme";
 
 export const dynamic = "force-dynamic";
 
 export const metadata = { title: "NYC — browse by food · Bandana Faves" };
-
-// A warm tint per category kind, so the grid reads as a vibrant menu even before photos exist.
-const KIND_TINT: Record<string, string> = {
-  cuisine: "from-[#fde7dc] to-[#fbd9c6]", // coral cream
-  format: "from-[#fdf0cf] to-[#f8e3a6]", // gold cream
-  dessert: "from-[#fce4ec] to-[#f7cdd9]", // rose
-  drink: "from-[#e3f0ea] to-[#c9e4d8]", // sage
-};
 
 export default function NycPage() {
   const groups = getRepo().listCategories();
@@ -23,7 +16,7 @@ export default function NycPage() {
         <p className="mb-2 text-sm font-semibold uppercase tracking-wide text-[var(--color-brand)]">
           Browse New York City
         </p>
-        <h1 className="text-3xl font-black tracking-tight sm:text-4xl">What are you craving?</h1>
+        <h1 className="font-display text-3xl sm:text-4xl">What are you craving?</h1>
         <p className="mt-3 text-[var(--color-ink-dim)]">
           Pick a food type to see its absolute, crowd-ranked list. The dish is the headline; the place is
           the subtitle. {totalSubs} rankings and counting.
@@ -39,24 +32,26 @@ export default function NycPage() {
             </h2>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
               {subcategories.map((s) => {
-                const tint = KIND_TINT[category.kind] ?? KIND_TINT.cuisine;
                 return (
                   <Link
                     key={s.id}
                     href={`/nyc/${s.slug}`}
                     className="group flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] shadow-[0_2px_12px_-8px_rgba(35,28,22,0.25)] transition duration-200 hover:-translate-y-0.5 hover:border-[var(--color-brand)] hover:shadow-[0_10px_28px_-12px_rgba(35,28,22,0.35)]"
                   >
-                    {/* Emoji hero on a warm gradient — the art when there are no photos yet */}
-                    <div className={`relative grid h-28 place-items-center bg-gradient-to-br ${tint}`}>
+                    {/* Emoji hero on the category's poster gradient — the art when there are no photos yet */}
+                    <div
+                      className="relative grid h-28 place-items-center overflow-hidden"
+                      style={{ backgroundImage: categoryGradient(s.slug) }}
+                    >
                       {s.topPhotoUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={s.topPhotoUrl} alt={s.name} className="absolute inset-0 h-full w-full object-cover" />
                       ) : (
-                        <span className="text-5xl drop-shadow-sm transition-transform duration-200 group-hover:scale-110">
+                        <span className="text-5xl drop-shadow-md transition-transform duration-200 group-hover:scale-110 group-hover:-rotate-3">
                           {s.emoji}
                         </span>
                       )}
-                      <span className="absolute right-2 top-2 rounded-full bg-white/80 px-2 py-0.5 text-xs font-semibold text-[var(--color-ink)] backdrop-blur-sm">
+                      <span className="absolute right-2 top-2 rounded-full bg-white/85 px-2 py-0.5 text-xs font-semibold text-[var(--color-ink)] backdrop-blur-sm">
                         {s.contenderCount} ranked
                       </span>
                     </div>

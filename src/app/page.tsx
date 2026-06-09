@@ -8,12 +8,6 @@ export const dynamic = "force-dynamic";
 
 // Lead the rotation with the two great debates, then the rest by ranked volume.
 const FEATURED = ["pizza", "cheeseburger"];
-const TINTS = [
-  "from-[#fde7dc] to-[#fbd9c6]", // coral cream
-  "from-[#fdf0cf] to-[#f8e3a6]", // gold cream
-  "from-[#fce4ec] to-[#f7cdd9]", // rose
-  "from-[#e3f0ea] to-[#c9e4d8]", // sage
-];
 
 export default function Home() {
   const showcase = getRepo().getHomeShowcase(10);
@@ -30,7 +24,7 @@ export default function Home() {
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-good)]" />
             Now ranking · New York City
           </p>
-          <h1 className="text-balance text-4xl font-black leading-[1.05] tracking-tight sm:text-6xl">
+          <h1 className="text-balance font-display text-4xl leading-[1.04] sm:text-6xl">
             The best food in NYC, ranked by the <span className="text-[var(--color-brand)]">food</span>.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-[var(--color-ink-dim)]">
@@ -60,13 +54,12 @@ export default function Home() {
         {/* Rotating cover — the polished ranking card, cycling through top food types */}
         <div className="lg:pt-1">
           <RotatingCover>
-            {marquee.map((e, i) => (
+            {marquee.map((e) => (
               <RankingCard
                 key={e.slug}
                 entry={e}
                 variant="cover"
                 rows={5}
-                tint={TINTS[i % TINTS.length]}
                 hook="Ranked by head-to-head duels, not star averages."
               />
             ))}

@@ -20,16 +20,6 @@ const HOOKS: Record<string, string> = {
 };
 // Desserts + drinks get their own closing shelf; everything else is "Most Popular".
 const SWEET_KINDS = new Set(["dessert", "drink"]);
-// Two distinct warm tints so the hero cards never read as a repeat (they're the same kind).
-const FEATURED_TINTS = ["from-[#fde7dc] to-[#fbd9c6]", "from-[#fdf0cf] to-[#f8e3a6]"];
-// Warm tint per category kind — mirrors the /nyc hub cards so the page reads as a vibrant
-// menu with zero photos.
-const KIND_TINT: Record<string, string> = {
-  cuisine: "from-[#fde7dc] to-[#fbd9c6]", // coral cream
-  format: "from-[#fdf0cf] to-[#f8e3a6]", // gold cream
-  dessert: "from-[#fce4ec] to-[#f7cdd9]", // rose
-  drink: "from-[#e3f0ea] to-[#c9e4d8]", // sage
-};
 
 // Large enough to return every ranked dish in any food type (no list is near this big),
 // so each card's "See all {N}" reflects the true total, not a truncated slice.
@@ -46,8 +36,6 @@ export default function ExplorePage() {
 
   const bySlug = new Map<string, ShowcaseEntry>(showcase.map((e) => [e.slug, e]));
   const kindByCategory = new Map(groups.map((g) => [g.category.name, g.category.kind]));
-  const tintFor = (e: ShowcaseEntry) =>
-    KIND_TINT[kindByCategory.get(e.categoryName) ?? "cuisine"] ?? KIND_TINT.cuisine;
 
   // Featured = pizza + burger; fall back to the two biggest lists if those slugs ever change.
   let featured = FEATURED_SLUGS.map((s) => bySlug.get(s)).filter((e): e is ShowcaseEntry => !!e);
@@ -78,7 +66,7 @@ export default function ExplorePage() {
           <span className="h-1.5 w-1.5 rounded-full bg-[var(--color-good)]" />
           New York City · Live rankings
         </p>
-        <h1 className="text-4xl font-black leading-[1.05] tracking-tight sm:text-5xl">
+        <h1 className="font-display text-4xl leading-[1.05] sm:text-5xl">
           The NYC Food <span className="text-[var(--color-brand)]">Power Rankings</span>
         </h1>
         <p className="mt-4 text-lg text-[var(--color-ink-dim)]">
@@ -98,14 +86,13 @@ export default function ExplorePage() {
           Featured · the two great debates
         </h2>
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
-          {featured.map((e, i) => (
+          {featured.map((e) => (
             <RankingCard
               key={e.slug}
               entry={e}
               variant="cover"
               rows={10}
               kicker="Featured · Top 10 in NYC"
-              tint={FEATURED_TINTS[i % FEATURED_TINTS.length]}
               hook={HOOKS[e.slug] ?? `The best ${e.name.toLowerCase()} in NYC, ranked.`}
             />
           ))}
@@ -144,7 +131,7 @@ export default function ExplorePage() {
           </p>
           <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:items-start lg:grid-cols-3">
             {bucket.entries.map((e) => (
-              <RankingCard key={e.slug} entry={e} variant="feed" rows={6} tint={tintFor(e)} />
+              <RankingCard key={e.slug} entry={e} variant="feed" rows={6} />
             ))}
           </div>
         </section>

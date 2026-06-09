@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
+import { archivo, inter } from "./fonts";
 
 export const metadata: Metadata = {
   title: "Bandana Faves · the best food in NYC, ranked by the food",
@@ -12,7 +13,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${archivo.variable} ${inter.variable}`}>
       <body>
         <div className="min-h-screen flex flex-col">
           <SiteHeader />

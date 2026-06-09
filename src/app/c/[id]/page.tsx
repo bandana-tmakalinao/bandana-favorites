@@ -5,16 +5,9 @@ import { getCurrentUser } from "@/lib/auth";
 import { ConfidenceDot, PhotoThumb, ScoreBadge, tierLabel } from "@/components/bits";
 import PhotoUpload from "@/components/PhotoUpload";
 import PinButton from "@/components/PinButton";
+import { categoryGradient } from "@/lib/categoryTheme";
 
 export const dynamic = "force-dynamic";
-
-// Warm per-cuisine tint, matching the category hub cards — used as the hero when there's no photo yet.
-const KIND_TINT: Record<string, string> = {
-  cuisine: "from-[#fde7dc] to-[#fbd9c6]",
-  format: "from-[#fdf0cf] to-[#f8e3a6]",
-  dessert: "from-[#fce4ec] to-[#f7cdd9]",
-  drink: "from-[#e3f0ea] to-[#c9e4d8]",
-};
 
 export default async function ContenderPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -39,16 +32,31 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
         <PhotoThumb url={c.photoUrl} alt={c.title} className="h-64 w-full" />
       ) : (
         <div
-          className={`grid h-44 w-full place-items-center rounded-2xl border border-[var(--color-border)] bg-gradient-to-br ${KIND_TINT[category.kind] ?? KIND_TINT.cuisine}`}
+          className="relative grid h-44 w-full place-items-center overflow-hidden rounded-3xl text-white shadow-[0_14px_40px_-18px_rgba(35,28,22,0.55)]"
+          style={{ backgroundImage: categoryGradient(subcategory.slug) }}
         >
-          <span className="text-6xl drop-shadow-sm">{subcategory.emoji || category.emoji}</span>
+          <span
+            aria-hidden
+            className="pointer-events-none absolute -bottom-10 -right-2 select-none text-[10rem] opacity-20"
+          >
+            {subcategory.emoji || category.emoji}
+          </span>
+          <span className="text-6xl drop-shadow-md">{subcategory.emoji || category.emoji}</span>
+          {c.rank != null && (
+            <span className="absolute bottom-3 left-5 font-display text-5xl text-white/90 drop-shadow-sm">
+              #{c.rank}
+            </span>
+          )}
+          <span className="absolute right-3 top-3 rounded-full bg-white/20 px-2.5 py-1 text-xs font-semibold backdrop-blur-sm">
+            {subcategory.name} · NYC
+          </span>
         </div>
       )}
 
       <div className="mt-4 flex items-start gap-4">
         <ScoreBadge score={c.score} size="lg" standing={c.standing} />
         <div className="min-w-0 flex-1">
-          <h1 className="text-2xl font-black tracking-tight">{c.title}</h1>
+          <h1 className="font-display text-2xl sm:text-3xl">{c.title}</h1>
           <p className="text-[var(--color-ink-dim)]">
             <Link href={`/p/${place.id}`} className="font-medium text-[var(--color-ink)] hover:text-[var(--color-brand)] hover:underline">
               {place.name}

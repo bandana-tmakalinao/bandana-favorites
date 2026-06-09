@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ConfidenceDot, RankBadge, ScoreBadge } from "@/components/bits";
+import { categoryGradient } from "@/lib/categoryTheme";
 import type { ContenderView } from "@/lib/types";
 import type { ShowcaseEntry } from "@/db/repo";
 
@@ -12,20 +13,20 @@ function placeLine(v: ContenderView) {
  * One self-contained Top-N ranking, photo-less. Two variants:
  *  - "feed": compact card for the grid (top 6 + "see all").
  *  - "cover": the hero treatment (pizza/burger) — taller band, #1 promoted, all rows.
+ * The header band wears the category's share-poster gradient (categoryTheme), so the card reads
+ * as a mini version of the Instagram poster — one visual identity from app to share.
  * The dish is the headline; the place is the subtitle; the 0–100 ScoreBadge is the right rail.
  * Overflow defense is the truncation contract: min-w-0 + truncate on the text stack, shrink-0
  * on the medal and the badge — long dish names can never push the layout sideways.
  */
 export default function RankingCard({
   entry,
-  tint,
   rows = 6,
   variant = "feed",
   hook,
   kicker,
 }: {
   entry: ShowcaseEntry;
-  tint: string;
   rows?: number;
   variant?: "feed" | "cover";
   hook?: string;
@@ -48,33 +49,39 @@ export default function RankingCard({
           : "rounded-2xl shadow-[0_2px_12px_-8px_rgba(35,28,22,0.25)] hover:-translate-y-0.5 hover:shadow-[0_10px_28px_-12px_rgba(35,28,22,0.35)]"
       }`}
     >
-      {/* Header band — links to the full ranking */}
+      {/* Header band — the category's poster gradient; links to the full ranking */}
       <Link
         href={`/nyc/${entry.slug}`}
-        className={`group block bg-gradient-to-br ${tint} ${cover ? "px-5 py-6 sm:px-7 sm:py-7" : "px-4 py-3"}`}
+        className={`group relative block overflow-hidden ${cover ? "px-5 py-6 sm:px-7 sm:py-7" : "px-4 py-3"}`}
+        style={{ backgroundImage: categoryGradient(entry.slug) }}
       >
-        <div className={`flex items-center gap-3 ${cover ? "sm:gap-4" : ""}`}>
+        {/* oversized emoji watermark, poster-style */}
+        <span
+          aria-hidden
+          className={`pointer-events-none absolute -right-3 select-none opacity-25 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-6 ${
+            cover ? "-bottom-6 text-[7rem]" : "-bottom-3 text-[4rem]"
+          }`}
+        >
+          {entry.emoji}
+        </span>
+        <div className={`relative flex items-center gap-3 ${cover ? "sm:gap-4" : ""}`}>
           <span className={cover ? "text-5xl drop-shadow-sm sm:text-6xl" : "text-2xl drop-shadow-sm"}>
             {entry.emoji}
           </span>
           <div className="min-w-0">
             <div
-              className={`font-semibold uppercase tracking-[0.12em] text-[var(--color-ink-dim)] ${
+              className={`font-bold uppercase tracking-[0.14em] text-white/80 ${
                 cover ? "text-[11px]" : "text-[10px]"
               }`}
             >
               {label}
             </div>
-            <h3
-              className={`truncate font-black tracking-tight group-hover:text-[var(--color-brand-soft)] ${
-                cover ? "text-3xl sm:text-4xl" : "text-lg"
-              }`}
-            >
+            <h3 className={`truncate font-display text-white drop-shadow-sm ${cover ? "text-3xl sm:text-4xl" : "text-lg"}`}>
               {entry.name}
             </h3>
           </div>
         </div>
-        {cover && hook && <p className="mt-3 text-sm font-medium text-[var(--color-ink-dim)]">{hook}</p>}
+        {cover && hook && <p className="relative mt-3 text-sm font-medium text-white/85">{hook}</p>}
       </Link>
 
       {/* Ranked rows — each links to the dish */}

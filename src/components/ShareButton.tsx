@@ -23,7 +23,7 @@ export default function ShareButton({
   pageHref: string; // e.g. /nyc/pizza — the "see the full ranking" link
   query?: string; // extra image query, e.g. "sub=pizza" for a personal per-category share
   label?: string;
-  variant?: "solid" | "ghost";
+  variant?: "solid" | "ghost" | "hero";
 }) {
   const [open, setOpen] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -129,7 +129,9 @@ export default function ShareButton({
   const trigger =
     variant === "ghost"
       ? "inline-flex items-center gap-1.5 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-2 text-sm font-semibold text-[var(--color-ink)] transition hover:border-[var(--color-ink-dim)]"
-      : "inline-flex items-center gap-1.5 rounded-lg bg-[var(--color-brand)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-soft)]";
+      : variant === "hero" // for use ON a poster-gradient band — frosted white
+        ? "inline-flex items-center gap-1.5 rounded-xl border border-white/40 bg-white/15 px-4 py-2 font-semibold text-white backdrop-blur-sm transition hover:bg-white/25"
+        : "inline-flex items-center gap-1.5 rounded-lg bg-[var(--color-brand)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-soft)]";
 
   return (
     <>
