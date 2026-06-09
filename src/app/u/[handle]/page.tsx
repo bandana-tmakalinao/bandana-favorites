@@ -22,8 +22,14 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
 
   return (
     <div className="mx-auto max-w-3xl px-4 pb-10">
-      {/* Hero — gradient cover band with the avatar overlapping it */}
-      <div className="-mx-4 h-28 bg-gradient-to-br from-[#fde7dc] to-[#fbd9c6] sm:h-32" />
+      {/* Hero — the brand poster gradient (same color field as the share posters) */}
+      <div
+        className="relative -mx-4 h-28 overflow-hidden sm:h-32"
+        style={{ backgroundImage: "linear-gradient(150deg, #f59568 0%, #ed7f54 45%, #d9551f 100%)" }}
+      >
+        <div className="absolute -right-16 -top-24 h-56 w-56 rounded-full bg-white/10" />
+        <div className="absolute -bottom-20 left-10 h-44 w-44 rounded-full bg-white/[0.07]" />
+      </div>
       <div className="-mt-12 flex items-end gap-4 sm:-mt-14">
         <span className="rounded-full ring-4 ring-[var(--color-bg)]">
           <Avatar url={profile.avatarUrl} name={profile.name} size={96} />
@@ -42,7 +48,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
       </div>
 
       <div className="mt-3">
-        <h1 className="flex items-center gap-2 text-2xl font-black tracking-tight">
+        <h1 className="flex items-center gap-2 font-display text-2xl">
           {profile.name}
           {profile.isCurator && (
             <span className="rounded-full bg-[var(--color-good)]/15 px-2 py-0.5 text-xs font-bold text-[var(--color-good)]">
@@ -179,9 +185,21 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
               </li>
             ))}
           </ol>
+        ) : isYou ? (
+          <Link
+            href="/explore"
+            className="flex flex-col items-center gap-1.5 rounded-2xl border-2 border-dashed border-[var(--color-brand)]/30 px-6 py-8 text-center transition hover:border-[var(--color-brand)]/60 hover:bg-[var(--color-surface)]"
+          >
+            <span className="text-2xl">🏔️</span>
+            <span className="font-bold">Build your Pinnacle</span>
+            <span className="max-w-sm text-sm text-[var(--color-ink-dim)]">
+              Your all-time NYC top 5 — open any dish and tap 🏔️ to pin it. It becomes a
+              shareable poster.
+            </span>
+          </Link>
         ) : (
-          <p className="text-[var(--color-ink-dim)]">
-            No favorites pinned yet.{isYou && " Open any dish and tap “Add to favorites.”"}
+          <p className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-6 text-center text-sm text-[var(--color-ink-dim)]">
+            {profile.name.split(" ")[0]} hasn&apos;t pinned any all-time favorites yet.
           </p>
         )}
       </section>
