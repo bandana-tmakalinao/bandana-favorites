@@ -50,6 +50,8 @@ export interface Contender {
   regionId: ID;
   title: string; // the FOOD — clean dish name (the headline; place is the subtitle)
   description: string; // short detail shown under the title (the verbose specifics)
+  /** URL slug, unique per subcategory (/nyc/[sub]/[slug]). Minted ONCE (src/lib/slug.ts); never recomputed on rename. */
+  slug?: string;
   dishVariantId: ID | null; // reserved for future per-named-dish granularity
   seedSources: string[]; // publications this seed entry was informed by (curator seed only)
   /** Ranking v2: publication-class quality 0–100 (editorial seed consensus); 0 for user-created. */
@@ -165,6 +167,10 @@ export interface StoreData {
 export interface ContenderView {
   id: ID;
   placeId: ID;
+  /** URL slug (falls back to the id for not-yet-minted rows — links never break). */
+  slug: string;
+  /** Subcategory slug — with `slug`, everything a dish link needs (src/lib/links.ts dishPath). */
+  subSlug: string;
   rank: number | null;
   title: string;
   description: string;

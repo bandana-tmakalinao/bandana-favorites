@@ -7,6 +7,7 @@
  *   npx tsx scripts/topup_local.ts
  */
 import { generateSeed, computeAllRankings } from "../src/seed/placeholder";
+import { backfillDishSlugs } from "../src/db/slugs";
 import { loadStore, saveStore, STORE_PATH } from "../src/db/store";
 import { normalizeName } from "../src/lib/match";
 import type { Place } from "../src/lib/types";
@@ -67,8 +68,9 @@ for (const sc of seed.contenders) {
   bySub.set(slug, (bySub.get(slug) ?? 0) + 1);
 }
 
+const minted = backfillDishSlugs(store);
 if (added > 0) computeAllRankings(store);
 saveStore(store);
 
-console.log(`✓ Topped up local store: +${added} contenders (users/votes untouched)`);
+console.log(`✓ Topped up local store: +${added} contenders, ${minted} dish slugs minted (users/votes untouched)`);
 for (const [slug, n] of [...bySub.entries()].sort((a, b) => b[1] - a[1])) console.log(`   +${n}  ${slug}`);

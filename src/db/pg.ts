@@ -31,6 +31,7 @@ import type {
 } from "@/lib/types";
 import { generateSeed, computeAllRankings } from "@/seed/placeholder";
 import { MemoryRepository } from "./memory";
+import { backfillDishSlugs } from "./slugs";
 import { loadCorpus, type CorpusPlace } from "./store";
 import { normalizeName } from "@/lib/match";
 
@@ -74,6 +75,8 @@ CREATE TABLE IF NOT EXISTS contenders (id text PRIMARY KEY, place_id text, subca
 ALTER TABLE contenders ADD COLUMN IF NOT EXISTS seed_score double precision;
 ALTER TABLE contenders ADD COLUMN IF NOT EXISTS standing text;
 ALTER TABLE contenders ADD COLUMN IF NOT EXISTS riser_score double precision;
+ALTER TABLE contenders ADD COLUMN IF NOT EXISTS slug text;
+CREATE INDEX IF NOT EXISTS idx_contenders_slug ON contenders (subcategory_id, slug);
 CREATE TABLE IF NOT EXISTS comparisons (id text PRIMARY KEY, subcategory_id text, region_id text, user_id text, winner_id text, loser_id text, source text, weight double precision, created_at text);
 CREATE TABLE IF NOT EXISTS votes (id text PRIMARY KEY, contender_id text, user_id text, rating integer, weight double precision, created_at text);
 CREATE TABLE IF NOT EXISTS photos (id text PRIMARY KEY, contender_id text, uploader_id text, url text, status text, vouch_count integer, placeholder boolean, created_at text);
@@ -173,14 +176,14 @@ const TABLES: Spec<any>[] = [
   },
   {
     name: "contenders",
-    cols: ["id", "place_id", "subcategory_id", "region_id", "title", "description", "dish_variant_id", "seed_sources", "created_by", "created_at", "theta", "rd", "weighted_votes", "comparison_count", "distinct_opponents", "score", "sort_key", "status", "seed_score", "standing", "riser_score"],
+    cols: ["id", "place_id", "subcategory_id", "region_id", "title", "description", "dish_variant_id", "seed_sources", "created_by", "created_at", "theta", "rd", "weighted_votes", "comparison_count", "distinct_opponents", "score", "sort_key", "status", "seed_score", "standing", "riser_score", "slug"],
     rows: (s) => s.contenders,
     toRow: (e: Contender) => ({
       id: e.id, place_id: e.placeId, subcategory_id: e.subcategoryId, region_id: e.regionId, title: e.title,
       description: e.description, dish_variant_id: u(e.dishVariantId), seed_sources: J(e.seedSources), created_by: u(e.createdBy),
       created_at: e.createdAt, theta: e.theta, rd: e.rd, weighted_votes: e.weightedVotes, comparison_count: e.comparisonCount,
       distinct_opponents: e.distinctOpponents, score: e.score, sort_key: e.sortKey, status: e.status,
-      seed_score: u(e.seedScore), standing: u(e.standing), riser_score: u(e.riserScore),
+      seed_score: u(e.seedScore), standing: u(e.standing), riser_score: u(e.riserScore), slug: u(e.slug),
     }),
     fromRow: (r): Contender => ({
       id: r.id as string, placeId: r.place_id as string, subcategoryId: r.subcategory_id as string, regionId: r.region_id as string,
@@ -189,7 +192,7 @@ const TABLES: Spec<any>[] = [
       theta: r.theta as number, rd: r.rd as number, weightedVotes: r.weighted_votes as number, comparisonCount: r.comparison_count as number,
       distinctOpponents: r.distinct_opponents as number, score: r.score as number, sortKey: r.sort_key as number, status: r.status as Contender["status"],
       seedScore: (r.seed_score as number) ?? undefined, standing: (r.standing as Contender["standing"]) ?? undefined,
-      riserScore: (r.riser_score as number) ?? undefined,
+      riserScore: (r.riser_score as number) ?? undefined, slug: (r.slug as string) ?? undefined,
     }),
     assign: (s, items) => (s.contenders = items),
   },
@@ -408,15 +411,21 @@ export async function initPgStore(): Promise<void> {
     }
     // Merge in any curated seed entries added since first launch (idempotent — adds only what's missing).
     toppedUp = topUpSeed(store);
+    // SEO slug migration: mint URL slugs for contenders that don't have one (incl. fresh top-ups).
+    // Idempotent — existing slugs are never recomputed (published URLs are forever).
+    const minted = backfillDishSlugs(store);
     // Always recompute every category on boot so a deployed RANKING-ALGORITHM change (not just a data
     // migration) takes effect immediately. Deterministic + cheap; the delta-flush below writes only the
     // rows whose score/standing actually changed, so a no-op deploy costs nothing.
     computeAllRankings(store);
-    console.log(`[pg] boot recompute (migrated ${migrated}, topped-up ${toppedUp}) — all rankings refreshed`);
+    console.log(
+      `[pg] boot recompute (migrated ${migrated}, topped-up ${toppedUp}, minted ${minted} dish slugs) — all rankings refreshed`,
+    );
   } else {
     store = generateSeed();
     seeded = true;
-    console.log(`[pg] empty DB — seeding ${store.contenders.length} contenders`);
+    const minted = backfillDishSlugs(store);
+    console.log(`[pg] empty DB — seeding ${store.contenders.length} contenders (${minted} dish slugs)`);
   }
 
   const controller = new PgController(sql, store);

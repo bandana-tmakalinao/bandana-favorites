@@ -9,6 +9,7 @@ import {
   type ConfidenceTier,
 } from "@/lib/config";
 import { trustToWeight } from "@/lib/ranking";
+import { mintDishSlug } from "@/lib/slug";
 import { normalizeName, resolveDishName, similarity, type DishResolution } from "@/lib/match";
 import { recomputeSubcategory } from "@/seed/placeholder";
 import type {
@@ -89,11 +90,23 @@ export class MemoryRepository implements Repository {
     if (con.status === "provisional") return "provisional";
     return con.rd < RANKING.RD_ESTABLISHED ? "established" : "rising";
   }
+  /** Mint a URL slug for a NEW contender, unique within its subcategory (see src/lib/slug.ts). */
+  private mintSlugFor(subId: string, title: string, placeName: string, id: string): string {
+    const taken = new Set<string>();
+    for (const c of this.store.contenders) {
+      if (c.subcategoryId === subId && c.slug) taken.add(c.slug);
+    }
+    return mintDishSlug(taken, title, placeName, id);
+  }
   private toView(con: Contender, rank: number | null): ContenderView {
     const pl = this.place(con.placeId);
     return {
       id: con.id,
       placeId: con.placeId,
+      // Slug falls back to the id so dish links keep working for rows minted before the
+      // slug migration ran (the /nyc/[sub]/[dishSlug] route resolves raw ids → redirects).
+      slug: con.slug || con.id,
+      subSlug: this.subById(con.subcategoryId)?.slug ?? "",
       rank,
       title: con.title,
       description: con.description ?? "",
@@ -265,6 +278,16 @@ export class MemoryRepository implements Repository {
   getPersonalRankedListByHandle(handle: string, subSlug: string): ContenderView[] {
     const user = this.store.users.find((u) => u.handle === handle);
     return user ? this.getPersonalRankedList(user.id, subSlug) : [];
+  }
+
+  /** Slug-first dish resolution for /nyc/[sub]/[dishSlug]. Falls through to id (pre-slug links). */
+  getContenderBySlug(subSlug: string, dishSlug: string): ContenderDetail | null {
+    const sub = this.subBySlug(subSlug);
+    if (!sub) return null;
+    const con = this.store.contenders.find(
+      (c) => c.subcategoryId === sub.id && (c.slug === dishSlug || c.id === dishSlug),
+    );
+    return con ? this.getContenderDetail(con.id) : null;
   }
 
   getContenderDetail(id: string): ContenderDetail | null {
@@ -931,9 +954,11 @@ export class MemoryRepository implements Repository {
       this.persist();
       return { ok: true, contenderId: existing.id, placeId: place.id };
     }
+    const newId = crypto.randomUUID();
     const con: Contender = {
-      id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
+      id: newId, placeId: place.id, subcategoryId: sub.id, regionId: region.id,
       title: resolvedTitle, description: description?.trim() ?? "", dishVariantId: null,
+      slug: this.mintSlugFor(sub.id, resolvedTitle, place.name, newId),
       seedSources: [], seedScore: 0, createdBy: userId, createdAt: new Date().toISOString(), theta: 0, rd: 350,
       weightedVotes: 0, comparisonCount: 0, distinctOpponents: 0, score: 0, sortKey: 0, status: "provisional",
       standing: "new", riserScore: 0,
@@ -1013,9 +1038,11 @@ export class MemoryRepository implements Repository {
         continue;
       }
       // Lands UNRANKED at score 0 — earns its way up via duels/ratings, just like a user add.
+      const newId = crypto.randomUUID();
       const con: Contender = {
-        id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
+        id: newId, placeId: place.id, subcategoryId: sub.id, regionId: region.id,
         title: resolvedTitle, description: item.description?.trim() ?? "", dishVariantId: null,
+        slug: this.mintSlugFor(sub.id, resolvedTitle, place.name, newId),
         seedSources: [], seedScore: 0, createdBy: null, createdAt: new Date().toISOString(), theta: 0,
         rd: 350, weightedVotes: 0, comparisonCount: 0, distinctOpponents: 0, score: 0, sortKey: 0,
         status: "provisional", standing: "new", riserScore: 0,
@@ -1042,9 +1069,12 @@ export class MemoryRepository implements Repository {
       lat: region.center.lat, lng: region.center.lng, corpusId: null, status: "proposed",
     };
     this.store.places.push(place);
+    const newId = crypto.randomUUID();
     this.store.contenders.push({
-      id: crypto.randomUUID(), placeId: place.id, subcategoryId: sub.id, regionId: region.id,
-      title: sub.name, description: "", dishVariantId: null, seedSources: [], seedScore: 0, createdBy: userId,
+      id: newId, placeId: place.id, subcategoryId: sub.id, regionId: region.id,
+      title: sub.name, description: "", dishVariantId: null,
+      slug: this.mintSlugFor(sub.id, sub.name, place.name, newId),
+      seedSources: [], seedScore: 0, createdBy: userId,
       createdAt: new Date().toISOString(), theta: 0, rd: 350, weightedVotes: 0,
       comparisonCount: 0, distinctOpponents: 0, score: 0, sortKey: 0, status: "proposed",
       standing: "new", riserScore: 0,

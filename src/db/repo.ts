@@ -14,6 +14,7 @@ import type { DishResolution } from "@/lib/match";
 import { generateSeed } from "@/seed/placeholder";
 import { MemoryRepository } from "./memory";
 import { getPgRepository } from "./pg";
+import { backfillDishSlugs } from "./slugs";
 import { type CorpusPlace, loadCorpus, loadStore, saveStore } from "./store";
 
 export type { CategoryWithSubs, RankedList };
@@ -260,6 +261,8 @@ export interface Repository {
   /** Same, resolved by @handle — for the personal "my top 5" share image. */
   getPersonalRankedListByHandle(handle: string, subSlug: string): ContenderView[];
   getContenderDetail(id: string): ContenderDetail | null;
+  /** Slug-first dish resolution for /nyc/[sub]/[dishSlug]; also accepts a raw contender id. */
+  getContenderBySlug(subSlug: string, dishSlug: string): ContenderDetail | null;
   getHomeShowcase(perCategory?: number): ShowcaseEntry[];
   search(query: string, limit?: number): SearchResults;
   /** keepId = "king of the hill": keep that contender on one side and rotate in a fresh challenger.
@@ -385,6 +388,16 @@ export interface Repository {
 const g = globalThis as unknown as { __bfStore?: StoreData; __bfCorpus?: CorpusPlace[] };
 
 export function getRepo(): Repository {
+  // Guardrail: page/data code must NEVER run during `next build`. The pg store isn't initialized
+  // there (instrumentation doesn't run) and the local fallback would silently bake placeholder
+  // data into prerendered HTML. ISR routes opt out of build-time prerender via
+  // generateStaticParams() → [] — if a route regresses, fail the build loudly instead.
+  if (process.env.NEXT_PHASE === "phase-production-build" || process.env.BF_BUILDING === "1") {
+    throw new Error(
+      "getRepo() called during `next build` — this route would prerender with placeholder data. " +
+        "Give it `generateStaticParams() => []` (ISR) or keep it dynamic.",
+    );
+  }
   if (process.env.DATABASE_URL) {
     // Postgres-backed durable working set (loaded/seeded at boot by src/instrumentation.ts → initPgStore).
     return getPgRepository();
@@ -395,6 +408,8 @@ export function getRepo(): Repository {
       saveStore(s);
       return s;
     })();
+    // SEO slug migration (local twin of the pg boot backfill): mint once, persist, never recompute.
+    if (backfillDishSlugs(g.__bfStore) > 0) saveStore(g.__bfStore);
   }
   if (!g.__bfCorpus) g.__bfCorpus = loadCorpus();
   return new MemoryRepository(g.__bfStore, g.__bfCorpus);
