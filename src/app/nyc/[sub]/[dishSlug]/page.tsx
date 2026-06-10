@@ -1,45 +1,51 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
-import { ConfidenceDot, PhotoThumb, ScoreBadge, tierLabel } from "@/components/bits";
+import { ConfidenceDot, PhotoThumb, ScoreBadge } from "@/components/bits";
 import PhotoUpload from "@/components/PhotoUpload";
 import PinButton from "@/components/PinButton";
-import { categoryGradient } from "@/lib/categoryTheme";
 import ShareButton from "@/components/ShareButton";
+import { categoryGradient } from "@/lib/categoryTheme";
+import { dishPath } from "@/lib/links";
 
 export const dynamic = "force-dynamic";
 
-export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const detail = getRepo().getContenderDetail(id);
-  if (!detail) return { title: "Not found · Bandana Faves" };
+export async function generateMetadata({ params }: { params: Promise<{ sub: string; dishSlug: string }> }) {
+  const { sub, dishSlug } = await params;
+  const detail = getRepo().getContenderBySlug(sub, dishSlug);
+  if (!detail) return { title: "Not found" };
   const { contender: c, subcategory, place } = detail;
   const title = c.rank
     ? `${c.title} at ${place.name} — #${c.rank} best ${subcategory.name.toLowerCase()} in NYC`
-    : `${c.title} at ${place.name} · Bandana Faves`;
+    : `${c.title} at ${place.name}`;
   const description =
     c.description ||
     `${c.title} at ${place.name}, ${place.neighborhood} — ranked head-to-head on Bandana Faves.`;
   return {
     title,
     description,
+    // Canonical is ALWAYS the slug URL, even when this page was reached via a raw contender id.
+    alternates: { canonical: dishPath(c) },
     openGraph: {
       title,
       description,
-      images: [{ url: `/share/dish/${id}/image?og=1`, width: 1200, height: 630 }],
+      images: [{ url: `/share/dish/${c.id}/image?og=1`, width: 1200, height: 630 }],
     },
     twitter: { card: "summary_large_image" as const },
   };
 }
 
-export default async function ContenderPage({ params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const detail = getRepo().getContenderDetail(id);
+export default async function DishPage({ params }: { params: Promise<{ sub: string; dishSlug: string }> }) {
+  const { sub, dishSlug } = await params;
+  const detail = getRepo().getContenderBySlug(sub, dishSlug);
   if (!detail) notFound();
 
-  const user = await getCurrentUser();
   const { contender: c, category, subcategory, place, photos, neighbors } = detail;
+  // Reached via a raw id or a stale slug → one hop to the canonical URL.
+  if (c.slug !== dishSlug) permanentRedirect(dishPath(c));
+
+  const user = await getCurrentUser();
   const alreadyRanked = user
     ? getRepo().getPersonalRankedList(user.id, subcategory.slug).some((v) => v.id === c.id)
     : false;
@@ -133,7 +139,7 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
             kind="dish"
             id={c.id}
             title={c.rank ? `${c.title} at ${place.name} — #${c.rank} best ${subcategory.name.toLowerCase()} in NYC` : `${c.title} at ${place.name}`}
-            pageHref={`/c/${c.id}`}
+            pageHref={dishPath(c)}
             variant="ghost"
           />
           <PhotoUpload contenderId={c.id} signedIn={!!user} />
@@ -178,7 +184,7 @@ export default async function ContenderPage({ params }: { params: Promise<{ id: 
             {neighbors.map((n) => (
               <Link
                 key={n.id}
-                href={`/c/${n.id}`}
+                href={dishPath(n)}
                 className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 transition hover:border-[var(--color-brand)] hover:shadow-[0_4px_14px_-10px_rgba(35,28,22,0.4)]"
               >
                 <span className="w-5 text-center text-sm font-bold text-[var(--color-ink-dim)]">

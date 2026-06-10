@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ConfidenceDot, PhotoThumb, RankBadge, ScoreBadge } from "./bits";
 import ShareButton from "./ShareButton";
 import type { ContenderView } from "@/lib/types";
+import { dishPath } from "@/lib/links";
 
 const MapView = dynamic(() => import("./MapView"), {
   ssr: false,
@@ -19,7 +20,7 @@ const MapView = dynamic(() => import("./MapView"), {
 function Row({ v }: { v: ContenderView }) {
   return (
     <Link
-      href={`/c/${v.id}`}
+      href={dishPath(v)}
       className="flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition duration-150 hover:-translate-y-px hover:border-[var(--color-brand)] hover:shadow-[0_6px_20px_-12px_rgba(35,28,22,0.35)]"
     >
       <RankBadge rank={v.rank} />
@@ -46,7 +47,7 @@ function MineRow({ v, sub }: { v: ContenderView; sub?: string }) {
     <div className="flex items-center gap-3 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3">
       <RankBadge rank={v.rank} />
       {v.photoUrl && <PhotoThumb url={v.photoUrl} alt={v.title} className="h-14 w-14 shrink-0" />}
-      <Link href={`/c/${v.id}`} className="min-w-0 flex-1">
+      <Link href={dishPath(v)} className="min-w-0 flex-1">
         <span className="block truncate font-bold tracking-tight">{v.title}</span>
         <span className="block truncate text-sm text-[var(--color-ink-dim)]">
           {v.placeName} · {v.neighborhood}
@@ -95,7 +96,8 @@ export default function BrowseView({
   const [source, setSource] = useState<"overall" | "mine">("overall");
   const [view, setView] = useState<"list" | "map">("list");
   const points = ranked.map((v) => ({
-    id: v.id, lat: v.lat, lng: v.lng, rank: v.rank, score: v.score, title: v.title, placeName: v.placeName,
+    id: v.id, subSlug: v.subSlug, slug: v.slug, lat: v.lat, lng: v.lng, rank: v.rank, score: v.score,
+    title: v.title, placeName: v.placeName,
   }));
 
   return (

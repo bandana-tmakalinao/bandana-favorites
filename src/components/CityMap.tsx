@@ -3,9 +3,13 @@
 import { useEffect, useRef, useState } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { resolveMapStyle } from "@/lib/mapStyle";
+import { dishPath } from "@/lib/links";
 
 export interface CityPoint {
   id: string;
+  /** Dish URL parts — pins link via dishPath. */
+  subSlug: string;
+  slug: string;
   lat: number;
   lng: number;
   score: number;
@@ -85,7 +89,7 @@ export default function CityMap({ groups }: { groups: CityGroup[] }) {
         // Inner element = the visual dot. We scale THIS on hover so we never touch the outer
         // element's transform (which would fight MapLibre's positioning and make the dot jump).
         const dot = document.createElement("a");
-        dot.href = `/c/${p.id}`;
+        dot.href = dishPath(p);
         const sz = isPodium ? 22 : 16;
         dot.style.cssText = `display:block;width:${sz}px;height:${sz}px;border-radius:9999px;background:${g.color};border:2.5px solid #fff;box-shadow:0 2px 5px rgba(35,28,22,.35);transition:transform .12s ease;transform-origin:center;${
           isPodium ? `outline:2px solid ${g.color};outline-offset:2px;` : ""

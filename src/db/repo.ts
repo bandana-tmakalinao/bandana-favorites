@@ -85,6 +85,8 @@ export interface FeedItem {
   actor: { handle: string; name: string; avatarUrl: string | null };
   /** The dish acted on (winner for a duel, rated dish for a rating). */
   contenderId: string;
+  /** URL slug of the dish (falls back to the id) — feed rows link via dishPath. */
+  dishSlug: string;
   dishTitle: string;
   placeName: string;
   subSlug: string;
@@ -109,7 +111,7 @@ export interface PlaceHit {
   borough: string;
   source: "corpus" | "place";
   /** Dishes already logged for (this place × subcategory) — a place can have several (e.g. two ramens). */
-  existingDishes: { id: string; title: string }[];
+  existingDishes: { id: string; slug: string; title: string }[];
 }
 
 /** Category-agnostic place search hit for the restaurant-first add flow. */

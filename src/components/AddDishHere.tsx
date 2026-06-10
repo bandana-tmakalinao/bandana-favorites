@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { btn } from "./bits";
+import { dishPath } from "@/lib/links";
 
 interface SubOpt {
   slug: string;
@@ -29,7 +30,7 @@ export default function AddDishHere({
   placeId: string;
   groups: CatGroup[];
   signedIn: boolean;
-  existing?: Record<string, { id: string; title: string }[]>; // dishes already logged here, per food type
+  existing?: Record<string, { id: string; slug: string; title: string }[]>; // dishes already logged here, per food type
   initialSub?: string;
 }) {
   const router = useRouter();
@@ -163,7 +164,7 @@ export default function AddDishHere({
               {already.map((d) => (
                 <Link
                   key={d.id}
-                  href={`/c/${d.id}`}
+                  href={dishPath({ subSlug: sub, slug: d.slug })}
                   className="rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-2.5 py-1 text-xs transition hover:border-[var(--color-brand)]"
                 >
                   {d.title} · rate →

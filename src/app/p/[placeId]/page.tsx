@@ -4,6 +4,7 @@ import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
 import { ScoreBadge, ConfidenceDot } from "@/components/bits";
 import AddDishHere from "@/components/AddDishHere";
+import { dishPath } from "@/lib/links";
 
 export const dynamic = "force-dynamic";
 
@@ -36,8 +37,8 @@ export default async function PlacePage({
     .filter((g) => g.subs.length > 0);
   // Dishes already logged here, grouped by food type — shown as quick "rate it" links in the adder
   // (a place can hold several dishes of one type, so this no longer blocks adding another).
-  const existing: Record<string, { id: string; title: string }[]> = {};
-  for (const d of dishes) if (d.subSlug) (existing[d.subSlug] ??= []).push({ id: d.id, title: d.title });
+  const existing: Record<string, { id: string; slug: string; title: string }[]> = {};
+  for (const d of dishes) if (d.subSlug) (existing[d.subSlug] ??= []).push({ id: d.id, slug: d.slug, title: d.title });
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -77,7 +78,7 @@ export default async function PlacePage({
             {dishes.map((d) => (
               <Link
                 key={d.id}
-                href={`/c/${d.id}`}
+                href={dishPath(d)}
                 className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-brand)]"
               >
                 {d.tier === "provisional" ? (

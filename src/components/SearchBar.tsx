@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { SearchResults } from "@/db/repo";
+import { dishPath } from "@/lib/links";
 
 export default function SearchBar({
   variant = "header",
@@ -107,7 +108,7 @@ export default function SearchBar({
               {res.contenders.map((c) => (
                 <button
                   key={c.id}
-                  onClick={() => go(`/c/${c.id}`)}
+                  onClick={() => go(dishPath(c))}
                   className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-[var(--color-surface)]"
                 >
                   <span className="min-w-0 flex-1">

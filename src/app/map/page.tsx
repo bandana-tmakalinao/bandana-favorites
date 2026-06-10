@@ -43,6 +43,8 @@ export default function MapPage() {
         color,
         points: list.ranked.slice(0, 10).map((v, i) => ({
           id: v.id,
+          subSlug: v.subSlug,
+          slug: v.slug,
           lat: v.lat,
           lng: v.lng,
           score: v.score,

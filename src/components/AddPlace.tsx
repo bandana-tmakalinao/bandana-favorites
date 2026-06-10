@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { btn } from "./bits";
+import { dishPath } from "@/lib/links";
 
 interface PlaceHit {
   id: string;
@@ -11,7 +12,7 @@ interface PlaceHit {
   address: string;
   borough: string;
   source: "corpus" | "place";
-  existingDishes: { id: string; title: string }[];
+  existingDishes: { id: string; slug: string; title: string }[];
 }
 
 const BOROUGHS = ["Manhattan", "Brooklyn", "Queens", "Bronx", "Staten Island"];
@@ -270,7 +271,7 @@ export default function AddPlace({
                     {h.existingDishes.map((d) => (
                       <Link
                         key={d.id}
-                        href={`/c/${d.id}`}
+                        href={dishPath({ subSlug, slug: d.slug })}
                         className="rounded-full border border-[var(--color-border)] bg-[var(--color-bg)] px-2.5 py-1 text-xs text-[var(--color-ink)] transition hover:border-[var(--color-brand)]"
                       >
                         {d.title} · rate →

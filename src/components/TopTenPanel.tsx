@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ScoreBadge } from "./bits";
 import type { ShowcaseEntry } from "@/db/repo";
+import { dishPath } from "@/lib/links";
 
 /** A static "Top 10 in NYC" panel for a single food type (used for the marquee lists). */
 export default function TopTenPanel({ entry }: { entry: ShowcaseEntry }) {
@@ -20,7 +21,7 @@ export default function TopTenPanel({ entry }: { entry: ShowcaseEntry }) {
         {entry.items.map((v) => (
           <li key={v.id}>
             <Link
-              href={`/c/${v.id}`}
+              href={dishPath(v)}
               className="flex items-center gap-3 px-4 py-2 transition hover:bg-[var(--color-surface-2)]"
             >
               <span className="w-5 shrink-0 text-center text-sm font-black tabular-nums text-[var(--color-ink-dim)]">

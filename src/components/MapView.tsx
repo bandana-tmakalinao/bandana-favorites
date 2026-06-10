@@ -3,9 +3,13 @@
 import { useEffect, useRef } from "react";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { resolveMapStyle } from "@/lib/mapStyle";
+import { dishPath } from "@/lib/links";
 
 export interface MapPoint {
   id: string;
+  /** Dish URL parts — pins link via dishPath. */
+  subSlug: string;
+  slug: string;
   lat: number;
   lng: number;
   rank: number | null;
@@ -51,7 +55,7 @@ export default function MapView({ points, center }: { points: MapPoint[]; center
         const el = document.createElement("div");
         el.style.cursor = "pointer";
         const pin = document.createElement("a");
-        pin.href = `/c/${p.id}`;
+        pin.href = dishPath(p);
         pin.style.cssText = `display:grid;place-items:center;width:30px;height:30px;
           border-radius:50% 50% 50% 0;transform:rotate(-45deg);transform-origin:center;
           background:${color};box-shadow:0 2px 6px rgba(35,28,22,.35);

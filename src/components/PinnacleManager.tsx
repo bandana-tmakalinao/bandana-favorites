@@ -3,9 +3,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { dishPath } from "@/lib/links";
 
 interface Item {
   id: string;
+  slug: string;
+  subSlug: string;
   title: string;
   placeName: string;
   subName: string;
@@ -50,7 +53,7 @@ export default function PinnacleManager({ items }: { items: Item[] }) {
         >
           <span className="w-5 text-center text-lg font-black tabular-nums text-[var(--color-brand)]">{i + 1}</span>
           <span className="text-lg">{p.emoji}</span>
-          <Link href={`/c/${p.id}`} className="min-w-0 flex-1 truncate text-sm hover:underline">
+          <Link href={dishPath(p)} className="min-w-0 flex-1 truncate text-sm hover:underline">
             <span className="font-semibold">{p.title}</span>{" "}
             <span className="text-[var(--color-ink-dim)]">· {p.placeName}</span>
           </Link>

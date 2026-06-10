@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getRepo } from "@/db/repo";
 import { PhotoThumb, ScoreBadge } from "@/components/bits";
 import SearchBar from "@/components/SearchBar";
+import { dishPath } from "@/lib/links";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Search · Bandana Faves" };
@@ -60,7 +61,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
             {res.contenders.map((c) => (
               <Link
                 key={c.id}
-                href={`/c/${c.id}`}
+                href={dishPath(c)}
                 className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-ink-dim)]"
               >
                 <PhotoThumb url={c.photoUrl} alt={c.title} className="h-12 w-12 shrink-0" />

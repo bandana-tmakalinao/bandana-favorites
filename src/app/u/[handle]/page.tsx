@@ -5,6 +5,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { Avatar, ScoreBadge, btn } from "@/components/bits";
 import ShareButton from "@/components/ShareButton";
 import FollowButton from "@/components/FollowButton";
+import { dishPath } from "@/lib/links";
 
 export const dynamic = "force-dynamic";
 
@@ -128,7 +129,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
             {profile.topPicks.map((p) => (
               <Link
                 key={p.subSlug}
-                href={`/c/${p.contender.id}`}
+                href={dishPath(p.contender)}
                 className="group flex w-40 shrink-0 flex-col items-center gap-1.5 rounded-2xl border-2 border-[var(--color-gold)]/45 bg-gradient-to-b from-[#fdf4dd] to-[var(--color-surface)] p-4 text-center shadow-[0_4px_16px_-10px_rgba(224,169,60,0.7)] transition hover:-translate-y-0.5 hover:border-[var(--color-gold)] hover:shadow-[0_10px_24px_-10px_rgba(224,169,60,0.8)]"
               >
                 <span className="grid h-16 w-16 place-items-center rounded-full bg-white text-3xl shadow-[0_2px_8px_-2px_rgba(35,28,22,0.25)] ring-2 ring-[var(--color-gold)] transition-transform group-hover:scale-105">
@@ -182,7 +183,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
             {profile.pinnacle.map((p, i) => (
               <li key={p.id}>
                 <Link
-                  href={`/c/${p.id}`}
+                  href={dishPath(p)}
                   className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-ink-dim)]"
                 >
                   <span className="w-6 text-center text-lg font-black tabular-nums text-[var(--color-brand)]">
@@ -234,7 +235,7 @@ export default async function ProfilePage({ params }: { params: Promise<{ handle
               {s.items.map((v) => (
                 <Link
                   key={v.id}
-                  href={`/c/${v.id}`}
+                  href={dishPath(v)}
                   className="flex items-center gap-3 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-2.5 transition hover:border-[var(--color-ink-dim)]"
                 >
                   <span className="w-5 text-center text-sm font-bold text-[var(--color-ink-dim)]">{v.rank}</span>

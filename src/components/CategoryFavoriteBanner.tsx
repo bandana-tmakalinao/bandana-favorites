@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ScoreBadge } from "./bits";
 import type { ContenderView } from "@/lib/types";
+import { dishPath } from "@/lib/links";
 
 export default function CategoryFavoriteBanner({
   sub,
@@ -17,7 +18,7 @@ export default function CategoryFavoriteBanner({
         <p className="mb-0.5 text-xs font-semibold uppercase tracking-wide text-[var(--color-brand)]">
           ⭐ Your favorite {subName.toLowerCase()}
         </p>
-        <Link href={`/c/${favorite.id}`} className="block truncate font-bold hover:underline">
+        <Link href={dishPath(favorite)} className="block truncate font-bold hover:underline">
           {favorite.title}
         </Link>
         <p className="truncate text-sm text-[var(--color-ink-dim)]">

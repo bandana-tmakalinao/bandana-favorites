@@ -571,7 +571,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
           kicker,
           title: c.title,
           tagline,
-          url: `faves.bandana.com/c/${id}`,
+          url: `faves.bandana.com/nyc/${subcategory.slug}/${c.slug}`,
           rows,
         }),
       );
@@ -601,7 +601,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
         kicker,
         title: c.title,
         tagline: tagline + " — where it lands on the board:",
-        url: `faves.bandana.com/c/${id}`,
+        url: `faves.bandana.com/nyc/${subcategory.slug}/${c.slug}`,
         rows: top,
         wrapTitle: true,
       }),

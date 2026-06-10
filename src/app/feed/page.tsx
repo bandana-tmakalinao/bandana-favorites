@@ -3,6 +3,7 @@ import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
 import { Avatar, ScoreBadge } from "@/components/bits";
 import UserList from "@/components/UserList";
+import { dishPath } from "@/lib/links";
 import { relativeTime } from "@/lib/relativeTime";
 
 export const dynamic = "force-dynamic";
@@ -182,7 +183,7 @@ export default async function FeedPage() {
                   {f.kind === "duel" ? (
                     <>
                       picked{" "}
-                      <Link href={`/c/${f.contenderId}`} className="font-medium hover:underline">
+                      <Link href={dishPath({ subSlug: f.subSlug, slug: f.dishSlug })} className="font-medium hover:underline">
                         {f.dishTitle}
                       </Link>
                       {f.loserTitle ? <> over {f.loserTitle}</> : null}{" "}
@@ -191,7 +192,7 @@ export default async function FeedPage() {
                   ) : (
                     <>
                       rated{" "}
-                      <Link href={`/c/${f.contenderId}`} className="font-medium hover:underline">
+                      <Link href={dishPath({ subSlug: f.subSlug, slug: f.dishSlug })} className="font-medium hover:underline">
                         {f.dishTitle}
                       </Link>{" "}
                       in <Link href={`/nyc/${f.subSlug}`} className="text-[var(--color-ink-dim)] hover:text-[var(--color-ink)]">{f.emoji} {f.subName}</Link>

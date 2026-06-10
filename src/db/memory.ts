@@ -882,11 +882,11 @@ export class MemoryRepository implements Repository {
     const q = query.trim().toLowerCase();
     if (!q) return [];
     const subId = this.subBySlug(subSlug)?.id;
-    const liveDishes = (placeId: string): { id: string; title: string }[] =>
+    const liveDishes = (placeId: string): { id: string; slug: string; title: string }[] =>
       subId
         ? this.store.contenders
             .filter((c) => c.placeId === placeId && c.subcategoryId === subId && c.status !== "hidden")
-            .map((c) => ({ id: c.id, title: c.title }))
+            .map((c) => ({ id: c.id, slug: c.slug || c.id, title: c.title }))
         : [];
 
     type Hit = PlaceHit & { catMatch: boolean };
@@ -1246,6 +1246,7 @@ export class MemoryRepository implements Repository {
         at: cmp.createdAt,
         actor: { handle: actor.handle, name: actor.name, avatarUrl: actor.avatarUrl ?? null },
         contenderId: win.id,
+        dishSlug: win.slug || win.id,
         dishTitle: win.title,
         placeName: this.place(win.placeId)?.name ?? "",
         subSlug: sub?.slug ?? "",

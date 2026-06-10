@@ -3,6 +3,7 @@ import { ConfidenceDot, RankBadge, ScoreBadge } from "@/components/bits";
 import { categoryGradient } from "@/lib/categoryTheme";
 import type { ContenderView } from "@/lib/types";
 import type { ShowcaseEntry } from "@/db/repo";
+import { dishPath } from "@/lib/links";
 
 function placeLine(v: ContenderView) {
   const loc = v.neighborhood || v.borough;
@@ -91,7 +92,7 @@ export default function RankingCard({
           return (
             <li key={v.id} className={champ ? "bg-[var(--color-surface-2)]" : ""}>
               <Link
-                href={`/c/${v.id}`}
+                href={dishPath(v)}
                 className="flex items-center gap-3 px-4 py-2.5 transition hover:bg-[var(--color-surface-2)]"
               >
                 <RankBadge rank={v.rank} />

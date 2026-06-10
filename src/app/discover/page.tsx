@@ -3,6 +3,7 @@ import { getRepo } from "@/db/repo";
 import { getCurrentUser } from "@/lib/auth";
 import { ScoreBadge } from "@/components/bits";
 import UserList from "@/components/UserList";
+import { dishPath } from "@/lib/links";
 
 export const dynamic = "force-dynamic";
 export const metadata = { title: "Discover · Bandana Faves" };
@@ -28,7 +29,7 @@ export default async function DiscoverPage() {
             {rising.map((r) => (
               <Link
                 key={r.id}
-                href={`/c/${r.id}`}
+                href={dishPath(r)}
                 className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-brand)]"
               >
                 <span className="text-xl">{r.emoji}</span>

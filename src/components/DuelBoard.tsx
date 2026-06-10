@@ -15,6 +15,7 @@ import {
 } from "@/lib/placement";
 import type { ContenderView } from "@/lib/types";
 import type { CategoryStanding } from "@/db/repo";
+import { dishPath } from "@/lib/links";
 
 interface Pair {
   category: { emoji: string; name: string };
@@ -436,7 +437,7 @@ export default function DuelBoard({
                   {i + 1}
                 </span>
                 <div className="min-w-0 flex-1">
-                  <Link href={`/c/${v.id}`} className="font-semibold hover:underline">
+                  <Link href={dishPath(v)} className="font-semibold hover:underline">
                     {v.title}
                   </Link>
                   <p className="truncate text-sm text-[var(--color-ink-dim)]">
