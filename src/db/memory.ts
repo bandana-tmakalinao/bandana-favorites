@@ -45,6 +45,7 @@ import type {
   FeedItem,
   SearchHitContender,
   SearchResults,
+  SitemapEntries,
   ShowcaseEntry,
   UserCard,
 } from "./repo";
@@ -278,6 +279,36 @@ export class MemoryRepository implements Repository {
   getPersonalRankedListByHandle(handle: string, subSlug: string): ContenderView[] {
     const user = this.store.users.find((u) => u.handle === handle);
     return user ? this.getPersonalRankedList(user.id, subSlug) : [];
+  }
+
+  listSitemapEntries(): SitemapEntries {
+    // Last duel per subcategory → the category page's honest lastModified.
+    const lastDuel = new Map<string, string>();
+    for (const cmp of this.store.comparisons) {
+      const cur = lastDuel.get(cmp.subcategoryId);
+      if (!cur || cmp.createdAt > cur) lastDuel.set(cmp.subcategoryId, cmp.createdAt);
+    }
+
+    const visibleSubs = this.store.subcategories.filter((s) => !HIDDEN_SUBCATEGORIES.has(s.slug));
+    const visibleSubById = new Map(visibleSubs.map((s) => [s.id, s]));
+
+    const dishes: SitemapEntries["dishes"] = [];
+    const placeIdsWithDishes = new Set<string>();
+    for (const c of this.store.contenders) {
+      if (c.status === "hidden" || c.status === "proposed") continue;
+      const sub = visibleSubById.get(c.subcategoryId);
+      if (!sub) continue;
+      dishes.push({ subSlug: sub.slug, slug: c.slug || c.id });
+      placeIdsWithDishes.add(c.placeId);
+    }
+
+    return {
+      categories: visibleSubs.map((s) => ({ slug: s.slug, lastModified: lastDuel.get(s.id) ?? null })),
+      dishes,
+      places: this.store.places
+        .filter((p) => p.status !== "proposed" && placeIdsWithDishes.has(p.id))
+        .map((p) => ({ id: p.id })),
+    };
   }
 
   /** Slug-first dish resolution for /nyc/[sub]/[dishSlug]. Falls through to id (pre-slug links). */

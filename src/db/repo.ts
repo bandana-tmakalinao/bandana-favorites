@@ -104,6 +104,13 @@ export interface SearchResults {
   contenders: SearchHitContender[];
 }
 
+/** What sitemap.xml needs — excludes hidden categories, hidden/proposed dishes, proposed places. */
+export interface SitemapEntries {
+  categories: { slug: string; lastModified: string | null }[];
+  dishes: { subSlug: string; slug: string }[];
+  places: { id: string }[];
+}
+
 export interface PlaceHit {
   id: string; // corpus id (corpus_*) or an existing place id
   name: string;
@@ -265,6 +272,8 @@ export interface Repository {
   getContenderDetail(id: string): ContenderDetail | null;
   /** Slug-first dish resolution for /nyc/[sub]/[dishSlug]; also accepts a raw contender id. */
   getContenderBySlug(subSlug: string, dishSlug: string): ContenderDetail | null;
+  /** Every public URL for sitemap.xml: visible categories (w/ last-duel timestamps), live dishes, real places. */
+  listSitemapEntries(): SitemapEntries;
   getHomeShowcase(perCategory?: number): ShowcaseEntry[];
   search(query: string, limit?: number): SearchResults;
   /** keepId = "king of the hill": keep that contender on one side and rotate in a fresh challenger.
