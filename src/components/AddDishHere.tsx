@@ -29,13 +29,39 @@ export default function AddDishHere({
 }: {
   placeId: string;
   groups: CatGroup[];
-  signedIn: boolean;
+  /** Omit to let the component resolve auth itself (keeps the host page cookie-free → cacheable). */
+  signedIn?: boolean;
   existing?: Record<string, { id: string; slug: string; title: string }[]>; // dishes already logged here, per food type
+  /** Omit to read ?sub= from the URL client-side (keeps the host page searchParams-free). */
   initialSub?: string;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState(!!initialSub);
   const [sub, setSub] = useState(initialSub ?? "");
+  const [auth, setAuth] = useState<boolean>(signedIn ?? false);
+
+  // Self-resolve auth when the host page didn't pass it (ISR pages can't read cookies).
+  useEffect(() => {
+    if (signedIn !== undefined) return;
+    let on = true;
+    fetch("/api/me/context")
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => on && setAuth(!!d?.user))
+      .catch(() => {});
+    return () => {
+      on = false;
+    };
+  }, [signedIn]);
+
+  // Self-resolve ?sub= deep links when the host page didn't pass initialSub.
+  useEffect(() => {
+    if (initialSub !== undefined) return;
+    const s = new URLSearchParams(window.location.search).get("sub");
+    if (s) {
+      setSub(s);
+      setOpen(true);
+    }
+  }, [initialSub]);
   const [dish, setDish] = useState("");
   const [note, setNote] = useState("");
   const [names, setNames] = useState<string[]>([]);
@@ -105,7 +131,7 @@ export default function AddDishHere({
     }
   }
 
-  if (!signedIn) {
+  if (!auth) {
     return (
       <Link
         href={`/me?returnTo=${encodeURIComponent(`/p/${placeId}`)}`}

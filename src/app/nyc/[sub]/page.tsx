@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getRepo } from "@/db/repo";
-import { getCurrentUser } from "@/lib/auth";
-import BrowseView from "@/components/BrowseView";
+import CategoryClient from "@/components/CategoryClient";
 import ShareButton from "@/components/ShareButton";
 import { categoryGradient } from "@/lib/categoryTheme";
-import AddPlace from "@/components/AddPlace";
-import CategoryFavoriteBanner from "@/components/CategoryFavoriteBanner";
-import CategoryOnboarding from "@/components/CategoryOnboarding";
-import CategoryAlsoTried from "@/components/CategoryAlsoTried";
 
-export const dynamic = "force-dynamic";
+// ISR: the ranked list is a public, cacheable shell (5 min); everything viewer-specific hydrates
+// via CategoryClient. generateStaticParams() => [] keeps this page OUT of `next build` (the data
+// store only exists at runtime — see the guard in getRepo()).
+export const revalidate = 300;
+export const dynamicParams = true;
+export async function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ sub: string }> }) {
   const { sub } = await params;
@@ -33,29 +35,13 @@ export async function generateMetadata({ params }: { params: Promise<{ sub: stri
   };
 }
 
-export default async function SubcategoryPage({
-  params,
-  searchParams,
-}: {
-  params: Promise<{ sub: string }>;
-  searchParams: Promise<{ welcome?: string }>;
-}) {
+export default async function SubcategoryPage({ params }: { params: Promise<{ sub: string }> }) {
   const { sub } = await params;
-  const { welcome } = await searchParams;
   const list = getRepo().getRankedList(sub);
   if (!list) notFound();
 
-  const user = await getCurrentUser();
-  const personal = user ? getRepo().getPersonalRankedList(user.id, sub) : [];
   const { subcategory, category, region, ranked, contenders } = list;
   const dishNames = Array.from(new Set([...ranked, ...contenders].map((v) => v.title).filter(Boolean))).slice(0, 40);
-
-  const favoriteId = user ? getRepo().getCategoryFavorite(user.id, sub) : null;
-  let favoriteView = favoriteId ? ([...ranked, ...contenders].find((v) => v.id === favoriteId) ?? null) : null;
-  if (favoriteId && !favoriteView) {
-    const detail = getRepo().getContenderDetail(favoriteId);
-    if (detail) favoriteView = detail.contender;
-  }
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6">
@@ -123,53 +109,15 @@ export default async function SubcategoryPage({
       </header>
 
       <div className="mt-6">
-        {!user && (
-          <div className="mb-4 flex items-center gap-4 rounded-xl border border-[var(--color-brand)]/30 bg-[var(--color-brand)]/5 p-4">
-            <div className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[var(--color-brand)]/15 text-2xl">
-              🍴
-            </div>
-            <div className="min-w-0 flex-1">
-              <p className="font-semibold">Rank your favorite {subcategory.name.toLowerCase()}</p>
-              <p className="text-sm text-[var(--color-ink-dim)]">
-                Sign in or create an account to set your favorite and add the spots you&apos;ve tried.
-              </p>
-            </div>
-            <Link
-              href={`/me?returnTo=${encodeURIComponent(`/nyc/${subcategory.slug}`)}`}
-              className="shrink-0 rounded-lg bg-[var(--color-brand)] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
-            >
-              Sign in →
-            </Link>
-          </div>
-        )}
-        {favoriteView && (
-          <CategoryFavoriteBanner sub={subcategory.slug} subName={subcategory.name} favorite={favoriteView} />
-        )}
-        {user && favoriteId && welcome && (
-          <CategoryAlsoTried
-            sub={subcategory.slug}
-            subName={subcategory.name}
-            favoriteId={favoriteId}
-            others={ranked.filter((v) => v.id !== favoriteId).slice(0, 20)}
-          />
-        )}
-        {user && !favoriteId && (
-          <CategoryOnboarding sub={subcategory.slug} subName={subcategory.name} top20={ranked.slice(0, 20)} />
-        )}
-        <BrowseView
+        <CategoryClient
+          sub={subcategory.slug}
+          subName={subcategory.name}
           ranked={ranked}
           provisional={contenders}
           center={region.center}
-          personal={personal}
-          signedIn={!!user}
-          subName={subcategory.name}
-          sub={subcategory.slug}
-          meHandle={user?.handle}
-          meName={user?.name}
+          dishNames={dishNames}
         />
       </div>
-
-      <AddPlace subSlug={subcategory.slug} subName={subcategory.name} signedIn={!!user} dishNames={dishNames} />
     </div>
   );
 }

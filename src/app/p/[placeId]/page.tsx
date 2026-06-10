@@ -1,12 +1,18 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getRepo } from "@/db/repo";
-import { getCurrentUser } from "@/lib/auth";
 import { ScoreBadge, ConfidenceDot } from "@/components/bits";
 import AddDishHere from "@/components/AddDishHere";
 import { dishPath } from "@/lib/links";
 
-export const dynamic = "force-dynamic";
+// ISR: public shell cached 5 min; viewer-specific bits (the dish adder) hydrate client-side.
+// generateStaticParams() => [] keeps this page OUT of `next build` (the data store only exists
+// at runtime — see the guard in getRepo()).
+export const revalidate = 300;
+export const dynamicParams = true;
+export async function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ placeId: string }> }) {
   const { placeId } = await params;
@@ -14,19 +20,11 @@ export async function generateMetadata({ params }: { params: Promise<{ placeId: 
   return { title: d ? `${d.place.name} · Bandana Faves` : "Not found · Bandana Faves" };
 }
 
-export default async function PlacePage({
-  params,
-  searchParams,
-}: {
-  params: Promise<{ placeId: string }>;
-  searchParams: Promise<{ sub?: string }>;
-}) {
+export default async function PlacePage({ params }: { params: Promise<{ placeId: string }> }) {
   const { placeId } = await params;
-  const { sub } = await searchParams;
   const detail = getRepo().getPlaceDetail(decodeURIComponent(placeId));
   if (!detail) notFound();
 
-  const user = await getCurrentUser();
   const { place, dishes, categories } = detail;
   const groups = categories
     .map((c) => ({
@@ -102,7 +100,7 @@ export default async function PlacePage({
           </div>
         )}
 
-        <AddDishHere placeId={place.id} groups={groups} signedIn={!!user} existing={existing} initialSub={sub} />
+        <AddDishHere placeId={place.id} groups={groups} existing={existing} />
       </div>
     </div>
   );

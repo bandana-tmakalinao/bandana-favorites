@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { getRepo } from "@/db/repo";
-import { getCurrentUser } from "@/lib/auth";
 import { ConfidenceDot, PhotoThumb, ScoreBadge } from "@/components/bits";
-import PhotoUpload from "@/components/PhotoUpload";
-import PinButton from "@/components/PinButton";
-import ShareButton from "@/components/ShareButton";
+import DishActions from "@/components/DishActions";
 import { categoryGradient } from "@/lib/categoryTheme";
 import { dishPath } from "@/lib/links";
 
-export const dynamic = "force-dynamic";
+// ISR: public dish shell cached 5 min; viewer-specific actions hydrate via DishActions.
+// generateStaticParams() => [] keeps this page OUT of `next build` (runtime-only data store).
+export const revalidate = 300;
+export const dynamicParams = true;
+export async function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ sub: string; dishSlug: string }> }) {
   const { sub, dishSlug } = await params;
@@ -44,11 +47,6 @@ export default async function DishPage({ params }: { params: Promise<{ sub: stri
   const { contender: c, category, subcategory, place, photos, neighbors } = detail;
   // Reached via a raw id or a stale slug → one hop to the canonical URL.
   if (c.slug !== dishSlug) permanentRedirect(dishPath(c));
-
-  const user = await getCurrentUser();
-  const alreadyRanked = user
-    ? getRepo().getPersonalRankedList(user.id, subcategory.slug).some((v) => v.id === c.id)
-    : false;
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
@@ -126,36 +124,16 @@ export default async function DishPage({ params }: { params: Promise<{ sub: stri
         </p>
       )}
 
-      <div className="mt-6 space-y-4 border-t border-[var(--color-border)] pt-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <Link
-            href={`/duel?sub=${subcategory.slug}&target=${c.id}`}
-            className="rounded-lg bg-[var(--color-brand)] px-4 py-2 font-semibold text-white transition hover:bg-[var(--color-brand-soft)]"
-          >
-            {alreadyRanked ? "↻ Re-rank this for me" : "⚔️ Rank this for me"}
-          </Link>
-          <PinButton contenderId={c.id} signedIn={!!user} initialPinned={(user?.pinnacle ?? []).includes(c.id)} />
-          <ShareButton
-            kind="dish"
-            id={c.id}
-            title={c.rank ? `${c.title} at ${place.name} — #${c.rank} best ${subcategory.name.toLowerCase()} in NYC` : `${c.title} at ${place.name}`}
-            pageHref={dishPath(c)}
-            variant="ghost"
-          />
-          <PhotoUpload contenderId={c.id} signedIn={!!user} />
-          <Link
-            href={`/duel?sub=${subcategory.slug}&keep=${c.id}&mode=open`}
-            className="text-sm text-[var(--color-ink-dim)] transition hover:text-[var(--color-ink)]"
-          >
-            or open-duel it →
-          </Link>
-        </div>
-        {alreadyRanked && (
-          <p className="mt-2 text-xs text-[var(--color-ink-dim)]">
-            You&apos;ve ranked this — re-ranking pulls it out and places it fresh against your other picks.
-          </p>
-        )}
-      </div>
+      <DishActions
+        contenderId={c.id}
+        sub={subcategory.slug}
+        shareTitle={
+          c.rank
+            ? `${c.title} at ${place.name} — #${c.rank} best ${subcategory.name.toLowerCase()} in NYC`
+            : `${c.title} at ${place.name}`
+        }
+        pageHref={dishPath(c)}
+      />
 
       {photos.length > 0 && (
         <div className="mt-8">
