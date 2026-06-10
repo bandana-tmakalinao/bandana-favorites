@@ -359,13 +359,18 @@ function notFoundPoster(title: string, message: string) {
   );
 }
 
-function respond(tree: React.ReactElement) {
+// Public posters (site/category/dish) can cache briefly — OG scrapes are bursty and the data
+// changes on duel cadence, not per-request. Personal/pinnacle posters stay uncached: they're
+// viewer-shaped and must never linger stale in a cache after a re-rank.
+const CACHE_PUBLIC = "public, max-age=300, s-maxage=300, stale-while-revalidate=86400";
+const CACHE_NONE = "no-store, max-age=0, must-revalidate";
+
+function respond(tree: React.ReactElement, cacheable = false) {
   return new ImageResponse(tree, {
     width: W,
     height: H,
     fonts: fonts(),
-    // Never let a stale (old Top-10) image linger in a browser/IG cache.
-    headers: { "Cache-Control": "no-store, max-age=0, must-revalidate" },
+    headers: { "Cache-Control": cacheable ? CACHE_PUBLIC : CACHE_NONE },
   });
 }
 
@@ -373,12 +378,12 @@ function respond(tree: React.ReactElement) {
 const OG_W = 1200;
 const OG_H = 630;
 
-function respondOg(tree: React.ReactElement) {
+function respondOg(tree: React.ReactElement, cacheable = false) {
   return new ImageResponse(tree, {
     width: OG_W,
     height: OG_H,
     fonts: fonts(),
-    headers: { "Cache-Control": "no-store, max-age=0, must-revalidate" },
+    headers: { "Cache-Control": cacheable ? CACHE_PUBLIC : CACHE_NONE },
   });
 }
 
@@ -539,6 +544,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
         url: "faves.bandana.com",
         rows,
       }),
+      true,
     );
   }
 
@@ -574,6 +580,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
           url: `faves.bandana.com/nyc/${subcategory.slug}/${c.slug}`,
           rows,
         }),
+        true,
       );
     }
     // Portrait: the dish as the headline, then the top 5 with this dish highlighted (or appended).
@@ -605,6 +612,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
         rows: top,
         wrapTitle: true,
       }),
+      true,
     );
   }
 
@@ -690,6 +698,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
           url: `faves.bandana.com/nyc/${id}`,
           rows,
         }),
+        true,
       );
     return respond(
       poster({
@@ -701,6 +710,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ kind: s
         url: `faves.bandana.com/nyc/${id}`,
         rows,
       }),
+      true,
     );
   }
 

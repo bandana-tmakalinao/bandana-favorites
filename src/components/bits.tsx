@@ -108,6 +108,10 @@ export function Avatar({ url, name, size = 44 }: { url: string | null; name: str
       <img
         src={url}
         alt={name}
+        width={size}
+        height={size}
+        loading="lazy"
+        decoding="async"
         className="shrink-0 rounded-full object-cover"
         style={{ width: size, height: size }}
       />
@@ -137,7 +141,7 @@ export function PhotoThumb({
   return (
     <span className={`relative block overflow-hidden rounded-lg bg-[var(--color-surface-2)] ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={url} alt={alt} loading="lazy" className="h-full w-full object-cover" />
+      <img src={url} alt={alt} loading="lazy" decoding="async" className="h-full w-full object-cover" />
     </span>
   );
 }

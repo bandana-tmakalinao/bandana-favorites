@@ -1,5 +1,9 @@
 import type { MetadataRoute } from "next";
 
+// Runtime, not build-time: the sitemap URL must always reflect the live NEXT_PUBLIC_SITE_URL
+// (a static route would bake whatever the env was during `next build`).
+export const dynamic = "force-dynamic";
+
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 /**
