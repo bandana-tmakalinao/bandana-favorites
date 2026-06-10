@@ -9,12 +9,15 @@ import { dishPath } from "@/lib/links";
  */
 export const dynamic = "force-dynamic";
 
-export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
+export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const detail = getRepo().getContenderDetail(id);
   const dest = detail ? dishPath(detail.contender) : "/explore";
+  // Behind Render's proxy req.url is http://localhost:10000/... — never derive the host from it.
+  // Absolute via the canonical site URL when configured; a relative Location is spec-legal otherwise.
+  const base = process.env.NEXT_PUBLIC_SITE_URL;
   return new Response(null, {
     status: detail ? 301 : 302,
-    headers: { Location: new URL(dest, req.url).toString() },
+    headers: { Location: base ? new URL(dest, base).toString() : dest },
   });
 }
