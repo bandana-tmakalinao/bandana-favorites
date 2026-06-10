@@ -2,8 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getRepo } from "@/db/repo";
 import CategoryClient from "@/components/CategoryClient";
+import CategoryEditorial from "@/components/seo/CategoryEditorial";
+import JsonLd from "@/components/JsonLd";
 import ShareButton from "@/components/ShareButton";
 import { categoryGradient } from "@/lib/categoryTheme";
+import { breadcrumbLd, itemListLd } from "@/lib/seo/jsonld";
 
 // ISR: the ranked list is a public, cacheable shell (5 min); everything viewer-specific hydrates
 // via CategoryClient. generateStaticParams() => [] keeps this page OUT of `next build` (the data
@@ -46,6 +49,14 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-6">
+      <JsonLd data={itemListLd(list)} />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Bandana Faves", path: "/" },
+          { name: "NYC food rankings", path: "/nyc" },
+          { name: `Best ${subcategory.name} in NYC`, path: `/nyc/${subcategory.slug}` },
+        ])}
+      />
       {/* Poster hero — the category's share-image gradient, so the page IS the poster */}
       <header
         className="relative overflow-hidden rounded-3xl px-5 py-6 text-white shadow-[0_14px_40px_-18px_rgba(35,28,22,0.55)] sm:px-7 sm:py-8"
@@ -119,6 +130,8 @@ export default async function SubcategoryPage({ params }: { params: Promise<{ su
           dishNames={dishNames}
         />
       </div>
+
+      <CategoryEditorial list={list} />
     </div>
   );
 }

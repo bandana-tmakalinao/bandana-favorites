@@ -3,7 +3,9 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { getRepo } from "@/db/repo";
 import { ConfidenceDot, PhotoThumb, ScoreBadge } from "@/components/bits";
 import DishActions from "@/components/DishActions";
+import JsonLd from "@/components/JsonLd";
 import { categoryGradient } from "@/lib/categoryTheme";
+import { dishBreadcrumbLd } from "@/lib/seo/jsonld";
 import { dishPath } from "@/lib/links";
 
 // ISR: public dish shell cached 5 min; viewer-specific actions hydrate via DishActions.
@@ -50,6 +52,7 @@ export default async function DishPage({ params }: { params: Promise<{ sub: stri
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
+      <JsonLd data={dishBreadcrumbLd(c, subcategory.name)} />
       <div className="mb-3 flex items-center gap-2 text-sm text-[var(--color-ink-dim)]">
         <Link href={`/nyc/${subcategory.slug}`} className="hover:text-[var(--color-ink)]">
           ← Best {subcategory.name} in NYC

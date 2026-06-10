@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { getRepo } from "@/db/repo";
 import { ScoreBadge, ConfidenceDot } from "@/components/bits";
 import AddDishHere from "@/components/AddDishHere";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbLd, restaurantLd } from "@/lib/seo/jsonld";
 import { dishPath } from "@/lib/links";
 
 // ISR: public shell cached 5 min; viewer-specific bits (the dish adder) hydrate client-side.
@@ -50,8 +52,21 @@ export default async function PlacePage({ params }: { params: Promise<{ placeId:
   const existing: Record<string, { id: string; slug: string; title: string }[]> = {};
   for (const d of dishes) if (d.subSlug) (existing[d.subSlug] ??= []).push({ id: d.id, slug: d.slug, title: d.title });
 
+  const cuisines = [...new Set(dishes.map((d) => d.subName).filter(Boolean))];
+
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
+      {/* Restaurant markup only for real, curator-approved places with an address — never invented. */}
+      {place.address && !place.isProposed && (
+        <JsonLd data={restaurantLd(place, `/p/${place.id}`, cuisines)} />
+      )}
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "Bandana Faves", path: "/" },
+          { name: "NYC food rankings", path: "/nyc" },
+          { name: place.name, path: `/p/${place.id}` },
+        ])}
+      />
       <div className="mb-2 text-sm text-[var(--color-ink-dim)]">
         <Link href="/add" className="hover:text-[var(--color-ink)]">
           ← Find a restaurant
