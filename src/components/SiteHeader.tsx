@@ -1,19 +1,13 @@
 import Link from "next/link";
-import { getCurrentUser } from "@/lib/auth";
-import { isModerator } from "@/lib/moderation";
-import { Avatar } from "@/components/bits";
+import HeaderAuth from "@/components/HeaderAuth";
 import SearchBar from "@/components/SearchBar";
 
 /**
- * The global header. Auth-aware (reads the session cookie), so it renders once per request:
- *  - signed out → "Sign in"
- *  - signed in  → "Profile" (with avatar), no "Sign in"
- *  - moderators → an extra "Admin" link
+ * The global header — a fully static server shell (NO cookies; reading them here would force
+ * every page dynamic and kill ISR). The auth-aware corner (Feed/Admin/Profile vs Sign in)
+ * hydrates client-side via <HeaderAuth /> from /api/me/context.
  */
-export default async function SiteHeader() {
-  const user = await getCurrentUser();
-  const mod = isModerator(user);
-
+export default function SiteHeader() {
   return (
     <header className="sticky top-0 z-30 border-b border-[var(--color-border)] bg-[var(--color-bg)]/85 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4">
@@ -34,35 +28,13 @@ export default async function SiteHeader() {
           <Link href="/explore" className="-my-2 py-2 font-medium text-[var(--color-ink)] hover:text-[var(--color-brand)]">
             Explore
           </Link>
-          {user && (
-            <Link href="/feed" className="hidden hover:text-[var(--color-ink)] sm:inline">
-              Feed
-            </Link>
-          )}
           <Link href="/discover" className="hidden hover:text-[var(--color-ink)] sm:inline">
             Discover
           </Link>
           <Link href="/map" className="hidden hover:text-[var(--color-ink)] sm:inline">
             Map
           </Link>
-          {mod && (
-            <Link href="/admin" className="hidden font-medium text-[var(--color-brand)] hover:text-[var(--color-brand-soft)] sm:inline">
-              Admin
-            </Link>
-          )}
-          {user ? (
-            <Link
-              href="/me"
-              className="-my-1 flex items-center gap-2 py-1 font-medium text-[var(--color-ink)] hover:text-[var(--color-brand)]"
-            >
-              <Avatar url={user.avatarUrl ?? null} name={user.name} size={26} />
-              <span className="hidden sm:inline">Profile</span>
-            </Link>
-          ) : (
-            <Link href="/me" className="-my-2 py-2 hover:text-[var(--color-ink)]">
-              Sign in
-            </Link>
-          )}
+          <HeaderAuth />
           <Link
             href="/nyc"
             aria-label="Rank food"
