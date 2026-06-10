@@ -6,9 +6,10 @@ import RankingCard from "@/components/RankingCard";
 export const dynamic = "force-dynamic";
 
 export const metadata = {
-  title: "Explore the NYC Food Power Rankings · Bandana Faves",
+  title: "Explore the NYC Food Power Rankings",
   description:
     "Every great dish in NYC, ranked head-to-head. Best pizza, best burger, best ramen — the food is the headline, the place is the subtitle.",
+  alternates: { canonical: "/explore" },
 };
 
 // The two lists everyone has an opinion about — the hero of the page.

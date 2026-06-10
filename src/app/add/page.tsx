@@ -4,7 +4,11 @@ import { getRepo } from "@/db/repo";
 import PlaceFinder from "@/components/PlaceFinder";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Add a favorite · Bandana Faves" };
+export const metadata = {
+  title: "Add a favorite",
+  description: "Find any NYC restaurant and add the dish you had there.",
+  robots: { index: false, follow: true },
+};
 
 export default async function AddPage({
   searchParams,

@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
-  return { title: `@${handle} is following · Bandana Faves` };
+  return { title: `@${handle} is following`, robots: { index: false, follow: true } };
 }
 
 export default async function FollowingPage({ params }: { params: Promise<{ handle: string }> }) {

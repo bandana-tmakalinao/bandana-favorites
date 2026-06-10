@@ -3,7 +3,11 @@ import { getCurrentUser } from "@/lib/auth";
 import DuelBoard from "@/components/DuelBoard";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Duel · Bandana Faves" };
+export const metadata = {
+  title: "Duel",
+  description: "Which is better? Settle it head-to-head and move the rankings.",
+  robots: { index: false, follow: true },
+};
 
 export default async function DuelPage({
   searchParams,

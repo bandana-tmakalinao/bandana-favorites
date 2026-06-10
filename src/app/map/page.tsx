@@ -3,7 +3,12 @@ import CityMap, { type CityGroup } from "@/components/CityMap";
 import { HIDDEN_SUBCATEGORIES } from "@/lib/config";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Map · Bandana Faves" };
+export const metadata = {
+  title: "Map",
+  description: "Every top-ranked NYC dish on one citywide map.",
+  alternates: { canonical: "/map" },
+  robots: { index: false, follow: true },
+};
 
 // Every real, geocoded food type — each a colored, toggleable layer on the citywide map.
 const LAYERS = [

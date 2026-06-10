@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;
   const profile = getRepo().getProfile(handle);
-  const title = profile ? `${profile.name} (@${handle}) · Bandana Faves` : `@${handle} · Bandana Faves`;
+  const title = profile ? `${profile.name} (@${handle})` : `@${handle}`;
   const description =
     profile && profile.pinnacle.length > 0
       ? `${profile.name.split(" ")[0]}'s all-time NYC favorites — #1: ${profile.pinnacle[0].title} at ${profile.pinnacle[0].placeName}.`
@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
   return {
     title,
     description,
+    alternates: { canonical: `/u/${handle}` },
     openGraph: {
       title,
       description,

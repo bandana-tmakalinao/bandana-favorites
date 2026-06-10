@@ -4,7 +4,12 @@ import { categoryGradient } from "@/lib/categoryTheme";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "NYC — browse by food · Bandana Faves" };
+export const metadata = {
+  title: "NYC — browse by food",
+  description:
+    "Browse every crowd-ranked NYC food list: pizza, ramen, bagels, tacos and more — each an absolute ranking built from head-to-head duels.",
+  alternates: { canonical: "/nyc" },
+};
 
 export default function NycPage() {
   const groups = getRepo().listCategories();

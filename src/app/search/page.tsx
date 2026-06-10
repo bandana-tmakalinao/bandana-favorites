@@ -5,7 +5,12 @@ import SearchBar from "@/components/SearchBar";
 import { dishPath } from "@/lib/links";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Search · Bandana Faves" };
+export const metadata = {
+  title: "Search",
+  description: "Search every ranked dish, food type, and restaurant on Bandana Faves.",
+  alternates: { canonical: "/search" },
+  robots: { index: false, follow: true },
+};
 
 export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
   const { q = "" } = await searchParams;

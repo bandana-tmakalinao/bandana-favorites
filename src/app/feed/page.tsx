@@ -7,7 +7,7 @@ import { dishPath } from "@/lib/links";
 import { relativeTime } from "@/lib/relativeTime";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Your feed · Bandana Faves" };
+export const metadata = { title: "Your feed", robots: { index: false, follow: true } };
 
 export default async function FeedPage() {
   const me = await getCurrentUser();
@@ -44,7 +44,7 @@ export default async function FeedPage() {
               {rising.map((r) => (
                 <li key={r.id}>
                   <Link
-                    href={`/c/${r.id}`}
+                    href={dishPath(r)}
                     className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-brand)]"
                   >
                     <span className="text-xl">{r.emoji}</span>
@@ -118,7 +118,7 @@ export default async function FeedPage() {
             {tryThese.map((r) => (
               <li key={r.id}>
                 <Link
-                  href={`/c/${r.id}`}
+                  href={dishPath(r)}
                   className="flex items-center gap-3 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-3 transition hover:border-[var(--color-brand)]"
                 >
                   <ScoreBadge score={r.score} size="sm" standing={r.standing} />

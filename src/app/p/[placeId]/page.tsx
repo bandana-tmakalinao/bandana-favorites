@@ -16,8 +16,20 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ placeId: string }> }) {
   const { placeId } = await params;
-  const d = getRepo().getPlaceDetail(decodeURIComponent(placeId));
-  return { title: d ? `${d.place.name} · Bandana Faves` : "Not found · Bandana Faves" };
+  const id = decodeURIComponent(placeId);
+  const d = getRepo().getPlaceDetail(id);
+  if (!d) return { title: "Not found" };
+  const { place, dishes } = d;
+  const best = dishes.find((x) => x.rank != null);
+  const where = [place.neighborhood, place.borough].filter(Boolean).join(", ");
+  const description = best
+    ? `${dishes.length} dish${dishes.length === 1 ? "" : "es"} ranked at ${place.name} (${where}) — including ${best.title}, #${best.rank} best ${best.subName.toLowerCase()} in NYC.`
+    : `${place.name} in ${where || "NYC"} on Bandana Faves — the dishes people actually rank here.`;
+  return {
+    title: `${place.name} — ${where || "NYC"}`,
+    description,
+    alternates: { canonical: `/p/${id}` },
+  };
 }
 
 export default async function PlacePage({ params }: { params: Promise<{ placeId: string }> }) {

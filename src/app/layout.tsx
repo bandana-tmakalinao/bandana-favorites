@@ -6,7 +6,11 @@ import { archivo, inter } from "./fonts";
 export const metadata: Metadata = {
   // Absolute URLs for OG images & canonical links; falls back to localhost in dev.
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
-  title: "Bandana Faves · the best food in NYC, ranked by the food",
+  title: {
+    default: "Bandana Faves · the best food in NYC, ranked by the food",
+    // Every page title gets the brand suffix from here — pages set just their own part.
+    template: "%s · Bandana Faves",
+  },
   description:
     "Crowd-ranked best-of lists by food type. Best ramen in NYC. Best slice. Best dumpling. The food is the headline; the place is the subtitle.",
   openGraph: {

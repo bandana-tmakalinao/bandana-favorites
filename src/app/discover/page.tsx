@@ -6,7 +6,11 @@ import UserList from "@/components/UserList";
 import { dishPath } from "@/lib/links";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Discover · Bandana Faves" };
+export const metadata = {
+  title: "Discover",
+  description: "Tasters worth following and the NYC dishes climbing the rankings fastest right now.",
+  alternates: { canonical: "/discover" },
+};
 
 export default async function DiscoverPage() {
   const me = await getCurrentUser();

@@ -4,7 +4,7 @@ import { isModerator } from "@/lib/moderation";
 import { getRepo } from "@/db/repo";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Admin · Bandana Faves" };
+export const metadata = { title: "Admin", robots: { index: false, follow: true } };
 
 export default async function AdminPage() {
   const user = await getCurrentUser();

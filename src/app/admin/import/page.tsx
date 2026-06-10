@@ -5,7 +5,7 @@ import { getRepo } from "@/db/repo";
 import MenuImporter from "@/components/MenuImporter";
 
 export const dynamic = "force-dynamic";
-export const metadata = { title: "Import menu · Admin · Bandana Faves" };
+export const metadata = { title: "Import menu · Admin", robots: { index: false, follow: true } };
 
 export default async function ImportPage() {
   const user = await getCurrentUser();

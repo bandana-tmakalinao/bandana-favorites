@@ -6,6 +6,8 @@ import SearchBar from "@/components/SearchBar";
 
 export const dynamic = "force-dynamic";
 
+export const metadata = { alternates: { canonical: "/" } };
+
 // Lead the rotation with the two great debates, then the rest by ranked volume.
 const FEATURED = ["pizza", "cheeseburger"];
 

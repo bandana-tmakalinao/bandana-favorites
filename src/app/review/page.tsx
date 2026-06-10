@@ -6,7 +6,7 @@ import ReviewQueue from "@/components/ReviewQueue";
 
 export const dynamic = "force-dynamic";
 
-export const metadata = { title: "Review queue · Bandana Faves" };
+export const metadata = { title: "Review queue", robots: { index: false, follow: true } };
 
 export default async function ReviewPage() {
   const user = await getCurrentUser();

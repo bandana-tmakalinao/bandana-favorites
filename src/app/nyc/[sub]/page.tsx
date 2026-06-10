@@ -17,8 +17,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ sub: string }> }) {
   const { sub } = await params;
   const list = getRepo().getRankedList(sub);
-  if (!list) return { title: "Not found · Bandana Faves" };
-  const title = `Best ${list.subcategory.name} in NYC · Bandana Faves`;
+  if (!list) return { title: "Not found" };
+  const title = `Best ${list.subcategory.name} in NYC`;
   const top = list.ranked[0];
   const description = top
     ? `${list.ranked.length} ${list.subcategory.name.toLowerCase()} ranked head-to-head. #1 right now: ${top.title} at ${top.placeName}.`
@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ sub: stri
   return {
     title,
     description,
+    alternates: { canonical: `/nyc/${sub}` },
     openGraph: {
       title,
       description,
